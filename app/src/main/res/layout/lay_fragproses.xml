@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+						 xmlns:tools="http://schemas.android.com/tools"
+						 android:layout_width="match_parent"
+						 android:layout_height="match_parent"
+						 tools:context="com.artolanggeng.purnamakertasindo.warehouse.fragProses">
+
+	<LinearLayout
+		android:id="@+id/llFragProses"
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:background="@color/ViewPagerBackground"
+		android:orientation="horizontal">
+
+		<ImageView
+			android:id="@+id/ivRefreshProses"
+			android:layout_width="28dp"
+			android:layout_height="32dp"
+			android:background="@drawable/ic_refresh_black"
+			android:layout_margin="5dp"
+			android:layout_gravity="center_vertical"/>
+
+		<LinearLayout
+			android:id="@+id/llCariProses"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="horizontal"
+			android:layout_margin="5dp"
+			android:background="@drawable/rectstrokegray"
+			android:layout_gravity="center_vertical">
+
+			<ImageView
+				android:id="@+id/ivCariProses"
+				android:layout_width="28dp"
+				android:layout_height="32dp"
+				android:background="@drawable/ic_search"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="3dp"/>
+
+			<EditText
+				android:id="@+id/etCariProses"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:layout_gravity="center_vertical"
+				android:layout_marginLeft="3dp"
+				android:layout_marginBottom="4dp"
+				android:layout_marginTop="4dp"
+				android:background="@android:color/transparent"/>
+		</LinearLayout>
+	</LinearLayout>
+
+	<ListView
+		android:layout_below="@+id/llFragProses"
+		android:id="@+id/rvPekerjaan"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_margin="10dp"
+		android:background="@color/tw__transparent"/>
+</RelativeLayout>

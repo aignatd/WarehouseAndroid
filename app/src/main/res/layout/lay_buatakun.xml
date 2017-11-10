@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/back"
+		tools:context="com.artolanggeng.purnamakertasindo.common.BuatAkun">
+
+	<RelativeLayout
+			android:id="@+id/rlHeader"
+			android:layout_width="match_parent"
+			android:layout_height="40dp">
+
+		<include layout="@layout/lay_header"/>
+	</RelativeLayout>
+
+	<RelativeLayout
+			android:id="@+id/rlUtama"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_centerVertical="true"
+			android:layout_centerHorizontal="true"
+			android:layout_marginLeft="30dp"
+			android:layout_marginRight="30dp"
+			android:paddingLeft="15dp"
+			android:paddingRight="15dp"
+			android:paddingTop="6dp"
+			android:paddingBottom="10dp"
+			android:background="@drawable/rectroundtrans">
+
+		<TextView
+				android:id="@+id/tvTitleLogin"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_alignParentRight="false"
+				android:layout_alignParentTop="true"
+				android:layout_centerHorizontal="true"
+				android:gravity="center_vertical"
+				android:textAppearance="?android:attr/textAppearanceMedium"
+				android:layout_alignParentEnd="false"
+				android:textSize="20dp"
+				android:textColor="@android:color/black"
+				android:text="@string/StrDataAkun"/>
+
+		<EditText
+				android:id="@+id/etNoHP"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_below="@id/tvTitleLogin"
+				android:layout_alignParentStart="true"
+				android:layout_marginTop="8dp"
+				android:paddingLeft="12dp"
+				android:paddingRight="12dp"
+				android:background="@drawable/rectroundgrayblack1"
+				android:inputType="number"
+				android:ems="10"
+				android:layout_alignParentLeft="true"
+				android:textSize="16dp"
+				android:drawableLeft="@drawable/ic_phone_black"
+				android:drawablePadding="5dp"
+				android:maxLines="1"
+				android:textColor="@android:color/black"
+				android:hint="@string/HintInputHP"/>
+
+		<EditText
+				android:id="@+id/etPass"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_below="@id/etNoHP"
+				android:layout_alignParentStart="true"
+				android:layout_marginTop="8dp"
+				android:paddingLeft="12dp"
+				android:paddingRight="12dp"
+				android:background="@drawable/rectroundgrayblack1"
+				android:inputType="textPassword"
+				android:ems="10"
+				android:layout_alignParentLeft="true"
+				android:textSize="16dp"
+				android:drawableLeft="@drawable/ic_lock_open_black"
+				android:drawablePadding="5dp"
+				android:maxLines="1"
+				android:textColor="@android:color/black"
+				android:hint="@string/HintInputPass"/>
+
+		<EditText
+				android:id="@+id/etVerPass"
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:layout_below="@id/etPass"
+				android:layout_alignParentStart="true"
+				android:layout_marginTop="8dp"
+				android:paddingLeft="12dp"
+				android:paddingRight="12dp"
+				android:background="@drawable/rectroundgrayblack1"
+				android:inputType="textPassword"
+				android:ems="10"
+				android:layout_alignParentLeft="true"
+				android:textSize="16dp"
+				android:drawableLeft="@drawable/ic_lock_open_black"
+				android:drawablePadding="5dp"
+				android:maxLines="1"
+				android:textColor="@android:color/black"
+				android:hint="@string/HintVerPass"/>
+
+		<Button
+				android:id="@+id/btnKirim"
+				android:layout_width="match_parent"
+				android:layout_height="35dp"
+				android:layout_below="@id/etVerPass"
+				android:layout_centerHorizontal="true"
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:layout_marginTop="15dp"
+				android:background="@drawable/rectroundorange"
+				android:textSize="16dp"
+				android:textColor="#ffffff"
+				android:text="@string/StrBtnKirim"/>
+	</RelativeLayout>
+</RelativeLayout>

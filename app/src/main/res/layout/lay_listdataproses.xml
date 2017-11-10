@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	style="@style/ThemeTransparent"
+	android:background="@android:color/transparent">
+
+	<android.support.v7.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/cvProses"
+		app:cardCornerRadius="10dp"
+		android:innerRadius="10dp"
+		android:thicknessRatio="2"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"
+		android:layout_marginBottom="5dp"
+		android:background="@android:color/transparent">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/rlheadatasproses"
+				android:background="@drawable/up_two_rounded_green"
+				android:visibility="visible">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/drawer"
+					android:layout_margin="5dp"
+					android:id="@+id/imageView"/>
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/xvidcap"
+					android:layout_alignParentRight="true"
+					android:layout_margin="5dp"
+					android:layout_alignParentEnd="true"
+					android:id="@+id/ivPhotoTimbang"/>
+
+				<ImageView
+					android:layout_width="32dp"
+					android:layout_height="32dp"
+					android:src="@drawable/gtkprint"
+					android:layout_margin="5dp"
+					android:layout_toLeftOf="@id/ivPhotoTimbang"
+					android:id="@+id/ivPrintTimbang"
+					android:scaleY="0.5"
+					android:scaleX="0.5"/>
+			</RelativeLayout>
+
+			<LinearLayout
+				android:id="@+id/llDataProses"
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_below="@id/rlheadatasproses"
+				android:layout_margin="8dp">
+
+				<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content">
+
+					<TextView
+						android:id="@+id/tvStatusProses"
+						android:layout_width="wrap_content"
+						android:layout_alignParentLeft="true"
+						android:layout_alignParentStart="true"
+						android:text="@string/strHeaderListProgress"
+						style="@style/HeaderListProgress"/>
+
+					<TextView
+						android:id="@+id/tvKodePemasok"
+						android:layout_width="wrap_content"
+						android:layout_alignParentRight="true"
+						android:layout_alignParentEnd="true"
+						android:text="@string/strHeaderListProgress"
+						style="@style/HeaderListProgress"
+						android:textColor="@android:color/holo_red_dark"/>
+				</RelativeLayout>
+
+				<LinearLayout
+					style="@style/HeaderListProgress"
+					android:orientation="horizontal"
+					android:layout_marginTop="3dp">
+
+					<Button
+						android:id="@+id/btnGaris1"
+						android:layout_height="2dp"
+						android:layout_width="30dp"
+						android:gravity="center_vertical"
+						android:layout_gravity="center"
+						android:background="@color/whiteThree"
+						android:layout_marginRight="5dp"/>
+
+					<Button
+						android:id="@+id/btnGaris2"
+						android:layout_height="2dp"
+						android:layout_width="30dp"
+						android:layout_gravity="center"
+						android:gravity="center_vertical"
+						android:background="@color/whiteThree"
+						android:paddingRight="13dp"
+						android:layout_marginRight="5dp"/>
+
+					<Button
+						android:id="@+id/btnGaris3"
+						android:layout_height="2dp"
+						android:layout_width="30dp"
+						android:layout_gravity="center"
+						android:gravity="center_vertical"
+						android:background="@color/whiteThree"/>
+				</LinearLayout>
+
+			<LinearLayout
+				style="@style/HeaderListProgress"
+				android:orientation="horizontal"
+				android:weightSum="2">
+
+				<LinearLayout
+					style="@style/HeaderListProgress"
+					android:orientation="vertical"
+					android:layout_weight="1.50">
+
+					<TextView
+						android:text="@string/strNamaPanggil"
+						style="@style/SubHeaderListProgress"
+						android:layout_marginTop="8dp"/>
+
+					<TextView
+						android:id="@+id/tvNamaPanggil"
+						android:text="Nama Panggilan"
+						style="@style/DefaultListProgress"
+						android:layout_marginTop="3dp"/>
+				</LinearLayout>
+
+				<LinearLayout
+					style="@style/HeaderListProgress"
+					android:orientation="vertical"
+					android:layout_weight="0.50"
+					android:layout_marginLeft="5dp"
+					android:layout_marginStart="20dp">
+
+					<TextView
+						android:text="@string/strSubHeaderListProgress"
+						style="@style/SubHeaderListProgress"
+						android:layout_marginTop="8dp"/>
+
+					<TextView
+						android:id="@+id/tvNamaPT"
+						android:text="PT. Nama Perusahaan Disini"
+						style="@style/DefaultListProgress"
+						android:layout_marginTop="3dp"/>
+				</LinearLayout>
+
+			</LinearLayout>
+
+				<LinearLayout
+					style="@style/HeaderListProgress"
+					android:orientation="horizontal"
+					android:layout_marginTop="8dp"
+					android:weightSum="2">
+
+					<LinearLayout
+						android:orientation="vertical"
+						style="@style/HeaderListProgress"
+						android:layout_weight="1.05">
+
+						<TextView
+							android:text="@string/strNoPolisi"
+							style="@style/SubHeaderListProgress"/>
+
+						<RelativeLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:background="@drawable/rectstrokegray"
+							android:layout_marginTop="3dp">
+
+							<TextView
+								android:id="@+id/tvNoPolisi"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginLeft="2dp"
+								android:layout_marginRight="2dp"
+								android:visibility="visible"/>
+
+							<Spinner
+								android:id="@+id/spNoPolisi"
+								style="@style/DefaultSpinner"
+								android:dropDownWidth="fill_parent"
+								android:spinnerMode="dropdown"
+								android:layout_marginLeft="1dp"
+								android:layout_marginRight="1dp"
+								android:visibility="gone"/>
+						</RelativeLayout>
+					</LinearLayout>
+
+					<LinearLayout
+						android:orientation="vertical"
+						style="@style/HeaderListProgress"
+						android:layout_weight="0.95"
+						android:layout_marginLeft="15dp"
+						android:layout_marginStart="15dp">
+
+						<TextView
+							android:id="@+id/tvNoTelpon"
+							android:text="@string/strNoTelpon"
+							style="@style/SubHeaderListProgress"/>
+
+						<TextView
+							android:id="@+id/tvstrNoTelpon"
+							android:text="08XXXXXXXXXXX"
+							style="@style/DefaultListProgress"
+							android:layout_marginTop="3dp"/>
+					</LinearLayout>
+				</LinearLayout>
+
+				<TextView
+					android:text="@string/strAlamat"
+					style="@style/SubHeaderListProgress"
+					android:layout_marginTop="8dp"/>
+
+				<TextView
+					android:id="@+id/tvAlamat"
+					android:text="Jalan sehat selalu"
+					style="@style/DefaultListProgress"
+					android:layout_marginTop="3dp"/>
+			</LinearLayout>
+
+			<android.support.v7.widget.RecyclerView
+				android:layout_below="@id/llDataProses"
+				android:id="@+id/rvListProses"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="5dp"
+				android:background="@color/duckEggBlue99"
+				android:visibility="gone"/>
+
+			<LinearLayout
+				android:layout_height="30dp"
+				android:layout_width="match_parent"
+				android:background="@drawable/down_two_rounded_white"
+				android:weightSum="2"
+				android:layout_below="@id/rvListProses"
+				android:id="@+id/llSubmit"
+				android:visibility="gone">
+
+				<LinearLayout
+					android:id="@+id/llProsesKasir"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:background="@drawable/down_left_one_rounded_silver"
+					android:clickable="false">
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/strKasirBayar"
+						android:textColor="@color/colorPrimary"
+						android:layout_gravity="center"
+						android:gravity="center"
+						android:id="@+id/tvProsesKasir"
+						android:clickable="false"/>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/llProsesQC"
+					android:layout_width="0dp"
+					android:layout_height="match_parent"
+					android:layout_weight="1"
+					android:background="@drawable/down_right_one_rounded_ocean">
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/strProsesQC"
+						android:textColor="@android:color/white"
+						android:layout_gravity="center"
+						android:id="@+id/tvProsesQC"
+						android:gravity="center"/>
+				</LinearLayout>
+			</LinearLayout>
+		</RelativeLayout>
+	</android.support.v7.widget.CardView>
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<resources>
+	<!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="activity_horizontal_margin">12dp</dimen>
+	<dimen name="activity_vertical_margin">12dp</dimen>
+	<dimen name="GlobalTextSize">14sp</dimen>
+	<dimen name="UserInputTextSize">18sp</dimen>
+	<dimen name="PaddingDrawableUserInput">5dp</dimen>
+	<dimen name="HeightUserInput">40dp</dimen>
+	<dimen name="DefaultFooterTextSize">12sp</dimen>
+	<dimen name="DefaultTabTextSize">12sp</dimen>
+	<dimen name="HeightButtonTimbangan">120dp</dimen>
+	<dimen name="HeightButtonTimbangan2">118dp</dimen>
+	<dimen name="PaddingButtonTimbang">45dp</dimen>
+	<dimen name="SubHeaderListProgressTextSize">10sp</dimen>
+	<dimen name="act_horizontal_margin">12dp</dimen>
+	<dimen name="act_vertical_margin">12dp</dimen>
+
+	<dimen name="HeightLogoSplash">22dp</dimen>
+	<dimen name="WidthLogoSplash">185dp</dimen>
+	<dimen name="fab_margin">16dp</dimen>
+	<dimen name="TitleBar">16dp</dimen>
+
+	<dimen name="DetailTimbanganTextSize">12sp</dimen>
+	<dimen name="BeratTimbanganTextSize">14sp</dimen>
+</resources>

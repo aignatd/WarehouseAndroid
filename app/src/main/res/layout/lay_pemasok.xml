@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/lay_pemasok"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.artolanggeng.purnamakertasindo.common.Pemasok"
+		style="@style/DefaultActivity">
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:id="@+id/rlHeadPemasok">
+		<include layout="@layout/lay_headerutama"/>
+	</RelativeLayout>
+
+	<ScrollView
+			android:layout_below="@id/rlHeadPemasok"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true">
+
+		<RelativeLayout
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/user"
+					android:id="@+id/etPemasok"
+					android:hint="@string/HintPemasok"
+					android:maxLength="25"
+					android:layout_marginTop="15dp"/>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/alamat"
+					android:layout_width="match_parent"
+					android:id="@+id/etAlamatBaru"
+					android:hint="@string/HintAlamatPemasok"
+					android:maxLines="3"
+					android:layout_below="@id/etPemasok"
+					android:maxLength="75"
+					android:layout_marginTop="15dp"/>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/phones"
+					android:id="@+id/etNoHPPemasok"
+					android:hint="@string/HintNoHPPemasok"
+					android:layout_below="@id/etAlamatBaru"
+					android:maxLength="25"
+					android:layout_marginTop="15dp"
+					android:inputType="phone"/>
+
+			<LinearLayout
+					android:id="@+id/llPerusahaan"
+					android:background="@android:color/white"
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_below="@id/etNoHPPemasok"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="15dp">
+
+				<CheckBox
+						android:id="@+id/cbPerusahaan"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						android:layout_marginLeft="6dp"
+						android:layout_gravity="center"/>
+
+				<EditText
+						style="@style/UserInputPerusahaan"
+						android:id="@+id/etPerusahaan"
+						android:hint="@string/HintNamaPerusahaan"
+						android:maxLength="25"/>
+			</LinearLayout>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/email"
+					android:id="@+id/etEmailPemasok"
+					android:hint="@string/HintAlamatEmail"
+					android:layout_below="@id/llPerusahaan"
+					android:maxLength="25"
+					android:layout_marginTop="15dp"
+					android:inputType="textEmailAddress"/>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:id="@+id/etTglPemasok"
+					android:hint="@string/HintTglPemasok"
+					android:layout_below="@id/etEmailPemasok"
+					android:maxLength="25"
+					android:drawableLeft="@drawable/calendericon"
+					android:layout_marginTop="15dp"/>
+
+			<RadioGroup
+					android:id="@+id/rgSeks"
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_below="@id/etTglPemasok"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="15dp"
+					android:weightSum="4">
+
+				<RadioButton
+						android:background="@android:color/white"
+						android:id="@+id/cbPria"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="@string/HintPria"
+						android:layout_marginRight="20dp"
+						android:layout_weight="2.2"
+						android:checked="true"/>
+
+				<RadioButton
+						android:background="@android:color/white"
+						android:id="@+id/cbWanita"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="@string/HintPerempuan"
+						android:layout_marginLeft="20dp"
+						android:layout_weight="2"/>
+			</RadioGroup>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/user"
+					android:id="@+id/etPanggilan"
+					android:hint="@string/HintPanggilan"
+					android:layout_below="@id/rgSeks"
+					android:maxLength="25"
+					android:layout_marginTop="15dp"/>
+
+			<RadioGroup
+					android:id="@+id/rgJenisID"
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_below="@id/etPanggilan"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="15dp"
+					android:weightSum="6">
+
+				<RadioButton
+						android:background="@android:color/white"
+						android:id="@+id/cbSIM"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="SIM"
+						android:layout_weight="2"/>
+
+				<RadioButton
+						android:background="@android:color/white"
+						android:id="@+id/cbKTP"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="KTP"
+						android:layout_marginRight="20dp"
+						android:layout_weight="2"
+						android:layout_marginLeft="20dp"/>
+
+				<RadioButton
+						android:background="@android:color/white"
+						android:id="@+id/cbKitas"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="KITAS"
+						android:layout_weight="2"/>
+			</RadioGroup>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/identitas"
+					android:id="@+id/etNoID"
+					android:hint="@string/HintIdentitas"
+					android:layout_below="@id/rgJenisID"
+					android:maxLength="25"
+					android:layout_marginTop="6dp"
+					android:inputType="number"/>
+		</RelativeLayout>
+	</ScrollView>
+
+</RelativeLayout>

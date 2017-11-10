@@ -1,0 +1,149 @@
+<resources>
+	<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+		<!-- Customize your theme here. -->
+		<item name="colorPrimary">@color/colorPrimary</item>
+		<item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+		<item name="colorAccent">@color/colorAccent</item>
+
+		<item name="android:textColor">@color/GrayUserInputHint</item>
+		<item name="android:textSize">@dimen/GlobalTextSize</item>
+	</style>
+
+	<style name="HeaderUtama" parent="AppTheme">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textStyle">normal|bold</item>
+		<item name="android:background">@color/HeaderUtama</item>
+	</style>
+
+	<style name="DefaultActivity" parent="AppTheme">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:background">@color/colorPrimary</item>
+	</style>
+
+	<style name="Header" parent="AppTheme">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:layout_centerVertical">true</item>
+		<item name="android:gravity">center_vertical|center_horizontal</item>
+		<item name="android:textSize">@dimen/DefaultFooterTextSize</item>
+	</style>
+
+	<style name="SubHeader" parent="Header">
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:textSize">@dimen/UserInputTextSize</item>
+	</style>
+
+	<style name="UserInput" parent="AppTheme">
+		<item name="android:textSize">@dimen/UserInputTextSize</item>
+		<item name="android:textColorHint">@color/GrayUserInputHint</item>
+		<item name="android:drawablePadding">@dimen/PaddingDrawableUserInput</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">@dimen/HeightUserInput</item>
+		<item name="android:paddingLeft">@dimen/act_horizontal_margin</item>
+		<item name="android:paddingRight">@dimen/act_horizontal_margin</item>
+		<item name="android:maxLines">1</item>
+		<item name="android:background">@drawable/rectroundgrayblack1</item>
+	</style>
+
+	<style name="UserInputUsername" parent="UserInput">
+		<item name="android:drawableLeft">@drawable/ic_account_black</item>
+		<item name="android:inputType">textPersonName</item>
+		<item name="android:maxLength">25</item>
+		<item name="android:hint">@string/HintInputHP</item>
+	</style>
+
+	<style name="UserInputPassword" parent="UserInput">
+		<item name="android:drawableLeft">@drawable/ic_lock_open_black</item>
+		<item name="android:inputType">textPassword</item>
+		<item name="android:maxLength">25</item>
+		<item name="android:hint">@string/HintInputPass</item>
+	</style>
+
+	<style name="UserInputPerusahaan" parent="UserInput">
+		<item name="android:paddingLeft">0dp</item>
+		<item name="android:paddingRight">0dp</item>
+		<item name="android:inputType">textPersonName</item>
+		<item name="android:maxLength">65</item>
+	</style>
+
+	<style name="DefaultButton" parent="UserInput">
+		<item name="android:textColor">@color/colorPrimary</item>
+	</style>
+
+	<style name="ButtonTimbangan" parent="UserInput">
+		<item name="android:layout_width">@dimen/HeightButtonTimbangan</item>
+		<item name="android:layout_height">@dimen/HeightButtonTimbangan</item>
+		<item name="android:textColor">@color/colorPrimary</item>
+		<item name="android:textSize">@dimen/DefaultTabTextSize</item>
+	</style>
+
+	<style name="DefaultPagerTab" parent="Widget.Design.TabLayout">
+		<item name="tabIndicatorColor">@color/colorPrimary</item>
+		<item name="tabIndicatorHeight">3dp</item>
+		<item name="tabTextAppearance">@style/DefaultTabText</item>
+		<item name="tabSelectedTextColor">@color/colorPrimary</item>
+		<item name="tabMode">fixed</item>
+		<item name="tabGravity">fill</item>
+		<item name="tabBackground">@android:color/white</item>
+	</style>
+
+	<style name="DefaultTabText" parent="TextAppearance.Design.Tab">
+		<item name="android:textColor">@color/GrayUserInputHint</item>
+		<item name="android:textSize">@dimen/DefaultTabTextSize</item>
+		<item name="textAllCaps">false</item>
+	</style>
+
+	<style name="DefaultFooter" parent="AppTheme">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:textSize">@dimen/DefaultFooterTextSize</item>
+		<item name="android:layout_centerHorizontal">true</item>
+	</style>
+
+	<style name="DefaultHeader" parent="Header">
+		<item name="android:textSize">@dimen/GlobalTextSize</item>
+		<item name="android:textColor">@color/colorPrimary</item>
+	</style>
+
+	<style name="ButtonScanQR" parent="UserInput">
+		<item name="android:textColor">@android:color/white</item>
+		<item name="android:background">@drawable/rectroundgrayblack2</item>
+	</style>
+
+	<style name="DefaultFooterQR" parent="AppTheme">
+		<item name="android:textSize">@dimen/GlobalTextSize</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:textColor">@color/colorPrimary</item>
+		<item name="android:gravity">center_vertical|center_horizontal</item>
+	</style>
+
+	<style name="TextButton" parent="AppTheme">
+		<item name="android:textSize">@dimen/DefaultFooterTextSize</item>
+		<item name="android:layout_centerHorizontal">true</item>
+		<item name="android:textColor">@color/colorPrimary</item>
+	</style>
+
+	<style name="DefaultListProgress" parent="AppTheme">
+		<item name="android:textSize">@dimen/DefaultTabTextSize</item>
+		<item name="android:textColor">@color/DarkGrey</item>
+		<item name="android:background">@android:color/white</item>
+		<item name="android:layout_width">match_parent</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+
+	<style name="HeaderListProgress" parent="DefaultListProgress">
+		<item name="android:textSize">@dimen/GlobalTextSize</item>
+	</style>
+
+	<style name="SubHeaderListProgress" parent="DefaultListProgress">
+		<item name="android:textSize">@dimen/SubHeaderListProgressTextSize</item>
+		<item name="android:textColor">@color/GrayUserInputHint</item>
+	</style>
+
+	<style name="ThemeTransparent" parent="android:Theme">
+		<item name="android:windowIsTranslucent">true</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:windowContentOverlay">@null</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowIsFloating">true</item>
+		<item name="android:backgroundDimEnabled">false</item>
+	</style>
+</resources>

@@ -1,0 +1,97 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+						 xmlns:app="http://schemas.android.com/apk/res-auto"
+						 xmlns:tools="http://schemas.android.com/tools"
+						 android:layout_width="match_parent"
+						 android:layout_height="match_parent"
+						 tools:context="com.artolanggeng.purnamakertasindo.warehouse.fragArrived">
+
+	<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content">
+
+		<RelativeLayout
+				android:layout_marginTop="20dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<TextView
+					style="@style/DefaultHeader"
+					android:text="@string/strHeadProses"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:id="@+id/tvFooter2"
+					android:layout_alignParentTop="true"
+					android:layout_alignParentLeft="true"
+					android:layout_alignParentStart="true"
+					android:textAlignment="center"/>
+
+			<ImageView
+					android:layout_height="wrap_content"
+					app:srcCompat="@drawable/scanqr"
+					android:id="@+id/ivScanQR"
+					android:layout_marginTop="23dp"
+					android:scaleType="fitXY"
+					android:layout_below="@+id/tvFooter2"
+					android:layout_width="wrap_content"
+					android:layout_centerHorizontal="true"
+					android:layout_centerInParent="false"
+					android:gravity="center_horizontal|center_vertical"/>
+
+			<Button
+					style="@style/ButtonScanQR"
+					android:id="@+id/btnScanQR"
+					android:layout_below="@id/ivScanQR"
+					android:layout_marginTop="20dp"
+					android:text="@string/StrScanQR"
+					android:layout_alignLeft="@+id/ivScanQR"
+					android:layout_alignStart="@+id/ivScanQR"
+					android:layout_alignRight="@+id/ivScanQR"
+					android:layout_alignEnd="@+id/ivScanQR"
+					android:gravity="center_horizontal|center_vertical"/>
+
+			<LinearLayout
+					android:layout_marginTop="20dp"
+					android:layout_width="match_parent"
+					android:id="@+id/llAtau"
+					android:layout_below="@id/btnScanQR"
+					android:orientation="horizontal"
+					android:layout_height="wrap_content"
+					android:gravity="center_horizontal">
+
+				<Button
+						android:layout_height="13dp"
+						android:gravity="center"
+						android:layout_gravity="center"
+						android:layout_marginRight="10dp"
+						android:layout_width="44dp"/>
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="@string/StrAtau"
+						android:textColor="@android:color/black"
+						android:textSize="@dimen/GlobalTextSize"/>
+
+				<Button
+						android:layout_height="13dp"
+						android:layout_gravity="center"
+						android:layout_marginLeft="10dp"
+						android:layout_width="44dp"/>
+			</LinearLayout>
+
+			<TextView
+					style="@style/DefaultFooterQR"
+					android:text="@string/strFooterProses"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_below="@id/llAtau"
+					android:id="@+id/tvInputPelanggan"
+					android:layout_alignParentLeft="true"
+					android:layout_alignParentStart="true"
+					android:layout_marginTop="12dp"
+					android:textAlignment="center"
+					android:layout_marginBottom="325dp"
+					android:textStyle="normal|bold"/>
+		</RelativeLayout>
+	</ScrollView>
+</FrameLayout>

@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+							xmlns:app="http://schemas.android.com/apk/res-auto"
+							android:orientation="vertical"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							style="@style/ThemeTransparent"
+							android:background="@android:color/transparent">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="@drawable/rectroundgrayblack4">
+
+		<ImageView
+			android:id="@+id/ivNoTimbang"
+			android:layout_width="96dp"
+			android:layout_height="wrap_content"
+			android:scaleType="fitCenter"
+			android:background="@drawable/timbang1"
+			android:layout_gravity="center_vertical"
+			android:layout_marginLeft="5dp"/>
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="5dp"
+			android:layout_centerVertical="true"
+			android:layout_gravity="center_vertical"
+			android:id="@+id/llDataTimbangBesar">
+
+			<LinearLayout
+				android:id="@+id/llBeratBruto"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true">
+
+				<EditText
+					android:hint="@string/HintBeratBruto"
+					android:id="@+id/etBeratBruto"
+					style="@style/BeratTimbangan"
+					android:background="@drawable/rectstrokegraywhite"
+					android:paddingLeft="5dp"
+					android:paddingRight="5dp"
+					android:paddingTop="3dp"
+					android:paddingBottom="3dp"
+					android:inputType="number"
+					android:layout_gravity="center_vertical"/>
+
+				<ImageView
+					android:id="@+id/ivBeratBruto"
+					android:layout_width="22dp"
+					android:layout_height="22dp"
+					android:background="@drawable/ic_refresh_black"
+					android:visibility="gone"/>
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/tvTglTimbang"
+				android:text="2017-09-97 23:05:00"
+				style="@style/DetailTimbangan"
+				android:background="@color/tw__transparent"
+				android:paddingLeft="5dp"
+				android:paddingRight="5dp"/>
+
+			<TextView
+				android:id="@+id/tvKodeBarang"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="2dp"
+				android:layout_marginRight="2dp"
+				android:padding="3dp"
+				android:visibility="visible"/>
+
+			<RelativeLayout
+				android:id="@+id/rlKodeBarang"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:background="@drawable/rectstrokegray"
+				android:layout_marginTop="3dp"
+				android:visibility="gone">
+
+				<Spinner
+					android:layout_width="wrap_content"
+					android:id="@+id/spKodeBarang"
+					style="@style/DefaultSpinner"
+					android:dropDownWidth="fill_parent"
+					android:spinnerMode="dropdown"
+					android:layout_margin="1dp"
+					android:layout_gravity="center_vertical"/>
+			</RelativeLayout>
+
+			<LinearLayout
+				android:id="@+id/llNilaiPotongan"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:visibility="gone">
+
+				<TextView
+					android:id="@+id/tvNilaiPotongan"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="2dp"
+					android:layout_marginRight="2dp"
+					android:padding="3dp"
+					android:visibility="visible"
+					android:text="@string/HintPotongan"/>
+
+				<EditText
+					android:textColorHint="@android:color/holo_red_light"
+					android:id="@+id/etNilaiPotongan"
+					style="@style/BeratTimbangan"
+					android:textColor="@android:color/holo_red_light"
+					android:background="@drawable/rectstrokegraywhite"
+					android:paddingLeft="5dp"
+					android:paddingRight="5dp"
+					android:paddingTop="3dp"
+					android:paddingBottom="3dp"
+					android:layout_width="40dp"
+					android:layout_height="wrap_content"
+					android:inputType="number"
+					android:layout_gravity="center_vertical"/>
+
+				<TextView
+					android:id="@+id/tvJenisPotong"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="2dp"
+					android:layout_marginRight="2dp"
+					android:padding="3dp"
+					android:visibility="visible"/>
+
+				<RelativeLayout
+					android:id="@+id/rlJenisPotong"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="@drawable/rectstrokegray"
+					android:layout_marginLeft="5dp"
+					android:padding="1dp"
+					android:visibility="gone">
+
+					<Spinner
+						android:id="@+id/spJenisPotong"
+						style="@style/DefaultSpinner"
+						android:dropDownWidth="fill_parent"
+						android:spinnerMode="dropdown"
+						android:layout_width="wrap_content"
+						android:layout_gravity="center_vertical"/>
+				</RelativeLayout>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/llBeratNetto"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:visibility="gone">
+
+				<EditText
+					android:hint="@string/HintBeratNetto"
+					android:textColorHint="@android:color/holo_blue_dark"
+					android:id="@+id/etBeratNetto"
+					style="@style/BeratTimbangan"
+					android:background="@drawable/rectstrokegraywhite"
+					android:textColor="@android:color/holo_blue_dark"
+					android:paddingLeft="5dp"
+					android:paddingRight="5dp"
+					android:paddingTop="3dp"
+					android:paddingBottom="3dp"
+					android:inputType="number"
+					android:layout_gravity="center_vertical"/>
+
+				<ImageView
+					android:layout_width="22dp"
+					android:layout_height="22dp"
+					android:background="@drawable/ic_refresh_black"
+					android:visibility="gone"/>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		style="@style/ThemeTransparent"
+		android:background="@android:color/transparent">
+	</LinearLayout>
+</LinearLayout>

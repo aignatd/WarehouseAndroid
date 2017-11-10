@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	style="@style/ThemeTransparent">
+
+	<android.support.v7.widget.CardView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/cvProses"
+		app:cardCornerRadius="10dp"
+		android:innerRadius="10dp"
+		android:thicknessRatio="2"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true">
+
+		<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/tw__transparent"
+			style="@style/ThemeTransparent">
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="40dp"
+				android:id="@+id/headatas"
+				android:background="@android:color/white"
+				android:visibility="visible"
+				android:layout_alignParentTop="true"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true">
+
+				<TextView
+					android:layout_width="wrap_content"
+					android:text="@string/titlePilihBerat"
+					style="@style/HeaderListProgress"
+					android:layout_centerHorizontal="true"
+					android:layout_centerVertical="true"
+					android:layout_centerInParent="false"
+					android:background="@color/tw__transparent"
+					android:textSize="20sp"/>
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:srcCompat="@android:drawable/ic_delete"
+					android:layout_alignParentRight="true"
+					android:layout_alignParentEnd="true"
+					android:id="@+id/ivCloseTonase"
+					android:scaleType="fitCenter"
+					android:adjustViewBounds="true"
+					android:layout_centerVertical="true"
+					android:layout_marginRight="5dp"/>
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					app:srcCompat="@android:drawable/ic_menu_save"
+					android:id="@+id/ivSaveTonase"
+					android:scaleType="fitCenter"
+					android:adjustViewBounds="true"
+					android:layout_alignTop="@+id/ivCloseTonase"
+					android:layout_toLeftOf="@+id/ivCloseTonase"
+					android:layout_toStartOf="@+id/ivCloseTonase"/>
+			</RelativeLayout>
+
+			<RelativeLayout
+				android:id="@+id/rlListProses"
+				android:layout_width="match_parent"
+				android:layout_height="85dp"
+				android:layout_below="@id/headatas"
+				android:background="@color/duckEggBlue99">
+
+				<EditText
+					style="@style/UserInputUsername"
+					android:id="@+id/etTonase"
+					android:hint="@string/HintTonaseBarang"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:maxLength="25"
+					android:layout_toRightOf="@+id/rlTonaseOtomatis"
+					android:layout_toEndOf="@+id/rlTonaseOtomatis"
+					android:layout_centerVertical="true"
+					android:layout_marginRight="10dp"
+					android:inputType="number"/>
+
+				<RelativeLayout
+					android:orientation="vertical"
+					android:layout_width="65dp"
+					android:layout_height="match_parent"
+					android:weightSum="1"
+					android:id="@+id/rlTonaseOtomatis"
+					android:gravity="center"
+					android:layout_marginLeft="10dp">
+
+					<ImageView
+						android:scaleType="fitXY"
+						android:adjustViewBounds="true"
+						android:background="@drawable/ic_sign_plus"
+						android:id="@+id/ivTonaseOtomatis"
+						android:layout_centerVertical="true"
+						android:layout_centerHorizontal="true"
+						android:layout_width="40dp"
+						android:layout_height="40dp"/>
+
+					<TextView
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:id="@+id/tvTonaseOtomatis"
+						android:text="Bruto"
+						android:gravity="center"
+						android:layout_below="@id/ivTonaseOtomatis"
+						android:textAlignment="center"
+						android:layout_marginTop="2dp"
+						android:textColor="@color/colorPrimary"
+						android:textSize="12sp"/>
+				</RelativeLayout>
+			</RelativeLayout>
+
+			<TextView
+				android:id="@+id/tvJudulProses"
+				android:text="@string/strJenisBarang"
+				style="@style/SubHeaderListProgress"
+				android:layout_below="@id/rlListProses"
+				android:textColor="@android:color/black"
+				android:layout_marginLeft="10dp"
+				android:layout_marginRight="10dp"/>
+
+			<RelativeLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@drawable/rectstrokegray"
+				android:layout_below="@id/tvJudulProses"
+				android:layout_marginTop="3dp"
+				android:layout_marginLeft="10dp"
+				android:layout_marginBottom="10dp"
+				android:layout_marginRight="10dp">
+
+				<Spinner
+					android:id="@+id/spJenisBarang"
+					style="@style/DefaultSpinner"
+					android:dropDownWidth="fill_parent"
+					android:spinnerMode="dropdown"
+					android:layout_margin="1dp"/>
+			</RelativeLayout>
+		</RelativeLayout>
+	</android.support.v7.widget.CardView>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+							android:orientation="vertical"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							style="@style/DefaultActivity">
+
+	<ImageView
+		android:id="@+id/ivTitleLogin"
+		android:background="@drawable/warehouselogo"
+		android:scaleType="fitCenter"
+		android:layout_alignParentTop="true"
+		android:layout_centerHorizontal="true"
+		android:layout_height="22dp"
+		android:layout_width="175dp"
+		android:layout_marginTop="12dp"/>
+
+	<EditText
+		style="@style/UserInputPassword"
+		android:id="@+id/etTambaharmada"
+		android:layout_marginTop="25dp"
+		android:ems="10"
+		android:maxLength="25"
+		android:layout_marginLeft="10dip"
+		android:layout_marginRight="10dip"
+		android:layout_below="@id/ivTitleLogin"
+		android:hint="@string/HintTambaharmada"
+		android:layout_marginStart="35dp"
+		android:layout_marginEnd="35dp"
+		android:inputType="text"
+		/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/llRTRWKpos"
+		android:layout_below="@id/etTambaharmada"
+		android:orientation="horizontal"
+		android:weightSum="8"
+		android:layout_marginTop="25dip"
+		android:layout_marginLeft="35dip"
+		android:layout_marginRight="35dip"
+		android:layout_marginBottom="12dip">
+
+		<Button
+			style="@style/DefaultButton"
+			android:ems="10"
+			android:text="@string/strTambah"
+			android:id="@+id/btnTambahArmada"
+			android:layout_centerHorizontal="true"
+			android:layout_marginRight="7dip"
+			android:layout_marginTop="12dip"
+			android:layout_weight="4"/>
+
+		<Button
+			style="@style/DefaultButton"
+			android:ems="10"
+			android:text="@string/strBtnBatal"
+			android:id="@+id/btnBatalArmada"
+			android:layout_centerHorizontal="true"
+			android:layout_marginLeft="7dip"
+			android:layout_marginTop="12dip"
+			android:layout_weight="4"/>
+	</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/back"
+		tools:context="com.artolanggeng.purnamakertasindo.setting.Profile">
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:id="@+id/rlHeadProfile">
+		<include layout="@layout/lay_header"/>
+	</RelativeLayout>
+
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="@string/strProfileEdit"
+			android:textColor="@color/WarnaAbsen3"
+			android:id="@+id/tvInfoPribadi"
+			android:gravity="center"
+			android:layout_below="@+id/rlHeadProfile"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"/>
+
+	<Button
+			android:layout_width="match_parent"
+			android:layout_height="12dp"
+			android:layout_below="@id/tvInfoPribadi"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:id="@+id/splitter"/>
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/pageProfile"
+			android:layout_centerHorizontal="true"
+			android:layout_alignLeft="@+id/rlHeader"
+			android:layout_alignRight="@+id/rlHeader"
+			android:layout_marginBottom="8dp"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginTop="3dp"
+			android:layout_below="@id/splitter">
+
+		<ScrollView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/svDataProfile">
+
+			<RelativeLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:id="@+id/rlProfile">
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:text="@string/srtNamaPT"
+						android:id="@+id/tvNamaPT"/>
+
+				<EditText
+						android:layout_width="match_parent"
+						android:layout_height="48dip"
+						android:inputType="text"
+						android:ems="10"
+						android:id="@+id/etNamaPT"
+						android:layout_below="@id/tvNamaPT"
+						android:layout_alignParentLeft="true"
+						android:layout_alignParentStart="true"
+						android:background="@drawable/rectroundgray"
+						android:layout_marginTop="5dp"
+						android:paddingLeft="10dip"
+						android:paddingRight="10dip"
+						android:maxLines="1"
+						android:maxLength="26"/>
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:text="@string/srtAlamatPT"
+						android:id="@+id/tvAlamatPT"
+						android:layout_below="@id/etNamaPT"
+						android:layout_marginTop="8dp"/>
+
+				<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="112dip"
+						android:layout_below="@id/tvAlamatPT"
+						android:id="@+id/llAlamatPT"
+						android:background="@drawable/rectroundgray"
+						android:layout_marginTop="5dp"
+						android:orientation="vertical">
+
+					<EditText
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:ems="10"
+							android:id="@+id/etAlamatPT"
+							android:layout_alignParentLeft="true"
+							android:layout_alignParentStart="true"
+							android:background="@color/tw__transparent"
+							android:inputType="textMultiLine"
+							android:scrollHorizontally="false"
+							android:paddingLeft="10dip"
+							android:layout_marginTop="5dip"
+							android:paddingRight="10dip"
+							android:layout_marginBottom="5dip"
+							android:layout_marginLeft="4dp"
+							android:layout_marginRight="4dp"
+							android:maxLength="90"/>
+				</LinearLayout>
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:text="@string/srtPemilikPT"
+						android:id="@+id/tvPunyaPT"
+						android:layout_below="@id/llAlamatPT"
+						android:layout_marginTop="8dip"/>
+
+				<EditText
+						android:layout_width="match_parent"
+						android:layout_height="48dip"
+						android:inputType="text"
+						android:ems="10"
+						android:id="@+id/etPemilikPT"
+						android:layout_below="@id/tvPunyaPT"
+						android:layout_alignParentLeft="true"
+						android:layout_alignParentStart="true"
+						android:background="@drawable/rectroundgray"
+						android:layout_marginTop="5dp"
+						android:paddingLeft="10dip"
+						android:paddingRight="10dip"
+						android:maxLines="1"
+						android:maxLength="26"/>
+
+				<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:textAppearance="?android:attr/textAppearanceMedium"
+						android:text="@string/srtNoHPPemilik"
+						android:id="@+id/tvNoHPPemilik"
+						android:layout_below="@id/etPemilikPT"
+						android:layout_marginTop="8dip"/>
+
+				<EditText
+						android:layout_width="match_parent"
+						android:layout_height="48dip"
+						android:inputType="text"
+						android:ems="10"
+						android:id="@+id/etNoHPPemilik"
+						android:layout_below="@id/tvNoHPPemilik"
+						android:layout_alignParentLeft="true"
+						android:layout_alignParentStart="true"
+						android:background="@drawable/rectroundgray"
+						android:layout_marginTop="5dp"
+						android:paddingLeft="10dip"
+						android:paddingRight="10dip"
+						android:maxLines="1"
+						android:maxLength="26"/>
+
+				<Button
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:text="@string/strBtnSimpan"
+						android:id="@+id/btnSimpanProfile"
+						android:layout_below="@id/etNoHPPemilik"
+						android:layout_centerHorizontal="true"
+						android:background="@drawable/rectroundorange"
+						android:textColor="#FFFFFF"
+						android:layout_marginTop="30dip"
+						android:textSize="16dp"/>
+			</RelativeLayout>
+		</ScrollView>
+	</RelativeLayout>
+
+</RelativeLayout>

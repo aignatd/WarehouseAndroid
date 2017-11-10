@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@drawable/back"
+		tools:context="com.artolanggeng.purnamakertasindo.setting.Armada">
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:id="@+id/rlHeadArmada">
+		<include layout="@layout/lay_header"/>
+	</RelativeLayout>
+
+	<TextView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:textAppearance="?android:attr/textAppearanceMedium"
+			android:text="@string/strArmadaInfo"
+			android:textColor="@color/WarnaAbsen3"
+			android:id="@+id/tvInfoArmada"
+			android:gravity="center"
+			android:layout_below="@+id/rlHeadArmada"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"/>
+
+	<Button
+			android:layout_width="match_parent"
+			android:layout_height="12dp"
+			android:layout_below="@id/tvInfoArmada"
+			android:layout_marginLeft="15dp"
+			android:layout_marginRight="15dp"
+			android:id="@+id/splitter"/>
+
+	<ListView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:id="@+id/pageProfile"
+			android:layout_below="@+id/splitter"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true">
+	</ListView>
+
+</RelativeLayout>

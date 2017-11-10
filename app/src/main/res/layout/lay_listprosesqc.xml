@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							style="@style/ThemeTransparent">
+
+	<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/up_two_rounded_white"
+			android:layout_alignParentTop="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true">
+
+		<LinearLayout
+				style="@style/DefaultListProgress"
+				android:orientation="vertical"
+				android:layout_margin="12dp">
+
+			<TextView
+					android:text="@string/strProsesQC"
+					style="@style/HeaderListProgress"/>
+
+			<LinearLayout
+					style="@style/HeaderListProgress"
+					android:layout_marginTop="3dp">
+
+				<Button
+						android:layout_height="2dp"
+						android:layout_width="30dp"
+						android:gravity="center_vertical"
+						android:layout_gravity="center"
+						android:background="@color/appleGreen"
+						android:layout_marginRight="5dp"/>
+
+				<Button
+						android:layout_height="2dp"
+						android:layout_width="30dp"
+						android:layout_gravity="center"
+						android:gravity="center_vertical"
+						android:background="@color/whiteThree"
+						android:paddingRight="13dp"
+						android:layout_marginRight="5dp"/>
+
+				<Button
+						android:layout_height="2dp"
+						android:layout_width="30dp"
+						android:layout_gravity="center"
+						android:gravity="center_vertical"
+						android:background="@color/whiteThree"/>
+			</LinearLayout>
+
+			<TextView
+					android:text="@string/strSubHeaderListProgress"
+					style="@style/SubHeaderListProgress"
+					android:layout_marginTop="10dp"/>
+
+			<TextView
+					android:text="PT. Nama Perusahaan Disini"
+					style="@style/DefaultListProgress"
+					android:layout_marginTop="3dp"/>
+
+			<LinearLayout
+					style="@style/HeaderListProgress"
+					android:orientation="horizontal"
+					android:layout_marginTop="12dp">
+
+				<LinearLayout
+						android:orientation="vertical"
+						style="@style/HeaderListProgress"
+						android:layout_width="wrap_content"
+						android:layout_marginRight="16dp">
+
+					<TextView
+							android:text="@string/strNoPolisi"
+							style="@style/SubHeaderListProgress"/>
+
+					<TextView
+							android:text="ABC 1234 DEF"
+							style="@style/DefaultListProgress"
+							android:layout_marginTop="3dp"/>
+				</LinearLayout>
+
+				<LinearLayout
+						android:orientation="vertical"
+						style="@style/HeaderListProgress">
+
+					<TextView
+							android:text="@string/strJenisKendaraan"
+							style="@style/SubHeaderListProgress"/>
+
+					<TextView
+							android:text="Mitsubishi / Truck Menengah"
+							style="@style/DefaultListProgress"
+							android:layout_marginTop="3dp"/>
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+
+		<android.support.v7.widget.RecyclerView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:background="@color/duckEggBlue99"/>
+	</LinearLayout>
+
+	<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="10dp"
+			android:id="@+id/headatas"
+			android:background="@drawable/up_two_rounded_squash"
+			android:visibility="visible"/>
+
+	<LinearLayout
+			android:layout_height="50dp"
+			android:layout_width="match_parent"
+			android:layout_alignParentBottom="true"
+			android:background="@drawable/down_two_rounded_white"
+			android:weightSum="2">
+
+		<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:background="@drawable/down_left_one_rounded_silver"
+				android:visibility="visible">
+
+			<TextView
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:text="@string/strKasirBayar"
+					android:textColor="@color/colorPrimary"
+					android:layout_gravity="center"
+					android:gravity="center"/>
+		</LinearLayout>
+
+		<LinearLayout
+				android:layout_width="0dp"
+				android:layout_height="match_parent"
+				android:layout_weight="1"
+				android:background="@drawable/down_right_one_rounded_ocean"
+				android:visibility="visible">
+
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:text="@string/strProsesQC"
+				android:textColor="@android:color/white"
+				android:layout_gravity="center"
+				android:gravity="center"/>
+		</LinearLayout>
+	</LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rlMenuheader"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        style="@style/HeaderUtama">
+
+        <ImageView
+            style="@style/HeaderUtama"
+            android:layout_width="32dip"
+            android:id="@+id/ivBackIcon"
+            android:layout_alignParentLeft="false"
+            android:layout_alignParentStart="false"
+            android:layout_marginLeft="5dip"
+            android:layout_alignParentBottom="false"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_left"
+            android:scaleType="fitXY"
+            android:layout_height="32dip"/>
+
+        <TextView
+            style="@style/HeaderUtama"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:id="@+id/tvHeader"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <ImageView
+            style="@style/HeaderUtama"
+            android:layout_width="wrap_content"
+            android:layout_height="20dip"
+            android:id="@+id/ivMenu"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="false"
+            android:layout_centerVertical="true"
+            android:src="@drawable/option"
+            android:scaleType="fitCenter"
+            android:layout_marginRight="15dip"/>
+
+        <Button
+            android:id="@+id/bntKirimPemasok"
+            android:gravity="center_vertical|center_horizontal"
+            android:background="@drawable/btn_submit_white"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentRight="true"
+            android:animateLayoutChanges="true"
+            android:layout_marginRight="12dp"
+            android:drawableLeft="@drawable/ic_account_black"
+            android:paddingLeft="8dp"
+            android:text="@string/StrBtnKirim"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+</LinearLayout>

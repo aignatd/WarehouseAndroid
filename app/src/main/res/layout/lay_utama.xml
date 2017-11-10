@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    tools:context="com.artolanggeng.purnamakertasindo.common.Utama">
+
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="40dp"
+     android:id="@+id/rlHeadEmail">
+  <include layout="@layout/lay_header"/>
+ </RelativeLayout>
+
+ <RelativeLayout
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:id="@+id/rlProfile"
+     android:layout_below="@+id/rlHeadEmail"
+     android:layout_alignParentLeft="true"
+     android:layout_alignParentStart="true"
+		 android:paddingTop="8dp">
+
+
+   <LinearLayout
+       android:orientation="horizontal"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+			 android:layout_centerInParent="true"
+			 android:id="@+id/llProfile">
+
+    <ImageView
+				android:layout_height="56dp"
+				android:id="@+id/ivProUtama"
+				android:src="@drawable/prefuser"
+				android:layout_marginRight="7dp"
+				android:layout_gravity="center_vertical"
+				android:scaleType="fitXY"
+				android:layout_width="42dp"/>
+
+		 <LinearLayout
+				 android:orientation="vertical"
+				 android:layout_width="wrap_content"
+				 android:layout_height="match_parent"
+				 android:id="@+id/llInfoUser"
+				 android:gravity="center_vertical">
+
+    <TextView
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Nama Anda"
+				android:id="@+id/tvNamaUtama"
+				android:textColor="@android:color/black"
+        android:layout_below="@+id/rlProfile"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+        android:gravity="center_vertical"/>
+
+			 <TextView
+					 android:layout_width="wrap_content"
+					 android:layout_height="wrap_content"
+					 android:text="Nomor Handphone"
+					 android:id="@+id/tvNoHpUtama"
+					 android:layout_gravity="center_vertical"
+					 android:textColor="@color/WarnaVersi"
+					 android:gravity="center_vertical"/>
+
+		 </LinearLayout>
+   </LinearLayout>
+ </RelativeLayout>
+
+	<Button
+			android:layout_width="match_parent"
+			android:layout_height="12dp"
+			android:layout_below="@+id/rlProfile"
+			android:id="@+id/splitter"/>
+
+ 	<ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+     android:id="@+id/svUtama"
+     android:layout_below="@+id/rlProfile"
+     android:layout_alignParentLeft="true"
+     android:layout_alignParentStart="true">
+
+	 <LinearLayout
+			 android:layout_width="match_parent"
+			 android:layout_height="wrap_content"
+			 android:id="@+id/llUtama"
+			 android:layout_below="@+id/tvLamaTinggal"
+			 android:layout_marginBottom="12dip"
+			 android:orientation="horizontal"
+			 android:weightSum="4"
+			 android:layout_marginTop="10dip">
+
+		 <RelativeLayout
+				 android:orientation="vertical"
+				 android:layout_width="match_parent"
+				 android:layout_height="226dp"
+				 android:ems="10"
+				 android:id="@+id/rlAbsen"
+				 android:background="@drawable/rectroundgray"
+				 android:layout_centerHorizontal="true"
+				 android:layout_marginRight="2dip"
+				 android:layout_weight="2"
+				 android:layout_marginLeft="5dp">
+
+			 <ViewFlipper
+					 android:layout_width="match_parent"
+					 android:layout_height="wrap_content"
+					 android:id="@+id/vfAbsen"
+					 android:layout_above="@+id/tvAbsen"
+					 android:layout_alignParentTop="true"
+					 android:layout_alignParentRight="true"
+					 android:layout_alignParentEnd="true"
+					 android:inAnimation="@anim/move"
+					 android:outAnimation="@anim/move1"
+					 android:background="@color/WarnaAbsen1"/>
+
+			 <TextView
+					 android:layout_width="match_parent"
+					 android:layout_height="40dp"
+					 android:text="@string/srtPilihKirim"
+					 android:textColor="@android:color/black"
+					 android:id="@+id/tvAbsen"
+					 android:layout_gravity="center_horizontal"
+					 android:layout_alignParentBottom="true"
+					 android:layout_centerHorizontal="true"
+					 android:gravity="center_vertical|center_horizontal"
+					 android:background="@color/WarnaAbsen2"/>
+		 </RelativeLayout>
+
+		<RelativeLayout
+				 android:orientation="vertical"
+				 android:layout_width="match_parent"
+				 android:layout_height="226dp"
+				 android:ems="10"
+				 android:id="@+id/rlPSB"
+				 android:background="@drawable/rectroundgray"
+				 android:layout_centerHorizontal="true"
+				 android:layout_marginLeft="2dip"
+				 android:layout_weight="2"
+				 android:layout_marginRight="5dp">
+
+		 	<ViewFlipper
+				 android:layout_width="match_parent"
+				 android:layout_height="wrap_content"
+				 android:id="@+id/vfPSB"
+				 android:layout_above="@+id/tvPSB"
+				 android:layout_alignParentTop="true"
+				 android:layout_alignParentRight="true"
+				 android:inAnimation="@anim/move"
+				 android:outAnimation="@anim/move1"
+				 android:layout_alignParentEnd="true"/>
+
+		 	<TextView
+					android:layout_width="match_parent"
+					android:layout_height="40dp"
+					android:text="@string/srtPilihRiwayat"
+					android:textColor="@android:color/black"
+					android:id="@+id/tvPSB"
+					android:layout_gravity="center_horizontal"
+					android:layout_alignParentBottom="true"
+					android:layout_centerHorizontal="true"
+					android:gravity="center_vertical|center_horizontal"
+					android:background="@color/WarnaAbsen2"/>
+		</RelativeLayout>
+
+	 </LinearLayout>
+	</ScrollView>
+
+</RelativeLayout>

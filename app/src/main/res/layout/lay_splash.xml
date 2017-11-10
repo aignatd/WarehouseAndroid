@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.artolanggeng.purnamakertasindo.common.Splash"
+		style="@style/DefaultActivity">
+
+	<ImageView
+			android:id="@+id/ivTitleLogin"
+			android:background="@drawable/warehouselogo"
+			android:scaleType="fitCenter"
+			android:layout_centerHorizontal="true"
+			android:layout_centerVertical="true"
+			android:layout_height="@dimen/HeightLogoSplash"
+			android:layout_width="@dimen/WidthLogoSplash"/>
+
+	<TextView
+			style="@style/SubHeader"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/tvVersion"
+			android:textColor="@android:color/holo_orange_light"
+			android:layout_alignParentBottom="true"
+			android:text="@string/strAppVersion"
+			android:layout_marginBottom="10dp"
+			android:layout_centerHorizontal="true"/>
+</RelativeLayout>

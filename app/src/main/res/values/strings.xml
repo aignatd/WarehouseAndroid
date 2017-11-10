@@ -1,0 +1,171 @@
+<resources>
+	<string name="app_name">Warehouse</string>
+
+	<string name="TitleLogin">Warehouse</string>
+	<string name="TitleHeadAkun">Buat akun</string>
+	<string name="TitleProfile">Data Profile</string>
+	<string name="TitleDashboard">Kertasindo</string>
+	<string name="TitleMenuArmada">Armada</string>
+	<string name="TitleMenuProfile">Profile</string>
+	<string name="TitleMenuPassword">Password</string>
+	<string name="TitleMenuDriver">Driver</string>
+	<string name="TitleArmada">Data Armada</string>
+	<string name="TitleDriver">Data Driver</string>
+	<string name="TitleArrived">Pelanggan</string>
+	<string name="TitleProgress">Proses</string>
+	<string name="TitleHistory">Riwayat</string>
+	<string name="TitleScanQRKartu">Scan QR Kartu</string>
+	<string name="titleMessege">Informasi</string>
+	<string name="titleSemua">Semua</string>
+	<string name="titleFormulir">Formulir Pelanggan</string>
+	<string name="titlePilihBerat">Tonase</string>
+	<string name="titleTimbang">Timbang</string>
+	<string name="titleQuality">Quality</string>
+	<string name="titleBeratBruto">Berat Bruto %s Kg</string>
+	<string name="titleKodeBarang">Kode Barang %s</string>
+	<string name="titleBeratNetto">Berat Netto %s Kg</string>
+	<string name="titlePotongan">Besar Potongan %s</string>
+	<string name="titleTambahArmada">Tambah Armada</string>
+	<string name="titleTimbangBaru">Timbang Baru</string>
+	<string name="titleRefresh">Refresh</string>
+	<string name="titleIPAddressPrinter">Pilih IP Address</string>
+
+	<string name="HintInputHP">Username / email<font color='red'>*</font></string>
+	<string name="HintInputPass">Password<font color='red'>*</font></string>
+	<string name="HintVerPass">Ulangi Password<font color='red'>*</font></string>
+	<string name="HintPassLama">Password Lama<font color='red'>*</font></string>
+	<string name="HintPassBaru">Password Baru<font color='red'>*</font></string>
+	<string name="HintPemasok">Nama lengkap<font color='red'>*</font></string>
+	<string name="HintAlamatPemasok">Alamat tinggal<font color='red'>*</font></string>
+	<string name="HintNoHPPemasok">Nomor handphone<font color='red'>*</font></string>
+	<string name="HintNamaPerusahaan">Nama perusahaan</string>
+	<string name="HintAlamatEmail">Alamat email</string>
+	<string name="HintTglPemasok">Tanggal lahir</string>
+	<string name="HintPanggilan">Nama panggilan atau kecil<font color='red'>*</font></string>
+	<string name="HintIdentitas">Nomor identitas yang dipilih</string>
+	<string name="HintPria">Laki-laki</string>
+	<string name="HintPerempuan">Perempuan</string>
+	<string name="HintTambaharmada">Nomor polisi</string>
+	<string name="HintTonaseBarang">Tonase barang</string>
+	<string name="HintInputPemasok">Kode pemasok</string>
+	<string name="HintInputPotongan">Jumlah Potongan</string>
+	<string name="HintBeratBruto">Berat Bruto</string>
+	<string name="HintKodeBarang">Kode Barang</string>
+	<string name="HintBeratNetto">Berat Netto</string>
+	<string name="HintPotongan">Potongan</string>
+	<string name="HintPortName">Port Printer</string>
+	<string name="HintTestPrint">Test Print</string>
+	<string name="HintNamaDevice">Nama Device</string>
+	<string name="HintJenisOS">Jenis OS</string>
+	<string name="HintJenisDevice">Jenis Device</string>
+
+	<string name="msgHarapTunggu">Harap tunggu</string>
+	<string name="msgUsername">Masukan username</string>
+	<string name="msgPassword">Masukan password</string>
+	<string name="msgPassLama">Masukan password lama</string>
+	<string name="msgPassKosong">Masukan password</string>
+	<string name="msgPassBeda">Password dan Verifikasi berbeda</string>
+	<string name="msgPassSama">Password lama dan baru sama</string>
+	<string name="msgProsesLogin">Proses login</string>
+	<string name="msgProsesLogout">Proses logout</string>
+	<string name="msgProsesPemasok">Proses data pemasok</string>
+	<string name="msgServerFailure">Server tidak dikenali</string>
+	<string name="msgServerData">Respon server tidak dikenali</string>
+	<string name="msgStorageNotAllowed">Tidak ada akses storage</string>
+	<string name="msgLogout">Tutup aplikasi ?</string>
+	<string name="msgPemasok">Masukan nama lengkap</string>
+	<string name="msgAlamatBaru">Masukan alamat tinggal</string>
+	<string name="msgNoHPPemasok">Masukan nomor handphone</string>
+	<string name="msgPanggilan">Masukan nama panggilan</string>
+	<string name="msgInputID">Masukan nomor ID terpilih</string>
+	<string name="msgDataPemasok">Proses data pemasok</string>
+	<string name="msgBatalTimbang">Input akan dibatalkan ?</string>
+	<string name="msgIsiTonase">Masukan tonase barang</string>
+	<string name="msgKoneksiError">Tidak ada koneksi</string>
+	<string name="msgProsesQC">Data sudah benar ?</string>
+	<string name="msgPekerjaan">Proses data pekerjaan</string>
+	<string name="msgPotongan">Masukan jumlah potongan</string>
+	<string name="msgAmbilTimbangan">Proses data timbangan</string>
+	<string name="msgUpdateDataQC">Update data QC</string>
+	<string name="msgTanyaDataQC">Data QC sudah benar ?</string>
+	<string name="msgKodePemasok">Masukan kode pemasok</string>
+	<string name="msgPembayaran">Proses data pembayaran</string>
+	<string name="msgProsesBayar">Proses pembayaran ?</string>
+	<string name="msgProsesPotong">Input data perubahan ?</string>
+	<string name="msgTonaseBruto">Timbang bruto kosong</string>
+	<string name="msgTonaseNetto">Timbang netto kosong</string>
+	<string name="msgSimpanPotongan">Simpan data potongan</string>
+	<string name="msgSimpanTimbangNetto">Simpan timbangan netto</string>
+	<string name="msgDataHistory">Proses data history</string>
+	<string name="msgDetailHistory">Proses detail history</string>
+	<string name="msgDaftarPrinter">Cek daftar printer</string>
+	<string name="msgAmbilProduct">Proses data product</string>
+	<string name="msgDataPrinter">Pastikan printer tersedia</string>
+	<string name="msgPrintAntrian">Print nomor antrian</string>
+	<string name="msgKodeBarang">Kode barang belum ada</string>
+	<string name="msgDataWarehouse">Ambil data warehouse</string>
+	<string name="msgDataDevice">Simpan data device</string>
+
+	<string name="strBtnSelesai">Selesai</string>
+	<string name="strBtnOK">OK</string>
+	<string name="StrBtnKirim">Kirim</string>
+	<string name="srtDashboard">Kertasindo</string>
+	<string name="StrMasuk">Masuk</string>
+	<string name="StrAtau">Atau</string>
+	<string name="StrTimbanganBesar">Timbangan Besar</string>
+	<string name="StrTimbanganKecil">Timbangan Kecil</string>
+	<string name="StrPelangganBaru">Pemasok Baru</string>
+	<string name="StrKeluar">Keluar Aplikasi</string>
+	<string name="StrScanQR">Scan QR</string>
+	<string name="StrBuatAkun">Belum ada akun ? <u>Buat akun</u></string>
+	<string name="StrDataAkun">Data akun</string>
+	<string name="srtPilihKirim">Kirim</string>
+	<string name="srtPilihRiwayat">Riwayat</string>
+	<string name="strProfileEdit">Masukan data yang sesuai untuk melengkapi profile anda.</string>
+	<string name="srtNamaPT">Nama Perusahaan <font color='red'>*</font></string>
+	<string name="srtAlamatPT">Alamat Perusahaan <font color='red'>*</font></string>
+	<string name="srtPemilikPT">Pemilik Perusahaan <font color='red'>*</font></string>
+	<string name="srtNoHPPemilik">Nomor Handphone <font color='red'>*</font></string>
+	<string name="strBtnBatal">Batal</string>
+	<string name="strBtnRubah">Rubah</string>
+	<string name="strBtnSimpan">Simpan</string>
+	<string name="strArmadaInfo">Data seluruh armada yang anda miliki.</string>
+	<string name="strDriverInfo">Data seluruh driver yang anda miliki.</string>
+	<string name="strFooter1">Lupa username atau kata sandi ?</string>
+	<string name="strFooter2">Dapatkan bantuan masuk</string>
+	<string name="strHeadProses">Scan QR kartu pelanggan</string>
+	<string name="strFooterProses">Masukan nomor pelanggan</string>
+	<string name="strHeaderTimbangan">Selamat datang %s,\npilih opsi timbangan atau opsi lainnya</string>
+	<string name="strAppVersion">Versi nomor</string>
+	<string name="strHeaderListProgress">Siap Timbang (<font color='red'>%s</font>)</string>
+	<string name="strSubHeaderListProgress">Nama Perusahaan</string>
+	<string name="strNoPolisi">No. Polisi</string>
+	<string name="strJenisBarang">Jenis Barang</string>
+	<string name="strJenisKendaraan">Jenis Kendaraan</string>
+	<string name="strFlashOff">Off</string>
+	<string name="strFlashOn">On</string>
+	<string name="strScanQR">Scan QR kartu pelanggan\npada area yang telah ditentukan</string>
+	<string name="strLakukanProsesQC">Lakukan proses QC</string>
+	<string name="strProsesQC">%sProses QC<font color='red'>%s</font></string>
+	<string name="strPemasok">Pemasok Baru</string>
+	<string name="title_activity_test">Test</string>
+	<string name="strNamaPanggil">Nama</string>
+	<string name="strNoTelpon">No. Telpon</string>
+	<string name="strAlamat">Alamat</string>
+	<string name="strTambah">Tambah</string>
+	<string name="strIdxBerat">Tambah berat %s</string>
+	<string name="strPotongan">Perubahan</string>
+	<string name="strProsesTimbang">%sProses Timbang<font color='red'>%s</font></string>
+	<string name="strButtonKirim">Kirim</string>
+	<string name="strRupiah">Rp.%s</string>
+	<string name="strKasirBayar">Pembayaran</string>
+	<string name="strTimbangBaru">Timbang Baru</string>
+	<string name="strSebelumnya">Kembali</string>
+	<string name="strPrinter">Setting Printer</string>
+	<string name="strRegistrasiDevice">Daftar Device</string>
+	<string name="strDaftarDevice">Daftar</string>
+
+	<string-array name="printer">
+		<item>1. Star Printer</item>
+	</string-array>
+</resources>

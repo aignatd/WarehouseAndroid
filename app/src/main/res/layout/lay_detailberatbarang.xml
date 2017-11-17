@@ -52,10 +52,9 @@
 
 				<ImageView
 					android:id="@+id/ivBeratBruto"
-					android:layout_width="22dp"
-					android:layout_height="22dp"
-					android:background="@drawable/ic_refresh_black"
-					android:visibility="gone"/>
+					android:layout_width="28dp"
+					android:layout_height="28dp"
+					android:background="@drawable/ic_refresh_black"/>
 			</LinearLayout>
 
 			<TextView
@@ -178,10 +177,10 @@
 					android:layout_gravity="center_vertical"/>
 
 				<ImageView
-					android:layout_width="22dp"
-					android:layout_height="22dp"
-					android:background="@drawable/ic_refresh_black"
-					android:visibility="gone"/>
+					android:id="@+id/ivBeratNetto"
+					android:layout_width="28dp"
+					android:layout_height="28dp"
+					android:background="@drawable/ic_refresh_black"/>
 			</LinearLayout>
 		</LinearLayout>
 	</LinearLayout>

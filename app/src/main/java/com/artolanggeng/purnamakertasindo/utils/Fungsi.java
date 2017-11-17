@@ -14,6 +14,7 @@ import android.media.ExifInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -464,10 +465,8 @@ public class Fungsi extends AppCompatActivity
 		return BitmapFactory.decodeFile(fopen.getAbsolutePath());
 	}
 
-	public static Bitmap SimpanGambar(Bitmap bmpGambar, String strNamafile)
+	public static Bitmap SimpanGambar(Bitmap bmpGambar, File file)
 	{
-    File file = new File(strNamafile);
-
 		try
 		{
       Log.d("", "SimpanGambar: ");
@@ -656,6 +655,21 @@ public class Fungsi extends AppCompatActivity
 		return retBindingData.create(DataLink.class);
 	}
 
+	public static DataLink BindingTimbangan()
+	{
+		OkHttpClient okClient = new OkHttpClient();
+
+		okClient.newBuilder().connectTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
+			readTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
+			writeTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).build();
+
+		Retrofit retBindingData = new Retrofit.Builder().baseUrl(FixValue.Hosttimbangan).
+			addConverterFactory(GsonConverterFactory.create()).
+			client(okClient).build();
+
+		return retBindingData.create(DataLink.class);
+	}
+
 	public static boolean CheckPermission(Activity activity, Context context)
 	{
 		List<String> listPermissionsNeeded = new ArrayList<>();
@@ -821,47 +835,21 @@ public class Fungsi extends AppCompatActivity
 		return byteArray;
 	}
 
-/*
-	public static void PrintQrCode(Context context, String portName, String portSettings, CorrectionLevelOption correctionLevel, Model model, byte cellSize, byte[] barCodeData) {
-		ArrayList<byte[]> commands = new ArrayList<byte[]>();
+	public static File FolderAplikasi()
+	{
+		File temp = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+		File dir = new File(temp, FixValue.FolderDoc);
 
-		byte[] modelCommand = new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x30, 0x00 };
-		switch (model) {
-			case Model1:
-				modelCommand[5] = 1;
-				break;
-			case Model2:
-				modelCommand[5] = 2;
-				break;
+		try
+		{
+			if(!dir.exists() && !dir.mkdir())
+				System.out.println("Directory is not created");
+		}
+		catch(Exception e)
+		{
+			System.out.println(e.getMessage());
 		}
 
-		commands.add(modelCommand);
-
-		byte[] correctionLevelCommand = new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x31, 0x00 };
-		switch (correctionLevel) {
-			case Low:
-				correctionLevelCommand[5] = 0;
-				break;
-			case Middle:
-				correctionLevelCommand[5] = 1;
-				break;
-			case Q:
-				correctionLevelCommand[5] = 2;
-				break;
-			case High:
-				correctionLevelCommand[5] = 3;
-				break;
-		}
-		commands.add(correctionLevelCommand);
-
-		commands.add(new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x32, cellSize });
-
-		// Add BarCode data
-		commands.add(new byte[] { 0x1b, 0x1d, 0x79, 0x44, 0x31, 0x00, (byte) (barCodeData.length % 256), (byte) (barCodeData.length / 256) });
-		commands.add(barCodeData);
-		commands.add(new byte[] { 0x1b, 0x1d, 0x79, 0x50 } );
-
-		sendCommand(context, portName, portSettings, commands);
+		return dir;
 	}
-*/
 }

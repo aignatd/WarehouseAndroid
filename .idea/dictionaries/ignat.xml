@@ -3,8 +3,10 @@
     <words>
       <w>antrian</w>
       <w>asal</w>
+      <w>atau</w>
       <w>backspinner</w>
       <w>barang</w>
+      <w>batal</w>
       <w>belum</w>
       <w>benar</w>
       <w>bener</w>
@@ -13,6 +15,7 @@
       <w>bisnis</w>
       <w>bisnisunitkode</w>
       <w>bruto</w>
+      <w>businessunit</w>
       <w>daftardevice</w>
       <w>datawarehouse</w>
       <w>fmts</w>
@@ -25,6 +28,9 @@
       <w>headatasproses</w>
       <w>historypemasok</w>
       <w>historyuser</w>
+      <w>hmmss</w>
+      <w>hosttimbangan</w>
+      <w>informasi</w>
       <w>itemx</w>
       <w>jenispotongid</w>
       <w>jenistimbang</w>
@@ -46,6 +52,7 @@
       <w>pemasokid</w>
       <w>pembayaran</w>
       <w>permintaan</w>
+      <w>photobarang</w>
       <w>polisi</w>
       <w>potong</w>
       <w>potongan</w>
@@ -80,6 +87,8 @@
       <w>tvstr</w>
       <w>tvticket</w>
       <w>updateformulir</w>
+      <w>updateqc</w>
+      <w>uploadbesar</w>
       <w>urutan</w>
       <w>vehiclersp</w>
       <w>warehouselogo</w>

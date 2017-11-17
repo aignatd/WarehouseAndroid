@@ -44,7 +44,9 @@ public class Printer extends AppCompatActivity
 	static ProgressDialog progressDialog;
 
 	private String strInterface = "";
-	static ArrayList<byte[]> list = new ArrayList<byte[]>();
+	private static ArrayList<byte[]> list = new ArrayList<>();
+
+	final ArrayList<PortInfo> arrayDiscovery = new ArrayList<>();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -126,28 +128,68 @@ public class Printer extends AppCompatActivity
 		{
 			public void onClick(DialogInterface dialog, int whichButton)
 			{
+				((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
+				((AlertDialog) dialog).getButton(DialogInterface.BUTTON_NEGATIVE).setEnabled(false);
+
 				progressDialog = ProgressDialog.show(context, getResources().getString(R.string.msgHarapTunggu),
 					context.getResources().getString(R.string.msgDaftarPrinter));
 				progressDialog.setCancelable(false);
 
-				((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
-				((AlertDialog) dialog).getButton(DialogInterface.BUTTON_NEGATIVE).setEnabled(false);
+				new Thread(new Runnable()
+				{
+					public void run()
+					{
+						ArrayList<String> arrPortName = new ArrayList<>();
+						arrPortName.clear();
 
-				if(true == strInterface.equals("LAN"))
-				{
-					getPortDiscovery("LAN");
-				} else if(strInterface.equals("Bluetooth"))
-				{
-					getPortDiscovery("Bluetooth");
-				} else if(strInterface.equals("USB"))
-				{
-					getPortDiscovery("USB");
-				} else
-				{
-					getPortDiscovery("All");
-				}
+						if(true == strInterface.equals("LAN"))
+							arrPortName = getPortDiscovery("LAN");
+						else if(strInterface.equals("Bluetooth"))
+							arrPortName = getPortDiscovery("Bluetooth");
+						else if(strInterface.equals("USB"))
+							arrPortName = getPortDiscovery("USB");
+						else
+							arrPortName = getPortDiscovery("All");
 
-				progressDialog.dismiss();
+						final ArrayList<String> arrayPortName = arrPortName;
+
+						progressDialog.dismiss();
+
+						runOnUiThread(new Runnable()
+						{
+							@Override
+							public void run()
+							{
+								final EditText editPortName = new EditText(context);
+
+								new AlertDialog.Builder(context).setIcon(android.R.drawable.checkbox_on_background).setTitle(context.getString(R.string.titleIPAddressPrinter)).setCancelable(false).setView(editPortName).setPositiveButton("OK", new DialogInterface.OnClickListener()
+								{
+									public void onClick(DialogInterface dialog, int button)
+									{
+										((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
+										((AlertDialog) dialog).getButton(DialogInterface.BUTTON_NEGATIVE).setEnabled(false);
+										EditText portNameField = (EditText) findViewById(R.id.etPortName);
+										portNameField.setText(editPortName.getText());
+										Fungsi.storeToSharedPref(context, portNameField.getText().toString(), Preference.prefPortName);
+									}
+								}).setNegativeButton("Batal", new DialogInterface.OnClickListener()
+								{
+									public void onClick(DialogInterface dialog, int button)
+									{
+									}
+								}).setItems(arrayPortName.toArray(new String[0]), new DialogInterface.OnClickListener()
+								{
+									public void onClick(DialogInterface dialog, int select)
+									{
+										EditText portNameField = (EditText) findViewById(R.id.etPortName);
+										portNameField.setText(arrayDiscovery.get(select).getPortName());
+										Fungsi.storeToSharedPref(context, portNameField.getText().toString(), Preference.prefPortName);
+									}
+								}).show();
+							}
+						});
+					}
+				}).start();
 			}
 		});
 		portDiscoveryDialog.setNegativeButton("Batal", new DialogInterface.OnClickListener()
@@ -161,18 +203,17 @@ public class Printer extends AppCompatActivity
 		portDiscoveryDialog.show();
 	}
 
-	private void getPortDiscovery(String interfaceName)
+	private ArrayList<String> getPortDiscovery(String interfaceName)
 	{
 		List<PortInfo> BTPortList;
 		List<PortInfo> TCPPortList;
 		List<PortInfo> USBPortList;
 		final EditText editPortName;
 
-		final ArrayList<PortInfo> arrayDiscovery;
-		ArrayList<String> arrayPortName;
+		arrayDiscovery.clear();
 
-		arrayDiscovery = new ArrayList<PortInfo>();
-		arrayPortName = new ArrayList<String>();
+		ArrayList<String> arrayPortName = new ArrayList<>();
+		arrayPortName.clear();
 
 		try
 		{
@@ -206,7 +247,7 @@ public class Printer extends AppCompatActivity
 				}
 			}
 
-			arrayPortName = new ArrayList<String>();
+			arrayPortName = new ArrayList<>();
 
 			for(PortInfo discovery : arrayDiscovery)
 			{
@@ -234,36 +275,12 @@ public class Printer extends AppCompatActivity
 
 				arrayPortName.add(portName);
 			}
-		} catch(StarIOPortException e)
+		}
+		catch(StarIOPortException e)
 		{
 			// e.printStackTrace();
 		}
 
-		editPortName = new EditText(this);
-
-		new AlertDialog.Builder(this).setIcon(android.R.drawable.checkbox_on_background).setTitle(context.getString(R.string.titleIPAddressPrinter)).setCancelable(false).setView(editPortName).setPositiveButton("OK", new DialogInterface.OnClickListener()
-		{
-			public void onClick(DialogInterface dialog, int button)
-			{
-				((AlertDialog) dialog).getButton(DialogInterface.BUTTON_POSITIVE).setEnabled(false);
-				((AlertDialog) dialog).getButton(DialogInterface.BUTTON_NEGATIVE).setEnabled(false);
-				EditText portNameField = (EditText) findViewById(R.id.etPortName);
-				portNameField.setText(editPortName.getText());
-				Fungsi.storeToSharedPref(context, portNameField.getText().toString(), Preference.prefPortName);
-			}
-		}).setNegativeButton("Batal", new DialogInterface.OnClickListener()
-		{
-			public void onClick(DialogInterface dialog, int button)
-			{
-			}
-		}).setItems(arrayPortName.toArray(new String[0]), new DialogInterface.OnClickListener()
-		{
-			public void onClick(DialogInterface dialog, int select)
-			{
-				EditText portNameField = (EditText) findViewById(R.id.etPortName);
-				portNameField.setText(arrayDiscovery.get(select).getPortName());
-				Fungsi.storeToSharedPref(context, portNameField.getText().toString(), Preference.prefPortName);
-			}
-		}).show();
+		return arrayPortName;
 	}
 }

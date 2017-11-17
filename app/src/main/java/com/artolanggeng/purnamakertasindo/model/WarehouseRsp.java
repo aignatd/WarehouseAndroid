@@ -10,9 +10,9 @@ import com.google.gson.annotations.SerializedName;
  */
 public class WarehouseRsp
 {
-  @SerializedName("WarehouseID")
+  @SerializedName("id")
   @Expose
-  private Integer WarehouseID;
+  private Integer Id;
   @SerializedName("Kode")
   @Expose
   private String Kode;
@@ -29,14 +29,14 @@ public class WarehouseRsp
   @Expose
   private String Phone1;
 
-  public Integer getWarehouseID()
+  public Integer getId()
   {
-    return WarehouseID;
+    return Id;
   }
 
-  public void setWarehouseID(Integer warehouseID)
+  public void setId(Integer id)
   {
-    WarehouseID = warehouseID;
+    Id = id;
   }
 
   public String getKode()

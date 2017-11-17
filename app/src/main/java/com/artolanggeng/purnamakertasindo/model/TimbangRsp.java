@@ -46,6 +46,9 @@ public class TimbangRsp
 	@SerializedName("display")
 	@Expose
 	private String display;
+	@SerializedName("Timbangan")
+	@Expose
+	private String Timbangan;
 
 	public Integer getId()
 	{
@@ -165,5 +168,15 @@ public class TimbangRsp
 	public void setDisplay(String display)
 	{
 		this.display = display;
+	}
+
+	public String getTimbangan()
+	{
+		return Timbangan;
+	}
+
+	public void setTimbangan(String timbangan)
+	{
+		Timbangan = timbangan;
 	}
 }

@@ -19,10 +19,10 @@ package com.artolanggeng.purnamakertasindo.service;
 import com.artolanggeng.purnamakertasindo.pojo.*;
 import com.artolanggeng.purnamakertasindo.sending.*;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
+import retrofit2.http.*;
 
 /**
  * Dibuat oleh : ignat
@@ -84,5 +84,13 @@ public interface DataLink
 
   @POST(FixValue.RestfulDevice)
   Call<WarehousePojo> DataDeviceService(@Body DeviceHolder deviceHolder);
+
+  @POST(FixValue.RestfulAutoTimbang)
+  Call<TimbangPojo> AutoTimbangService(@Body AutoTimbangHolder autoTimbangHolder);
+
+  @Multipart
+  @POST(FixValue.RestfulPhotoBarang)
+  Call<LoginPojo> PhotoBarangService(@Part("PemasokID") RequestBody rbPemasokID, @Part("Warehouse") RequestBody rbWarehouse,
+                                     @Part("PekerjaanID") RequestBody rbPekerjaanID, @Part MultipartBody.Part Photo);
 }
 

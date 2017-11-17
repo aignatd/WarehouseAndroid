@@ -1,19 +1,33 @@
 package com.artolanggeng.purnamakertasindo.adapter;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.data.AutoTimbang;
 import com.artolanggeng.purnamakertasindo.model.PotongRsp;
 import com.artolanggeng.purnamakertasindo.model.ProductRsp;
 import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
+import com.artolanggeng.purnamakertasindo.pojo.TimbangPojo;
+import com.artolanggeng.purnamakertasindo.sending.AutoTimbangHolder;
+import com.artolanggeng.purnamakertasindo.service.DataLink;
+import com.artolanggeng.purnamakertasindo.utils.FixValue;
+import com.artolanggeng.purnamakertasindo.utils.Fungsi;
+import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
+import com.artolanggeng.purnamakertasindo.utils.Preference;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -29,6 +43,9 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 	private static String TAG = "[Timbang_Adp]";
 	private Context context;
 	private Activity activity;
+
+	private ProgressDialog progressDialog;
+	private PopupMessege popupMessege = new PopupMessege();
 
 	private ArrayAdapter<String> dataAdapter;
 	private List<TimbangRsp> lstTimbang;
@@ -74,6 +91,12 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 				holder.tvKodeBarang.setVisibility(View.GONE);
 				holder.rlKodeBarang.setVisibility(View.GONE);
 				holder.llNilaiPotongan.setVisibility(View.GONE);
+
+				holder.etBeratBruto.setFocusable(false);
+				holder.etBeratBruto.setEnabled(false);
+				holder.etBeratBruto.setCursorVisible(false);
+				holder.etBeratBruto.setKeyListener(null);
+				holder.etBeratBruto.setBackgroundColor(Color.TRANSPARENT);
 			}
 			else
 			if((FormAsal == 2) || (FormAsal == 3))
@@ -170,6 +193,8 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 			holder.etBeratNetto.setCursorVisible(false);
 			holder.etBeratNetto.setKeyListener(null);
 			holder.etBeratNetto.setBackgroundColor(Color.TRANSPARENT);
+
+			holder.ivBeratNetto.setVisibility(View.GONE);
 		}
 	}
 
@@ -209,11 +234,94 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 		TextView tvJenisPotong;
 		@BindView(R.id.rlJenisPotong)
 		RelativeLayout rlJenisPotong;
+		@BindView(R.id.ivBeratNetto)
+		ImageView ivBeratNetto;
 
 		public ViewHolder(View itemView)
 		{
 			super(itemView);
 			ButterKnife.bind(this, itemView);
+		}
+
+		@OnClick({R.id.ivBeratBruto, R.id.ivBeratNetto})
+		public void onViewClicked(View view)
+		{
+			int intTag = (int) ivNoTimbang.getTag();
+			int intViewID = R.id.ivBeratBruto;
+
+			switch(view.getId())
+			{
+				case R.id.ivBeratBruto:
+					intViewID = R.id.ivBeratBruto;
+				break;
+				case R.id.ivBeratNetto:
+					intViewID = R.id.ivBeratNetto;
+				break;
+			}
+
+			AmbilDataTimbangan(intTag, intViewID);
+		}
+
+		private void AmbilDataTimbangan(final int intTag, final int viewID)
+		{
+			progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
+				context.getResources().getString(R.string.msgDataTimbang));
+			progressDialog.setCancelable(false);
+
+			if(Fungsi.isNetworkAvailable(context) == FixValue.TYPE_NONE)
+			{
+				progressDialog.dismiss();
+				popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgKoneksiError));
+				return;
+			}
+
+			AutoTimbang autoTimbang = new AutoTimbang();
+			autoTimbang.setJenisTimbang(2);
+			autoTimbang.setWarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
+
+			AutoTimbangHolder autoTimbangHolder = new AutoTimbangHolder(autoTimbang);
+			DataLink dataLink = Fungsi.BindingTimbangan();
+
+			final Call<TimbangPojo> ReceivePojo = dataLink.AutoTimbangService(autoTimbangHolder);
+
+			ReceivePojo.enqueue(new Callback<TimbangPojo>()
+			{
+				@Override
+				public void onResponse(Call<TimbangPojo> call, Response<TimbangPojo> response)
+				{
+					progressDialog.dismiss();
+
+					if(response.isSuccessful())
+					{
+						if(response.body().getCoreResponse().getKode() == FixValue.intError)
+							popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
+						else
+						{
+							Log.d(TAG, "onResponse -> " + Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
+							if(viewID == R.id.ivBeratBruto)
+							{
+								lstTimbang.get(intTag).setTonasebruto(Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
+								etBeratBruto.setText(response.body().getTimbanganRsp().getTimbangan());
+							}
+							else
+							if(viewID == R.id.ivBeratNetto)
+							{
+								lstTimbang.get(intTag).setTonasenetto(Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
+								etBeratNetto.setText(response.body().getTimbanganRsp().getTimbangan());
+							}
+						}
+					}
+					else
+						popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
+				}
+
+				@Override
+				public void onFailure(Call<TimbangPojo> call, Throwable t)
+				{
+					progressDialog.dismiss();
+					popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));
+				}
+			});
 		}
 	}
 }

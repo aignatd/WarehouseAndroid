@@ -7,60 +7,59 @@ package com.artolanggeng.purnamakertasindo.data;
  */
 public class Device
 {
-  private String DeviceID;
-  private String NamaDevice;
-  private String TipeDevice;
-  private String OSDevice;
+  private String deviceid;
+  private String device;
+  private String tipe;
+  private String os;
   private Integer businessunit;
 
-  public String getDeviceID()
-  {
-    return DeviceID;
-  }
+	public String getDeviceid()
+	{
+		return deviceid;
+	}
 
-  public void setDeviceID(String deviceID)
-  {
-    DeviceID = deviceID;
-  }
+	public void setDeviceid(String deviceid)
+	{
+		this.deviceid = deviceid;
+	}
 
-  public String getNamaDevice()
-  {
-    return NamaDevice;
-  }
+	public String getDevice()
+	{
+		return device;
+	}
 
-  public void setNamaDevice(String namaDevice)
-  {
-    NamaDevice = namaDevice;
-  }
+	public void setDevice(String device)
+	{
+		this.device = device;
+	}
 
-  public String getTipeDevice()
-  {
-    return TipeDevice;
-  }
+	public String getTipe()
+	{
+		return tipe;
+	}
 
-  public void setTipeDevice(String tipeDevice)
-  {
-    TipeDevice = tipeDevice;
-  }
+	public void setTipe(String tipe)
+	{
+		this.tipe = tipe;
+	}
 
-  public String getOSDevice()
-  {
-    return OSDevice;
-  }
+	public String getOs()
+	{
+		return os;
+	}
 
-  public void setOSDevice(String OSDevice)
-  {
-    this.OSDevice = OSDevice;
-  }
+	public void setOs(String os)
+	{
+		this.os = os;
+	}
 
-  public Integer getBusinessunit()
-  {
-    return businessunit;
-  }
+	public Integer getBusinessunit()
+	{
+		return businessunit;
+	}
 
-  public void setBusinessunit(Integer businessunit)
-  {
-    this.businessunit = businessunit;
-  }
-
+	public void setBusinessunit(Integer businessunit)
+	{
+		this.businessunit = businessunit;
+	}
 }

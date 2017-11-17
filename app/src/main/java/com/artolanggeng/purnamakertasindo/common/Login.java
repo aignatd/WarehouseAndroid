@@ -90,10 +90,10 @@ public class Login extends AppCompatActivity
       user.setPassword(new String(Hex.encodeHex(DigestUtils.md5(etPass.getText().toString().trim()))));
 
       Device device = new Device();
-      device.setDeviceID(Fungsi.DeviceInfo(context, 0));
-      device.setNamaDevice(Fungsi.DeviceName());
-      device.setTipeDevice(Fungsi.DeviceTipe(context));
-      device.setOSDevice(Fungsi.AndroidVersion());
+      device.setDeviceid(Fungsi.DeviceInfo(context, 0));
+      device.setDevice(Fungsi.DeviceName());
+      device.setTipe(Fungsi.DeviceTipe(context));
+      device.setOs(Fungsi.AndroidVersion());
 
       LoginHolder loginHolder = new LoginHolder(user, device);
       DataLink dataLink = Fungsi.BindingData();

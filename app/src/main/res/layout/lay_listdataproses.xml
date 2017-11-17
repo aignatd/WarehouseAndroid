@@ -32,15 +32,15 @@
 				android:visibility="visible">
 
 				<ImageView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+					android:layout_width="24dp"
+					android:layout_height="24dp"
 					android:background="@drawable/drawer"
 					android:layout_margin="5dp"
 					android:id="@+id/imageView"/>
 
 				<ImageView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
+					android:layout_width="24dp"
+					android:layout_height="24dp"
 					android:background="@drawable/xvidcap"
 					android:layout_alignParentRight="true"
 					android:layout_margin="5dp"
@@ -48,14 +48,12 @@
 					android:id="@+id/ivPhotoTimbang"/>
 
 				<ImageView
-					android:layout_width="32dp"
-					android:layout_height="32dp"
+					android:layout_width="24dp"
+					android:layout_height="24dp"
 					android:src="@drawable/gtkprint"
 					android:layout_margin="5dp"
 					android:layout_toLeftOf="@id/ivPhotoTimbang"
-					android:id="@+id/ivPrintTimbang"
-					android:scaleY="0.5"
-					android:scaleX="0.5"/>
+					android:id="@+id/ivPrintTimbang"/>
 			</RelativeLayout>
 
 			<LinearLayout

@@ -47,7 +47,7 @@ public class DaftarDevice extends Dialog
 	TextView tvJenisDevice;
 
 	private ArrayAdapter<String> dataAdapter;
-	private String TAG = "[Password]";
+	private String TAG = "[DaftarDevice]";
 	private ProgressDialog progressDialog;
 	private PopupMessege popupMessege = new PopupMessege();
 	private Context context = getContext();
@@ -115,11 +115,11 @@ public class DaftarDevice extends Dialog
 		}
 
 		Device device = new Device();
-		device.setDeviceID(Fungsi.DeviceInfo(context, 0));
-		device.setNamaDevice(tvNamaDevice.getText().toString());
-		device.setOSDevice(tvJenisOS.getText().toString());
-		device.setTipeDevice(tvJenisOS.getText().toString());
-		device.setBusinessunit(warehouseRsps.get(spDataWarehouse.getSelectedItemPosition()).getWarehouseID());
+		device.setDeviceid(Fungsi.DeviceInfo(context, 0));
+		device.setDevice(tvNamaDevice.getText().toString());
+		device.setOs(tvJenisOS.getText().toString());
+		device.setTipe(Fungsi.DeviceTipe(context));
+		device.setBusinessunit(warehouseRsps.get(spDataWarehouse.getSelectedItemPosition()).getId());
 
 		DeviceHolder deviceHolder = new DeviceHolder(device);
 		DataLink dataLink = Fungsi.BindingData();

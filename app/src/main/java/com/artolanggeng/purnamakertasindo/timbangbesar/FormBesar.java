@@ -75,6 +75,10 @@ public class FormBesar extends AppCompatActivity
 	TextView tvProsesQC;
 	@BindView(R.id.tvProsesKasir)
 	TextView tvProsesKasir;
+	@BindView(R.id.ivPrintTimbang)
+	ImageView ivPrintTimbang;
+	@BindView(R.id.ivPhotoTimbang)
+	ImageView ivPhotoTimbang;
 
 	private PopupMessege pesan = new PopupMessege();
 	private ProgressDialog progressDialog;
@@ -118,6 +122,9 @@ public class FormBesar extends AppCompatActivity
 
 		tvKodePemasok.setText(KodePemasok);
 		tvProsesQC.setText(context.getString(R.string.strProsesQC, "", ""));
+
+		ivPrintTimbang.setVisibility(View.GONE);
+		ivPhotoTimbang.setVisibility(View.GONE);
 
 		if((intTimbang - 1) == 0)
 		{

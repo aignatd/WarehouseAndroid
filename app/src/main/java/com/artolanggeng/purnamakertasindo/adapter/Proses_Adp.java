@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
@@ -291,8 +292,14 @@ public class Proses_Adp extends BaseAdapter
 					alert.show();
 				break;
 				case R.id.ivPhotoTimbang:
-					Photo photo = new Photo(context, activity, intPekerjaanID, strPemasokID);
-					photo.AmbilPhoto();
+					Intent PhotoIntent = new Intent(context, Photo.class);
+					PhotoIntent.putExtra("PekerjaanID", intPekerjaanID);
+					PhotoIntent.putExtra("PemasokID", strPemasokID);
+					PhotoIntent.putExtra("KodeWarehouse", Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
+					activity.startActivity(PhotoIntent);
+
+//					MyPhoto myPhoto = new MyPhoto(context, activity, intPekerjaanID, strPemasokID);
+//					myPhoto.AmbilPhoto();
 				break;
 			}
 		}

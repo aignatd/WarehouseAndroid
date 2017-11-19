@@ -837,7 +837,7 @@ public class Fungsi extends AppCompatActivity
 
 	public static File FolderAplikasi()
 	{
-		File temp = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DCIM);
+		File temp = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
 		File dir = new File(temp, FixValue.FolderDoc);
 
 		try

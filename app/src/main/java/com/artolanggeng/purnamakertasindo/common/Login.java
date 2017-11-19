@@ -95,7 +95,7 @@ public class Login extends AppCompatActivity
       device.setTipe(Fungsi.DeviceTipe(context));
       device.setOs(Fungsi.AndroidVersion());
 
-      LoginHolder loginHolder = new LoginHolder(user, device);
+      final LoginHolder loginHolder = new LoginHolder(user, device);
       DataLink dataLink = Fungsi.BindingData();
 
       final Call<LoginPojo> ReceivePojo = dataLink.LoginService(loginHolder);

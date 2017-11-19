@@ -31,11 +31,11 @@ public class FixValue
 	public static final String RestfulAutoTimbang = "timbangan";
 
 	// Server Online
-	public static final String Hostname = "http://myserverartolanggengcom-over.cloud.revoluz.io:49650/api/v1/";
+	public static final String Hostname = "http://artolanggeng.dyndns-server.com:41014/api/v1/";
 
 	// Server Offline
-	//public static final String Hostname = "http://192.168.1.103:41014/api/v1/";
-	public static final String Hosttimbangan = "http://192.168.1.103:42024/api/v1/";
+	//public static final String Hostname = "http://192.168.1.18:41014/api/v1/";
+	public static final String Hosttimbangan = "http://192.168.1.18:42024/api/v1/";
 
 	public static final int TimeoutConnection = 30000;
 	public static final String txtTitlePesan = "Informasi";

@@ -48,7 +48,8 @@
 					android:paddingTop="3dp"
 					android:paddingBottom="3dp"
 					android:inputType="number"
-					android:layout_gravity="center_vertical"/>
+					android:layout_gravity="center_vertical"
+					android:text="20"/>
 
 				<ImageView
 					android:id="@+id/ivBeratBruto"

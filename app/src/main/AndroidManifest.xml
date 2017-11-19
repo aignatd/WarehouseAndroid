@@ -3,11 +3,11 @@
           package="com.artolanggeng.purnamakertasindo">
 
 	<supports-screens
-		android:smallScreens="true"
-		android:normalScreens="true"
+		android:anyDensity="true"
 		android:largeScreens="true"
+		android:normalScreens="true"
 		android:resizeable="true"
-		android:anyDensity="true"/>
+		android:smallScreens="true"/>
 
 	<uses-permission android:name="android.permission.CAMERA"/>
 	<uses-permission android:name="android.permission.INTERNET"/>
@@ -36,6 +36,17 @@
 		android:supportsRtl="true"
 		android:theme="@style/AppTheme">
 
+		<provider
+			android:authorities="com.artolanggeng.purnamakertasindo"
+			android:name="android.support.v4.content.FileProvider"
+			android:exported="false"
+			android:grantUriPermissions="true">
+			<meta-data
+				android:name="android.support.FILE_PROVIDER_PATHS"
+				android:resource="@xml/file_paths">
+			</meta-data>
+		</provider>
+		
 		<activity
 			android:name=".setting.Armada"
 			android:screenOrientation="portrait">
@@ -65,6 +76,7 @@
 			android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
+
 				<category android:name="android.intent.category.LAUNCHER"/>
 			</intent-filter>
 		</activity>
@@ -96,6 +108,8 @@
 			android:name=".common.Printer"
 			android:allowBackup="true"
 			android:screenOrientation="portrait">
+		</activity>
+		<activity android:name=".common.Photo">
 		</activity>
 	</application>
 

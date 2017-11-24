@@ -7,6 +7,7 @@
 	<color name="GrayBackground">#ebebeb</color>
 	<color name="GrayUserInputHint">#86888a</color>
 	<color name="BackgroundUserInput">#d1d1d1</color>
+	<color name="white">#ffffff</color>
 
 	<color name="HeaderUtama">#283e4a</color>
 	<color name="PagerTabBackground">#bf000000</color>

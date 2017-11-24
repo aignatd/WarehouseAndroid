@@ -6,10 +6,10 @@
 	<dimen name="UserInputTextSize">18sp</dimen>
 	<dimen name="PaddingDrawableUserInput">5dp</dimen>
 	<dimen name="HeightUserInput">40dp</dimen>
-	<dimen name="DefaultFooterTextSize">12sp</dimen>
+	<dimen name="DefaultFooterTextSize">10sp</dimen>
 	<dimen name="DefaultTabTextSize">12sp</dimen>
 	<dimen name="HeightButtonTimbangan">120dp</dimen>
-	<dimen name="HeightButtonTimbangan2">118dp</dimen>
+	<dimen name="HeightButtonTimbangan2">128dp</dimen>
 	<dimen name="PaddingButtonTimbang">45dp</dimen>
 	<dimen name="SubHeaderListProgressTextSize">10sp</dimen>
 	<dimen name="act_horizontal_margin">12dp</dimen>
@@ -19,7 +19,13 @@
 	<dimen name="WidthLogoSplash">185dp</dimen>
 	<dimen name="fab_margin">16dp</dimen>
 	<dimen name="TitleBar">16dp</dimen>
+	<dimen name="heightDetail">22dp</dimen>
+	<dimen name="fontDetail">12sp</dimen>
 
 	<dimen name="DetailTimbanganTextSize">12sp</dimen>
 	<dimen name="BeratTimbanganTextSize">14sp</dimen>
+	<dimen name="spinerHeight">20dp</dimen>
+	<style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem"></style>
+
+	<style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem"></style>
 </resources>

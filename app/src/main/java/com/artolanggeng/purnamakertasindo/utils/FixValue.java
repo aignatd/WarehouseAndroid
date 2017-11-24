@@ -8,13 +8,13 @@ public class FixValue
 	public static final int SPLASH_DISPLAY_LENGHT = 2500;
 	public static final String strNamaPref = "com.artolanggeng.purnamakertasindo.pref";
 	public static final String FolderDoc = "/Warehouse";
-
 	public static final String RestfulLogin = "users/login";
 	public static final String RestfulLogout = "users/logout";
 	public static final String RestfulPassword = "users/password";
 	public static final String RestfulKartuBaru = "customers/kartubaru";
 	public static final String RestfulRequest = "customers/request";
-	public static final String RestfulFormulir = "formulirs/uploadbesar";
+	public static final String RestfulFormulir = "formulirs/upload";
+	public static final String RestfulFormulirKecil = "formulirs/uploadkecil";
 	public static final String RestfulTambahTimbang = "formulirs/tambah";
 	public static final String RestfulPembayaran = "formulirs/bayar";
 	public static final String Restfulsynchronize = "proses/synchronize";
@@ -29,15 +29,14 @@ public class FixValue
 	public static final String RestfulDevice = "device/daftardevice";
 	public static final String RestfulPhotoBarang = "formulirs/photobarang";
 	public static final String RestfulAutoTimbang = "timbangan";
-
 	// Server Online
+	//public static final String Hostname = "http://myserverartolanggengcom-over.cloud.revoluz.io:49650/api/v1/";
 	public static final String Hostname = "http://artolanggeng.dyndns-server.com:41014/api/v1/";
-
-	// Server Offline
-	//public static final String Hostname = "http://192.168.1.18:41014/api/v1/";
 	public static final String Hosttimbangan = "http://192.168.1.18:42024/api/v1/";
+	// Server Offline
+//	public static final String Hostname = "http://192.168.1.109:41014/api/v1/";
 
-	public static final int TimeoutConnection = 30000;
+	public static final int TimeoutConnection = 45000;
 	public static final String txtTitlePesan = "Informasi";
 	public static final String strBtnOK = "OK";
 	public static final String strBtnBatal = "Batal";

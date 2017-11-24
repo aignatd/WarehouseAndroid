@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.timbanganKecil.formKecil;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.CameraManager;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
@@ -36,7 +37,7 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
   private String TAG = "[Scan QR]";
   private CameraManager cameraManager;
   private Context context = this;
-
+  private String kodeTimbangan;
   PopupMessege pesan = new PopupMessege();
   private ImageScanner mScanner;
   private boolean hasSurface;
@@ -49,7 +50,8 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
     super.onCreate(savedInstanceState);
     setContentView(R.layout.lay_scanqrkartu);
     ButterKnife.bind(this);
-
+    Bundle extras = getIntent().getExtras();
+    kodeTimbangan = extras.getString("KodeTimbangan");
     cameraManager = new CameraManager(this, barcodeCallback);
     hasSurface = false;
   }
@@ -79,11 +81,11 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
     {
       case R.id.ivBackQR:
         BackActivity();
-      break;
+        break;
       case R.id.btn_flash:
         if(hasFlash())
           switchFlashlight();
-      break;
+        break;
     }
   }
 
@@ -117,12 +119,19 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
           barcodeText = sym.getData().trim();
         }
 
-        Intent ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
-        ScanQRIntent.putExtra("KodePemasok", barcodeText);
-        ScanQRIntent.putExtra("Timbang", 0);
-        ScanQRIntent.putExtra("History", "");
-        startActivity(ScanQRIntent);
-        finish();
+        if (kodeTimbangan.equals("1")) {
+          Intent ScanQRIntent = new Intent(ScanQR.this, formKecil.class);
+          ScanQRIntent.putExtra("KodePemasok", barcodeText);
+          ScanQRIntent.putExtra("Timbang", 0);
+          startActivity(ScanQRIntent);
+          finish();
+        } else {
+          Intent ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
+          ScanQRIntent.putExtra("KodePemasok", barcodeText);
+          ScanQRIntent.putExtra("Timbang", 0);
+          startActivity(ScanQRIntent);
+          finish();
+        }
       }
     }
   };

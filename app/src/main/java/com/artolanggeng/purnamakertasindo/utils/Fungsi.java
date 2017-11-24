@@ -41,8 +41,11 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.security.MessageDigest;
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
@@ -77,25 +80,25 @@ public class Fungsi extends AppCompatActivity
 		return gkey;
 	}
 
-  public static String keygen()
-  {
-    String gkey="", lCode, rHead = "", charArray;
-    int i=0, length;
+	public static String keygen()
+	{
+		String gkey="", lCode, rHead = "", charArray;
+		int i=0, length;
 
-    charArray = "zyxwvutsrqponmlkjihgfedcba0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
+		charArray = "zyxwvutsrqponmlkjihgfedcba0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()";
 
-    length = random_int(10, 15);
-    lCode = Integer.toHexString(length);
+		length = random_int(10, 15);
+		lCode = Integer.toHexString(length);
 
-    for(i=0; i<=4; i++)
-      rHead = rHead + charArray.charAt(random_int(0, 71));
+		for(i=0; i<=4; i++)
+			rHead = rHead + charArray.charAt(random_int(0, 71));
 
-    for(i=0; i<=length-1; i++)
-      gkey = gkey + charArray.charAt(random_int(0, 71));
+		for(i=0; i<=length-1; i++)
+			gkey = gkey + charArray.charAt(random_int(0, 71));
 
-    gkey = lCode+rHead+gkey;
-    return gkey;
-  }
+		gkey = lCode+rHead+gkey;
+		return gkey;
+	}
 
 	public static int random_int(int Min, int Max)
 	{
@@ -106,21 +109,21 @@ public class Fungsi extends AppCompatActivity
 	//----------------------------------------------------------------------------->>>>	AES, EncryptByteArray
 	public static String EncryptByteArray(byte[] array, byte[] key) throws Exception
 	{
-	    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
-	    SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
-	    cipher.init(Cipher.ENCRYPT_MODE, secretKey);
-	    String encryptedString = new String(Base64.encode(cipher.doFinal(array), Base64.DEFAULT));
-	    return encryptedString;
+		Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5Padding");
+		SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+		cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+		String encryptedString = new String(Base64.encode(cipher.doFinal(array), Base64.DEFAULT));
+		return encryptedString;
 	}
 	//--------------------------------------------------------------------------------------------------------
 
 	//---------------------------------------------------------------------------->>>>>> AES, decryptByteArray
 	public static byte[] decryptByteArray(String strToDecrypt, byte[] key) throws Exception
 	{
-	    Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
-	    SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
-	    cipher.init(Cipher.DECRYPT_MODE, secretKey);
-	    return cipher.doFinal(Base64.decode(strToDecrypt.getBytes(), Base64.DEFAULT));
+		Cipher cipher = Cipher.getInstance("AES/ECB/PKCS5PADDING");
+		SecretKeySpec secretKey = new SecretKeySpec(key, "AES");
+		cipher.init(Cipher.DECRYPT_MODE, secretKey);
+		return cipher.doFinal(Base64.decode(strToDecrypt.getBytes(), Base64.DEFAULT));
 	}
 	//---------------------------------------------------------------------------------------------------------
 
@@ -150,8 +153,8 @@ public class Fungsi extends AppCompatActivity
 			thedigest = mdMD5.digest(bytesOfMessage);
 
 			strEncrypted = EncryptByteArray(data.getBytes("UTF-8"), thedigest);
-    	strWrapped = strvKey2 + strEncrypted;
-    	strWrapped64 = new String(Base64.encode(strWrapped.getBytes(), Base64.DEFAULT));
+			strWrapped = strvKey2 + strEncrypted;
+			strWrapped64 = new String(Base64.encode(strWrapped.getBytes(), Base64.DEFAULT));
 		}
 		catch(Exception e)
 		{
@@ -180,15 +183,15 @@ public class Fungsi extends AppCompatActivity
 
 		try
 		{
-    	intLen = Integer.parseInt(s, 16);
-    	strTrueKey = strBase64.substring(6, 6 + intLen);
-    	mdMD5 = MessageDigest.getInstance("MD5");
-    	bytesOfMessage = strTrueKey.getBytes("UTF-8");
-    	thedigest = mdMD5.digest(bytesOfMessage);
+			intLen = Integer.parseInt(s, 16);
+			strTrueKey = strBase64.substring(6, 6 + intLen);
+			mdMD5 = MessageDigest.getInstance("MD5");
+			bytesOfMessage = strTrueKey.getBytes("UTF-8");
+			thedigest = mdMD5.digest(bytesOfMessage);
 
-    	String datanya = data2.substring(6+intLen);
+			String datanya = data2.substring(6+intLen);
 
-    	bytesOfDecrypted = decryptByteArray(datanya, thedigest);
+			bytesOfDecrypted = decryptByteArray(datanya, thedigest);
 			strUnWrapped64 = new String(bytesOfDecrypted, "UTF-8");
 		}
 		catch(Exception e)
@@ -197,36 +200,36 @@ public class Fungsi extends AppCompatActivity
 
 		return strUnWrapped64;
 	}
-/*
-	//************************** Bitmap to ByteArray **************************
-	public static byte[] bitmapToByteArr(Bitmap bitmap)
+	/*
+        //************************** Bitmap to ByteArray **************************
+        public static byte[] bitmapToByteArr(Bitmap bitmap)
+        {
+            int bytes = bitmap.getByteCount();
+            ByteBuffer buffer = ByteBuffer.allocate(bytes);
+            bitmap.copyPixelsToBuffer(buffer);
+            byte[] array = buffer.array();
+            return array;
+        }
+
+        //************************** ByteArray to Bitmap **************************
+        public static Bitmap byteArrToBitmap(byte[] bytes)
+        {
+            InputStream inputStream = new ByteArrayInputStream(bytes);
+            BitmapFactory.Options o = new BitmapFactory.Options();
+            return BitmapFactory.decodeStream(inputStream, null, o);
+        }
+    */
+	public static String DeviceTipe(Context context)
 	{
-		int bytes = bitmap.getByteCount();
-		ByteBuffer buffer = ByteBuffer.allocate(bytes);
-		bitmap.copyPixelsToBuffer(buffer);
-		byte[] array = buffer.array();
-		return array;
+		String strJenisDevice;
+
+		if ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE)
+			strJenisDevice = "Android Tablet";
+		else
+			strJenisDevice = "Android Smartphone";
+
+		return strJenisDevice;
 	}
-
-	//************************** ByteArray to Bitmap **************************
-	public static Bitmap byteArrToBitmap(byte[] bytes)
-	{
-		InputStream inputStream = new ByteArrayInputStream(bytes);
-		BitmapFactory.Options o = new BitmapFactory.Options();
-		return BitmapFactory.decodeStream(inputStream, null, o);
-	}
-*/
-  public static String DeviceTipe(Context context)
-  {
-    String strJenisDevice;
-
-    if ((context.getResources().getConfiguration().screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK) >= Configuration.SCREENLAYOUT_SIZE_LARGE)
-      strJenisDevice = "Android Tablet";
-    else
-      strJenisDevice = "Android Smartphone";
-
-    return strJenisDevice;
-  }
 
 	public static String DeviceInfo(Context context, int iKeperluan)
 	{
@@ -234,15 +237,15 @@ public class Fungsi extends AppCompatActivity
 
 		TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
 
-    try
-    {
-      tmDevice = "" + telephonyManager.getDeviceId();
-    }
-    catch (Exception e)
-    {
+		try
+		{
+			tmDevice = "" + telephonyManager.getDeviceId();
+		}
+		catch (Exception e)
+		{
 //      tmDevice = DataAcak();
-      tmDevice = "dwmG9k743Mlm23tpnj7";
-    }
+			tmDevice = "dwmG9k743Mlm23tpnj7";
+		}
 
 		try
 		{
@@ -251,7 +254,7 @@ public class Fungsi extends AppCompatActivity
 		catch (Exception e)
 		{
 //      androidId = DataAcak();
-      androidId = "bbe0-8fc5-5555-ww1234zyzyzy";
+			androidId = "bbe0-8fc5-5555-ww1234zyzyzy";
 		}
 
 		try
@@ -262,27 +265,27 @@ public class Fungsi extends AppCompatActivity
 		catch (Exception e)
 		{
 //      tmSerial = DataAcak();
-      tmSerial = "ffffffff-aae0-8fc5-73eb-cc8773ebcc87";
+			tmSerial = "ffffffff-aae0-8fc5-73eb-cc8773ebcc87";
 		}
 
-    if(iKeperluan == 0)
-		  return tmDevice + "#" + androidId + "#" + tmSerial;
-    else
-    if(iKeperluan == 1)
-      return tmDevice;
-    else
-    if(iKeperluan == 2)
-      return androidId;
-    else
-      return tmSerial;
+		if(iKeperluan == 0)
+			return tmDevice + "#" + androidId + "#" + tmSerial;
+		else
+		if(iKeperluan == 1)
+			return tmDevice;
+		else
+		if(iKeperluan == 2)
+			return androidId;
+		else
+			return tmSerial;
 	}
 
-  public static String AndroidVersion()
-  {
-    String release = Build.VERSION.RELEASE;
-    int sdkVersion = Build.VERSION.SDK_INT;
-    return "Android SDK: " + sdkVersion + " (" + release +")";
-  }
+	public static String AndroidVersion()
+	{
+		String release = Build.VERSION.RELEASE;
+		int sdkVersion = Build.VERSION.SDK_INT;
+		return "Android SDK: " + sdkVersion + " (" + release +")";
+	}
 
 	public static String DeviceName()
 	{
@@ -293,6 +296,21 @@ public class Fungsi extends AppCompatActivity
 			return capitalize(model);
 		else
 			return capitalize(manufacturer) + " " + model;
+	}
+
+	public static DataLink BindingTimbangan()
+	{
+		OkHttpClient okClient = new OkHttpClient();
+
+		okClient.newBuilder().connectTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
+				readTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
+				writeTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).build();
+
+		Retrofit retBindingData = new Retrofit.Builder().baseUrl(FixValue.Hosttimbangan).
+				addConverterFactory(GsonConverterFactory.create()).
+				client(okClient).build();
+
+		return retBindingData.create(DataLink.class);
 	}
 
 	private static String capitalize(String s)
@@ -311,25 +329,25 @@ public class Fungsi extends AppCompatActivity
 	public static void storeToSharedPref(final Context context, String value, String key)
 	{
 		SharedPreferences.Editor editor = context.getSharedPreferences(FixValue.strNamaPref, Context.MODE_PRIVATE).edit();
-    editor.putString(key, value).commit();
-  }
+		editor.putString(key, value).commit();
+	}
 
-  public static void storeToSharedPref(final Context context, long value, String key)
-  {
-    SharedPreferences.Editor editor = context.getSharedPreferences(FixValue.strNamaPref, Context.MODE_PRIVATE).edit();
-    editor.putLong(key, value).commit();
-  }
+	public static void storeToSharedPref(final Context context, long value, String key)
+	{
+		SharedPreferences.Editor editor = context.getSharedPreferences(FixValue.strNamaPref, Context.MODE_PRIVATE).edit();
+		editor.putLong(key, value).commit();
+	}
 
 	public static void storeToSharedPref(final Context context, boolean value, String key)
 	{
-    SharedPreferences.Editor editor = context.getSharedPreferences(FixValue.strNamaPref, Context.MODE_PRIVATE).edit();
-    editor.putBoolean(key, value).commit();
+		SharedPreferences.Editor editor = context.getSharedPreferences(FixValue.strNamaPref, Context.MODE_PRIVATE).edit();
+		editor.putBoolean(key, value).commit();
 	}
 
 	public static void storeToSharedPref(final Context context, int value, String key)
 	{
-    SharedPreferences.Editor editor = context.getSharedPreferences(FixValue.strNamaPref, Context.MODE_PRIVATE).edit();
-    editor.putInt(key, value).commit();
+		SharedPreferences.Editor editor = context.getSharedPreferences(FixValue.strNamaPref, Context.MODE_PRIVATE).edit();
+		editor.putInt(key, value).commit();
 	}
 
 	public static void storeObjectToSharedPref(final Context context, Object object, String key)
@@ -356,26 +374,26 @@ public class Fungsi extends AppCompatActivity
 
 	public static String getStringFromSharedPref(final Context context, String key)
 	{
-    SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
-    return prefs.getString(key, "");
-  }
+		SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
+		return prefs.getString(key, "");
+	}
 
-  public static long getLongFromSharedPref(final Context context, String key)
-  {
-    SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
-    return prefs.getLong(key, 99);
-  }
+	public static long getLongFromSharedPref(final Context context, String key)
+	{
+		SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
+		return prefs.getLong(key, 99);
+	}
 
 	public static boolean getBooleanFromSharedPref(final Context context, String key)
 	{
-    SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
-    return prefs.getBoolean(key, true);
+		SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
+		return prefs.getBoolean(key, true);
 	}
 
 	public static int getIntFromSharedPref(final Context context, String key)
 	{
-    SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
-    return prefs.getInt(key, 0);
+		SharedPreferences prefs = context.getSharedPreferences(FixValue.strNamaPref,  Context.MODE_PRIVATE);
+		return prefs.getInt(key, 0);
 	}
 
 	public static void ClearIsiPref(final Context context)
@@ -423,16 +441,16 @@ public class Fungsi extends AppCompatActivity
 		{
 			case ExifInterface.ORIENTATION_NORMAL :
 				matrix.setRotate(0);
-			break;
+				break;
 			case ExifInterface.ORIENTATION_ROTATE_90 :
 				matrix.setRotate(90);
-			break;
+				break;
 			case ExifInterface.ORIENTATION_ROTATE_180 :
 				matrix.setRotate(180);
-			break;
+				break;
 			case ExifInterface.ORIENTATION_ROTATE_270 :
 				matrix.setRotate(270);
-			break;
+				break;
 			case ExifInterface.ORIENTATION_UNDEFINED :
 				matrix.setRotate(-90);
 				break;
@@ -465,13 +483,15 @@ public class Fungsi extends AppCompatActivity
 		return BitmapFactory.decodeFile(fopen.getAbsolutePath());
 	}
 
-	public static Bitmap SimpanGambar(Bitmap bmpGambar, File file)
+	public static Bitmap SimpanGambar(Bitmap bmpGambar, String strNamafile)
 	{
+		File file = new File(strNamafile);
+
 		try
 		{
-      Log.d("", "SimpanGambar: ");
+			Log.d("", "SimpanGambar: ");
 
-      file.createNewFile();
+			file.createNewFile();
 
 			FileOutputStream out = new FileOutputStream(file);
 			bmpGambar.compress(Bitmap.CompressFormat.JPEG, 100, out);
@@ -481,10 +501,10 @@ public class Fungsi extends AppCompatActivity
 		catch (Exception e)
 		{
 			// e.printStackTrace();
-      return null;
+			return null;
 		}
 
-    return BukaGambar(file);
+		return BukaGambar(file);
 	}
 
 	public static boolean CekInput(List<EditText> lstEditText, List<String> lstMsg, Context context)
@@ -527,16 +547,16 @@ public class Fungsi extends AppCompatActivity
 		{
 			case Surface.ROTATION_0:
 				degrees = 0;
-			break;
+				break;
 			case Surface.ROTATION_90:
 				degrees = 90;
-			break;
+				break;
 			case Surface.ROTATION_180:
 				degrees = 180;
-			break;
+				break;
 			case Surface.ROTATION_270:
 				degrees = 270;
-			break;
+				break;
 		}
 
 		int result;
@@ -645,27 +665,12 @@ public class Fungsi extends AppCompatActivity
 		OkHttpClient okClient = new OkHttpClient();
 
 		okClient.newBuilder().connectTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
-			readTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
-			writeTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).build();
+				readTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
+				writeTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).build();
 
 		Retrofit retBindingData = new Retrofit.Builder().baseUrl(FixValue.Hostname).
-			addConverterFactory(GsonConverterFactory.create()).
-			client(okClient).build();
-
-		return retBindingData.create(DataLink.class);
-	}
-
-	public static DataLink BindingTimbangan()
-	{
-		OkHttpClient okClient = new OkHttpClient();
-
-		okClient.newBuilder().connectTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
-			readTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
-			writeTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).build();
-
-		Retrofit retBindingData = new Retrofit.Builder().baseUrl(FixValue.Hosttimbangan).
-			addConverterFactory(GsonConverterFactory.create()).
-			client(okClient).build();
+				addConverterFactory(GsonConverterFactory.create()).
+				client(okClient).build();
 
 		return retBindingData.create(DataLink.class);
 	}
@@ -834,7 +839,50 @@ public class Fungsi extends AppCompatActivity
 
 		return byteArray;
 	}
+	public static String getDate(String Date) {
+		Date tanggal = null;
+		String dateConvert = null;
+		SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss", Locale.US);
+		try {
+			DateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+			tanggal = form.parse(Date);
+			dateConvert = df.format(tanggal);
 
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return dateConvert;
+	}
+
+	public static String getTime(String time) {
+		Date tanggal = null;
+		String dateConvert = null;
+		SimpleDateFormat form = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
+
+		try {
+			tanggal = form.parse(time);
+			DateFormat tf = new SimpleDateFormat("HH:mm:ss ", Locale.US);
+			dateConvert = tf.format(tanggal);
+
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return dateConvert;
+	}
+
+	public static String curentTime() {
+		String curentTime = null;
+		Calendar c = Calendar.getInstance();
+		System.out.println("Current time =&gt; " + c.getTime());
+		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String formattedDate = df.format(c.getTime());
+		// Now formattedDate have current date/time
+		String getTime = Fungsi.getTime(formattedDate);
+		String getDate = Fungsi.getDate(formattedDate);
+		curentTime = getDate + " " + getTime;
+		return curentTime.trim();
+	}
 	public static File FolderAplikasi()
 	{
 		File temp = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
@@ -852,4 +900,47 @@ public class Fungsi extends AppCompatActivity
 
 		return dir;
 	}
+/*
+	public static void PrintQrCode(Context context, String portName, String portSettings, CorrectionLevelOption correctionLevel, Model model, byte cellSize, byte[] barCodeData) {
+		ArrayList<byte[]> commands = new ArrayList<byte[]>();
+
+		byte[] modelCommand = new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x30, 0x00 };
+		switch (model) {
+			case Model1:
+				modelCommand[5] = 1;
+				break;
+			case Model2:
+				modelCommand[5] = 2;
+				break;
+		}
+
+		commands.add(modelCommand);
+
+		byte[] correctionLevelCommand = new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x31, 0x00 };
+		switch (correctionLevel) {
+			case Low:
+				correctionLevelCommand[5] = 0;
+				break;
+			case Middle:
+				correctionLevelCommand[5] = 1;
+				break;
+			case Q:
+				correctionLevelCommand[5] = 2;
+				break;
+			case High:
+				correctionLevelCommand[5] = 3;
+				break;
+		}
+		commands.add(correctionLevelCommand);
+
+		commands.add(new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x32, cellSize });
+
+		// Add BarCode data
+		commands.add(new byte[] { 0x1b, 0x1d, 0x79, 0x44, 0x31, 0x00, (byte) (barCodeData.length % 256), (byte) (barCodeData.length / 256) });
+		commands.add(barCodeData);
+		commands.add(new byte[] { 0x1b, 0x1d, 0x79, 0x50 } );
+
+		sendCommand(context, portName, portSettings, commands);
+	}
+*/
 }

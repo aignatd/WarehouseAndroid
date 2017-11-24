@@ -105,8 +105,6 @@
 	<string name="msgKodeBarang">Kode barang belum ada</string>
 	<string name="msgDataWarehouse">Ambil data warehouse</string>
 	<string name="msgDataDevice">Simpan data device</string>
-	<string name="msgUploadPhoto">Upload myPhoto barang</string>
-	<string name="msgDataTimbang">Ambil data timbangan</string>
 
 	<string name="strBtnSelesai">Selesai</string>
 	<string name="strBtnOK">OK</string>
@@ -166,7 +164,10 @@
 	<string name="strPrinter">Setting Printer</string>
 	<string name="strRegistrasiDevice">Daftar Device</string>
 	<string name="strDaftarDevice">Daftar</string>
-
+	<string name="msgUploadPhoto">Upload myPhoto barang</string>
+	<string name="strKasirBayarFormKecil">Pembayaran, Proses Untuk Kasir</string>
+	<string name="HintSearch">Search</string>
+	<string name="msgDataTimbang">Ambil data timbangan</string>
 	<string-array name="printer">
 		<item>1. Star Printer</item>
 	</string-array>

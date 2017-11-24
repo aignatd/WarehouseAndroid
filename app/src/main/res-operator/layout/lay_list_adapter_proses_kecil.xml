@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/ThemeTransparent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/cvProses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/transparent"
+        android:innerRadius="10dp"
+        android:thicknessRatio="2"
+        app:cardCornerRadius="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/headatasproses"
+                android:layout_width="match_parent"
+                android:layout_height="10dp"
+                android:background="@drawable/up_two_rounded_green"
+                android:visibility="visible" />
+
+            <LinearLayout
+                android:id="@+id/llDataProses"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/headatasproses"
+                android:layout_margin="8dp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvStatusProses"
+                        style="@style/HeaderListProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:text="@string/strHeaderListProgress" />
+
+                    <TextView
+                        android:id="@+id/tvKodePemasok"
+                        style="@style/HeaderListProgress"
+                        android:layout_width="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:text="@string/strHeaderListProgress"
+                        android:textColor="@android:color/holo_red_dark" />
+                </RelativeLayout>
+
+                <LinearLayout
+                    style="@style/HeaderListProgress"
+                    android:layout_marginTop="3dp"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnGaris1"
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/whiteThree"
+                        android:gravity="center_vertical" />
+
+                    <Button
+                        android:id="@+id/btnGaris2"
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="5dp"
+                        android:background="@color/whiteThree"
+                        android:gravity="center_vertical"
+                        android:paddingRight="13dp" />
+
+                    <Button
+                        android:id="@+id/btnGaris3"
+                        android:layout_width="30dp"
+                        android:layout_height="2dp"
+                        android:layout_gravity="center"
+                        android:background="@color/whiteThree"
+                        android:gravity="center_vertical" />
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/HeaderListProgress"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        style="@style/HeaderListProgress"
+                        android:layout_weight="1.50"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/SubHeaderListProgress"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/strNamaPanggil" />
+
+                        <TextView
+                            android:id="@+id/tvNamaPanggil"
+                            style="@style/DefaultListProgress"
+                            android:layout_marginTop="3dp"
+                            android:text="Nama Panggilan" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/HeaderListProgress"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_weight="0.50"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/SubHeaderListProgress"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/strSubHeaderListProgress" />
+
+                        <TextView
+                            android:id="@+id/tvNamaPT"
+                            style="@style/DefaultListProgress"
+                            android:layout_marginTop="3dp"
+                            android:text="PT. Nama Perusahaan Disini" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/HeaderListProgress"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        style="@style/HeaderListProgress"
+                        android:layout_weight="1.05"
+                        android:orientation="vertical">
+
+                        <TextView
+                            style="@style/SubHeaderListProgress"
+                            android:text="@string/strNoPolisi" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:background="@drawable/border_spinner"
+
+                            >
+
+                            <TextView
+                                android:id="@+id/tvNoPolisi"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="2dp"
+                                android:layout_marginRight="2dp"
+                                android:visibility="visible" />
+
+                            <RelativeLayout
+                                android:id="@+id/llBeratBruto"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/spinerHeight"
+                                android:layout_marginRight="3dp"
+                                android:layout_weight="0.4"
+                                android:orientation="horizontal"
+                                android:visibility="visible">
+
+                                <Spinner
+                                    android:id="@+id/spNoPolisi"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center"
+                                    android:spinnerMode="dropdown" />
+
+                                <ImageView
+                                    android:id="@+id/down"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="3dp"
+                                    android:scaleX="0.6"
+                                    android:scaleY="0.6"
+                                    android:src="@drawable/downarrow_full" />
+
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_toLeftOf="@+id/down"
+                                    android:background="@color/whiteThree" />
+
+                            </RelativeLayout>
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/HeaderListProgress"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_weight="0.95"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvNoTelpon"
+                            style="@style/SubHeaderListProgress"
+                            android:text="@string/strNoTelpon" />
+
+                        <TextView
+                            android:id="@+id/tvstrNoTelpon"
+                            style="@style/DefaultListProgress"
+                            android:layout_marginTop="3dp"
+                            android:text="08XXXXXXXXXXX" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    style="@style/SubHeaderListProgress"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/strAlamat" />
+
+                <TextView
+                    android:id="@+id/tvAlamat"
+                    style="@style/DefaultListProgress"
+                    android:layout_marginTop="3dp"
+                    android:text="Jalan sehat selalu" />
+            </LinearLayout>
+
+            <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/rvListProses"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_below="@id/llDataProses"-->
+            <!--android:background="@color/duckEggBlue99"-->
+            <!--android:padding="5dp"-->
+            <!--android:visibility="gone" />-->
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llSubmit"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_below="@id/rvListProses"-->
+            <!--android:background="@drawable/down_two_rounded_white"-->
+            <!--android:layout_marginRight="5dp"-->
+            <!--android:layout_marginLeft="5dp"-->
+            <!--android:visibility="gone">-->
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llProsesKasir"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@color/colorPrimary"-->
+            <!--android:clickable="false">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tvProsesKasir"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:clickable="false"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/strKasirBayar"-->
+            <!--android:textColor="@color/duckEggBlue99"-->
+            <!--/>-->
+            <!--</LinearLayout>-->
+
+            <!--</LinearLayout>-->
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llSubmit"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_below="@id/rvListProses"-->
+            <!--android:background="@drawable/down_two_rounded_white"-->
+            <!--android:visibility="visible"-->
+            <!--android:weightSum="2">-->
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llProsesKasir"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/down_left_one_rounded_silver"-->
+            <!--android:clickable="false">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tvProsesKasir"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:clickable="false"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/strKasirBayar"-->
+            <!--android:textColor="@color/colorPrimary" />-->
+            <!--</LinearLayout>-->
+
+            <!--<LinearLayout-->
+            <!--android:id="@+id/llProsesQC"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/down_right_one_rounded_ocean">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/tvProsesQC"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:gravity="center"-->
+            <!--android:text="@string/strProsesQC"-->
+            <!--android:textColor="@android:color/white" />-->
+            <!--</LinearLayout>-->
+            <!--</LinearLayout>-->
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/svDetailinput"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cvProses">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            //Details 1
+
+            <LinearLayout
+                android:id="@+id/llInputDetailBarang"
+                style="@style/ThemeTransparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/cvProses"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/llDataTimbangBesar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/tvJenis"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="0.5"
+                            android:gravity="center_vertical"
+                            android:text="Jenis Barang"
+                            android:textSize="12dp" />
+
+                        <RelativeLayout
+                            android:id="@+id/llJenisBarang"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="3dp"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/border_spinner"
+                            android:orientation="horizontal">
+
+
+                            <Spinner
+                                android:id="@+id/spJenisBarang"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:spinnerMode="dropdown" />
+
+
+                            <ImageView
+                                android:id="@+id/downs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="3dp"
+                                android:background="@color/white"
+                                android:scaleX="0.6"
+                                android:scaleY="0.6"
+                                android:src="@drawable/downarrow_full" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_toLeftOf="@+id/downs"
+                                android:background="@color/whiteThree" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Berat"
+                            android:textSize="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/etBeratTimbanganKecil"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/border_spinner"
+                                android:inputType="number"
+                                android:text="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/GrayUserInputHint"
+                                android:textSize="@dimen/fontDetail" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:text="Kg"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Potongan"
+                            android:textSize="12dp" />
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/etPotonganBarangKecil"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentStart="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_gravity="center"
+                                android:background="@drawable/border_spinner"
+                                android:inputType="number"
+                                android:text="1"
+
+                                android:textAlignment="center"
+                                android:textColor="@color/GrayUserInputHint"
+                                android:textSize="@dimen/fontDetail" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/etPotonganBarangKecil"
+                                android:text=" %" />
+
+                            <ImageView
+                                android:id="@+id/ivAddDetail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/adds" />
+
+                            <!--<ImageView-->
+                            <!--android:id="@+id/ivDeleteDetail"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_toLeftOf="@id/ivAddDetail"-->
+                            <!--android:src="@drawable/rubbish_bin"-->
+                            <!--android:layout_marginRight="5dp"/>-->
+
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            //Details 2
+
+            <LinearLayout
+                android:id="@+id/llInputDetailBarang2"
+                style="@style/ThemeTransparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llInputDetailBarang"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+
+                <LinearLayout
+                    android:id="@+id/llDataTimbangBesar2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/tvJenis2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Jenis Barang"
+                            android:textSize="12dp" />
+
+                        <RelativeLayout
+                            android:id="@+id/llJenisBarang2"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="3dp"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/border_spinner"
+                            android:orientation="horizontal">
+
+
+                            <Spinner
+                                android:id="@+id/spJenisBarang2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:spinnerMode="dropdown" />
+
+
+                            <ImageView
+                                android:id="@+id/downs2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="3dp"
+                                android:background="@color/white"
+                                android:scaleX="0.6"
+                                android:scaleY="0.6"
+                                android:src="@drawable/downarrow_full" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_toLeftOf="@+id/downs2"
+                                android:background="@color/whiteThree" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Berat"
+                            android:textSize="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/etBeratTimbanganKecil2"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/border_spinner"
+                                android:inputType="number"
+                                android:text="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/GrayUserInputHint"
+                                android:textSize="@dimen/fontDetail" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:text="Kg"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Potongan"
+                            android:textSize="12dp" />
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1.5"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/etPotonganBarangKecil2"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/border_spinner"
+                                android:inputType="number"
+                                android:text="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/GrayUserInputHint"
+                                android:textSize="@dimen/fontDetail" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_toRightOf="@id/etPotonganBarangKecil2"
+                                android:gravity="center_vertical"
+                                android:text="%" />
+
+                            <ImageView
+                                android:id="@+id/ivAddDetail2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/adds" />
+
+                            <ImageView
+                                android:id="@+id/ivDeleteDetail2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginRight="5dp"
+                                android:layout_toLeftOf="@id/ivAddDetail2"
+                                android:src="@drawable/rubbish_bin" />
+                        </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            //Details 3
+
+            <LinearLayout
+                android:id="@+id/llInputDetailBarang3"
+                style="@style/ThemeTransparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/llInputDetailBarang2"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/llDataTimbangBesar3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginTop="5dp"
+                    android:background="@color/white"
+                    android:orientation="vertical"
+                    android:paddingLeft="6dp"
+                    android:paddingRight="6dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:id="@+id/tvJenis3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Jenis Barang"
+                            android:textSize="12dp" />
+
+                        <RelativeLayout
+                            android:id="@+id/llJenisBarang3"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_marginRight="3dp"
+                            android:layout_weight="1.5"
+                            android:background="@drawable/border_spinner"
+                            android:orientation="horizontal">
+
+
+                            <Spinner
+                                android:id="@+id/spJenisBarang3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:spinnerMode="dropdown" />
+
+
+                            <ImageView
+                                android:id="@+id/downs3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="3dp"
+                                android:background="@color/white"
+                                android:scaleX="0.6"
+                                android:scaleY="0.6"
+                                android:src="@drawable/downarrow_full" />
+
+                            <View
+                                android:layout_width="1dp"
+                                android:layout_height="match_parent"
+                                android:layout_toLeftOf="@+id/downs3"
+                                android:background="@color/whiteThree" />
+
+                        </RelativeLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Berat"
+                            android:textSize="12dp" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/etBeratTimbanganKecil3"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:background="@drawable/border_spinner"
+                                android:inputType="number"
+                                android:text="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/GrayUserInputHint"
+                                android:textSize="@dimen/fontDetail" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="5dp"
+                                android:text="Kg"
+                                android:textSize="12dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/heightDetail"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginTop="5dp"
+                        android:orientation="horizontal"
+                        android:weightSum="2">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="0.5"
+                            android:text="Potongan"
+                            android:textSize="12dp" />
+
+                        <RelativeLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1.5"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/etPotonganBarangKecil3"
+                                android:layout_width="50dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="5dp"
+                                android:background="@drawable/border_spinner"
+                                android:inputType="number"
+                                android:text="1"
+                                android:textAlignment="center"
+                                android:textColor="@color/GrayUserInputHint"
+                                android:textSize="@dimen/fontDetail" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_toRightOf="@id/etPotonganBarangKecil3"
+                                android:text="%" />
+
+
+                            <ImageView
+                                android:id="@+id/ivDeleteDetail3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_marginRight="5dp"
+                                android:src="@drawable/rubbish_bin" />
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+            //Button
+            <LinearLayout
+                android:id="@+id/llProsesKasir"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:background="@color/colorPrimary"
+                android:clickable="false">
+
+                <TextView
+                    android:id="@+id/tvProsesKasir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:paddingBottom="12dp"
+                    android:paddingTop="12dp"
+                    android:text="@string/strKasirBayarFormKecil"
+                    android:textColor="@color/whiteThree" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+
+</RelativeLayout>
+
+
+    <!--<RelativeLayout--><!--android:id="@+id/rlKodeBarang"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginTop="3dp"--><!--android:background="@drawable/rectstrokegray"--><!--android:visibility="gone">-->
+
+    <!--<Spinner--><!--android:id="@+id/spKodeBarang"--><!--style="@style/DefaultSpinner"--><!--android:layout_width="wrap_content"--><!--android:layout_gravity="center_vertical"--><!--android:layout_margin="1dp"--><!--android:dropDownWidth="fill_parent"--><!--android:spinnerMode="dropdown" />--><!--</RelativeLayout>-->
+
+    <!--<LinearLayout--><!--android:id="@+id/llNilaiPotongan"--><!--android:layout_width="match_parent"--><!--android:layout_height="wrap_content"--><!--android:layout_centerVertical="true"--><!--android:orientation="horizontal"--><!--android:visibility="gone">-->
+
+    <!--<TextView--><!--android:id="@+id/tvNilaiPotongan"--><!--android:layout_width="wrap_content"--><!--android:layout_height="wrap_content"--><!--android:layout_marginLeft="2dp"--><!--android:layout_marginRight="2dp"--><!--android:padding="3dp"--><!--android:text="@string/HintPotongan"--><!--android:visibility="visible" />-->
+
+    <!--<EditText--><!--android:id="@+id/etNilaiPotongan"--><!--style="@style/BeratTimbangan"--><!--android:layout_width="40dp"--><!--android:layout_height="wrap_content"--><!--android:layout_gravity="center_vertical"--><!--android:background="@drawable/rectstrokegraywhite"--><!--android:inputType="number"--><!--android:paddingBottom="3dp"--><!--android:paddingLeft="5dp"--><!--android:paddingRight="5dp"--><!--android:paddingTop="3dp"--><!--android:textColor="@android:color/holo_red_light"--><!--android:textColorHint="@android:color/holo_red_light" />-->
+
+    <!--<Spinner--><!--android:id="@+id/spJenisPotong"--><!--style="@style/DefaultSpinner"--><!--android:layout_width="wrap_content"--><!--android:layout_gravity="center_vertical"--><!--android:layout_marginLeft="5dp"--><!--android:dropDownWidth="fill_parent"--><!--android:spinnerMode="dropdown" />--><!--</LinearLayout>--><!---->

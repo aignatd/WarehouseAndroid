@@ -18,7 +18,12 @@
 		<item name="android:textStyle">normal|bold</item>
 		<item name="android:background">@color/HeaderUtama</item>
 	</style>
-
+	<style name="editTextSearch" parent="UserInput">
+		<item name="android:drawableLeft">@drawable/magnifying_glass</item>
+		<item name="android:inputType">textPassword</item>
+		<item name="android:maxLength">25</item>
+		<item name="android:hint">@string/HintSearch</item>
+	</style>
 	<style name="DefaultActivity" parent="AppTheme">
 		<item name="android:textColor">@android:color/white</item>
 		<item name="android:background">@color/colorPrimary</item>

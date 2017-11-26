@@ -16,21 +16,29 @@
 package com.artolanggeng.purnamakertasindo.service;
 
 
-import com.artolanggeng.purnamakertasindo.pojo.*;
+import com.artolanggeng.purnamakertasindo.pojo.CustomerPojo;
+import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
+import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
+import com.artolanggeng.purnamakertasindo.pojo.TimbangPojo;
+import com.artolanggeng.purnamakertasindo.pojo.WarehousePojo;
 import com.artolanggeng.purnamakertasindo.sending.*;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
-import retrofit2.http.*;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.Multipart;
+import retrofit2.http.POST;
+import retrofit2.http.Part;
 
 /**
  * Dibuat oleh : ignat
  * Tanggal : 26-Nov-16
  * HP/WA : 0857 7070 6 777
  */
-public interface DataLink
-{
+public interface  DataLink {
   @POST(FixValue.RestfulLogin)
   Call<LoginPojo> LoginService(@Body LoginHolder loginHolder);
 
@@ -48,6 +56,9 @@ public interface DataLink
 
   @POST(FixValue.RestfulFormulir)
   Call<LoginPojo> FormulirService(@Body FormulirHolder formulirHolder);
+
+  @POST(FixValue.RestfulFormulirKecil)
+  Call<LoginPojo> FormulirKecilService(@Body FormulirHolderKecil formulirHolder);
 
   @POST(FixValue.Restfulsynchronize)
   Call<ProsesPojo> DataProsesService(@Body ProsesHolder prosesHolder);
@@ -73,17 +84,16 @@ public interface DataLink
   @POST(FixValue.RestfulHistory)
   Call<ProsesPojo> DataHistoryService(@Body LoginHolder loginHolder);
 
-  @POST(FixValue.RestfulDetailHistory)
-  Call<CustomerPojo> DetailHistoryService(@Body FormulirHolder formulirHolder);
+  Call<CustomerPojo> DetailHistoryService(FormulirHolder formulirHolder);
 
   @POST(FixValue.Restfulproduct)
   Call<LoginPojo> DataProductService(@Body FormulirHolder formulirHolder);
 
-  @GET(FixValue.RestfulWarehouse)
-  Call<WarehousePojo> DataWarehouseService();
-
   @POST(FixValue.RestfulDevice)
   Call<WarehousePojo> DataDeviceService(@Body DeviceHolder deviceHolder);
+
+  @GET(FixValue.RestfulWarehouse)
+  Call<WarehousePojo> DataWarehouseService();
 
   @POST(FixValue.RestfulAutoTimbang)
   Call<TimbangPojo> AutoTimbangService(@Body AutoTimbangHolder autoTimbangHolder);

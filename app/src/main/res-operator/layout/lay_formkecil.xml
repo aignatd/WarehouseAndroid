@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_scanqr_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/ViewPagerBackground">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rlMenuFormulir"
+            style="@style/DefaultActivity"
+            android:layout_width="match_parent"
+            android:layout_height="60dp">
+
+            <ImageView
+                android:id="@+id/ivBackFormulir"
+                android:layout_width="30dip"
+                android:layout_height="34dip"
+                android:layout_alignParentBottom="false"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="false"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="7dip"
+                android:layout_marginTop="5dip"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/ic_arrow_back" />
+
+            <TextView
+                android:id="@+id/tvHeader"
+                style="@style/TitleBar"
+                android:text="@string/titleFormulir" />
+
+            <ImageView
+                android:id="@+id/ivMenuFormulir"
+                android:layout_width="8dip"
+                android:layout_height="25dip"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="5dip"
+                android:layout_marginRight="10dip"
+                android:layout_marginTop="5dip"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/option" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rlMenuFormulir"
+            android:layout_margin="10dp"
+            android:background="@color/tw__transparent">
+
+            <include layout="@layout/lay_list_adapter_proses_kecil" />
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+</FrameLayout>

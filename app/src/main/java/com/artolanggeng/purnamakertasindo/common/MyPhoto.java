@@ -89,7 +89,7 @@ public class MyPhoto extends AppCompatActivity
 			try
 			{
 				Bitmap bitmap = MediaStore.Images.Media.getBitmap(activity.getContentResolver(), data.getData());
-				Fungsi.SimpanGambar(bitmap, FileProfile);
+//				Fungsi.SimpanGambar(bitmap, FileProfile);
 			}
 			catch(IOException e)
 			{

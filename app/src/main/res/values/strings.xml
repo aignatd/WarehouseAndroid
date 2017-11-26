@@ -107,9 +107,12 @@
 	<string name="msgKodeBarang">Kode barang belum ada</string>
 	<string name="msgDataWarehouse">Ambil data warehouse</string>
 	<string name="msgDataDevice">Simpan data device</string>
+
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>
 	<string name="msgOtorisasi">Otorisasi anda salah</string>
+=======
+>>>>>>> 86c074b8f9d83a3246f5d746e79629c0495d8065
 
 	<string name="strBtnSelesai">Selesai</string>
 	<string name="strBtnOK">OK</string>
@@ -169,8 +172,13 @@
 	<string name="strPrinter">Setting Printer</string>
 	<string name="strRegistrasiDevice">Daftar Device</string>
 	<string name="strDaftarDevice">Daftar</string>
+
 	<string name="strJualBarang">Penjualan</string>
 	<string name="strProfile">Ubah Profile</string>
+
+
+	<string name="strKasirBayarFormKecil">Pembayaran, Proses Untuk Kasir</string>
+	<string name="HintSearch">Search</string>
 
 	<string-array name="printer">
 		<item>1. Star Printer</item>

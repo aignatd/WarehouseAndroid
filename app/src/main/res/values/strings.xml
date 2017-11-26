@@ -29,6 +29,8 @@
 	<string name="titleTimbangBaru">Timbang Baru</string>
 	<string name="titleRefresh">Refresh</string>
 	<string name="titleIPAddressPrinter">Pilih IP Address</string>
+	<string name="titleTimbangBesar">Timbang Besar</string>
+	<string name="titlePenjualan">Penjualan</string>
 
 	<string name="HintInputHP">Username / email<font color='red'>*</font></string>
 	<string name="HintInputPass">Password<font color='red'>*</font></string>
@@ -107,6 +109,7 @@
 	<string name="msgDataDevice">Simpan data device</string>
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>
+	<string name="msgOtorisasi">Otorisasi anda salah</string>
 
 	<string name="strBtnSelesai">Selesai</string>
 	<string name="strBtnOK">OK</string>
@@ -166,6 +169,8 @@
 	<string name="strPrinter">Setting Printer</string>
 	<string name="strRegistrasiDevice">Daftar Device</string>
 	<string name="strDaftarDevice">Daftar</string>
+	<string name="strJualBarang">Penjualan</string>
+	<string name="strProfile">Ubah Profile</string>
 
 	<string-array name="printer">
 		<item>1. Star Printer</item>

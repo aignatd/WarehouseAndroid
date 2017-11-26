@@ -1,5 +1,6 @@
 package com.artolanggeng.purnamakertasindo.timbanganKecil;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -12,8 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
-
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
+import com.artolanggeng.purnamakertasindo.utils.RoleChecker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,8 @@ import java.util.List;
 public class formTimbanganKecil extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private Context context = this;
+    private PopupMessege popupMessege = new PopupMessege();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class formTimbanganKecil extends AppCompatActivity {
         setContentView(R.layout.lay_timbangankecil);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
-        mTitle.setText("Warehouse");
+        mTitle.setText("Timbang Kecil");
         toolbar.setNavigationIcon(R.drawable.ic_arrow_back); // your drawable
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +111,8 @@ public class formTimbanganKecil extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        moveTaskToBack(true);
+        RoleChecker roleChecker = new RoleChecker(formTimbanganKecil.this, context);
+        if(roleChecker.RoleTimbangan() == 0)
+            popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
     }
 }

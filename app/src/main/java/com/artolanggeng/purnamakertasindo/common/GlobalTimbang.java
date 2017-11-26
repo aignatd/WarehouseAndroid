@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.widget.Button;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.data.User;
 import com.artolanggeng.purnamakertasindo.penjualan.MainJual;
@@ -13,6 +14,7 @@ import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
 import com.artolanggeng.purnamakertasindo.popup.GantiPassword;
 import com.artolanggeng.purnamakertasindo.sending.LogoutHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
+import com.artolanggeng.purnamakertasindo.timbanganKecil.formTimbanganKecil;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
@@ -95,7 +97,7 @@ public class GlobalTimbang
 		});
 	}
 
-	public void ProsesProfile()
+	public void ProsesPassword()
 	{
 		GantiPassword cdMenuHome = new GantiPassword(activity);
 		cdMenuHome.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -114,5 +116,36 @@ public class GlobalTimbang
 		Intent JualBarangIntent = new Intent(activity, MainJual.class);
 		context.startActivity(JualBarangIntent);
 		activity.finish();
+	}
+
+	public void ProsesTimbangKecil()
+	{
+		Intent TimbangKecilIntent = new Intent(activity, formTimbanganKecil.class);
+		context.startActivity(TimbangKecilIntent);
+		activity.finish();
+	}
+
+	public void ProsesPageSelected(Integer position, Button btnbawah1, Button btnbawah2, Button btnbawah3)
+	{
+		if(position == 0)
+		{
+			btnbawah1.setBackgroundResource(R.color.appleGreen);
+			btnbawah2.setBackgroundResource(R.color.whiteThree);
+			btnbawah3.setBackgroundResource(R.color.whiteThree);
+		}
+		else
+		if(position == 1)
+		{
+			btnbawah1.setBackgroundResource(R.color.whiteThree);
+			btnbawah2.setBackgroundResource(R.color.appleGreen);
+			btnbawah3.setBackgroundResource(R.color.whiteThree);
+		}
+		else
+		if(position == 2)
+		{
+			btnbawah1.setBackgroundResource(R.color.whiteThree);
+			btnbawah2.setBackgroundResource(R.color.whiteThree);
+			btnbawah3.setBackgroundResource(R.color.appleGreen);
+		}
 	}
 }

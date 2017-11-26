@@ -26,6 +26,9 @@ public class Preference
   public static final String prefUserID = "prefUserID";
   public static final String prefUpdateProses = "prefUpdateProses";
 
-  public static final String prefUser = "prefUser";
   public static final String prefPortName = "prefPortName";
+
+  public static final String PrefQRJual = "PrefQRJual";
+  public static final String PrefProsesJual = "PrefProsesJual";
+  public static final String PrefHistoryJual = "PrefHistoryJual";
 }

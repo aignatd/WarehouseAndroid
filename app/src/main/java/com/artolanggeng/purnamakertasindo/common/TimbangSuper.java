@@ -23,7 +23,6 @@ import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
-import com.artolanggeng.purnamakertasindo.warehouse.MainProses;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +39,8 @@ public class TimbangSuper extends AppCompatActivity
   private Context context = this;
   private PopupMessege popupMessege = new PopupMessege();
   static ProgressDialog progressDialog;
+
+	private GlobalTimbang globalTimbang;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -69,11 +70,13 @@ public class TimbangSuper extends AppCompatActivity
     switch(view.getId())
     {
       case R.id.rlTimbangBesar:
-      case R.id.rlTimbangKecil:
-        Intent ProgresIntent = new Intent(TimbangSuper.this, MainProses.class);
-        startActivity(ProgresIntent);
-        finish();
+	      globalTimbang = new GlobalTimbang(context, activity);
+	      globalTimbang.ProsesTimbangBesar();
       break;
+	    case R.id.rlTimbangKecil:
+		    globalTimbang = new GlobalTimbang(context, activity);
+		    globalTimbang.ProsesTimbangKecil();
+	    break;
       case R.id.rlDaftarDevice:
         ProsesDaftarDevice();
       break;
@@ -115,8 +118,8 @@ public class TimbangSuper extends AppCompatActivity
         alert.show();
       break;
 	    case R.id.rlPassword:
-		    GlobalTimbang globalTimbang = new GlobalTimbang(context, activity);
-		    globalTimbang.ProsesProfile();
+		    globalTimbang = new GlobalTimbang(context, activity);
+		    globalTimbang.ProsesPassword();
 	    break;
 	    case R.id.rlJualBarang:
 		    globalTimbang = new GlobalTimbang(context, activity);

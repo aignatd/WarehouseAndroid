@@ -96,7 +96,7 @@ public class TimbangAdmin extends AppCompatActivity
       break;
       case R.id.rlPassword:
         GlobalTimbang globalTimbang = new GlobalTimbang(context, activity);
-        globalTimbang.ProsesProfile();
+        globalTimbang.ProsesPassword();
       break;
     }
   }

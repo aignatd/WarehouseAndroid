@@ -29,18 +29,18 @@ public class FixValue
 	public static final String RestfulDevice = "device/daftardevice";
 	public static final String RestfulPhotoBarang = "formulirs/photobarang";
 	public static final String RestfulAutoTimbang = "timbangan";
-	// Server Online
 
-	public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
+	// Server Online
 	//public static final String Hostname = "http://artolanggeng.dyndns-server.com:41014/api/v1/";
+	//public static final String Hostname = "http://artolanggeng.dyndns-server.com:21012/api/v1/";
+	//public static final String Hostname = "http://111.94.20.226:41014/api/v1/";
 
 	// Server Offline
 	//public static final String Hostname = "http://192.168.212.50:41014/api/v1/";
+	public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
 
-	//public static final String Hostname = "http://myserverartolanggengcom-over.cloud.revoluz.io:49650/api/v1/";
+	// Server Timbangan
 	public static final String Hosttimbangan = "http://192.168.1.18:42024/api/v1/";
-	// Server Offline
-//	public static final String Hostname = "http://192.168.1.109:41014/api/v1/";
 
 	public static final int TimeoutConnection = 45000;
 	public static final String txtTitlePesan = "Informasi";

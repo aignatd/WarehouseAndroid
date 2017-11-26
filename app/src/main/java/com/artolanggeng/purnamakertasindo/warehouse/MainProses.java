@@ -1,5 +1,6 @@
 package com.artolanggeng.purnamakertasindo.warehouse;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -21,6 +22,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.service.FragMainLife;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
@@ -48,9 +50,12 @@ public class MainProses extends AppCompatActivity
 	private PopupMessege popupMessege = new PopupMessege();
 	private SectionsWarehouse swMainProses;
 	private Context context = this;
+	private Activity activity = this;
 	static String TAG = "[Main Proses]";
 	private MenuBuilder menuBuilder;
 	private MenuPopupHelper menuHelper;
+
+	GlobalTimbang globalTimbang;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -85,26 +90,8 @@ public class MainProses extends AppCompatActivity
 			@Override
 			public void onPageSelected(int position)
 			{
-				if(position == 0)
-				{
-					btnbawah1.setBackgroundResource(R.color.appleGreen);
-					btnbawah2.setBackgroundResource(R.color.whiteThree);
-					btnbawah3.setBackgroundResource(R.color.whiteThree);
-				}
-				else
-				if(position == 1)
-				{
-					btnbawah1.setBackgroundResource(R.color.whiteThree);
-					btnbawah2.setBackgroundResource(R.color.appleGreen);
-					btnbawah3.setBackgroundResource(R.color.whiteThree);
-				}
-				else
-				if(position == 2)
-				{
-					btnbawah1.setBackgroundResource(R.color.whiteThree);
-					btnbawah2.setBackgroundResource(R.color.whiteThree);
-					btnbawah3.setBackgroundResource(R.color.appleGreen);
-				}
+				globalTimbang = new GlobalTimbang(context, activity);
+				globalTimbang.ProsesPageSelected(position, btnbawah1, btnbawah2, btnbawah3);
 
 				Log.d(TAG, "onPageSelected: " + position);
 				FragMainLife fragmentToShow = (FragMainLife) swMainProses.instantiateItem(vpMainProses, position);
@@ -216,23 +203,23 @@ public class MainProses extends AppCompatActivity
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-			Fragment fragment = new Fragment();
 			FragmentManager fragmentManager = getSupportFragmentManager();
+			Fragment fragment = new Fragment();
 
 			switch(position)
 			{
 				case 0:
 					fragment = isFragmentAdded(fragmentManager, Preference.PrefArrived);
 					if(fragment == null) fragment = new fragArrived();
-				break;
+					break;
 				case 1:
 					fragment = isFragmentAdded(fragmentManager, Preference.PrefProgress);
 					if(fragment == null) fragment = new fragProses();
-				break;
+					break;
 				case 2:
 					fragment = isFragmentAdded(fragmentManager, Preference.PrefHistory);
 					if(fragment == null) fragment = new fragHistory();
-				break;
+					break;
 			}
 
 			return fragment;
@@ -270,6 +257,13 @@ public class MainProses extends AppCompatActivity
 		// END_INCLUDE (fragment_pager_adapter_getpagetitle)
 	}
 
+	private void BackActivity()
+	{
+		RoleChecker roleChecker = new RoleChecker(MainProses.this, context);
+		if(roleChecker.RoleTimbangan() == 0)
+			popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
+	}
+
 	private Fragment isFragmentAdded(FragmentManager fragmentManager, String tag)
 	{
 		Fragment f = fragmentManager.findFragmentByTag(tag);
@@ -278,12 +272,5 @@ public class MainProses extends AppCompatActivity
 			return null;
 		else
 			return f;
-	}
-
-	private void BackActivity()
-	{
-		RoleChecker roleChecker = new RoleChecker(MainProses.this, context);
-		if(roleChecker.RoleTimbangan() == 0)
-			popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
 	}
 }

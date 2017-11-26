@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.penjualan.FormPenjualan;
 import com.artolanggeng.purnamakertasindo.timbanganKecil.formKecil;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.CameraManager;
@@ -119,19 +120,21 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
           barcodeText = sym.getData().trim();
         }
 
-        if (kodeTimbangan.equals("1")) {
-          Intent ScanQRIntent = new Intent(ScanQR.this, formKecil.class);
-          ScanQRIntent.putExtra("KodePemasok", barcodeText);
-          ScanQRIntent.putExtra("Timbang", 0);
-          startActivity(ScanQRIntent);
-          finish();
-        } else {
-          Intent ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
-          ScanQRIntent.putExtra("KodePemasok", barcodeText);
-          ScanQRIntent.putExtra("Timbang", 0);
-          startActivity(ScanQRIntent);
-          finish();
-        }
+	      Intent ScanQRIntent = null;
+
+        if (kodeTimbangan.equals("1"))
+          ScanQRIntent = new Intent(ScanQR.this, formKecil.class);
+        else
+        if (kodeTimbangan.equals("2"))
+          ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
+        else
+        if (kodeTimbangan.equals("3"))
+	        ScanQRIntent = new Intent(ScanQR.this, FormPenjualan.class);
+
+	      ScanQRIntent.putExtra("KodePemasok", barcodeText);
+	      ScanQRIntent.putExtra("Timbang", 0);
+	      startActivity(ScanQRIntent);
+	      finish();
       }
     }
   };

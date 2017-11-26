@@ -17,7 +17,6 @@ import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
-import com.artolanggeng.purnamakertasindo.warehouse.MainProses;
 
 public class TimbangAdminOpr extends AppCompatActivity
 {
@@ -31,6 +30,8 @@ public class TimbangAdminOpr extends AppCompatActivity
   private Context context = this;
   private PopupMessege popupMessege = new PopupMessege();
   static ProgressDialog progressDialog;
+
+  private GlobalTimbang globalTimbang;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -59,11 +60,13 @@ public class TimbangAdminOpr extends AppCompatActivity
   {
     switch(view.getId())
     {
-      case R.id.rlTimbangBesar:
       case R.id.rlTimbangKecil:
-        Intent ProgresIntent = new Intent(TimbangAdminOpr.this, MainProses.class);
-        startActivity(ProgresIntent);
-        finish();
+        globalTimbang = new GlobalTimbang(context, activity);
+        globalTimbang.ProsesTimbangKecil();
+      break;
+      case R.id.rlTimbangBesar:
+        globalTimbang = new GlobalTimbang(context, activity);
+        globalTimbang.ProsesTimbangBesar();
       break;
       case R.id.rlPelangganBaru:
         Intent PemasokIntent = new Intent(TimbangAdminOpr.this, Pemasok.class);
@@ -103,8 +106,8 @@ public class TimbangAdminOpr extends AppCompatActivity
         alert.show();
       break;
       case R.id.rlPassword:
-        GlobalTimbang globalTimbang = new GlobalTimbang(context, activity);
-        globalTimbang.ProsesProfile();
+        globalTimbang = new GlobalTimbang(context, activity);
+        globalTimbang.ProsesPassword();
       break;
       case R.id.rlJualBarang:
         globalTimbang = new GlobalTimbang(context, activity);

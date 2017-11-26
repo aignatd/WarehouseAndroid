@@ -1,5 +1,6 @@
 package com.artolanggeng.purnamakertasindo.penjualan;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,20 +20,18 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
-import com.artolanggeng.purnamakertasindo.service.FragMainLife;
+import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
+import com.artolanggeng.purnamakertasindo.service.FragJualLife;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
 import com.artolanggeng.purnamakertasindo.utils.RoleChecker;
-import com.artolanggeng.purnamakertasindo.warehouse.fragArrived;
-import com.artolanggeng.purnamakertasindo.warehouse.fragHistory;
-import com.artolanggeng.purnamakertasindo.warehouse.fragProses;
 
 public class MainJual extends AppCompatActivity
 {
 	@BindView(R.id.ivBackIcon)
 	ImageView ivBackIcon;
-	@BindView(R.id.vpProses)
-	ViewPager vpMainProses;
+	@BindView(R.id.vpPenjualan)
+	ViewPager vpPenjualan;
 	@BindView(R.id.tvMenuProses)
 	TextView tvMenuProses;
 	@BindView(R.id.llMenuProses)
@@ -47,17 +46,20 @@ public class MainJual extends AppCompatActivity
 	TextView tvHeader;
 
 	private PopupMessege popupMessege = new PopupMessege();
-	private SectionsWarehouse swMainProses;
+	private SectionsPenjualan swPenjualan;
 	private Context context = this;
+	private Activity activity = this;
 	static String TAG = "[Main Proses]";
 	private MenuBuilder menuBuilder;
 	private MenuPopupHelper menuHelper;
+
+	GlobalTimbang globalTimbang;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.lay_mainproses);
+		setContentView(R.layout.lay_mainjual);
 		ButterKnife.bind(this);
 
 		BindingView();
@@ -67,11 +69,11 @@ public class MainJual extends AppCompatActivity
 	{
 		tvHeader.setText(getString(R.string.titlePenjualan));
 
-		swMainProses = new SectionsWarehouse(getSupportFragmentManager());
-		vpMainProses.setAdapter(swMainProses);
-		vpMainProses.setCurrentItem(0);
+		swPenjualan = new SectionsPenjualan(getSupportFragmentManager());
+		vpPenjualan.setAdapter(swPenjualan);
+		vpPenjualan.setCurrentItem(0);
 
-		vpMainProses.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
+		vpPenjualan.addOnPageChangeListener(new ViewPager.OnPageChangeListener()
 		{
 			@Override
 			public void onPageScrollStateChanged(int state)
@@ -86,30 +88,12 @@ public class MainJual extends AppCompatActivity
 			@Override
 			public void onPageSelected(int position)
 			{
-				if(position == 0)
-				{
-					btnbawah1.setBackgroundResource(R.color.appleGreen);
-					btnbawah2.setBackgroundResource(R.color.whiteThree);
-					btnbawah3.setBackgroundResource(R.color.whiteThree);
-				}
-				else
-				if(position == 1)
-				{
-					btnbawah1.setBackgroundResource(R.color.whiteThree);
-					btnbawah2.setBackgroundResource(R.color.appleGreen);
-					btnbawah3.setBackgroundResource(R.color.whiteThree);
-				}
-				else
-				if(position == 2)
-				{
-					btnbawah1.setBackgroundResource(R.color.whiteThree);
-					btnbawah2.setBackgroundResource(R.color.whiteThree);
-					btnbawah3.setBackgroundResource(R.color.appleGreen);
-				}
+				globalTimbang = new GlobalTimbang(context, activity);
+				globalTimbang.ProsesPageSelected(position, btnbawah1, btnbawah2, btnbawah3);
 
 				Log.d(TAG, "onPageSelected: " + position);
-				FragMainLife fragmentToShow = (FragMainLife) swMainProses.instantiateItem(vpMainProses, position);
-				fragmentToShow.onResumeFragMainLife();
+				FragJualLife fragmentToShow = (FragJualLife) swPenjualan.instantiateItem(vpPenjualan, position);
+				fragmentToShow.onResumeJualLife();
 			}
 		});
 	}
@@ -120,36 +104,20 @@ public class MainJual extends AppCompatActivity
 		BackActivity();
 	}
 
-	@OnClick({R.id.ivBackIcon, R.id.ivMenu, R.id.ivPelanggan, R.id.tvPelanggan, R.id.llPelanggan, R.id.ivProses,
-		R.id.llProses, R.id.ivRiwayat, R.id.tvRiwayat, R.id.llRiwayat, R.id.tvMenuProses, R.id.llMenuProses,
-		R.id.ivMenuProses, R.id.rlMenuheader})
+	@OnClick({R.id.ivBackIcon})
 	public void onViewClicked(View view)
 	{
 		switch(view.getId())
 		{
-			case R.id.ivPelanggan:
-			case R.id.tvPelanggan:
-			case R.id.llPelanggan:
-				vpMainProses.setCurrentItem(0);
-			break;
-			case R.id.ivProses:
-			case R.id.llProses:
-				vpMainProses.setCurrentItem(1);
-			break;
-			case R.id.ivRiwayat:
-			case R.id.tvRiwayat:
-			case R.id.llRiwayat:
-				vpMainProses.setCurrentItem(2);
-			break;
 			case R.id.ivBackIcon:
 				BackActivity();
 			break;
 		}
 	}
 
-	public class SectionsWarehouse extends FragmentPagerAdapter
+	public class SectionsPenjualan extends FragmentPagerAdapter
 	{
-		public SectionsWarehouse(FragmentManager fm)
+		public SectionsPenjualan(FragmentManager fm)
 		{
 			super(fm);
 		}
@@ -169,22 +137,22 @@ public class MainJual extends AppCompatActivity
 			// getItem is called to instantiate the fragment for the given page.
 			// Return a DummySectionFragment (defined as a static inner class
 			// below) with the page number as its lone argument.
-			Fragment fragment = new Fragment();
 			FragmentManager fragmentManager = getSupportFragmentManager();
+			Fragment fragment = new Fragment();
 
 			switch(position)
 			{
 				case 0:
-					fragment = isFragmentAdded(fragmentManager, Preference.PrefArrived);
-					if(fragment == null) fragment = new fragArrived();
+					fragment = isFragmentAdded(fragmentManager, Preference.PrefQRJual);
+					if(fragment == null) fragment = new fragQRJual();
 				break;
 				case 1:
-					fragment = isFragmentAdded(fragmentManager, Preference.PrefProgress);
-					if(fragment == null) fragment = new fragProses();
+					fragment = isFragmentAdded(fragmentManager, Preference.PrefProsesJual);
+					if(fragment == null) fragment = new fragProsesJual();
 				break;
 				case 2:
-					fragment = isFragmentAdded(fragmentManager, Preference.PrefHistory);
-					if(fragment == null) fragment = new fragHistory();
+					fragment = isFragmentAdded(fragmentManager, Preference.PrefHistoryJual);
+					if(fragment == null) fragment = new fragHistoryJual();
 				break;
 			}
 
@@ -223,6 +191,13 @@ public class MainJual extends AppCompatActivity
 		// END_INCLUDE (fragment_pager_adapter_getpagetitle)
 	}
 
+	private void BackActivity()
+	{
+		RoleChecker roleChecker = new RoleChecker(MainJual.this, context);
+		if(roleChecker.RoleTimbangan() == 0)
+			popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
+	}
+
 	private Fragment isFragmentAdded(FragmentManager fragmentManager, String tag)
 	{
 		Fragment f = fragmentManager.findFragmentByTag(tag);
@@ -231,12 +206,5 @@ public class MainJual extends AppCompatActivity
 			return null;
 		else
 			return f;
-	}
-
-	private void BackActivity()
-	{
-		RoleChecker roleChecker = new RoleChecker(MainJual.this, context);
-		if(roleChecker.RoleTimbangan() == 0)
-			popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
 	}
 }

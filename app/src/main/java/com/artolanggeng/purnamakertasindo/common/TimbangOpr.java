@@ -61,8 +61,11 @@ public class TimbangOpr extends AppCompatActivity
   {
     switch(view.getId())
     {
-      case R.id.rlTimbangBesar:
       case R.id.rlTimbangKecil:
+        globalTimbang = new GlobalTimbang(context, activity);
+        globalTimbang.ProsesTimbangKecil();
+      break;
+      case R.id.rlTimbangBesar:
         globalTimbang = new GlobalTimbang(context, activity);
         globalTimbang.ProsesTimbangBesar();
       break;
@@ -100,7 +103,7 @@ public class TimbangOpr extends AppCompatActivity
       break;
       case R.id.rlPassword:
         globalTimbang = new GlobalTimbang(context, activity);
-        globalTimbang.ProsesProfile();
+        globalTimbang.ProsesPassword();
       break;
       case R.id.rlJualBarang:
         globalTimbang = new GlobalTimbang(context, activity);

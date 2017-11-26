@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +17,7 @@ import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
+import com.artolanggeng.purnamakertasindo.utils.RoleChecker;
 import com.starmicronics.stario.PortInfo;
 import com.starmicronics.stario.StarIOPort;
 import com.starmicronics.stario.StarIOPortException;
@@ -95,9 +95,9 @@ public class Printer extends AppCompatActivity
 
 	private void BackActivity()
 	{
-		Intent TimbanganIntent = new Intent(Printer.this, Timbangan.class);
-		startActivity(TimbanganIntent);
-		finish();
+		RoleChecker roleChecker = new RoleChecker(Printer.this, context);
+		if(roleChecker.RoleTimbangan() == 0)
+			popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
 	}
 
 	@Override

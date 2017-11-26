@@ -63,13 +63,13 @@ public class RoleApply
 
 	public static final int RoleTimbangan()
 	{
-		int intLay = R.layout.lay_timbangan_oprt;
+		int intLay = R.layout.lay_timbang_opr;
 
 		if((ADMIN == FixValue.ADMIN) && (OPERATOR == FixValue.OPERATOR))
-			intLay = R.layout.lay_timbangan_admin;
+			intLay = R.layout.lay_timbang_admin;
 		else
 		if(OPERATOR == FixValue.OPERATOR)
-			intLay = R.layout.lay_timbangan_oprt;
+			intLay = R.layout.lay_timbang_opr;
 		else
 		if(SUPERUSER == FixValue.SUPERUSER)
 			intLay = R.layout.lay_timbang_super;

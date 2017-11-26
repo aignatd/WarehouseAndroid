@@ -2,10 +2,11 @@ package com.artolanggeng.purnamakertasindo.utils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.view.View;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.artolanggeng.purnamakertasindo.R;
+import android.content.Intent;
+import com.artolanggeng.purnamakertasindo.common.TimbangAdmin;
+import com.artolanggeng.purnamakertasindo.common.TimbangAdminOpr;
+import com.artolanggeng.purnamakertasindo.common.TimbangOpr;
+import com.artolanggeng.purnamakertasindo.common.TimbangSuper;
 import com.artolanggeng.purnamakertasindo.data.Role;
 
 /**
@@ -15,6 +16,7 @@ import com.artolanggeng.purnamakertasindo.data.Role;
  */
 public class RoleChecker
 {
+	static String TAG = "[RoleChecker]";
 	private Activity activity;
 	private Context context;
 	private int ADMIN = 0;
@@ -67,41 +69,41 @@ public class RoleChecker
 		}
 	}
 
-	public void RoleTimbangan()
+	public Integer RoleTimbangan()
 	{
-		LinearLayout llOpr = activity.findViewById(R.id.llOperator);
-		LinearLayout llAdm = activity.findViewById(R.id.llAdmin);
-		LinearLayout llSuper = activity.findViewById(R.id.llSuper);
-		RelativeLayout rlDaftarDevice = activity.findViewById(R.id.rlDaftarDevice);
-
-		llOpr.setVisibility(View.GONE);
-		llAdm.setVisibility(View.GONE);
-		llSuper.setVisibility(View.GONE);
+		Integer intHasil=1;
 
 		if(((ADMIN == FixValue.ADMIN) && (OPERATOR == FixValue.OPERATOR) && (SUPERUSER == FixValue.SUPERUSER)) ||
 			(SUPERUSER == FixValue.SUPERUSER))
 		{
-			llOpr.setVisibility(View.VISIBLE);
-			llAdm.setVisibility(View.VISIBLE);
-			llSuper.setVisibility(View.VISIBLE);
+			Intent LoginIntent = new Intent(activity, TimbangSuper.class);
+			context.startActivity(LoginIntent);
+			activity.finish();
 		}
 		else
 		if((ADMIN == FixValue.ADMIN) && (OPERATOR == FixValue.OPERATOR))
 		{
-			llOpr.setVisibility(View.VISIBLE);
-			llAdm.setVisibility(View.VISIBLE);
+			Intent LoginIntent = new Intent(activity, TimbangAdminOpr.class);
+			context.startActivity(LoginIntent);
+			activity.finish();
+		}
+		else
+		if(OPERATOR == FixValue.OPERATOR)
+		{
+			Intent LoginIntent = new Intent(activity, TimbangOpr.class);
+			context.startActivity(LoginIntent);
+			activity.finish();
 		}
 		else
 		if(ADMIN == FixValue.ADMIN)
-			llAdm.setVisibility(View.VISIBLE);
-		else
-		if(OPERATOR == FixValue.OPERATOR)
-			llOpr.setVisibility(View.VISIBLE);
-
-		if(SUPERUSER != FixValue.SUPERUSER)
 		{
-			llSuper.setVisibility(View.VISIBLE);
-			rlDaftarDevice.setVisibility(View.GONE);
+			Intent LoginIntent = new Intent(activity, TimbangAdmin.class);
+			context.startActivity(LoginIntent);
+			activity.finish();
 		}
+		else
+			intHasil = 0;
+
+		return intHasil;
 	}
 }

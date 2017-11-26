@@ -16,26 +16,26 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
-import com.artolanggeng.purnamakertasindo.data.User;
-import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
 import com.artolanggeng.purnamakertasindo.pojo.WarehousePojo;
 import com.artolanggeng.purnamakertasindo.popup.DaftarDevice;
-import com.artolanggeng.purnamakertasindo.sending.LogoutHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
-import com.artolanggeng.purnamakertasindo.utils.*;
+import com.artolanggeng.purnamakertasindo.utils.FixValue;
+import com.artolanggeng.purnamakertasindo.utils.Fungsi;
+import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
+import com.artolanggeng.purnamakertasindo.utils.Preference;
 import com.artolanggeng.purnamakertasindo.warehouse.MainProses;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class Timbangan extends AppCompatActivity
+public class TimbangSuper extends AppCompatActivity
 {
-  @BindView(R.id.tvPilihTimbangan)
+ @BindView(R.id.tvPilihTimbangan)
   TextView tvPilihTimbangan;
   @BindView(R.id.tvWarehouse)
   TextView tvWarehouse;
 
-  static String TAG = "[Timbangan]";
+  static String TAG = "[TimbanganSuper]";
 	private Activity activity = this;
   private Context context = this;
   private PopupMessege popupMessege = new PopupMessege();
@@ -46,14 +46,11 @@ public class Timbangan extends AppCompatActivity
   {
     super.onCreate(savedInstanceState);
 
-	  setContentView(R.layout.lay_timbangan_oprt);
+	  setContentView(R.layout.lay_timbang_super);
     ButterKnife.bind(this);
 
     tvPilihTimbangan.setText(getString(R.string.strHeaderTimbangan, Fungsi.getStringFromSharedPref(context, Preference.prefName)));
     tvWarehouse.setText(Fungsi.getStringFromSharedPref(context, Preference.prefWarehouse));
-
-	  RoleChecker roleChecker = new RoleChecker(activity, context);
-	  roleChecker.RoleTimbangan();
 
     /* Contoh ambil data dari sharedpreference menggunakan object
     LoginPojo loginPojo = Fungsi.getObjectFromSharedPref(context, LoginPojo.class, Preference.prefUser);
@@ -65,14 +62,15 @@ public class Timbangan extends AppCompatActivity
     */
   }
 
-  @OnClick({R.id.rlTimbangBesar, R.id.rlTimbangKecil, R.id.rlPelangganBaru, R.id.rlPrinter, R.id.rlKeluar, R.id.rlDaftarDevice})
+  @OnClick({R.id.rlTimbangBesar, R.id.rlTimbangKecil, R.id.rlPelangganBaru, R.id.rlPrinter, R.id.rlKeluar,
+	          R.id.rlDaftarDevice, R.id.rlProfile, R.id.rlPassword, R.id.rlJualBarang})
   public void onViewClicked(View view)
   {
     switch(view.getId())
     {
       case R.id.rlTimbangBesar:
       case R.id.rlTimbangKecil:
-        Intent ProgresIntent = new Intent(Timbangan.this, MainProses.class);
+        Intent ProgresIntent = new Intent(TimbangSuper.this, MainProses.class);
         startActivity(ProgresIntent);
         finish();
       break;
@@ -80,12 +78,12 @@ public class Timbangan extends AppCompatActivity
         ProsesDaftarDevice();
       break;
       case R.id.rlPelangganBaru:
-        Intent PemasokIntent = new Intent(Timbangan.this, Pemasok.class);
+        Intent PemasokIntent = new Intent(TimbangSuper.this, Pemasok.class);
         startActivity(PemasokIntent);
         finish();
       break;
       case R.id.rlPrinter:
-        Intent PrinterIntent = new Intent(Timbangan.this, Printer.class);
+        Intent PrinterIntent = new Intent(TimbangSuper.this, Printer.class);
         startActivity(PrinterIntent);
         finish();
       break;
@@ -100,7 +98,8 @@ public class Timbangan extends AppCompatActivity
           {
             public void onClick(DialogInterface dialog, int which)
             {
-              ProsesLogout();
+	            GlobalTimbang globalTimbang = new GlobalTimbang(context, activity);
+	            globalTimbang.ProsesLogout();
             }
           })
           .setNegativeButton(R.string.strBtnBatal, new DialogInterface.OnClickListener()
@@ -115,70 +114,15 @@ public class Timbangan extends AppCompatActivity
         AlertDialog alert = builder.create();
         alert.show();
       break;
+	    case R.id.rlPassword:
+		    GlobalTimbang globalTimbang = new GlobalTimbang(context, activity);
+		    globalTimbang.ProsesProfile();
+	    break;
+	    case R.id.rlJualBarang:
+		    globalTimbang = new GlobalTimbang(context, activity);
+		    globalTimbang.ProsesJualBarang();
+		  break;
     }
-  }
-
-  private void ProsesLogout()
-  {
-    progressDialog = ProgressDialog.show(context, getResources().getString(R.string.msgHarapTunggu),
-      context.getResources().getString(R.string.msgProsesLogout));
-    progressDialog.setCancelable(false);
-
-    if(Fungsi.isNetworkAvailable(context) == FixValue.TYPE_NONE)
-    {
-      progressDialog.dismiss();
-      popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgKoneksiError));
-      return;
-    }
-
-    User user = new User();
-    user.setToken(Fungsi.getStringFromSharedPref(context, Preference.prefToken));
-
-    LogoutHolder logoutHolder = new LogoutHolder(user);
-    DataLink dataLink = Fungsi.BindingData();
-
-    final Call<LoginPojo> ReceivePojo = dataLink.LogoutService(logoutHolder);
-
-    ReceivePojo.enqueue(new Callback<LoginPojo>()
-    {
-      @Override
-      public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response)
-      {
-        progressDialog.dismiss();
-
-        if(response.isSuccessful())
-        {
-          if(response.body().getCoreResponse().getKode() == FixValue.intError)
-            popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
-          else
-          {
-            Fungsi.storeToSharedPref(context, "", Preference.prefToken);
-
-            Intent LogoutIntent = new Intent(Timbangan.this, Login.class);
-            startActivity(LogoutIntent);
-            finish();
-          }
-        }
-        else
-          popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
-      }
-
-      @Override
-      public void onFailure(Call<LoginPojo> call, Throwable t)
-      {
-        progressDialog.dismiss();
-        popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));
-      }
-    });
-  }
-
-  @Override
-  public void onResume()
-  {
-	  super.onResume();
-
-	  RoleChecker roleChecker = new RoleChecker(activity, context);
-	  roleChecker.RoleTimbangan();
   }
 
   @Override

@@ -3,7 +3,6 @@ package com.artolanggeng.purnamakertasindo.common;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -170,9 +169,9 @@ public class Pemasok extends AppCompatActivity
 
   private void BackActivity()
   {
-    Intent TimbanganIntent = new Intent(Pemasok.this, Timbangan.class);
-    startActivity(TimbanganIntent);
-    finish();
+    RoleChecker roleChecker = new RoleChecker(Pemasok.this, context);
+    if(roleChecker.RoleTimbangan() == 0)
+      popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
   }
 
   @Override
@@ -244,7 +243,11 @@ public class Pemasok extends AppCompatActivity
           if(response.body().getCoreResponse().getKode() == FixValue.intError)
             popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
           else
-            popupMessege.ShowMessege4(context, response.body().getCoreResponse().getPesan(), Pemasok.this, Timbangan.class);
+          {
+            RoleChecker roleChecker = new RoleChecker(Pemasok.this, context);
+            if(roleChecker.RoleTimbangan() == 0)
+              popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
+          }
         }
         else
           popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));

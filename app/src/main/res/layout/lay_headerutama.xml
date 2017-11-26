@@ -42,7 +42,8 @@
             android:layout_centerVertical="true"
             android:src="@drawable/option"
             android:scaleType="fitCenter"
-            android:layout_marginRight="15dip"/>
+            android:layout_marginRight="15dip"
+            android:visibility="gone"/>
 
         <Button
             android:id="@+id/bntKirimPemasok"

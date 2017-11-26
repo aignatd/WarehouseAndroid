@@ -2,7 +2,6 @@ package com.artolanggeng.purnamakertasindo.common;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,10 +14,7 @@ import com.artolanggeng.purnamakertasindo.data.*;
 import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
 import com.artolanggeng.purnamakertasindo.sending.LoginHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
-import com.artolanggeng.purnamakertasindo.utils.FixValue;
-import com.artolanggeng.purnamakertasindo.utils.Fungsi;
-import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
-import com.artolanggeng.purnamakertasindo.utils.Preference;
+import com.artolanggeng.purnamakertasindo.utils.*;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.codec.digest.DigestUtils;
 import retrofit2.Call;
@@ -132,9 +128,9 @@ public class Login extends AppCompatActivity
               Fungsi.storeObjectToSharedPref(context, response.body(), Preference.prefUser);
               */
 
-              Intent LoginIntent = new Intent(Login.this, Timbangan.class);
-              startActivity(LoginIntent);
-              finish();
+              RoleChecker roleChecker = new RoleChecker(Login.this, context);
+              if(roleChecker.RoleTimbangan() == 0)
+              	popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
             }
           }
           else

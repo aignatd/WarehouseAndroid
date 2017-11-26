@@ -1,4 +1,4 @@
-package com.artolanggeng.purnamakertasindo.warehouse;
+package com.artolanggeng.purnamakertasindo.penjualan;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -7,11 +7,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.SupportMenuInflater;
 import android.support.v7.view.menu.MenuBuilder;
 import android.support.v7.view.menu.MenuPopupHelper;
 import android.util.Log;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -25,8 +23,11 @@ import com.artolanggeng.purnamakertasindo.service.FragMainLife;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
 import com.artolanggeng.purnamakertasindo.utils.RoleChecker;
+import com.artolanggeng.purnamakertasindo.warehouse.fragArrived;
+import com.artolanggeng.purnamakertasindo.warehouse.fragHistory;
+import com.artolanggeng.purnamakertasindo.warehouse.fragProses;
 
-public class MainProses extends AppCompatActivity
+public class MainJual extends AppCompatActivity
 {
 	@BindView(R.id.ivBackIcon)
 	ImageView ivBackIcon;
@@ -64,7 +65,7 @@ public class MainProses extends AppCompatActivity
 
 	public void BindingView()
 	{
-		tvHeader.setText(getString(R.string.titleTimbangBesar));
+		tvHeader.setText(getString(R.string.titlePenjualan));
 
 		swMainProses = new SectionsWarehouse(getSupportFragmentManager());
 		vpMainProses.setAdapter(swMainProses);
@@ -142,54 +143,6 @@ public class MainProses extends AppCompatActivity
 			break;
 			case R.id.ivBackIcon:
 				BackActivity();
-			break;
-			case R.id.llMenuProses:
-			case R.id.ivMenuProses:
-			case R.id.tvMenuProses:
-				menuBuilder = new MenuBuilder(context);
-				new SupportMenuInflater(context).inflate(R.menu.menu_proses, menuBuilder);
-				menuHelper = new MenuPopupHelper(context, menuBuilder, llMenuProses);
-				menuHelper.setForceShowIcon(true);
-				menuHelper.show();
-
-				menuBuilder.setCallback(new MenuBuilder.Callback()
-				{
-					@Override
-					public boolean onMenuItemSelected(MenuBuilder menu, MenuItem menuItem)
-					{
-						switch(menuItem.getItemId())
-						{
-							case R.id.mnuSemua:
-								menuHelper.dismiss();
-								tvMenuProses.setText(getResources().getString(R.string.titleSemua));
-								swMainProses = new SectionsWarehouse(getSupportFragmentManager());
-								vpMainProses.setAdapter(swMainProses);
-								vpMainProses.setCurrentItem(1);
-							return true;
-							case R.id.mnuTimbang:
-								menuHelper.dismiss();
-								tvMenuProses.setText(getResources().getString(R.string.titleTimbang));
-								swMainProses = new SectionsWarehouse(getSupportFragmentManager());
-								vpMainProses.setAdapter(swMainProses);
-								vpMainProses.setCurrentItem(1);
-							return true;
-							case R.id.mnuQuality:
-								menuHelper.dismiss();
-								tvMenuProses.setText(getResources().getString(R.string.titleQuality));
-								swMainProses = new SectionsWarehouse(getSupportFragmentManager());
-								vpMainProses.setAdapter(swMainProses);
-								vpMainProses.setCurrentItem(1);
-							return true;
-						}
-
-						return false;
-					}
-
-					@Override
-					public void onMenuModeChange(MenuBuilder menu)
-					{
-					}
-				});
 			break;
 		}
 	}
@@ -282,7 +235,7 @@ public class MainProses extends AppCompatActivity
 
 	private void BackActivity()
 	{
-		RoleChecker roleChecker = new RoleChecker(MainProses.this, context);
+		RoleChecker roleChecker = new RoleChecker(MainJual.this, context);
 		if(roleChecker.RoleTimbangan() == 0)
 			popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
 	}

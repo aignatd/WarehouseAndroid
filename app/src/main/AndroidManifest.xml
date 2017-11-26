@@ -81,10 +81,6 @@
 			</intent-filter>
 		</activity>
 		<activity
-			android:name=".common.Timbangan"
-			android:screenOrientation="portrait">
-		</activity>
-		<activity
 			android:name=".warehouse.MainProses"
 			android:allowBackup="true"
 			android:screenOrientation="portrait">
@@ -110,6 +106,31 @@
 			android:screenOrientation="portrait">
 		</activity>
 		<activity android:name=".common.Photo">
+		</activity>
+		<activity
+			android:name=".common.TimbangSuper"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".common.TimbangAdmin"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".common.TimbangOpr"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".common.TimbangAdminOpr"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
+		</activity>
+		<activity
+			android:name=".penjualan.MainJual"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
 		</activity>
 	</application>
 

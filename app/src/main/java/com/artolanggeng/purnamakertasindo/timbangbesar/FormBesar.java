@@ -103,7 +103,9 @@ public class FormBesar extends AppCompatActivity
 	private EditText etBeratNetto;
 	private Spinner spKodeBarang;
 	private TextView tvTglTimbang;
+
 	String History;
+	String Jual;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -119,6 +121,7 @@ public class FormBesar extends AppCompatActivity
 		String KodePemasok = extras.getString("KodePemasok");
 		intTimbang = extras.getInt("Timbang") + 1;
 		History = extras.getString("History");
+		Jual = extras.getString("Jual");
 
 		tvKodePemasok.setText(KodePemasok);
 		tvProsesQC.setText(context.getString(R.string.strProsesQC, "", ""));

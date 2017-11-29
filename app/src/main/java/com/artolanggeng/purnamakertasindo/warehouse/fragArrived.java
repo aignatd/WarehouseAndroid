@@ -14,12 +14,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.common.ScanQR;
 import com.artolanggeng.purnamakertasindo.popup.InputPemasok;
 import com.artolanggeng.purnamakertasindo.service.FragMainLife;
-import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
-import com.artolanggeng.purnamakertasindo.utils.Fungsi;
-import com.artolanggeng.purnamakertasindo.utils.Preference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,7 +59,7 @@ public class fragArrived extends Fragment implements FragMainLife
                 Intent ProgresIntent = new Intent(getActivity(), ScanQR.class);
                 ProgresIntent.putExtra("KodeTimbangan", "2");
                 startActivity(ProgresIntent);
-                break;
+            break;
             case R.id.tvInputPelanggan:
                 InputPemasok inputPemasok = new InputPemasok(getActivity());
                 inputPemasok.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -71,14 +69,11 @@ public class fragArrived extends Fragment implements FragMainLife
                     @Override
                     public void onDismiss(DialogInterface dialogInterface)
                     {
-                        Intent PemasokManualIntent = new Intent(getActivity(), FormBesar.class);
-                        PemasokManualIntent.putExtra("KodePemasok", Fungsi.getStringFromSharedPref(getContext(), Preference.PrefScanQR));
-                        PemasokManualIntent.putExtra("Timbang", 0);
-                        PemasokManualIntent.putExtra("History", "");
-                        getActivity().startActivity(PemasokManualIntent);
+                        GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
+                        globalTimbang.ProsesPemasokManual(0, "", "");
                     }
                 });
-                break;
+            break;
         }
     }
 

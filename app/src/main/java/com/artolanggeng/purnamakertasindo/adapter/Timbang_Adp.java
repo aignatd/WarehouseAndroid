@@ -301,13 +301,13 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 							if(viewID == R.id.ivBeratBruto)
 							{
 								lstTimbang.get(intTag).setTonasebruto(Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
-								etBeratBruto.setText(response.body().getTimbanganRsp().getTimbangan());
+								etBeratBruto.setText(context.getString(R.string.titleBeratBruto, response.body().getTimbanganRsp().getTimbangan()));
 							}
 							else
 							if(viewID == R.id.ivBeratNetto)
 							{
 								lstTimbang.get(intTag).setTonasenetto(Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
-								etBeratNetto.setText(response.body().getTimbanganRsp().getTimbangan());
+								etBeratNetto.setText(context.getString(R.string.titleBeratNetto, response.body().getTimbanganRsp().getTimbangan()));
 							}
 						}
 					}

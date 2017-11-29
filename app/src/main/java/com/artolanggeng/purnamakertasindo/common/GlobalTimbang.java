@@ -15,6 +15,7 @@ import com.artolanggeng.purnamakertasindo.popup.GantiPassword;
 import com.artolanggeng.purnamakertasindo.sending.LogoutHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
 import com.artolanggeng.purnamakertasindo.timbanganKecil.formTimbanganKecil;
+import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
@@ -147,5 +148,15 @@ public class GlobalTimbang
 			btnbawah2.setBackgroundResource(R.color.whiteThree);
 			btnbawah3.setBackgroundResource(R.color.appleGreen);
 		}
+	}
+
+	public void ProsesPemasokManual(Integer intTimbang, String strHistory, String strJual)
+	{
+		Intent PemasokManualIntent = new Intent(activity, FormBesar.class);
+		PemasokManualIntent.putExtra("KodePemasok", Fungsi.getStringFromSharedPref(context, Preference.PrefScanQR));
+		PemasokManualIntent.putExtra("Timbang", intTimbang);
+		PemasokManualIntent.putExtra("History", strHistory);
+		PemasokManualIntent.putExtra("Jual", strJual);
+		activity.startActivity(PemasokManualIntent);
 	}
 }

@@ -13,7 +13,7 @@ public class FixValue
 	public static final String RestfulPassword = "users/password";
 	public static final String RestfulKartuBaru = "customers/kartubaru";
 	public static final String RestfulRequest = "customers/request";
-	public static final String RestfulFormulir = "formulirs/upload";
+	public static final String RestfulFormulir = "formulirs/uploadbesar";
 	public static final String RestfulFormulirKecil = "formulirs/uploadkecil";
 	public static final String RestfulTambahTimbang = "formulirs/tambah";
 	public static final String RestfulPembayaran = "formulirs/bayar";
@@ -36,8 +36,8 @@ public class FixValue
 	//public static final String Hostname = "http://111.94.20.226:41014/api/v1/";
 
 	// Server Offline
-	//public static final String Hostname = "http://192.168.212.50:41014/api/v1/";
-	public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
+	public static final String Hostname = "http://192.168.212.41:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
 
 	// Server Timbangan
 	public static final String Hosttimbangan = "http://192.168.1.18:42024/api/v1/";

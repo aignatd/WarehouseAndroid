@@ -142,11 +142,6 @@
 			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
-		<activity
-			android:name=".penjualan.FormPenjualan"
-			android:allowBackup="true"
-			android:screenOrientation="portrait">
-		</activity>
 	</application>
 
 </manifest>

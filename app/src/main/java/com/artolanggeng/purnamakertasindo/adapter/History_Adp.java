@@ -148,6 +148,7 @@ public class History_Adp extends RecyclerView.Adapter<History_Adp.ViewHolder>
 						HistoryIntent.putExtra("KodePemasok", pemasokid);
 						HistoryIntent.putExtra("Timbang", customerRsps.get(intTag).getJumlahtimbang());
 						HistoryIntent.putExtra("History", "History");
+						HistoryIntent.putExtra("Jual", "");
 						context.startActivity(HistoryIntent);
 					}
 				}

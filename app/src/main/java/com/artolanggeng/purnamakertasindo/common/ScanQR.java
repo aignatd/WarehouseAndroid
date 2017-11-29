@@ -16,7 +16,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
-import com.artolanggeng.purnamakertasindo.penjualan.FormPenjualan;
 import com.artolanggeng.purnamakertasindo.timbanganKecil.formKecil;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.CameraManager;
@@ -125,14 +124,20 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
         if (kodeTimbangan.equals("1"))
           ScanQRIntent = new Intent(ScanQR.this, formKecil.class);
         else
-        if (kodeTimbangan.equals("2"))
-          ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
-        else
-        if (kodeTimbangan.equals("3"))
-	        ScanQRIntent = new Intent(ScanQR.this, FormPenjualan.class);
+        if (kodeTimbangan.equals("2") || kodeTimbangan.equals("3"))
+        {
+	        ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
+
+	        if(kodeTimbangan.equals("2"))
+	          ScanQRIntent.putExtra("Jual", "");
+	        else
+	        if(kodeTimbangan.equals("3"))
+		        ScanQRIntent.putExtra("Jual", "Jual");
+        }
 
 	      ScanQRIntent.putExtra("KodePemasok", barcodeText);
 	      ScanQRIntent.putExtra("Timbang", 0);
+        ScanQRIntent.putExtra("History", "");
 	      startActivity(ScanQRIntent);
 	      finish();
       }

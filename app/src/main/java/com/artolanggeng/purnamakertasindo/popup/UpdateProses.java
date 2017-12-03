@@ -96,7 +96,7 @@ public class UpdateProses extends Dialog
 			case R.id.btnInputPotong:
 				String strPesan = context.getString(R.string.msgProsesPotong);
 
-				if(FormAsal == 3)
+				if((FormAsal == 3) || (FormAsal == 5))
 					strPesan = context.getString(R.string.msgProsesBayar);
 
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -200,7 +200,7 @@ public class UpdateProses extends Dialog
 		EditText etProses = null;
 		boolean bInput = true;
 
-		if((FormAsal == 2) || (FormAsal == 3))
+		if((FormAsal == 2) || (FormAsal == 3) || (FormAsal == 5))
 		{
 			if(FormAsal == 2)
 			{
@@ -208,7 +208,7 @@ public class UpdateProses extends Dialog
 				lstMsg.add(context.getResources().getString(R.string.msgPotongan));
 			}
 			else
-			if(FormAsal == 3)
+			if((FormAsal == 3) || (FormAsal == 5))
 			{
 				etProses = v.findViewById(R.id.etBeratNetto);
 				lstMsg.add(context.getResources().getString(R.string.msgTonaseNetto));
@@ -226,7 +226,7 @@ public class UpdateProses extends Dialog
 			if(FormAsal == 3)
 				progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu), context.getResources().getString(R.string.msgSimpanTimbangNetto));
 			else
-			if(FormAsal == 6)
+			if((FormAsal == 5) || (FormAsal == 6))
 				progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu), context.getResources().getString(R.string.msgSimpanBarangJual));
 
 			progressDialog.setCancelable(false);
@@ -247,11 +247,11 @@ public class UpdateProses extends Dialog
 			if((FormAsal == 2) || (FormAsal == 6))
 			{
 				View vi = rvPotongan.getLayoutManager().findViewByPosition(timbangadapter.getItemCount() - 1);
-				Spinner spJenisPotong = vi.findViewById(R.id.spJenisPotong);
 				Spinner spKodeBarang = vi.findViewById(R.id.spKodeBarang);
 
 				if(FormAsal == 2)
 				{
+					Spinner spJenisPotong = vi.findViewById(R.id.spJenisPotong);
 					timbangRsp.setPotongan(Integer.valueOf(etProses.getText().toString()));
 					timbangRsp.setJenispotongid(IsiPotongan.getInstance().getmPotongRsp().get(spJenisPotong.getSelectedItemPosition()).getId());
 				}
@@ -272,6 +272,7 @@ public class UpdateProses extends Dialog
 
 				IsiFormulir isiFormulir = new IsiFormulir();
 				isiFormulir.setId(intPekerjaanID);
+				isiFormulir.setJenistimbang(2);
 
 				if(strProses.matches(context.getString(R.string.strKasirBayar)))
 				{
@@ -291,6 +292,33 @@ public class UpdateProses extends Dialog
 
 				formulirHolder = new FormulirHolder(isiFormulir, timbangRsp);
 			}
+			else
+			if(FormAsal == 5)
+			{
+				timbangRsp.setTonasebruto(Integer.valueOf(etProses.getText().toString()));
+
+				IsiFormulir isiFormulir = new IsiFormulir();
+				isiFormulir.setId(intPekerjaanID);
+				isiFormulir.setJenistimbang(3);
+
+				if(strProses.matches(context.getString(R.string.strKasirBayar)))
+				{
+					timbangRsp.setProses(strProses);
+					isiFormulir.setPermintaan(-2);
+					isiFormulir.setPekerjaan(-1);
+				}
+				else
+				if(strProses.matches(context.getString(R.string.strTimbangBaru)))
+				{
+					timbangRsp.setProses(strProses);
+					timbangRsp.setTanggal(timbangRsps.get(timbangRsps.size() - 1).getTanggal());
+
+					isiFormulir.setPermintaan(1);
+					isiFormulir.setPekerjaan(1);
+				}
+
+				formulirHolder = new FormulirHolder(isiFormulir, timbangRsp);
+			}
 
 			DataLink dataLink = Fungsi.BindingData();
 			Call<TimbangPojo> ReceivePojo = null;
@@ -298,7 +326,7 @@ public class UpdateProses extends Dialog
 			if((FormAsal == 2) || (FormAsal == 6))
 				ReceivePojo = dataLink.PotonganService(formulirHolder);
 			else
-			if(FormAsal == 3)
+			if((FormAsal == 3) || (FormAsal == 5))
 				ReceivePojo = dataLink.TimbangNettoService(formulirHolder);
 
 			ReceivePojo.enqueue(new Callback<TimbangPojo>()

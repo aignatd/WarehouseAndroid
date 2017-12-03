@@ -163,7 +163,6 @@ public class formKecil extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         String KodePemasok = extras.getString("KodePemasok");
         intTimbang = extras.getInt("Timbang") + 1;
-        Log.d(TAG, "onCreate: " + intTimbang);
 
         tvKodePemasok.setText(KodePemasok);
         spNoPolisi.setVisibility(View.VISIBLE);

@@ -108,7 +108,7 @@
 	<string name="msgKodeBarang">Kode barang belum ada</string>
 	<string name="msgDataWarehouse">Ambil data warehouse</string>
 	<string name="msgDataDevice">Simpan data device</string>
-	<string name="msgSimpanBarangJual">Simpan barang jual</string>
+	<string name="msgSimpanBarangJual">Simpan data penjualan</string>
 
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>

@@ -446,13 +446,6 @@ public class FormBesar extends AppCompatActivity
 			intFormAsal = 4;
 		}
 		else
-		if(Jual.matches("Jual"))
-		{
-			lstTimbang.add(timbangRsp);
-			llSubmit.setVisibility(View.VISIBLE);
-			intFormAsal = 5;
-		}
-		else
 		{
 			lstTimbang.add(timbangRsp);
 			llSubmit.setVisibility(View.VISIBLE);

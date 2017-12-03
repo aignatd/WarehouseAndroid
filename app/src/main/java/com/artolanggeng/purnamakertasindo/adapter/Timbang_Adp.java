@@ -84,9 +84,12 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 		else if(position == 2)
 			holder.ivNoTimbang.setBackgroundResource(R.drawable.timbang3);
 
+		Log.d(TAG, "onBindViewHolder: " + lstTimbang.size());
+		Log.d(TAG, "onBindViewHolder: " + FormAsal);
+
 		if(((lstTimbang.size() - 1) == position) && (FormAsal != 4))
 		{
-			if((FormAsal == 1) || (FormAsal == 5))
+			if(FormAsal == 1)
 			{
 				holder.tvKodeBarang.setVisibility(View.GONE);
 				holder.rlKodeBarang.setVisibility(View.GONE);
@@ -99,7 +102,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 				holder.etBeratBruto.setBackgroundColor(Color.TRANSPARENT);
 			}
 			else
-			if((FormAsal == 2) || (FormAsal == 3) || (FormAsal == 6))
+			if((FormAsal == 2) || (FormAsal == 3) || (FormAsal == 5) || (FormAsal == 6))
 			{
 				holder.ivBeratBruto.setVisibility(View.GONE);
 				holder.etBeratBruto.setFocusable(false);
@@ -119,7 +122,6 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 					holder.rlKodeBarang.setVisibility(View.VISIBLE);
 					holder.tvKodeBarang.setVisibility(View.GONE);
 					holder.tvJenisPotong.setVisibility(View.GONE);
-					holder.rlJenisPotong.setVisibility(View.VISIBLE);
 
 					if(FormAsal == 6)
 					{
@@ -128,6 +130,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 					}
 					else
 					{
+						holder.rlJenisPotong.setVisibility(View.VISIBLE);
 						holder.etBeratBruto.setText(context.getString(R.string.titleBeratBruto, lstTimbang.get(position).getTonasebruto().toString()));
 						holder.llNilaiPotongan.setVisibility(View.VISIBLE);
 						holder.etNilaiPotongan.setText(lstTimbang.get(position).getPotongan().toString());
@@ -158,7 +161,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 					holder.spKodeBarang.setAdapter(dataAdapter);
 				}
 				else
-				if(FormAsal == 3)
+				if((FormAsal == 3) || (FormAsal == 5))
 				{
 					holder.llNilaiPotongan.setVisibility(View.VISIBLE);
 					holder.etNilaiPotongan.setText(lstTimbang.get(position).getPotongan().toString() + lstTimbang.get(position).getDisplay());
@@ -168,7 +171,18 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 					holder.etNilaiPotongan.setKeyListener(null);
 					holder.etNilaiPotongan.setBackgroundColor(Color.TRANSPARENT);
 
+					if(FormAsal == 5)
+					{
+						holder.etBeratBruto.setText(context.getString(R.string.titleBeratNetto, lstTimbang.get(position).getTonasenetto().toString()));
+						holder.llNilaiPotongan.setVisibility(View.GONE);
+					}
+
 					holder.llBeratNetto.setVisibility(View.VISIBLE);
+					holder.etBeratNetto.setFocusable(false);
+					holder.etBeratNetto.setEnabled(false);
+					holder.etBeratNetto.setCursorVisible(false);
+					holder.etBeratNetto.setKeyListener(null);
+					holder.etBeratNetto.setBackgroundColor(Color.TRANSPARENT);
 				}
 			}
 		}

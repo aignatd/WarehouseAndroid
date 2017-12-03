@@ -38,7 +38,7 @@ public class FixValue
 	// Server Offline
 	public static final String Hostname = "http://192.168.212.50:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
-	//public static final String Hostname = "http://192.168.1.21:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.137.1:41014/api/v1/";
 
 	// Server Timbangan
 	public static final String Hosttimbangan = "http://192.168.1.20:42024/api/v1/";

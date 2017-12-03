@@ -79,6 +79,8 @@ public class FormBesar extends AppCompatActivity
 	ImageView ivPrintTimbang;
 	@BindView(R.id.ivPhotoTimbang)
 	ImageView ivPhotoTimbang;
+	@BindView(R.id.tvHeader)
+	TextView tvHeader;
 
 	private PopupMessege pesan = new PopupMessege();
 	private ProgressDialog progressDialog;
@@ -123,6 +125,13 @@ public class FormBesar extends AppCompatActivity
 		History = extras.getString("History");
 		Jual = extras.getString("Jual");
 
+		if(History.matches("History"))
+		{
+			tvHeader.setText(getResources().getString(R.string.titleHistory));
+			ivMenuFormulir.setVisibility(View.GONE);
+		}
+
+
 		tvKodePemasok.setText(KodePemasok);
 		tvProsesQC.setText(context.getString(R.string.strProsesQC, "", ""));
 
@@ -134,7 +143,7 @@ public class FormBesar extends AppCompatActivity
 			tvProsesKasir.setText(context.getString(R.string.strSebelumnya));
 			spNoPolisi.setVisibility(View.VISIBLE);
 			tvNoPolisi.setVisibility(View.GONE);
-			tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(intTimbang - 1)));
+			tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(intTimbang)));
 			AmbilInfoPemasok(KodePemasok);
 		}
 		else
@@ -278,8 +287,6 @@ public class FormBesar extends AppCompatActivity
 		Call<LoginPojo> ReceivePojo;
 
 		IsiFormulir isiFormulir = new IsiFormulir();
-		isiFormulir.setPermintaan(1);
-		isiFormulir.setPekerjaan(2);
 		isiFormulir.setJumlahtimbang(intTimbang);
 
 		if(intTimbang == 1)
@@ -292,18 +299,36 @@ public class FormBesar extends AppCompatActivity
 			isiFormulir.setTgldevice(tsLong.toString());
 			isiFormulir.setBisnisunitkode(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
 			isiFormulir.setUserid(Fungsi.getIntFromSharedPref(context, Preference.prefUserID));
-			isiFormulir.setJenistimbang(FixValue.TimbangBesar);
+
+			if(Jual.matches("Jual"))
+				isiFormulir.setJenistimbang(FixValue.TimbangJual);
+			else
+				isiFormulir.setJenistimbang(FixValue.TimbangBesar);
 
 			timbangRsp = new TimbangRsp();
 			timbangRsp.setNourut(intTimbang);
-			timbangRsp.setTonasebruto(Integer.valueOf(etBeratBruto.getText().toString()));
 			timbangRsp.setTanggal(tvTglTimbang.getText().toString());
+
+			if(Jual.matches("Jual"))
+			{
+				isiFormulir.setPermintaan(1);
+				isiFormulir.setPekerjaan(1);
+				timbangRsp.setTonasenetto(Integer.valueOf(etBeratBruto.getText().toString()));
+			}
+			else
+			{
+				isiFormulir.setPermintaan(1);
+				isiFormulir.setPekerjaan(2);
+				timbangRsp.setTonasebruto(Integer.valueOf(etBeratBruto.getText().toString()));
+			}
 
 			formulirHolder = new FormulirHolder(isiFormulir, timbangRsp);
 			ReceivePojo = dataLink.FormulirService(formulirHolder);
 		}
 		else
 		{
+			isiFormulir.setPermintaan(1);
+			isiFormulir.setPekerjaan(2);
 			isiFormulir.setId(IsiPemasok.getInstance().getCustomerRsp().getId());
 			Timbang.getInstance().setPekerjaanid(IsiPemasok.getInstance().getCustomerRsp().getId());
 			formulirHolder = new FormulirHolder(isiFormulir, lstTimbang.get(formadapter.getItemCount()-1));
@@ -326,11 +351,8 @@ public class FormBesar extends AppCompatActivity
 						final String Printer = Fungsi.getStringFromSharedPref(context, Preference.prefPortName);
 						final PrinterRsp printerRsp = response.body().getPrinterRsp();
 
-						if(Printer.isEmpty())
-						{
-							pesan.ShowMessege1(context, getResources().getString(R.string.msgDataPrinter));
+						if(Printer.isEmpty() || (Jual.matches("Jual")) || (printerRsp == null))
 							LanjutProses();
-						}
 						else
 							ProsesPrint(Printer, printerRsp);
 					}
@@ -415,18 +437,28 @@ public class FormBesar extends AppCompatActivity
 
 		rvListProses.invalidate();
 
+		Integer intFormAsal = 1;
+
 		if(History.matches("History"))
 		{
+			tvHeader.setText(getResources().getString(R.string.titleHistory));
 			llSubmit.setVisibility(View.GONE);
-			formadapter = new Timbang_Adp(activity, context, lstTimbang, IsiProduct.getInstance().getmProductRsps(), 4, null);
+			intFormAsal = 4;
+		}
+		else
+		if(Jual.matches("Jual"))
+		{
+			lstTimbang.add(timbangRsp);
+			llSubmit.setVisibility(View.VISIBLE);
+			intFormAsal = 5;
 		}
 		else
 		{
 			lstTimbang.add(timbangRsp);
 			llSubmit.setVisibility(View.VISIBLE);
-			formadapter = new Timbang_Adp(activity, context, lstTimbang, IsiProduct.getInstance().getmProductRsps(), 1, null);
 		}
 
+		formadapter = new Timbang_Adp(activity, context, lstTimbang, IsiProduct.getInstance().getmProductRsps(), intFormAsal, null);
 		rvListProses.setAdapter(formadapter);
 	}
 

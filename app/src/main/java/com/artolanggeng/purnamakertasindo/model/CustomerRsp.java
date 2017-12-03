@@ -43,6 +43,9 @@ public class CustomerRsp
 	@SerializedName("status")
 	@Expose
 	private String status;
+	@SerializedName("jenistimbang")
+	@Expose
+	private Integer jenistimbang;
 
 	public Integer getId()
 	{
@@ -152,5 +155,15 @@ public class CustomerRsp
 	public void setStatus(String status)
 	{
 		this.status = status;
+	}
+
+	public Integer getJenistimbang()
+	{
+		return jenistimbang;
+	}
+
+	public void setJenistimbang(Integer jenistimbang)
+	{
+		this.jenistimbang = jenistimbang;
 	}
 }

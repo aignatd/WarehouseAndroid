@@ -12,6 +12,7 @@ public class Proses
   private String BisnisUnit;
   private String TglRequest;
 	private Integer userid;
+	private Integer jenistimbang;
 
   public Integer getPermintaan()
   {
@@ -61,5 +62,15 @@ public class Proses
 	public void setUserid(Integer userid)
 	{
 		this.userid = userid;
+	}
+
+	public Integer getJenistimbang()
+	{
+		return jenistimbang;
+	}
+
+	public void setJenistimbang(Integer jenistimbang)
+	{
+		this.jenistimbang = jenistimbang;
 	}
 }

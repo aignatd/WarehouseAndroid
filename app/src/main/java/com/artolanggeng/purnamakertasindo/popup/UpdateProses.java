@@ -47,7 +47,7 @@ public class UpdateProses extends Dialog
 	@BindView(R.id.rvPotongan)
 	RecyclerView rvPotongan;
 
-	private String TAG = "[Password]";
+	private String TAG = "[UpdateProses]";
 	private ProgressDialog progressDialog;
 	private PopupMessege popupMessege = new PopupMessege();
 	private List<EditText> lstInput = new ArrayList<>();
@@ -198,28 +198,36 @@ public class UpdateProses extends Dialog
 
 		View v = rvPotongan.getLayoutManager().findViewByPosition(timbangadapter.getItemCount() - 1);
 		EditText etProses = null;
+		boolean bInput = true;
 
-		if(FormAsal == 2)
+		if((FormAsal == 2) || (FormAsal == 3))
 		{
-			etProses = v.findViewById(R.id.etNilaiPotongan);
-			lstMsg.add(context.getResources().getString(R.string.msgPotongan));
-		}
-		else
-		if(FormAsal == 3)
-		{
-			etProses = v.findViewById(R.id.etBeratNetto);
-			lstMsg.add(context.getResources().getString(R.string.msgTonaseNetto));
+			if(FormAsal == 2)
+			{
+				etProses = v.findViewById(R.id.etNilaiPotongan);
+				lstMsg.add(context.getResources().getString(R.string.msgPotongan));
+			}
+			else
+			if(FormAsal == 3)
+			{
+				etProses = v.findViewById(R.id.etBeratNetto);
+				lstMsg.add(context.getResources().getString(R.string.msgTonaseNetto));
+			}
+
+			lstInput.add(etProses);
+			bInput = Fungsi.CekInput(lstInput, lstMsg, context);
 		}
 
-		lstInput.add(etProses);
-
-		if(Fungsi.CekInput(lstInput, lstMsg, context))
+		if(bInput)
 		{
 			if(FormAsal == 2)
 				progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu), context.getResources().getString(R.string.msgSimpanPotongan));
 			else
 			if(FormAsal == 3)
 				progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu), context.getResources().getString(R.string.msgSimpanTimbangNetto));
+			else
+			if(FormAsal == 6)
+				progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu), context.getResources().getString(R.string.msgSimpanBarangJual));
 
 			progressDialog.setCancelable(false);
 
@@ -236,14 +244,24 @@ public class UpdateProses extends Dialog
 
 			FormulirHolder formulirHolder = null;
 
-			if(FormAsal == 2)
+			if((FormAsal == 2) || (FormAsal == 6))
 			{
 				View vi = rvPotongan.getLayoutManager().findViewByPosition(timbangadapter.getItemCount() - 1);
 				Spinner spJenisPotong = vi.findViewById(R.id.spJenisPotong);
 				Spinner spKodeBarang = vi.findViewById(R.id.spKodeBarang);
 
-				timbangRsp.setPotongan(Integer.valueOf(etProses.getText().toString()));
-				timbangRsp.setJenispotongid(IsiPotongan.getInstance().getmPotongRsp().get(spJenisPotong.getSelectedItemPosition()).getId());
+				if(FormAsal == 2)
+				{
+					timbangRsp.setPotongan(Integer.valueOf(etProses.getText().toString()));
+					timbangRsp.setJenispotongid(IsiPotongan.getInstance().getmPotongRsp().get(spJenisPotong.getSelectedItemPosition()).getId());
+				}
+				else
+				if(FormAsal == 6)
+				{
+					timbangRsp.setPotongan(0);
+					timbangRsp.setJenispotongid(1);
+				}
+
 				timbangRsp.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spKodeBarang.getSelectedItemPosition()).getProductcode().trim());
 				formulirHolder = new FormulirHolder(null, timbangRsp);
 			}
@@ -277,7 +295,7 @@ public class UpdateProses extends Dialog
 			DataLink dataLink = Fungsi.BindingData();
 			Call<TimbangPojo> ReceivePojo = null;
 
-			if(FormAsal == 2)
+			if((FormAsal == 2) || (FormAsal == 6))
 				ReceivePojo = dataLink.PotonganService(formulirHolder);
 			else
 			if(FormAsal == 3)

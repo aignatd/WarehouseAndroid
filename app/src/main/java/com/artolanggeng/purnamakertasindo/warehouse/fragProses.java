@@ -117,6 +117,7 @@ public class fragProses extends Fragment implements FragMainLife
 		Proses proses = new Proses();
 		proses.setPermintaan(Permintaan);
 		proses.setPekerjaan(Pekerjaan);
+		proses.setJenistimbang(2);
 		proses.setTglRequest(df.format(calendar.getTime()));
 //		proses.setBisnisUnit("kbns");
 		proses.setUserid(Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID));

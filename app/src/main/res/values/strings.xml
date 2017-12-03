@@ -31,6 +31,7 @@
 	<string name="titleIPAddressPrinter">Pilih IP Address</string>
 	<string name="titleTimbangBesar">Timbang Besar</string>
 	<string name="titlePenjualan">Penjualan</string>
+	<string name="titleHistory">History</string>
 
 	<string name="HintInputHP">Username / email<font color='red'>*</font></string>
 	<string name="HintInputPass">Password<font color='red'>*</font></string>
@@ -107,6 +108,7 @@
 	<string name="msgKodeBarang">Kode barang belum ada</string>
 	<string name="msgDataWarehouse">Ambil data warehouse</string>
 	<string name="msgDataDevice">Simpan data device</string>
+	<string name="msgSimpanBarangJual">Simpan barang jual</string>
 
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>

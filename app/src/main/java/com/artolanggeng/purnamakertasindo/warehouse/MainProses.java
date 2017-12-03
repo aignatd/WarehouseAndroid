@@ -107,8 +107,8 @@ public class MainProses extends AppCompatActivity
 	}
 
 	@OnClick({R.id.ivBackIcon, R.id.ivMenu, R.id.ivPelanggan, R.id.tvPelanggan, R.id.llPelanggan, R.id.ivProses,
-		R.id.llProses, R.id.ivRiwayat, R.id.tvRiwayat, R.id.llRiwayat, R.id.tvMenuProses, R.id.llMenuProses,
-		R.id.ivMenuProses, R.id.rlMenuheader})
+						R.id.llProses, R.id.ivRiwayat, R.id.tvRiwayat, R.id.llRiwayat, R.id.tvMenuProses, R.id.llMenuProses,
+						R.id.ivMenuProses, R.id.rlMenuheader})
 	public void onViewClicked(View view)
 	{
 		switch(view.getId())

@@ -15,9 +15,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.adapter.History_Adp;
+import com.artolanggeng.purnamakertasindo.data.Proses;
 import com.artolanggeng.purnamakertasindo.data.User;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
-import com.artolanggeng.purnamakertasindo.sending.LoginHolder;
+import com.artolanggeng.purnamakertasindo.sending.HistoryHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
 import com.artolanggeng.purnamakertasindo.service.FragJualLife;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
@@ -81,10 +82,13 @@ public class fragHistoryJual extends Fragment implements FragJualLife
 		User user = new User();
 		user.setUserID(Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID));
 
-		LoginHolder loginHolder = new LoginHolder(user, null);
+		Proses proses = new Proses();
+		proses.setJenistimbang(3);
+
+		HistoryHolder historyHolder = new HistoryHolder(user, proses);
 		DataLink dataLink = Fungsi.BindingData();
 
-		final Call<ProsesPojo> ReceivePojo = dataLink.DataHistoryService(loginHolder);
+		final Call<ProsesPojo> ReceivePojo = dataLink.DataHistoryService(historyHolder);
 
 		ReceivePojo.enqueue(new Callback<ProsesPojo>()
 		{

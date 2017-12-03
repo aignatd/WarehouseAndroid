@@ -15,13 +15,10 @@ import android.support.v7.view.menu.MenuPopupHelper;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
-
+import android.widget.*;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.adapter.TimbanganKecil_Adp;
 import com.artolanggeng.purnamakertasindo.data.Customer;
@@ -44,20 +41,12 @@ import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
-import java.util.Locale;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by Heru Permana on 10/26/2017.
@@ -280,8 +269,8 @@ public class formKecil extends AppCompatActivity {
         Call<LoginPojo> ReceivePojo;
 
         IsiFormulir isiFormulir = new IsiFormulir();
-        isiFormulir.setPermintaan(1);
-        isiFormulir.setPekerjaan(2);
+        isiFormulir.setPermintaan(-1);
+        isiFormulir.setPekerjaan(-1);
         isiFormulir.setJumlahtimbang(intTimbang);
         Log.d(TAG, "UploadFormulir: " + intTimbang);
 

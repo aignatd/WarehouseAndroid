@@ -89,6 +89,7 @@ public class fragProsesJual extends Fragment implements FragJualLife
 		Proses proses = new Proses();
 		proses.setPermintaan(Permintaan);
 		proses.setPekerjaan(Pekerjaan);
+		proses.setJenistimbang(3);
 		proses.setTglRequest(df.format(calendar.getTime()));
 //		proses.setBisnisUnit("kbns");
 		proses.setUserid(Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID));
@@ -133,6 +134,16 @@ public class fragProsesJual extends Fragment implements FragJualLife
 	@Override
 	public void onResumeJualLife()
 	{
+		tvMenuProses = (TextView) ((MainJual) getActivity()).findViewById(R.id.tvMenuProses);
+		String MenuProses = tvMenuProses.getText().toString().trim();
 
+		if(MenuProses.matches(getResources().getString(R.string.titleSemua)))
+			AmbilDataPekerjaan(0, 0);
+		else
+		if(MenuProses.matches(getResources().getString(R.string.titleTimbang)))
+			AmbilDataPekerjaan(2, 2);
+		else
+		if(MenuProses.matches(getResources().getString(R.string.titleQuality)))
+			AmbilDataPekerjaan(1, 1);
 	}
 }

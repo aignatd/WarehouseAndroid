@@ -10,22 +10,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.adapter.History_Adapter_Kecil;
+import com.artolanggeng.purnamakertasindo.data.Proses;
 import com.artolanggeng.purnamakertasindo.data.User;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
-import com.artolanggeng.purnamakertasindo.sending.LoginHolder;
+import com.artolanggeng.purnamakertasindo.sending.HistoryHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
 import com.artolanggeng.purnamakertasindo.service.FragMainLife;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
-
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -68,9 +67,14 @@ public class fragmentRiwayat extends Fragment implements FragMainLife {
 
 //        user.setUserID(3);
 
-        LoginHolder loginHolder = new LoginHolder(user, null);
+        Proses proses = new Proses();
+        proses.setJenistimbang(1);
+
+        HistoryHolder historyHolder = new HistoryHolder(user, proses);
         DataLink dataLink = Fungsi.BindingData();
-        final Call<ProsesPojo> ReceivePojo = dataLink.DataHistoryService(loginHolder);
+
+        final Call<ProsesPojo> ReceivePojo = dataLink.DataHistoryService(historyHolder);
+
         ReceivePojo.enqueue(new Callback<ProsesPojo>() {
             @Override
             public void onResponse(Call<ProsesPojo> call, Response<ProsesPojo> response) {

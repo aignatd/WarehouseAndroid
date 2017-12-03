@@ -96,7 +96,8 @@ public class Proses_Adp extends BaseAdapter
 		holder.llSubmit.setVisibility(View.VISIBLE);
 		holder.tvStatusProses.setTag(position);
 
-		if((customerRsps.get(position).getPermintaan() == 1) && (customerRsps.get(position).getPekerjaan() == 2))
+		if((customerRsps.get(position).getPermintaan() == 1) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+			 (customerRsps.get(position).getPekerjaan() == 2)))
 		{
 			holder.tvProsesKasir.setText(context.getResources().getString(R.string.strPotongan));
 			holder.tvProsesQC.setText(context.getString(R.string.strProsesTimbang, "", ""));
@@ -105,7 +106,8 @@ public class Proses_Adp extends BaseAdapter
 			holder.rlheadatasproses.setBackgroundResource(R.drawable.up_two_rounded_squash);
 		}
 		else
-		if((customerRsps.get(position).getPermintaan() == 2) && (customerRsps.get(position).getPekerjaan() == 1))
+		if((customerRsps.get(position).getPermintaan() == 2) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+			 (customerRsps.get(position).getPekerjaan() == 2)))
 		{
 			holder.tvProsesKasir.setText(context.getResources().getString(R.string.strKasirBayar));
 			holder.tvProsesQC.setText(context.getResources().getString(R.string.strTimbangBaru));
@@ -116,47 +118,48 @@ public class Proses_Adp extends BaseAdapter
 
 		if(customerRsps.get(position).getJumlahtimbang() == 1)
 		{
-			if((customerRsps.get(position).getPermintaan() == 1) && (customerRsps.get(position).getPekerjaan() == 2))
-			{
+			if((customerRsps.get(position).getPermintaan() == 1) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+				 (customerRsps.get(position).getPekerjaan() == 2)))
 				holder.btnGaris1.setBackgroundResource(R.color.squash);
-				holder.btnGaris2.setBackgroundResource(R.color.whiteThree);
-				holder.btnGaris3.setBackgroundResource(R.color.whiteThree);
-			}
 			else
-			if((customerRsps.get(position).getPermintaan() == 2) && (customerRsps.get(position).getPekerjaan() == 1))
-			{
+			if((customerRsps.get(position).getPermintaan() == 2) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+				 (customerRsps.get(position).getPekerjaan() == 2)))
 				holder.btnGaris1.setBackgroundResource(R.color.appleGreen);
-				holder.btnGaris2.setBackgroundResource(R.color.whiteThree);
-				holder.btnGaris3.setBackgroundResource(R.color.whiteThree);
-			}
+
+			holder.btnGaris2.setBackgroundResource(R.color.whiteThree);
+			holder.btnGaris3.setBackgroundResource(R.color.whiteThree);
 		}
 		else
 		if(customerRsps.get(position).getJumlahtimbang() == 2)
 		{
-			if((customerRsps.get(position).getPermintaan() == 1) && (customerRsps.get(position).getPekerjaan() == 2))
+			if((customerRsps.get(position).getPermintaan() == 1) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+				(customerRsps.get(position).getPekerjaan() == 2)))
 			{
 				holder.btnGaris1.setBackgroundResource(R.color.squash);
 				holder.btnGaris2.setBackgroundResource(R.color.squash);
-				holder.btnGaris3.setBackgroundResource(R.color.whiteThree);
 			}
 			else
-			if((customerRsps.get(position).getPermintaan() == 2) && (customerRsps.get(position).getPekerjaan() == 1))
+			if((customerRsps.get(position).getPermintaan() == 2) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+				(customerRsps.get(position).getPekerjaan() == 2)))
 			{
 				holder.btnGaris1.setBackgroundResource(R.color.appleGreen);
 				holder.btnGaris2.setBackgroundResource(R.color.appleGreen);
-				holder.btnGaris3.setBackgroundResource(R.color.whiteThree);
 			}
+
+			holder.btnGaris3.setBackgroundResource(R.color.whiteThree);
 		}
 		else if(customerRsps.get(position).getJumlahtimbang() == 3)
 		{
-			if((customerRsps.get(position).getPermintaan() == 1) && (customerRsps.get(position).getPekerjaan() == 2))
+			if((customerRsps.get(position).getPermintaan() == 1) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+				(customerRsps.get(position).getPekerjaan() == 2)))
 			{
 				holder.btnGaris1.setBackgroundResource(R.color.squash);
 				holder.btnGaris2.setBackgroundResource(R.color.squash);
 				holder.btnGaris3.setBackgroundResource(R.color.squash);
 			}
 			else
-			if((customerRsps.get(position).getPermintaan() == 2) && (customerRsps.get(position).getPekerjaan() == 1))
+			if((customerRsps.get(position).getPermintaan() == 2) && ((customerRsps.get(position).getPekerjaan() == 1) ||
+				(customerRsps.get(position).getPekerjaan() == 2)))
 			{
 				holder.btnGaris1.setBackgroundResource(R.color.appleGreen);
 				holder.btnGaris2.setBackgroundResource(R.color.appleGreen);
@@ -220,7 +223,13 @@ public class Proses_Adp extends BaseAdapter
 
 					if(tvProsesKasir.getText().equals(context.getResources().getString(R.string.strPotongan)))
 					{
-						UpdateProses updateProses = new UpdateProses(activity, intPekerjaanID, 2, "");
+						UpdateProses updateProses;
+
+						if(customerRsps.get(intTag).getJenistimbang() == 3)
+							updateProses = new UpdateProses(activity, intPekerjaanID, 6, "");
+						else
+							updateProses = new UpdateProses(activity, intPekerjaanID, 2, "");
+
 						updateProses.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 						updateProses.show();
 					}
@@ -320,10 +329,16 @@ public class Proses_Adp extends BaseAdapter
 		IsiFormulir isiFormulir = new IsiFormulir();
 		isiFormulir.setId(customerRsps.get(intTag).getId());
 
-		if((customerRsps.get(intTag).getPermintaan() == 1) && (customerRsps.get(intTag).getPekerjaan() == 2))
+		if((customerRsps.get(intTag).getPermintaan() == 1) && ((customerRsps.get(intTag).getPekerjaan() == 1) ||
+			(customerRsps.get(intTag).getPekerjaan() == 2)))
 		{
 			isiFormulir.setPermintaan(2);
-			isiFormulir.setPekerjaan(1);
+
+			if(customerRsps.get(intTag).getPekerjaan() == 1)
+				isiFormulir.setPekerjaan(2);
+			else
+			if(customerRsps.get(intTag).getPekerjaan() == 2)
+				isiFormulir.setPekerjaan(1);
 		}
 
 		FormulirHolder formulirHolder = new FormulirHolder(isiFormulir, null);
@@ -345,8 +360,19 @@ public class Proses_Adp extends BaseAdapter
 					else
 					{
 						Fungsi.storeToSharedPref(context, 0, Preference.prefUpdateProses);
-						customerRsps.get(intTag).setPermintaan(2);
-						customerRsps.get(intTag).setPekerjaan(1);
+
+						if((customerRsps.get(intTag).getPermintaan() == 1) && ((customerRsps.get(intTag).getPekerjaan() == 1) ||
+							(customerRsps.get(intTag).getPekerjaan() == 2)))
+						{
+							customerRsps.get(intTag).setPermintaan(2);
+
+							if(customerRsps.get(intTag).getPekerjaan() == 1)
+								customerRsps.get(intTag).setPekerjaan(2);
+							else
+							if(customerRsps.get(intTag).getPekerjaan() == 2)
+								customerRsps.get(intTag).setPekerjaan(1);
+						}
+
 						notifyDataSetChanged();
 					}
 				}
@@ -365,8 +391,11 @@ public class Proses_Adp extends BaseAdapter
 
 	private void BayarAtauTimbangBaru(final String strProses, Integer intPekerjaanID, final int intPosView)
 	{
-		UpdateProses updateProses;
-		updateProses = new UpdateProses(activity, intPekerjaanID, 3, strProses);
+		UpdateProses updateProses = new UpdateProses(activity, intPekerjaanID, 3, strProses);
+
+		if(customerRsps.get(intPosView).getJenistimbang() == 3)
+			updateProses = new UpdateProses(activity, intPekerjaanID, 5, strProses);
+
 		updateProses.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 		updateProses.show();
 		updateProses.setOnDismissListener(new DialogInterface.OnDismissListener()
@@ -382,7 +411,12 @@ public class Proses_Adp extends BaseAdapter
 					if(strProses.matches(context.getString(R.string.strTimbangBaru)))
 					{
 						customerRsps.get(intPosView).setPermintaan(1);
-						customerRsps.get(intPosView).setPekerjaan(2);
+
+						if(customerRsps.get(intPosView).getJenistimbang() == 3)
+							customerRsps.get(intPosView).setPekerjaan(1);
+						else
+							customerRsps.get(intPosView).setPekerjaan(2);
+
 						customerRsps.get(intPosView).setJumlahtimbang(customerRsps.get(intPosView).getJumlahtimbang() + 1);
 					}
 

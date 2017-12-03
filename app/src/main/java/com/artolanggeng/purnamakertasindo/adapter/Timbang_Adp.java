@@ -86,7 +86,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 
 		if(((lstTimbang.size() - 1) == position) && (FormAsal != 4))
 		{
-			if(FormAsal == 1)
+			if((FormAsal == 1) || (FormAsal == 5))
 			{
 				holder.tvKodeBarang.setVisibility(View.GONE);
 				holder.rlKodeBarang.setVisibility(View.GONE);
@@ -99,10 +99,9 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 				holder.etBeratBruto.setBackgroundColor(Color.TRANSPARENT);
 			}
 			else
-			if((FormAsal == 2) || (FormAsal == 3))
+			if((FormAsal == 2) || (FormAsal == 3) || (FormAsal == 6))
 			{
 				holder.ivBeratBruto.setVisibility(View.GONE);
-				holder.etBeratBruto.setText(context.getString(R.string.titleBeratBruto, lstTimbang.get(position).getTonasebruto().toString()));
 				holder.etBeratBruto.setFocusable(false);
 				holder.etBeratBruto.setEnabled(false);
 				holder.etBeratBruto.setCursorVisible(false);
@@ -112,39 +111,51 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 				holder.tvKodeBarang.setVisibility(View.VISIBLE);
 				holder.tvKodeBarang.setText(context.getString(R.string.titleKodeBarang, lstTimbang.get(position).getProductcode()));
 
-				if(FormAsal == 2)
+				if((FormAsal == 2) || (FormAsal == 6))
 				{
+					String[] items;
+					ArrayList<String> lst;
+
 					holder.rlKodeBarang.setVisibility(View.VISIBLE);
 					holder.tvKodeBarang.setVisibility(View.GONE);
 					holder.tvJenisPotong.setVisibility(View.GONE);
 					holder.rlJenisPotong.setVisibility(View.VISIBLE);
 
-					holder.llNilaiPotongan.setVisibility(View.VISIBLE);
-					holder.etNilaiPotongan.setText(lstTimbang.get(position).getPotongan().toString());
+					if(FormAsal == 6)
+					{
+						holder.etBeratBruto.setText(context.getString(R.string.titleBeratNetto, lstTimbang.get(position).getTonasenetto().toString()));
+						holder.llNilaiPotongan.setVisibility(View.GONE);
+					}
+					else
+					{
+						holder.etBeratBruto.setText(context.getString(R.string.titleBeratBruto, lstTimbang.get(position).getTonasebruto().toString()));
+						holder.llNilaiPotongan.setVisibility(View.VISIBLE);
+						holder.etNilaiPotongan.setText(lstTimbang.get(position).getPotongan().toString());
 
-					String[] items = new String[productRsps.size()];
+						items = new String[potongRsps.size()];
+
+						for(int i = 0; i < potongRsps.size(); i++)
+						{
+							items[i] = potongRsps.get(i).getDisplay().trim() + "      ";
+						}
+
+						lst = new ArrayList<>(Arrays.asList(items));
+						dataAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item, lst);
+						dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						holder.spJenisPotong.setAdapter(dataAdapter);
+					}
+
+					items = new String[productRsps.size()];
 
 					for(int i = 0; i < productRsps.size(); i++)
 					{
 						items[i] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + " / " + productRsps.get(i).getProductname().trim();
 					}
 
-					ArrayList<String> lst = new ArrayList<>(Arrays.asList(items));
-					dataAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item, lst);
-					dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-					holder.spKodeBarang.setAdapter(dataAdapter);
-
-					items = new String[potongRsps.size()];
-
-					for(int i = 0; i < potongRsps.size(); i++)
-					{
-						items[i] = potongRsps.get(i).getDisplay().trim() + "      ";
-					}
-
 					lst = new ArrayList<>(Arrays.asList(items));
 					dataAdapter = new ArrayAdapter<>(activity, android.R.layout.simple_spinner_item, lst);
 					dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-					holder.spJenisPotong.setAdapter(dataAdapter);
+					holder.spKodeBarang.setAdapter(dataAdapter);
 				}
 				else
 				if(FormAsal == 3)
@@ -301,13 +312,21 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 							if(viewID == R.id.ivBeratBruto)
 							{
 								lstTimbang.get(intTag).setTonasebruto(Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
-								etBeratBruto.setText(context.getString(R.string.titleBeratBruto, response.body().getTimbanganRsp().getTimbangan()));
+
+								if((FormAsal == 5) || (FormAsal == 6))
+									etBeratBruto.setText(context.getString(R.string.titleBeratNetto, response.body().getTimbanganRsp().getTimbangan()));
+								else
+									etBeratBruto.setText(context.getString(R.string.titleBeratBruto, response.body().getTimbanganRsp().getTimbangan()));
 							}
 							else
 							if(viewID == R.id.ivBeratNetto)
 							{
 								lstTimbang.get(intTag).setTonasenetto(Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
-								etBeratNetto.setText(context.getString(R.string.titleBeratNetto, response.body().getTimbanganRsp().getTimbangan()));
+
+								if((FormAsal == 5) || (FormAsal == 6))
+									etBeratNetto.setText(context.getString(R.string.titleBeratBruto, response.body().getTimbanganRsp().getTimbangan()));
+								else
+									etBeratNetto.setText(context.getString(R.string.titleBeratNetto, response.body().getTimbanganRsp().getTimbangan()));
 							}
 						}
 					}

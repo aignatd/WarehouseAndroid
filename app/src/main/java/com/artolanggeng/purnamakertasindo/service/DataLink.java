@@ -38,7 +38,8 @@ import retrofit2.http.Part;
  * Tanggal : 26-Nov-16
  * HP/WA : 0857 7070 6 777
  */
-public interface  DataLink {
+public interface  DataLink
+{
   @POST(FixValue.RestfulLogin)
   Call<LoginPojo> LoginService(@Body LoginHolder loginHolder);
 
@@ -82,9 +83,10 @@ public interface  DataLink {
   Call<TimbangPojo> TimbangNettoService(@Body FormulirHolder formulirHolder);
 
   @POST(FixValue.RestfulHistory)
-  Call<ProsesPojo> DataHistoryService(@Body LoginHolder loginHolder);
+  Call<ProsesPojo> DataHistoryService(@Body HistoryHolder historyHolder);
 
-  Call<CustomerPojo> DetailHistoryService(FormulirHolder formulirHolder);
+  @POST(FixValue.RestfulDetailHistory)
+  Call<CustomerPojo> DetailHistoryService(@Body FormulirHolder formulirHolder);
 
   @POST(FixValue.Restfulproduct)
   Call<LoginPojo> DataProductService(@Body FormulirHolder formulirHolder);

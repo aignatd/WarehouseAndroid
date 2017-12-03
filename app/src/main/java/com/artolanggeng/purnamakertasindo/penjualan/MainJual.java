@@ -104,11 +104,26 @@ public class MainJual extends AppCompatActivity
 		BackActivity();
 	}
 
-	@OnClick({R.id.ivBackIcon})
+	@OnClick({R.id.ivBackIcon, R.id.ivPelanggan, R.id.tvPelanggan, R.id.llPelanggan, R.id.ivProses, R.id.llProses,
+						R.id.ivRiwayat, R.id.tvRiwayat, R.id.llRiwayat})
 	public void onViewClicked(View view)
 	{
 		switch(view.getId())
 		{
+			case R.id.ivPelanggan:
+			case R.id.tvPelanggan:
+			case R.id.llPelanggan:
+				vpPenjualan.setCurrentItem(0);
+			break;
+			case R.id.ivProses:
+			case R.id.llProses:
+				vpPenjualan.setCurrentItem(1);
+			break;
+			case R.id.ivRiwayat:
+			case R.id.tvRiwayat:
+			case R.id.llRiwayat:
+				vpPenjualan.setCurrentItem(2);
+			break;
 			case R.id.ivBackIcon:
 				BackActivity();
 			break;

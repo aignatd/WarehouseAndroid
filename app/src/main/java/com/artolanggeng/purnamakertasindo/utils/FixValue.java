@@ -36,11 +36,12 @@ public class FixValue
 	//public static final String Hostname = "http://111.94.20.226:41014/api/v1/";
 
 	// Server Offline
-	public static final String Hostname = "http://192.168.212.41:41014/api/v1/";
+	public static final String Hostname = "http://192.168.212.50:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.1.21:41014/api/v1/";
 
 	// Server Timbangan
-	public static final String Hosttimbangan = "http://192.168.1.18:42024/api/v1/";
+	public static final String Hosttimbangan = "http://192.168.1.20:42024/api/v1/";
 
 	public static final int TimeoutConnection = 45000;
 	public static final String txtTitlePesan = "Informasi";
@@ -68,4 +69,5 @@ public class FixValue
 
 	public static final int TimbangKecil = 1;
 	public static final int TimbangBesar = 2;
+	public static final int TimbangJual = 3;
 }

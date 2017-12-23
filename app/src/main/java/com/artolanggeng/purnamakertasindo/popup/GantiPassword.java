@@ -78,7 +78,7 @@ public class GantiPassword extends Dialog
         lstInput.add(etPassLama);
         lstInput.add(etPassBaru);
         lstMsg.add(ParentAct.getResources().getString(R.string.msgPassLama));
-        lstMsg.add(ParentAct.getResources().getString(R.string.msgPassKosong));
+        lstMsg.add(ParentAct.getResources().getString(R.string.msgPassword));
 
         if(Fungsi.CekInput(lstInput, lstMsg, getContext()))
         {
@@ -119,7 +119,7 @@ public class GantiPassword extends Dialog
     user.setPasswordBaru(new String(Hex.encodeHex(DigestUtils.md5(etPassBaru.getText().toString().trim()))));
     user.setToken(Fungsi.getStringFromSharedPref(context, Preference.prefToken));
 
-    PasswordHolder passwordHolder = new PasswordHolder(user);
+    PasswordHolder passwordHolder = new PasswordHolder(user, null);
     DataLink dataLink = Fungsi.BindingData();
 
     final Call<LoginPojo> ReceivePojo = dataLink.PasswordService(passwordHolder);

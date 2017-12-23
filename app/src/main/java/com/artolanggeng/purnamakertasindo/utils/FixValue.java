@@ -11,6 +11,7 @@ public class FixValue
 	public static final String RestfulLogin = "users/login";
 	public static final String RestfulLogout = "users/logout";
 	public static final String RestfulPassword = "users/password";
+	public static final String RestfulDaftarUser = "users/daftaruser";
 	public static final String RestfulKartuBaru = "customers/kartubaru";
 	public static final String RestfulRequest = "customers/request";
 	public static final String RestfulFormulir = "formulirs/uploadbesar";
@@ -31,12 +32,12 @@ public class FixValue
 	public static final String RestfulAutoTimbang = "timbangan";
 
 	// Server Online
-	//public static final String Hostname = "http://artolanggeng.dyndns-server.com:41014/api/v1/";
+	public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";
 	//public static final String Hostname = "http://artolanggeng.dyndns-server.com:21012/api/v1/";
 	//public static final String Hostname = "http://111.94.20.226:41014/api/v1/";
 
 	// Server Offline
-	public static final String Hostname = "http://192.168.212.50:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.212.50:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.137.1:41014/api/v1/";
 

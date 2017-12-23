@@ -17,7 +17,7 @@ import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.data.Device;
 import com.artolanggeng.purnamakertasindo.model.WarehouseRsp;
 import com.artolanggeng.purnamakertasindo.pojo.WarehousePojo;
-import com.artolanggeng.purnamakertasindo.sending.DeviceHolder;
+import com.artolanggeng.purnamakertasindo.sending.PasswordHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
@@ -121,9 +121,9 @@ public class DaftarDevice extends Dialog
 		device.setTipe(Fungsi.DeviceTipe(context));
 		device.setBusinessunit(warehouseRsps.get(spDataWarehouse.getSelectedItemPosition()).getId());
 
-		DeviceHolder deviceHolder = new DeviceHolder(device);
+		PasswordHolder passwordHolder = new PasswordHolder(null, device);
 		DataLink dataLink = Fungsi.BindingData();
-		final Call<WarehousePojo> ReceivePojo = dataLink.DataDeviceService(deviceHolder);
+		final Call<WarehousePojo> ReceivePojo = dataLink.DataDeviceService(passwordHolder);
 
 		ReceivePojo.enqueue(new Callback<WarehousePojo>()
 		{

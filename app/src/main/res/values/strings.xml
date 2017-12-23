@@ -33,6 +33,7 @@
 	<string name="titlePenjualan">Penjualan</string>
 	<string name="titleHistory">History</string>
 
+	<string name="HintInputFullName">Nama Lengkap<font color='red'>*</font></string>
 	<string name="HintInputHP">Username / email<font color='red'>*</font></string>
 	<string name="HintInputPass">Password<font color='red'>*</font></string>
 	<string name="HintVerPass">Ulangi Password<font color='red'>*</font></string>
@@ -63,10 +64,11 @@
 	<string name="HintJenisDevice">Jenis Device</string>
 
 	<string name="msgHarapTunggu">Harap tunggu</string>
+	<string name="msgNamaLengkap">Masukan nama lengkap</string>
 	<string name="msgUsername">Masukan username</string>
 	<string name="msgPassword">Masukan password</string>
 	<string name="msgPassLama">Masukan password lama</string>
-	<string name="msgPassKosong">Masukan password</string>
+	<string name="msgVerPassword">Masukan verifikasi</string>
 	<string name="msgPassBeda">Password dan Verifikasi berbeda</string>
 	<string name="msgPassSama">Password lama dan baru sama</string>
 	<string name="msgProsesLogin">Proses login</string>
@@ -113,8 +115,6 @@
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>
 	<string name="msgOtorisasi">Otorisasi anda salah</string>
-=======
->>>>>>> 86c074b8f9d83a3246f5d746e79629c0495d8065
 
 	<string name="strBtnSelesai">Selesai</string>
 	<string name="strBtnOK">OK</string>
@@ -142,7 +142,7 @@
 	<string name="strArmadaInfo">Data seluruh armada yang anda miliki.</string>
 	<string name="strDriverInfo">Data seluruh driver yang anda miliki.</string>
 	<string name="strFooter1">Lupa username atau kata sandi ?</string>
-	<string name="strFooter2">Dapatkan bantuan masuk</string>
+	<string name="strFooter2">Bantuan masuk atau registrasi</string>
 	<string name="strHeadProses">Scan QR kartu pelanggan</string>
 	<string name="strFooterProses">Masukan nomor pelanggan</string>
 	<string name="strHeaderTimbangan">Selamat datang %s,\npilih opsi timbangan atau opsi lainnya</string>

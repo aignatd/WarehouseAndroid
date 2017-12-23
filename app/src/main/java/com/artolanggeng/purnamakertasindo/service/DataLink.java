@@ -92,7 +92,7 @@ public interface  DataLink
   Call<LoginPojo> DataProductService(@Body FormulirHolder formulirHolder);
 
   @POST(FixValue.RestfulDevice)
-  Call<WarehousePojo> DataDeviceService(@Body DeviceHolder deviceHolder);
+  Call<WarehousePojo> DataDeviceService(@Body PasswordHolder deviceHolder);
 
   @GET(FixValue.RestfulWarehouse)
   Call<WarehousePojo> DataWarehouseService();
@@ -104,5 +104,8 @@ public interface  DataLink
   @POST(FixValue.RestfulPhotoBarang)
   Call<LoginPojo> PhotoBarangService(@Part("PemasokID") RequestBody rbPemasokID, @Part("Warehouse") RequestBody rbWarehouse,
                                      @Part("PekerjaanID") RequestBody rbPekerjaanID, @Part MultipartBody.Part Photo);
+
+  @POST(FixValue.RestfulDaftarUser)
+  Call<WarehousePojo> DaftarUserService(@Body PasswordHolder deviceHolder);
 }
 

@@ -1,5 +1,6 @@
 package com.artolanggeng.purnamakertasindo.sending;
 
+import com.artolanggeng.purnamakertasindo.data.Device;
 import com.artolanggeng.purnamakertasindo.data.User;
 
 /**
@@ -10,9 +11,11 @@ import com.artolanggeng.purnamakertasindo.data.User;
 public class PasswordHolder
 {
   private User DataUser;
+  private Device DataDevice;
 
-  public PasswordHolder(User dataUser)
+  public PasswordHolder(User dataUser, Device dataDevice)
   {
     DataUser = dataUser;
+    DataDevice = dataDevice;
   }
 }

@@ -8,10 +8,10 @@ package com.artolanggeng.purnamakertasindo.data;
 public class User
 {
   private Integer UserID;
-  private String Username;
+  private String username;
   private String Phone;
-  private String Name;
-  private String Password;
+  private String name;
+  private String password;
   private String PasswordBaru;
   private String Token;
 
@@ -27,12 +27,12 @@ public class User
 
   public String getUsername()
   {
-    return Username;
+    return username;
   }
 
   public void setUsername(String username)
   {
-    Username = username;
+    this.username = username;
   }
 
   public String getPhone()
@@ -47,32 +47,22 @@ public class User
 
   public String getName()
   {
-    return Name;
+    return name;
   }
 
   public void setName(String name)
   {
-    Name = name;
+    this.name = name;
   }
 
   public String getPassword()
   {
-    return Password;
+    return password;
   }
 
   public void setPassword(String password)
   {
-    Password = password;
-  }
-
-  public String getToken()
-  {
-    return Token;
-  }
-
-  public void setToken(String token)
-  {
-    Token = token;
+    this.password = password;
   }
 
   public String getPasswordBaru()
@@ -83,5 +73,15 @@ public class User
   public void setPasswordBaru(String passwordBaru)
   {
     PasswordBaru = passwordBaru;
+  }
+
+  public String getToken()
+  {
+    return Token;
+  }
+
+  public void setToken(String token)
+  {
+    Token = token;
   }
 }

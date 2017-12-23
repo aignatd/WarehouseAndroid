@@ -2,10 +2,12 @@ package com.artolanggeng.purnamakertasindo.common;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -30,6 +32,8 @@ public class Login extends AppCompatActivity
   EditText etUsername;
   @BindView(R.id.etPass)
   EditText etPass;
+  @BindView(R.id.tvDaftarLogin)
+  TextView tvDaftarLogin;
 
   static String TAG = "[Login]";
   private Context context = this;
@@ -48,13 +52,18 @@ public class Login extends AppCompatActivity
     ButterKnife.bind(this);
   }
 
-  @OnClick({R.id.btnLogin})
+  @OnClick({R.id.btnLogin, R.id.tvDaftarLogin})
   public void onViewClicked(View view)
   {
     switch(view.getId())
     {
       case R.id.btnLogin:
         LoginUser();
+      break;
+      case R.id.tvDaftarLogin:
+        Intent BuatAkunIntent = new Intent(Login.this, BuatAkun.class);
+        startActivity(BuatAkunIntent);
+        finish();
       break;
     }
   }

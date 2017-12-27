@@ -97,7 +97,7 @@ public class FormBesar extends AppCompatActivity
 	private MenuBuilder menuBuilder;
 	private MenuPopupHelper menuHelper;
 
-	private SimpleDateFormat df;
+	private SimpleDateFormat df, datePrint, timePrint;
 	private Calendar calendar;
 	private Timbang_Adp formadapter;
 
@@ -130,7 +130,6 @@ public class FormBesar extends AppCompatActivity
 			tvHeader.setText(getResources().getString(R.string.titleHistory));
 			ivMenuFormulir.setVisibility(View.GONE);
 		}
-
 
 		tvKodePemasok.setText(KodePemasok);
 		tvProsesQC.setText(context.getString(R.string.strProsesQC, "", ""));
@@ -169,6 +168,9 @@ public class FormBesar extends AppCompatActivity
 
 		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 		rvListProses.setLayoutManager(layoutManager);
+
+		datePrint = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+		timePrint = new SimpleDateFormat("HH:mm:ss", Locale.US);
 	}
 
 	private void AmbilInfoPemasok(String PemasokID)
@@ -309,17 +311,20 @@ public class FormBesar extends AppCompatActivity
 			timbangRsp.setNourut(intTimbang);
 			timbangRsp.setTanggal(tvTglTimbang.getText().toString());
 
+			String strBerat = etBeratBruto.getText().toString().substring(12);
+			strBerat = strBerat.substring(0, strBerat.length() - 3);
+
 			if(Jual.matches("Jual"))
 			{
 				isiFormulir.setPermintaan(1);
 				isiFormulir.setPekerjaan(1);
-				timbangRsp.setTonasenetto(Integer.valueOf(etBeratBruto.getText().toString()));
+				timbangRsp.setTonasenetto(Integer.valueOf(strBerat.trim()));
 			}
 			else
 			{
 				isiFormulir.setPermintaan(1);
 				isiFormulir.setPekerjaan(2);
-				timbangRsp.setTonasebruto(Integer.valueOf(etBeratBruto.getText().toString()));
+				timbangRsp.setTonasebruto(Integer.valueOf(strBerat.trim()));
 			}
 
 			formulirHolder = new FormulirHolder(isiFormulir, timbangRsp);
@@ -663,7 +668,12 @@ public class FormBesar extends AppCompatActivity
 
 		list.add(("#" + printerRsp.getPemasokid() + "\r\n").getBytes());
 		list.add(("Antrian : " + printerRsp.getPekerjaanid().toString()  + "\r\n").getBytes());
-		list.add("\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n".getBytes());
+
+		list.add(("Tanggal : " + datePrint.format(calendar.getTime()) + "\r\n").getBytes());
+		list.add(("Jam : " + timePrint.format(calendar.getTime())  + "\r\n").getBytes());
+
+		list.add("\r\n\r\n\r\n\r\n".getBytes());
+		list.add(new byte[] { 0x1b, 0x64, 0x02 }); // Feed to cutter position
 
 		progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
 			context.getResources().getString(R.string.msgAmbilProduct));

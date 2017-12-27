@@ -49,7 +49,7 @@
 					android:paddingBottom="3dp"
 					android:inputType="number"
 					android:layout_gravity="center_vertical"
-					android:text="20"/>
+					android:text="Berat Bruto 0 Kg"/>
 
 				<ImageView
 					android:id="@+id/ivBeratBruto"
@@ -60,7 +60,7 @@
 
 			<TextView
 				android:id="@+id/tvTglTimbang"
-				android:text="2017-09-97 23:05:00"
+				android:text=""
 				style="@style/DetailTimbangan"
 				android:background="@color/tw__transparent"
 				android:paddingLeft="5dp"
@@ -176,7 +176,7 @@
 					android:paddingBottom="3dp"
 					android:inputType="number"
 					android:layout_gravity="center_vertical"
-					android:text="37"/>
+					android:text="Berat Netto 0 Kg"/>
 
 				<ImageView
 					android:id="@+id/ivBeratNetto"

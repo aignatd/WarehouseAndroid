@@ -42,7 +42,7 @@ public class FixValue
 	//public static final String Hostname = "http://192.168.137.1:41014/api/v1/";
 
 	// Server Timbangan
-	public static final String Hosttimbangan = "http://192.168.1.20:42024/api/v1/";
+	public static final String Hosttimbangan = "http://192.168.1.13:42024/api/v1/";
 
 	public static final int TimeoutConnection = 45000;
 	public static final String txtTitlePesan = "Informasi";

@@ -96,9 +96,6 @@ public class UpdateProses extends Dialog
 			case R.id.btnInputPotong:
 				String strPesan = context.getString(R.string.msgProsesPotong);
 
-				if((FormAsal == 3) || (FormAsal == 5))
-					strPesan = context.getString(R.string.msgProsesBayar);
-
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
 				builder
 					.setTitle(R.string.titleMessege)
@@ -268,7 +265,9 @@ public class UpdateProses extends Dialog
 			else
 			if(FormAsal == 3)
 			{
-				timbangRsp.setTonasenetto(Integer.valueOf(etProses.getText().toString()));
+				String strBerat = etProses.getText().toString().substring(11);
+				strBerat = strBerat.substring(0, strBerat.length() - 3);
+				timbangRsp.setTonasenetto(Integer.valueOf(strBerat.trim()));
 
 				IsiFormulir isiFormulir = new IsiFormulir();
 				isiFormulir.setId(intPekerjaanID);

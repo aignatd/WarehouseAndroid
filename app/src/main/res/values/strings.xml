@@ -96,6 +96,7 @@
 	<string name="msgKodePemasok">Masukan kode pemasok</string>
 	<string name="msgPembayaran">Proses data pembayaran</string>
 	<string name="msgProsesBayar">Proses pembayaran ?</string>
+	<string name="msgTimbangBaru">Lakukan timbang baru ?</string>
 	<string name="msgProsesPotong">Input data perubahan ?</string>
 	<string name="msgTonaseBruto">Timbang bruto kosong</string>
 	<string name="msgTonaseNetto">Timbang netto kosong</string>

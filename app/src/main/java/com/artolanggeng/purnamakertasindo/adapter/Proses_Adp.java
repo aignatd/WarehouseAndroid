@@ -32,8 +32,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Dibuat oleh : ignat
@@ -48,6 +51,7 @@ public class Proses_Adp extends BaseAdapter
 	private Context context;
 	private List<CustomerRsp> customerRsps;
 	private Activity activity;
+	private Calendar calendar;
 
 	public Proses_Adp(Context context, List<CustomerRsp> customerRsps, Activity activity)
 	{
@@ -429,6 +433,9 @@ public class Proses_Adp extends BaseAdapter
 
 	private void ProsesPrint(final String Pemasokid, final Integer getPekerjaanid)
 	{
+		SimpleDateFormat datePrint = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+		SimpleDateFormat timePrint = new SimpleDateFormat("HH:mm:ss", Locale.US);
+
 		final String Printer = Fungsi.getStringFromSharedPref(context, Preference.prefPortName);
 
 		final ArrayList<byte[]> list = new ArrayList<>();
@@ -448,7 +455,13 @@ public class Proses_Adp extends BaseAdapter
 
 		list.add(("#" + Pemasokid + "\r\n").getBytes());
 		list.add(("Antrian : " + getPekerjaanid  + "\r\n").getBytes());
-		list.add("\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n".getBytes());
+
+		calendar = Calendar.getInstance();
+		list.add(("Tanggal : " + datePrint.format(calendar.getTime()) + "\r\n").getBytes());
+		list.add(("Jam : " + timePrint.format(calendar.getTime())  + "\r\n").getBytes());
+
+		list.add("\r\n\r\n\r\n\r\n".getBytes());
+		list.add(new byte[] { 0x1b, 0x64, 0x02 }); // Feed to cutter position
 
 		progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
 			context.getResources().getString(R.string.msgAmbilProduct));

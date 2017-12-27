@@ -84,9 +84,6 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 		else if(position == 2)
 			holder.ivNoTimbang.setBackgroundResource(R.drawable.timbang3);
 
-		Log.d(TAG, "onBindViewHolder: " + lstTimbang.size());
-		Log.d(TAG, "onBindViewHolder: " + FormAsal);
-
 		if(((lstTimbang.size() - 1) == position) && (FormAsal != 4))
 		{
 			if(FormAsal == 1)
@@ -171,6 +168,9 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 					holder.etNilaiPotongan.setKeyListener(null);
 					holder.etNilaiPotongan.setBackgroundColor(Color.TRANSPARENT);
 
+					if(FormAsal == 3)
+						holder.etBeratBruto.setText(context.getString(R.string.titleBeratNetto, lstTimbang.get(position).getTonasebruto().toString()));
+					else
 					if(FormAsal == 5)
 					{
 						holder.etBeratBruto.setText(context.getString(R.string.titleBeratNetto, lstTimbang.get(position).getTonasenetto().toString()));

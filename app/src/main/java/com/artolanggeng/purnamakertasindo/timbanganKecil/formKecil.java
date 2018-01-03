@@ -5,9 +5,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.view.SupportMenuInflater;
 import android.support.v7.view.menu.MenuBuilder;
@@ -16,11 +19,14 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.*;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.adapter.TimbanganKecil_Adp;
+import com.artolanggeng.purnamakertasindo.data.AutoTimbang;
 import com.artolanggeng.purnamakertasindo.data.Customer;
 import com.artolanggeng.purnamakertasindo.data.IsiFormulir;
 import com.artolanggeng.purnamakertasindo.data.IsiPemasok;
@@ -32,7 +38,9 @@ import com.artolanggeng.purnamakertasindo.model.TimbanganRspKecil;
 import com.artolanggeng.purnamakertasindo.pojo.CustomerPojo;
 import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
+import com.artolanggeng.purnamakertasindo.pojo.TimbangPojo;
 import com.artolanggeng.purnamakertasindo.popup.TambahArmada;
+import com.artolanggeng.purnamakertasindo.sending.AutoTimbangHolder;
 import com.artolanggeng.purnamakertasindo.sending.CustomerHolder;
 import com.artolanggeng.purnamakertasindo.sending.FormulirHolder;
 import com.artolanggeng.purnamakertasindo.sending.FormulirHolderKecil;
@@ -41,6 +49,8 @@ import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
+import com.google.gson.Gson;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -100,12 +110,12 @@ public class formKecil extends AppCompatActivity {
     EditText etBeratTimbanganKecil2;
     @BindView(R.id.etPotonganBarangKecil2)
     EditText etPotonganBarangKecil2;
-
     @BindView(R.id.ivAddDetail2)
     ImageView ivAddDetail2;
     @BindView(R.id.ivDeleteDetail2)
     ImageView ivDeleteDetail2;
-
+    @BindView(R.id.ivDeleteDetail3)
+    ImageView ivDeleteDetail3;
     @BindView(R.id.llInputDetailBarang3)
     LinearLayout llInputDetailBarang3;
     @BindView(R.id.spJenisBarang3)
@@ -115,12 +125,44 @@ public class formKecil extends AppCompatActivity {
     @BindView(R.id.etPotonganBarangKecil3)
     EditText etPotonganBarangKecil3;
 
-    @BindView(R.id.ivDeleteDetail3)
-    ImageView ivDeleteDetail;
     @BindView(R.id.llProsesKasir)
     LinearLayout llProsesKasir;
+
+    @BindView(R.id.btnAmbil)
+    RelativeLayout rlBtnAmbil;
+    @BindView(R.id.btnAmbil2)
+    RelativeLayout rlBtnAmbil2;
+    @BindView(R.id.btnAmbil3)
+    RelativeLayout rlBtnAmbil3;
+
+
+    @BindView(R.id.llEditText)
+    RelativeLayout llEditText;
+    @BindView(R.id.llEditText2)
+    RelativeLayout llEditText2;
+    @BindView(R.id.llEditText3)
+    RelativeLayout llEditText3;
+
+    @BindView(R.id.llSpiner)
+    RelativeLayout llSpiner;
+    @BindView(R.id.llSpiner2)
+    RelativeLayout llSpiner2;
+    @BindView(R.id.llSpiner3)
+    RelativeLayout llSpiner3;
+
+    @BindView(R.id.etJenisBarang)
+    EditText etJenisBarang;
+    @BindView(R.id.etJenisBarang2)
+    EditText etJenisBarang2;
+    @BindView(R.id.etJenisBarang3)
+    EditText etJenisBarang3;
+
+    @BindView(R.id.ivCamera)
+    ImageView ivCamera;
+    @BindView(R.id.ivPrinter)
+    ImageView ivPrinter;
+
     private PopupMessege pesan = new PopupMessege();
-    private ProgressDialog progressDialog;
     private String TAG = "[Formulir]";
     private Context context = this;
     private Activity activity = this;
@@ -129,7 +171,7 @@ public class formKecil extends AppCompatActivity {
     private List<TimbanganRspKecil> lstTimbangHolder = null;
 
     private TimbangRsp timbangRsp = new TimbangRsp();
-    private TimbanganRspKecil timbangRspKecil = new TimbanganRspKecil();
+//    private TimbanganRspKecil timbangRspKecil = new TimbanganRspKecil();
 
     private ArrayAdapter<String> dataAdapter;
     private ArrayAdapter<String> dataAdapter2;
@@ -149,7 +191,12 @@ public class formKecil extends AppCompatActivity {
     private Spinner spKodeBarang;
     private TextView tvTglTimbang;
     private int sizeLayout = 1;
-
+    private static final int CAMERA_REQUEST = 1888;
+    private ProgressDialog progressDialog;
+    private PopupMessege popupMessege = new PopupMessege();
+    String gsonHistory;
+    CustomerPojo customerPojo;
+    String KodePemasok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -161,8 +208,9 @@ public class formKecil extends AppCompatActivity {
         df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
 
         Bundle extras = getIntent().getExtras();
-        String KodePemasok = extras.getString("KodePemasok");
         intTimbang = extras.getInt("Timbang") + 1;
+        KodePemasok = extras.getString("KodePemasok");
+
 
         tvKodePemasok.setText(KodePemasok);
         spNoPolisi.setVisibility(View.VISIBLE);
@@ -222,7 +270,12 @@ public class formKecil extends AppCompatActivity {
                         }
 
                         lstTimbang = response.body().getTimbangrsp();
-                        TampilkanDataTimbangan();
+                        if (intTimbang == 1) {
+                            TampilkanDataTimbangan();
+                        } else {
+                            AmbilDataTimbangan(IsiPemasok.getInstance().getCustomerRsp().getId());
+
+                        }
                     }
                 } else {
 //                    rvListProses.setVisibility(View.GONE);
@@ -286,6 +339,7 @@ public class formKecil extends AppCompatActivity {
         lstTimbangHolder = new ArrayList<>();
         if (llInputDetailBarang.getVisibility() == View.VISIBLE) {
 //            timbangRsp = new TimbangRsp();
+            TimbanganRspKecil timbangRspKecil = new TimbanganRspKecil();
             timbangRspKecil.setNourut(1);
             timbangRspKecil.setTonasebruto(Integer.valueOf(etBeratTimbanganKecil.getText().toString()));
             timbangRspKecil.setTonasenetto(Integer.valueOf(etBeratTimbanganKecil.getText().toString()));
@@ -297,6 +351,7 @@ public class formKecil extends AppCompatActivity {
         }
 
         if (llInputDetailBarang2.getVisibility() == View.VISIBLE) {
+            TimbanganRspKecil timbangRspKecil = new TimbanganRspKecil();
             timbangRspKecil.setNourut(2);
             timbangRspKecil.setTonasebruto(Integer.valueOf(etBeratTimbanganKecil2.getText().toString()));
             timbangRspKecil.setTonasenetto(Integer.valueOf(etBeratTimbanganKecil2.getText().toString()));
@@ -309,12 +364,14 @@ public class formKecil extends AppCompatActivity {
         }
 
         if (llInputDetailBarang3.getVisibility() == View.VISIBLE) {
+            TimbanganRspKecil timbangRspKecil = new TimbanganRspKecil();
             timbangRspKecil.setNourut(3);
             timbangRspKecil.setTonasebruto(Integer.valueOf(etBeratTimbanganKecil3.getText().toString()));
             timbangRspKecil.setTonasenetto(Integer.valueOf(etBeratTimbanganKecil3.getText().toString()));
             timbangRspKecil.setTanggal(Fungsi.curentTime());
+            timbangRspKecil.setJenispotongid(1);
             timbangRspKecil.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang3.getSelectedItemPosition()).getProductcode().trim());
-            timbangRspKecil.setPotongan(Integer.valueOf(etPotonganBarangKecil2.getText().toString()));
+            timbangRspKecil.setPotongan(Integer.valueOf(etPotonganBarangKecil3.getText().toString()));
             lstTimbangHolder.add(timbangRspKecil);
 
         }
@@ -380,8 +437,7 @@ public class formKecil extends AppCompatActivity {
                     if (response.body().getCoreResponse().getKode() == FixValue.intError)
                         pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
                     else {
-                        lstTimbang = response.body().getTimbanganRsp();
-                        TampilkanDataTimbangan();
+                        TampilanDetailRiwayat(response.body());
                     }
                 } else
                     pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
@@ -393,6 +449,63 @@ public class formKecil extends AppCompatActivity {
                 pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));
             }
         });
+    }
+
+    private void TampilanDetailRiwayat(ProsesPojo body) {
+        llEditText.setVisibility(View.VISIBLE);
+        llEditText2.setVisibility(View.VISIBLE);
+        llEditText3.setVisibility(View.VISIBLE);
+
+        etPotonganBarangKecil.setEnabled(false);
+        etPotonganBarangKecil2.setEnabled(false);
+        etPotonganBarangKecil3.setEnabled(false);
+
+        llSpiner.setVisibility(View.GONE);
+        llSpiner2.setVisibility(View.GONE);
+        llSpiner3.setVisibility(View.GONE);
+
+        ivAddDetail2.setVisibility(View.GONE);
+        ivAddDetail.setVisibility(View.GONE);
+        ivDeleteDetail2.setVisibility(View.GONE);
+        ivDeleteDetail3.setVisibility(View.GONE);
+        rlBtnAmbil.setVisibility(View.GONE);
+        rlBtnAmbil2.setVisibility(View.GONE);
+        rlBtnAmbil3.setVisibility(View.GONE);
+        ivCamera.setVisibility(View.GONE);
+        ivPrinter.setVisibility(View.GONE);
+        llProsesKasir.setVisibility(View.INVISIBLE);
+        String a = body.getTimbanganRsp().get(0).getProductcode();
+        int b = body.getTimbanganRsp().get(0).getTonasenetto();
+        int c = body.getTimbanganRsp().get(0).getPotongan();
+
+        if (body.getTimbanganRsp().size() == 3) {
+            llInputDetailBarang2.setVisibility(View.VISIBLE);
+            llInputDetailBarang3.setVisibility(View.VISIBLE);
+        } else if (body.getTimbanganRsp().size() == 2) {
+            llInputDetailBarang2.setVisibility(View.VISIBLE);
+        }
+        etJenisBarang.setText(body.getTimbanganRsp().get(0).getProductcode());
+        etPotonganBarangKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getPotongan()));
+        etBeratTimbanganKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getTonasenetto()));
+
+        etJenisBarang2.setText(body.getTimbanganRsp().get(1).getProductcode());
+        etPotonganBarangKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getPotongan()));
+        etBeratTimbanganKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getTonasenetto()));
+
+
+        etJenisBarang3.setText(body.getTimbanganRsp().get(2).getProductcode());
+        etPotonganBarangKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getPotongan()));
+        etBeratTimbanganKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getTonasenetto()));
+
+//        if (body.getTimbanganRsp().size() == 1) {
+//        }
+//        etJenisBarang2.setText(body.getTimbanganRsp().get(1).getProductcode());
+//        etJenisBarang3.setText(body.getTimbanganRsp().get(2).getProductcode());
+//
+//
+//        etPotonganBarangKecil2.setText(body.getTimbanganRsp().get(1).getTonasebruto());
+//        etPotonganBarangKecil3.setText(body.getTimbanganRsp().get(2).getTonasebruto());
+
     }
 
     private void TampilkanDataTimbangan() {
@@ -449,11 +562,14 @@ public class formKecil extends AppCompatActivity {
         });
     }
 
-    @OnClick({R.id.ivBackFormulir, R.id.ivMenuFormulir, R.id.rlMenuFormulir, R.id.tvProsesKasir, R.id.llProsesKasir, R.id.ivAddDetail, R.id.ivAddDetail2, R.id.ivDeleteDetail2, R.id.ivDeleteDetail3})
+    @OnClick({R.id.ivCamera, R.id.ivBackFormulir, R.id.ivMenuFormulir, R.id.rlMenuFormulir, R.id.tvProsesKasir, R.id.llProsesKasir, R.id.ivAddDetail, R.id.ivAddDetail2, R.id.ivDeleteDetail2, R.id.ivDeleteDetail3, R.id.btnAmbil, R.id.btnAmbil2, R.id.btnAmbil3})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ivBackFormulir:
                 BackActivity();
+                break;
+            case R.id.ivCamera:
+                goToCamera();
                 break;
             case R.id.rlMenuFormulir:
             case R.id.ivMenuFormulir:
@@ -497,28 +613,107 @@ public class formKecil extends AppCompatActivity {
             case R.id.ivAddDetail:
                 llInputDetailBarang2.setVisibility(View.VISIBLE);
                 ivAddDetail.setVisibility(View.GONE);
+                rlBtnAmbil.setVisibility(View.GONE);
                 sizeLayout = sizeLayout + 1;
                 break;
             case R.id.ivAddDetail2:
                 llInputDetailBarang3.setVisibility(View.VISIBLE);
                 ivDeleteDetail2.setVisibility(View.GONE);
                 ivAddDetail2.setVisibility(View.GONE);
+                rlBtnAmbil2.setVisibility(View.GONE);
                 sizeLayout = sizeLayout + 1;
                 break;
             case R.id.ivDeleteDetail2:
                 llInputDetailBarang2.setVisibility(View.GONE);
                 ivAddDetail.setVisibility(View.VISIBLE);
                 sizeLayout = sizeLayout - 1;
-
+                rlBtnAmbil.setVisibility(View.VISIBLE);
                 break;
             case R.id.ivDeleteDetail3:
                 llInputDetailBarang3.setVisibility(View.GONE);
                 ivDeleteDetail2.setVisibility(View.VISIBLE);
                 ivAddDetail2.setVisibility(View.VISIBLE);
                 sizeLayout = sizeLayout - 1;
+                rlBtnAmbil2.setVisibility(View.VISIBLE);
 
+                break;
+            case R.id.btnAmbil:
+                ambilDataBeratTimbangan(etBeratTimbanganKecil);
+                break;
+            case R.id.btnAmbil2:
+                ambilDataBeratTimbangan(etBeratTimbanganKecil);
+
+                break;
+            case R.id.btnAmbil3:
+                ambilDataBeratTimbangan(etBeratTimbanganKecil);
                 break;
         }
     }
 
+
+    private void ambilDataBeratTimbangan(final EditText editTextLay) {
+
+        progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
+                context.getResources().getString(R.string.msgDataTimbang));
+        progressDialog.setCancelable(false);
+
+        if (Fungsi.isNetworkAvailable(context) == FixValue.TYPE_NONE) {
+            progressDialog.dismiss();
+            popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgKoneksiError));
+            return;
+        }
+
+        AutoTimbang autoTimbang = new AutoTimbang();
+        autoTimbang.setJenisTimbang(FixValue.TimbangKecil);
+        autoTimbang.setWarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
+
+        AutoTimbangHolder autoTimbangHolder = new AutoTimbangHolder(autoTimbang);
+        DataLink dataLink = Fungsi.BindingTimbangan();
+
+        final Call<TimbangPojo> ReceivePojo = dataLink.AutoTimbangService(autoTimbangHolder);
+
+        ReceivePojo.enqueue(new Callback<TimbangPojo>() {
+            @Override
+            public void onResponse(Call<TimbangPojo> call, Response<TimbangPojo> response) {
+                progressDialog.dismiss();
+
+                if (response.isSuccessful()) {
+                    if (response.body().getCoreResponse().getKode() == FixValue.intError)
+                        popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
+                    else {
+                        Log.d(TAG, "onResponse -> " + Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
+                        editTextLay.setText(response.body().getTimbanganRsp().getTimbangan());
+                    }
+                } else
+                    popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
+            }
+
+            @Override
+            public void onFailure(Call<TimbangPojo> call, Throwable t) {
+                progressDialog.dismiss();
+                popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));
+            }
+        });
+    }
+
+
+    private void goToCamera() {
+        Intent camereIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(camereIntent, CAMERA_REQUEST);
+    }
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == CAMERA_REQUEST) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+        }
+    }
+
+    private boolean isDeviceSupportCamera() {
+        if (getApplicationContext().getPackageManager().hasSystemFeature(
+                PackageManager.FEATURE_CAMERA)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

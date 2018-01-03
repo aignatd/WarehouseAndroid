@@ -18,6 +18,7 @@ import com.artolanggeng.purnamakertasindo.model.CustomerRsp;
 import com.artolanggeng.purnamakertasindo.pojo.CustomerPojo;
 import com.artolanggeng.purnamakertasindo.sending.FormulirHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
+import com.artolanggeng.purnamakertasindo.timbanganKecil.formKecil;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
@@ -137,7 +138,7 @@ public class History_Adapter_Kecil extends RecyclerView.Adapter<History_Adapter_
             @Override
             public void onResponse(Call<CustomerPojo> call, Response<CustomerPojo> response)
             {
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
 
                 if(response.isSuccessful())
                 {
@@ -148,10 +149,11 @@ public class History_Adapter_Kecil extends RecyclerView.Adapter<History_Adapter_
                         IsiPemasok.initIsiPemasok();
                         IsiPemasok.getInstance().setCustomerRsp(response.body().getCustomerrsp());
 
-                        Intent HistoryIntent = new Intent(activity, FormBesar.class);
+                        Intent HistoryIntent = new Intent(activity, formKecil.class);
                         HistoryIntent.putExtra("KodePemasok", pemasokid);
                         HistoryIntent.putExtra("Timbang", customerRsps.get(intTag).getJumlahtimbang());
                         HistoryIntent.putExtra("History", "History");
+                        HistoryIntent.putExtra("intentJump", "fragmentRiwayat");
                         context.startActivity(HistoryIntent);
                     }
                 }

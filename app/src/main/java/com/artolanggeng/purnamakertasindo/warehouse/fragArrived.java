@@ -18,6 +18,9 @@ import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.common.ScanQR;
 import com.artolanggeng.purnamakertasindo.popup.InputPemasok;
 import com.artolanggeng.purnamakertasindo.service.FragMainLife;
+import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
+import com.artolanggeng.purnamakertasindo.utils.Fungsi;
+import com.artolanggeng.purnamakertasindo.utils.Preference;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +64,7 @@ public class fragArrived extends Fragment implements FragMainLife
                 startActivity(ProgresIntent);
             break;
             case R.id.tvInputPelanggan:
+                Fungsi.storeToSharedPref(getContext(), 0, Preference.PrefInputNomorPelanggan);
                 InputPemasok inputPemasok = new InputPemasok(getActivity());
                 inputPemasok.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 inputPemasok.show();
@@ -69,8 +73,11 @@ public class fragArrived extends Fragment implements FragMainLife
                     @Override
                     public void onDismiss(DialogInterface dialogInterface)
                     {
-                        GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
-                        globalTimbang.ProsesPemasokManual(0, "", "");
+                        if(Fungsi.getIntFromSharedPref(getContext(), Preference.PrefInputNomorPelanggan) == 1)
+                        {
+                            GlobalTimbang globalTimbang=new GlobalTimbang(getContext(), getActivity());
+                            globalTimbang.ProsesPemasokManual(0, "", "", FormBesar.class);
+                        }
                     }
                 });
             break;

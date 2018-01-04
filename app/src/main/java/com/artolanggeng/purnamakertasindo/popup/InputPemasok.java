@@ -55,6 +55,7 @@ public class InputPemasok extends Dialog
 		switch(view.getId())
 		{
 			case R.id.btnBatalPemasok:
+				Fungsi.storeToSharedPref(context, 0, Preference.PrefInputNomorPelanggan);
 				cancel();
 			break;
 			case R.id.btnKirimPemasok:
@@ -65,6 +66,7 @@ public class InputPemasok extends Dialog
 
 				if(Fungsi.CekInput(lstInput, lstMsg, getContext()))
 				{
+					Fungsi.storeToSharedPref(context, 1, Preference.PrefInputNomorPelanggan);
 					Fungsi.storeToSharedPref(context, etInputPemasok.getText().toString(), Preference.PrefScanQR);
 					dismiss();
 				}

@@ -142,6 +142,11 @@
 			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
+		<activity
+			android:name=".common.UserProfile"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
+		</activity>
 	</application>
 
 </manifest>

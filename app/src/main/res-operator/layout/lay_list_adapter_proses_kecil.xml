@@ -23,12 +23,35 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/headatasproses"
+            <RelativeLayout
+                android:id="@+id/rlItemMenu"
                 android:layout_width="match_parent"
-                android:layout_height="10dp"
-                android:background="@drawable/up_two_rounded_green"
-                android:visibility="visible" />
+                android:layout_height="30dp"
+                android:background="@drawable/up_two_rounded_green">
+
+                <ImageView
+                    android:id="@+id/ivCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginTop="2dp"
+                    android:src="@drawable/camera"
+                    android:visibility="visible" />
+
+                <ImageView
+                    android:id="@+id/ivPrinter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="2dp"
+                    android:layout_marginRight="12dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toLeftOf="@id/ivCamera"
+                    android:src="@drawable/printer_tool"
+                    android:visibility="visible" />
+            </RelativeLayout>
+
 
             <LinearLayout
                 android:id="@+id/llDataProses"
@@ -36,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@id/headatasproses"
+                android:layout_below="@id/rlItemMenu"
                 android:layout_margin="8dp"
                 android:orientation="vertical">
 
@@ -243,94 +266,20 @@
                     android:layout_marginTop="3dp"
                     android:text="Jalan sehat selalu" />
             </LinearLayout>
-
-            <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/rvListProses"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_below="@id/llDataProses"-->
-            <!--android:background="@color/duckEggBlue99"-->
-            <!--android:padding="5dp"-->
-            <!--android:visibility="gone" />-->
-
-            <!--<LinearLayout-->
-            <!--android:id="@+id/llSubmit"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:layout_below="@id/rvListProses"-->
-            <!--android:background="@drawable/down_two_rounded_white"-->
-            <!--android:layout_marginRight="5dp"-->
-            <!--android:layout_marginLeft="5dp"-->
-            <!--android:visibility="gone">-->
-
-            <!--<LinearLayout-->
-            <!--android:id="@+id/llProsesKasir"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@color/colorPrimary"-->
-            <!--android:clickable="false">-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/tvProsesKasir"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:clickable="false"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/strKasirBayar"-->
-            <!--android:textColor="@color/duckEggBlue99"-->
-            <!--/>-->
-            <!--</LinearLayout>-->
-
-            <!--</LinearLayout>-->
-            <!--<LinearLayout-->
-            <!--android:id="@+id/llSubmit"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="30dp"-->
-            <!--android:layout_below="@id/rvListProses"-->
-            <!--android:background="@drawable/down_two_rounded_white"-->
-            <!--android:visibility="visible"-->
-            <!--android:weightSum="2">-->
-
-            <!--<LinearLayout-->
-            <!--android:id="@+id/llProsesKasir"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/down_left_one_rounded_silver"-->
-            <!--android:clickable="false">-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/tvProsesKasir"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:clickable="false"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/strKasirBayar"-->
-            <!--android:textColor="@color/colorPrimary" />-->
-            <!--</LinearLayout>-->
-
-            <!--<LinearLayout-->
-            <!--android:id="@+id/llProsesQC"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="match_parent"-->
-            <!--android:layout_weight="1"-->
-            <!--android:background="@drawable/down_right_one_rounded_ocean">-->
-
-            <!--<TextView-->
-            <!--android:id="@+id/tvProsesQC"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_gravity="center"-->
-            <!--android:gravity="center"-->
-            <!--android:text="@string/strProsesQC"-->
-            <!--android:textColor="@android:color/white" />-->
-            <!--</LinearLayout>-->
-            <!--</LinearLayout>-->
         </RelativeLayout>
     </android.support.v7.widget.CardView>
+
+    <ScrollView
+        android:id="@+id/svListShow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/cvProses"></ScrollView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">q
+
+    </RelativeLayout>
 
     <ScrollView
         android:id="@+id/svDetailinput"
@@ -390,39 +339,61 @@
                             android:background="@drawable/border_spinner"
                             android:orientation="horizontal">
 
-
-                            <Spinner
-                                android:id="@+id/spJenisBarang"
-                                android:layout_width="wrap_content"
+                            <RelativeLayout
+                                android:id="@+id/llEditText"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                android:background="@android:color/transparent"
-                                android:gravity="center"
-                                android:spinnerMode="dropdown" />
+                                android:visibility="gone">
+
+                                <EditText
+                                    android:id="@+id/etJenisBarang"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:textColor="@color/GrayUserInputHint"
+                                    android:textSize="@dimen/fontDetail" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/llSpiner"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <Spinner
+                                    android:id="@+id/spJenisBarang"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center"
+                                    android:spinnerMode="dropdown" />
 
 
-                            <ImageView
-                                android:id="@+id/downs"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginRight="3dp"
-                                android:background="@color/white"
-                                android:scaleX="0.6"
-                                android:scaleY="0.6"
-                                android:src="@drawable/downarrow_full" />
+                                <ImageView
+                                    android:id="@+id/downs"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="3dp"
+                                    android:background="@color/white"
+                                    android:scaleX="0.6"
+                                    android:scaleY="0.6"
+                                    android:src="@drawable/downarrow_full" />
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:layout_toLeftOf="@+id/downs"
-                                android:background="@color/whiteThree" />
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_toLeftOf="@+id/downs"
+                                    android:background="@color/whiteThree" />
+                            </RelativeLayout>
 
                         </RelativeLayout>
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -453,19 +424,37 @@
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:background="@drawable/border_spinner"
+                                android:enabled="false"
                                 android:inputType="number"
-                                android:text="1"
+                                android:text="@string/defaultEditText"
                                 android:textAlignment="center"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
 
                             <TextView
+                                android:id="@+id/textView"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="5dp"
                                 android:text="Kg"
                                 android:textSize="12dp" />
+
+                            <RelativeLayout
+                                android:id="@+id/btnAmbil"
+                                style="@style/DefaultButton"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:background="@color/gray6">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:text="@string/ambilTimbangan" />
+                            </RelativeLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -501,8 +490,6 @@
                                 android:layout_gravity="center"
                                 android:background="@drawable/border_spinner"
                                 android:inputType="number"
-                                android:text="1"
-
                                 android:textAlignment="center"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
@@ -581,37 +568,58 @@
                             android:background="@drawable/border_spinner"
                             android:orientation="horizontal">
 
-
-                            <Spinner
-                                android:id="@+id/spJenisBarang2"
-                                android:layout_width="wrap_content"
+                            <RelativeLayout
+                                android:id="@+id/llEditText2"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                android:background="@android:color/transparent"
-                                android:gravity="center"
-                                android:spinnerMode="dropdown" />
+                                android:visibility="gone">
+
+                                <EditText
+                                    android:id="@+id/etJenisBarang2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:textColor="@color/GrayUserInputHint"
+                                    android:textSize="@dimen/fontDetail" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/llSpiner2"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <Spinner
+                                    android:id="@+id/spJenisBarang2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center"
+                                    android:spinnerMode="dropdown" />
 
 
-                            <ImageView
-                                android:id="@+id/downs2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginRight="3dp"
-                                android:background="@color/white"
-                                android:scaleX="0.6"
-                                android:scaleY="0.6"
-                                android:src="@drawable/downarrow_full" />
+                                <ImageView
+                                    android:id="@+id/downs2"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="3dp"
+                                    android:background="@color/white"
+                                    android:scaleX="0.6"
+                                    android:scaleY="0.6"
+                                    android:src="@drawable/downarrow_full" />
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:layout_toLeftOf="@+id/downs2"
-                                android:background="@color/whiteThree" />
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_toLeftOf="@+id/downs2"
+                                    android:background="@color/whiteThree" />
+                            </RelativeLayout>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -643,8 +651,9 @@
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:background="@drawable/border_spinner"
+                                android:enabled="false"
                                 android:inputType="number"
-                                android:text="1"
+                                android:text="@string/defaultEditText"
                                 android:textAlignment="center"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
@@ -656,6 +665,22 @@
                                 android:layout_marginLeft="5dp"
                                 android:text="Kg"
                                 android:textSize="12dp" />
+
+                            <RelativeLayout
+                                android:id="@+id/btnAmbil2"
+                                style="@style/DefaultButton"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:background="@color/gray6">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:text="@string/ambilTimbangan" />
+                            </RelativeLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -689,7 +714,6 @@
                                 android:layout_marginRight="5dp"
                                 android:background="@drawable/border_spinner"
                                 android:inputType="number"
-                                android:text="1"
                                 android:textAlignment="center"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
@@ -767,37 +791,58 @@
                             android:background="@drawable/border_spinner"
                             android:orientation="horizontal">
 
-
-                            <Spinner
-                                android:id="@+id/spJenisBarang3"
-                                android:layout_width="wrap_content"
+                            <RelativeLayout
+                                android:id="@+id/llEditText3"
+                                android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginLeft="5dp"
-                                android:background="@android:color/transparent"
-                                android:gravity="center"
-                                android:spinnerMode="dropdown" />
+                                android:visibility="gone">
+
+                                <EditText
+                                    android:id="@+id/etJenisBarang3"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_marginLeft="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:textColor="@color/GrayUserInputHint"
+                                    android:textSize="@dimen/fontDetail" />
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:id="@+id/llSpiner3"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent">
+
+                                <Spinner
+                                    android:id="@+id/spJenisBarang3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginLeft="5dp"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="center"
+                                    android:spinnerMode="dropdown" />
 
 
-                            <ImageView
-                                android:id="@+id/downs3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_centerVertical="true"
-                                android:layout_gravity="center"
-                                android:layout_marginRight="3dp"
-                                android:background="@color/white"
-                                android:scaleX="0.6"
-                                android:scaleY="0.6"
-                                android:src="@drawable/downarrow_full" />
+                                <ImageView
+                                    android:id="@+id/downs3"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentRight="true"
+                                    android:layout_centerVertical="true"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="3dp"
+                                    android:background="@color/white"
+                                    android:scaleX="0.6"
+                                    android:scaleY="0.6"
+                                    android:src="@drawable/downarrow_full" />
 
-                            <View
-                                android:layout_width="1dp"
-                                android:layout_height="match_parent"
-                                android:layout_toLeftOf="@+id/downs3"
-                                android:background="@color/whiteThree" />
+                                <View
+                                    android:layout_width="1dp"
+                                    android:layout_height="match_parent"
+                                    android:layout_toLeftOf="@+id/downs3"
+                                    android:background="@color/whiteThree" />
+                            </RelativeLayout>
 
                         </RelativeLayout>
                     </LinearLayout>
@@ -829,8 +874,9 @@
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:background="@drawable/border_spinner"
+                                android:enabled="false"
                                 android:inputType="number"
-                                android:text="1"
+                                android:text="@string/defaultEditText"
                                 android:textAlignment="center"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
@@ -842,6 +888,21 @@
                                 android:layout_marginLeft="5dp"
                                 android:text="Kg"
                                 android:textSize="12dp" />
+
+                            <RelativeLayout
+                                android:id="@+id/btnAmbil3"
+                                style="@style/DefaultButton"
+                                android:layout_width="70dp"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="8dp"
+                                android:background="@color/gray6">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:text="@string/ambilTimbangan" />
+                            </RelativeLayout>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -875,7 +936,6 @@
                                 android:layout_marginRight="5dp"
                                 android:background="@drawable/border_spinner"
                                 android:inputType="number"
-                                android:text="1"
                                 android:textAlignment="center"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
@@ -902,14 +962,15 @@
                 </LinearLayout>
             </LinearLayout>
             //Button
+
             <LinearLayout
                 android:id="@+id/llProsesKasir"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
+                android:layout_marginTop="5dp"
                 android:background="@color/colorPrimary"
                 android:clickable="false">
 

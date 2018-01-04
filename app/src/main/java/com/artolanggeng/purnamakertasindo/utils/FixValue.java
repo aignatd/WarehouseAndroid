@@ -30,15 +30,17 @@ public class FixValue
 	public static final String RestfulDevice = "device/daftardevice";
 	public static final String RestfulPhotoBarang = "formulirs/photobarang";
 	public static final String RestfulAutoTimbang = "timbangan";
+	public static final String RestfulAmbilProfile = "users/ambilprofile";
+	public static final String RestfulUpdateProfile = "users/updateprofile";
 
 	// Server Online
-	public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";
+	//public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";
 	//public static final String Hostname = "http://artolanggeng.dyndns-server.com:21012/api/v1/";
 	//public static final String Hostname = "http://111.94.20.226:41014/api/v1/";
 
 	// Server Offline
 	//public static final String Hostname = "http://192.168.212.50:41014/api/v1/";
-	//public static final String Hostname = "http://192.168.212.60:41014/api/v1/";
+	public static final String Hostname = "http://192.168.43.249:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.137.1:41014/api/v1/";
 
 	// Server Timbangan

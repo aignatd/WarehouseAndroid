@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:tools="http://schemas.android.com/tools"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		android:id="@+id/lay_pemasok"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.artolanggeng.purnamakertasindo.common.Pemasok"
+		style="@style/DefaultActivity">
+
+	<RelativeLayout
+			android:layout_width="match_parent"
+			android:layout_height="50dp"
+			android:id="@+id/rlHeadPemasok">
+		<include layout="@layout/lay_headerutama"/>
+	</RelativeLayout>
+
+	<ScrollView
+			android:layout_below="@id/rlHeadPemasok"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true">
+
+		<RelativeLayout
+				android:layout_marginLeft="15dp"
+				android:layout_marginRight="15dp"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/user"
+					android:id="@+id/etProfile"
+					android:hint="@string/HintPemasok"
+					android:maxLength="25"
+					android:layout_marginTop="15dp"/>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/alamat"
+					android:layout_width="match_parent"
+					android:id="@+id/etAlamatProfile"
+					android:hint="@string/HintAlamatPemasok"
+					android:maxLines="3"
+					android:layout_below="@id/etProfile"
+					android:maxLength="75"
+					android:layout_marginTop="15dp"/>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/phones"
+					android:id="@+id/etHPProfile"
+					android:hint="@string/HintNoHPPemasok"
+					android:layout_below="@id/etAlamatProfile"
+					android:maxLength="25"
+					android:layout_marginTop="15dp"
+					android:inputType="phone"/>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:drawableLeft="@drawable/email"
+					android:id="@+id/etEmailProfile"
+					android:hint="@string/HintAlamatEmail"
+					android:layout_below="@id/etHPProfile"
+					android:maxLength="25"
+					android:layout_marginTop="15dp"
+					android:inputType="textEmailAddress"/>
+
+			<EditText
+				style="@style/UserInputUsername"
+				android:drawableLeft="@drawable/user"
+				android:id="@+id/etTmpProfile"
+				android:hint="@string/HintTmpProfile"
+				android:layout_below="@id/etEmailProfile"
+				android:maxLength="25"
+				android:layout_marginTop="15dp"/>
+
+			<EditText
+					style="@style/UserInputUsername"
+					android:id="@+id/etTglProfile"
+					android:hint="@string/HintTglPemasok"
+					android:layout_below="@id/etTmpProfile"
+					android:maxLength="25"
+					android:drawableLeft="@drawable/calendericon"
+					android:layout_marginTop="15dp"/>
+
+			<RadioGroup
+					android:id="@+id/rgSeks"
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_below="@id/etTglProfile"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="15dp"
+					android:weightSum="4">
+
+				<RadioButton
+						android:background="@android:color/white"
+						android:id="@+id/cbPria"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="@string/HintPria"
+						android:layout_marginRight="20dp"
+						android:layout_weight="2.2"
+						android:checked="true"/>
+
+				<RadioButton
+						android:background="@android:color/white"
+						android:id="@+id/cbWanita"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:text="@string/HintPerempuan"
+						android:layout_marginLeft="20dp"
+						android:layout_weight="2"/>
+			</RadioGroup>
+
+			<Button
+				style="@style/DefaultButton"
+				android:ems="10"
+				android:text="@string/strUpdateProfile"
+				android:id="@+id/btnUpdateProfile"
+				android:layout_centerHorizontal="true"
+				android:layout_below="@id/rgSeks"
+				android:layout_marginRight="17dip"
+				android:layout_marginLeft="17dip"
+				android:background="@drawable/rectroundorange"
+				android:layout_marginTop="35dp"/>
+		</RelativeLayout>
+	</ScrollView>
+
+</RelativeLayout>

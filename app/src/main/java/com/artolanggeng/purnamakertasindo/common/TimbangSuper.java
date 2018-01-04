@@ -125,6 +125,10 @@ public class TimbangSuper extends AppCompatActivity
 		    globalTimbang = new GlobalTimbang(context, activity);
 		    globalTimbang.ProsesJualBarang();
 		  break;
+	    case R.id.rlProfile:
+		    globalTimbang = new GlobalTimbang(context, activity);
+		    globalTimbang.ProsesUpdateProfile();
+	    break;
     }
   }
 

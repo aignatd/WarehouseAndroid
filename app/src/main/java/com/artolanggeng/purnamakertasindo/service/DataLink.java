@@ -16,11 +16,7 @@
 package com.artolanggeng.purnamakertasindo.service;
 
 
-import com.artolanggeng.purnamakertasindo.pojo.CustomerPojo;
-import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
-import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
-import com.artolanggeng.purnamakertasindo.pojo.TimbangPojo;
-import com.artolanggeng.purnamakertasindo.pojo.WarehousePojo;
+import com.artolanggeng.purnamakertasindo.pojo.*;
 import com.artolanggeng.purnamakertasindo.sending.*;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 
@@ -107,5 +103,11 @@ public interface  DataLink
 
   @POST(FixValue.RestfulDaftarUser)
   Call<WarehousePojo> DaftarUserService(@Body PasswordHolder deviceHolder);
+
+  @POST(FixValue.RestfulAmbilProfile)
+  Call<ProfilePojo> AmbilProfileService(@Body LoginHolder loginHolder);
+
+  @POST(FixValue.RestfulUpdateProfile)
+  Call<CustomerPojo> UpdateProfileService(@Body CustomerHolder customerHolder);
 }
 

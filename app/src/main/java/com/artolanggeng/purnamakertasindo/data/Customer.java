@@ -16,6 +16,7 @@ public class Customer
   private String noidentitas;
   private int identitasid;
   private String panggilan;
+  private String tmplahir;
   private String tgllahir;
   private String jeniskelamin;
   private String kodewarehouse;
@@ -110,6 +111,16 @@ public class Customer
   public void setPanggilan(String panggilan)
   {
     this.panggilan = panggilan;
+  }
+
+  public String getTmplahir()
+  {
+    return tmplahir;
+  }
+
+  public void setTmplahir(String tmplahir)
+  {
+    this.tmplahir=tmplahir;
   }
 
   public String getTgllahir()

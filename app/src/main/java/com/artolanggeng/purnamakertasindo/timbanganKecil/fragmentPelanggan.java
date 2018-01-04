@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.common.ScanQR;
 import com.artolanggeng.purnamakertasindo.popup.InputPemasok;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
@@ -52,17 +53,20 @@ public class fragmentPelanggan extends Fragment {
                 startActivity(ProgresIntent);
                 break;
             case R.id.tvInputPelanggan:
+                Fungsi.storeToSharedPref(getContext(), 0, Preference.PrefInputNomorPelanggan);
                 InputPemasok inputPemasok = new InputPemasok(getActivity());
                 inputPemasok.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 inputPemasok.show();
-                inputPemasok.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                inputPemasok.setOnDismissListener(new DialogInterface.OnDismissListener()
+                {
                     @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
-                        Intent PemasokManualIntent = new Intent(getActivity(), FormBesar.class);
-                        PemasokManualIntent.putExtra("KodePemasok", Fungsi.getStringFromSharedPref(getContext(), Preference.PrefScanQR));
-                        PemasokManualIntent.putExtra("Timbang", 0);
-                        getActivity().startActivity(PemasokManualIntent);
-                        getActivity().finish();
+                    public void onDismiss(DialogInterface dialogInterface)
+                    {
+                        if(Fungsi.getIntFromSharedPref(getContext(), Preference.PrefInputNomorPelanggan) == 1)
+                        {
+                            GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
+                            globalTimbang.ProsesPemasokManual(0, "", "", formKecil.class);
+                        }
                     }
                 });
                 break;

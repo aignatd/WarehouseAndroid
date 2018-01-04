@@ -31,4 +31,6 @@ public class Preference
   public static final String PrefQRJual = "PrefQRJual";
   public static final String PrefProsesJual = "PrefProsesJual";
   public static final String PrefHistoryJual = "PrefHistoryJual";
+
+  public static final String PrefInputNomorPelanggan = "PrefInputNomorPelanggan";
 }

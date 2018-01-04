@@ -32,6 +32,7 @@
 	<string name="titleTimbangBesar">Timbang Besar</string>
 	<string name="titlePenjualan">Penjualan</string>
 	<string name="titleHistory">History</string>
+	<string name="title_activity_test">Test</string>
 
 	<string name="HintInputFullName">Nama Lengkap<font color='red'>*</font></string>
 	<string name="HintInputHP">Username / email<font color='red'>*</font></string>
@@ -44,6 +45,7 @@
 	<string name="HintNoHPPemasok">Nomor handphone<font color='red'>*</font></string>
 	<string name="HintNamaPerusahaan">Nama perusahaan</string>
 	<string name="HintAlamatEmail">Alamat email</string>
+	<string name="HintTmpProfile">Tempat lahir</string>
 	<string name="HintTglPemasok">Tanggal lahir</string>
 	<string name="HintPanggilan">Nama panggilan atau kecil<font color='red'>*</font></string>
 	<string name="HintIdentitas">Nomor identitas yang dipilih</string>
@@ -62,6 +64,7 @@
 	<string name="HintNamaDevice">Nama Device</string>
 	<string name="HintJenisOS">Jenis OS</string>
 	<string name="HintJenisDevice">Jenis Device</string>
+	<string name="HintSearch">Search</string>
 
 	<string name="msgHarapTunggu">Harap tunggu</string>
 	<string name="msgNamaLengkap">Masukan nama lengkap</string>
@@ -112,6 +115,7 @@
 	<string name="msgDataWarehouse">Ambil data warehouse</string>
 	<string name="msgDataDevice">Simpan data device</string>
 	<string name="msgSimpanBarangJual">Simpan data penjualan</string>
+	<string name="msgProsesProfile">Proses data profile</string>
 
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>
@@ -159,7 +163,6 @@
 	<string name="strLakukanProsesQC">Lakukan proses QC</string>
 	<string name="strProsesQC">%sProses QC<font color='red'>%s</font></string>
 	<string name="strPemasok">Pemasok Baru</string>
-	<string name="title_activity_test">Test</string>
 	<string name="strNamaPanggil">Nama</string>
 	<string name="strNoTelpon">No. Telpon</string>
 	<string name="strAlamat">Alamat</string>
@@ -175,13 +178,14 @@
 	<string name="strPrinter">Setting Printer</string>
 	<string name="strRegistrasiDevice">Daftar Device</string>
 	<string name="strDaftarDevice">Daftar</string>
+	<string name="strUpdateProfile">Update</string>
 
 	<string name="strJualBarang">Penjualan</string>
 	<string name="strProfile">Ubah Profile</string>
 
-
 	<string name="strKasirBayarFormKecil">Pembayaran, Proses Untuk Kasir</string>
-	<string name="HintSearch">Search</string>
+	<string name="ambilTimbangan">Refresh</string>
+	<string name="defaultEditText">1</string>
 
 	<string-array name="printer">
 		<item>1. Star Printer</item>

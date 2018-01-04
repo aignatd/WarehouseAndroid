@@ -150,13 +150,20 @@ public class GlobalTimbang
 		}
 	}
 
-	public void ProsesPemasokManual(Integer intTimbang, String strHistory, String strJual)
+	public void ProsesPemasokManual(Integer intTimbang, String strHistory, String strJual, final Class<?> clsTimbang)
 	{
-		Intent PemasokManualIntent = new Intent(activity, FormBesar.class);
+		Intent PemasokManualIntent = new Intent(activity, clsTimbang);
 		PemasokManualIntent.putExtra("KodePemasok", Fungsi.getStringFromSharedPref(context, Preference.PrefScanQR));
 		PemasokManualIntent.putExtra("Timbang", intTimbang);
 		PemasokManualIntent.putExtra("History", strHistory);
 		PemasokManualIntent.putExtra("Jual", strJual);
 		activity.startActivity(PemasokManualIntent);
+	}
+
+	public void ProsesUpdateProfile()
+	{
+		Intent UpdateProfileIntent = new Intent(activity, UserProfile.class);
+		context.startActivity(UpdateProfileIntent);
+		activity.finish();
 	}
 }

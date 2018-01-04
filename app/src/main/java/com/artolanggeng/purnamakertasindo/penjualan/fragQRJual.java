@@ -18,6 +18,7 @@ import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.common.ScanQR;
 import com.artolanggeng.purnamakertasindo.popup.InputPemasok;
 import com.artolanggeng.purnamakertasindo.service.FragJualLife;
+import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +71,7 @@ public class fragQRJual extends Fragment implements FragJualLife
                     public void onDismiss(DialogInterface dialogInterface)
                     {
                         GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
-                        globalTimbang.ProsesPemasokManual(0, "", "Jual");
+                        globalTimbang.ProsesPemasokManual(0, "", "Jual", FormBesar.class);
                     }
                 });
             break;

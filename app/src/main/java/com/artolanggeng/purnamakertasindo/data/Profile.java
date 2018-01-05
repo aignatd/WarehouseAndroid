@@ -14,6 +14,8 @@ public class Profile
   private String tmplahir;
   private String tgllahir;
   private String seks;
+  private String Token;
+	private Integer idxseks;
 
   public String getName()
   {
@@ -84,4 +86,24 @@ public class Profile
   {
     this.seks=seks;
   }
+
+  public String getToken()
+  {
+    return Token;
+  }
+
+  public void setToken(String token)
+  {
+    Token=token;
+  }
+
+	public Integer getIdxseks()
+	{
+		return idxseks;
+	}
+
+	public void setIdxseks(Integer idxseks)
+	{
+		this.idxseks=idxseks;
+	}
 }

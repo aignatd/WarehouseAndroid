@@ -108,6 +108,6 @@ public interface  DataLink
   Call<ProfilePojo> AmbilProfileService(@Body LoginHolder loginHolder);
 
   @POST(FixValue.RestfulUpdateProfile)
-  Call<CustomerPojo> UpdateProfileService(@Body CustomerHolder customerHolder);
+  Call<CustomerPojo> UpdateProfileService(@Body ProfileHolder profileHolder);
 }
 

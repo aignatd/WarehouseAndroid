@@ -12,12 +12,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.data.Customer;
+import com.artolanggeng.purnamakertasindo.data.Profile;
 import com.artolanggeng.purnamakertasindo.data.User;
 import com.artolanggeng.purnamakertasindo.pojo.CustomerPojo;
 import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
 import com.artolanggeng.purnamakertasindo.pojo.ProfilePojo;
 import com.artolanggeng.purnamakertasindo.sending.CustomerHolder;
 import com.artolanggeng.purnamakertasindo.sending.LoginHolder;
+import com.artolanggeng.purnamakertasindo.sending.ProfileHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
 import com.artolanggeng.purnamakertasindo.utils.*;
 import retrofit2.Call;
@@ -159,25 +161,25 @@ public class UserProfile extends AppCompatActivity
       return;
     }
 
-    Customer customer = new Customer();
-    customer.setContactPerson(etProfile.getText().toString().trim());
-    customer.setAlamat(etAlamatProfile.getText().toString().trim());
-    customer.setTelpon(etHPProfile.getText().toString().trim());
-    customer.setEmail(etEmailProfile.getText().toString().trim());
-    customer.setTmplahir(etTmpProfile.getText().toString().trim());
-    customer.setTgllahir(etTglProfile.getText().toString().trim());
-    customer.setKodewarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
+    Profile profile = new Profile();
+    profile.setName(etProfile.getText().toString().trim());
+    profile.setAlamat(etAlamatProfile.getText().toString().trim());
+    profile.setPhone(etHPProfile.getText().toString().trim());
+    profile.setEmail(etEmailProfile.getText().toString().trim());
+    profile.setTmplahir(etTmpProfile.getText().toString().trim());
+    profile.setTgllahir(etTglProfile.getText().toString().trim());
 
     int idx = rgSeks.indexOfChild(findViewById(rgSeks.getCheckedRadioButtonId()));
     RadioButton rb = (RadioButton) rgSeks.getChildAt(idx);
-    customer.setJeniskelamin(rb.getText().toString());
+    profile.setSeks(rb.getText().toString());
 
-    customer.setToken(Fungsi.getStringFromSharedPref(context, Preference.prefToken));
+    profile.setToken(Fungsi.getStringFromSharedPref(context, Preference.prefToken));
+	  profile.setIdxseks(rgSeks.getCheckedRadioButtonId());
 
-    CustomerHolder customerHolder = new CustomerHolder(customer);
+    ProfileHolder profileHolder = new ProfileHolder(profile);
     DataLink dataLink = Fungsi.BindingData();
 
-    final Call<CustomerPojo> ReceivePojo = dataLink.UpdateProfileService(customerHolder);
+    final Call<CustomerPojo> ReceivePojo = dataLink.UpdateProfileService(profileHolder);
 
     ReceivePojo.enqueue(new Callback<CustomerPojo>()
     {
@@ -242,6 +244,7 @@ public class UserProfile extends AppCompatActivity
 	          etEmailProfile.setText(response.body().getProfileRsp().getEmail());
 	          etTmpProfile.setText(response.body().getProfileRsp().getTmplahir());
 	          etTglProfile.setText(response.body().getProfileRsp().getTgllahir());
+	          rgSeks.check(response.body().getProfileRsp().getIdxseks());
           }
         }
         else

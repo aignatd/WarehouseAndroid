@@ -1,6 +1,7 @@
 package com.artolanggeng.purnamakertasindo.sending;
 
 import com.artolanggeng.purnamakertasindo.data.Customer;
+import com.artolanggeng.purnamakertasindo.data.Profile;
 
 /**
  * Dibuat oleh : ignat
@@ -11,8 +12,8 @@ public class CustomerHolder
 {
   private Customer DataCustomer;
 
-  public CustomerHolder(Customer dataCustomer)
-  {
-    this.DataCustomer = dataCustomer;
-  }
+	public CustomerHolder(Customer dataCustomer)
+	{
+		DataCustomer=dataCustomer;
+	}
 }

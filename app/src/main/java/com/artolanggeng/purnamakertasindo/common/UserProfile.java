@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import butterknife.BindView;
@@ -171,7 +172,11 @@ public class UserProfile extends AppCompatActivity
 
     int idx = rgSeks.indexOfChild(findViewById(rgSeks.getCheckedRadioButtonId()));
     RadioButton rb = (RadioButton) rgSeks.getChildAt(idx);
-    profile.setSeks(rb.getText().toString());
+
+    if(idx == -1)
+	    profile.setSeks("");
+    else
+		  profile.setSeks(rb.getText().toString());
 
     profile.setToken(Fungsi.getStringFromSharedPref(context, Preference.prefToken));
 	  profile.setIdxseks(rgSeks.getCheckedRadioButtonId());

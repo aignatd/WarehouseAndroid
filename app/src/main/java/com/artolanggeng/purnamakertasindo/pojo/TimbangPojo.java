@@ -1,9 +1,12 @@
 package com.artolanggeng.purnamakertasindo.pojo;
 
+import com.artolanggeng.purnamakertasindo.data.DataTimbangan;
 import com.artolanggeng.purnamakertasindo.model.CoreResponse;
 import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
+
+import java.util.List;
 
 /**
  * Dibuat oleh : ignat
@@ -18,6 +21,9 @@ public class TimbangPojo
 	@SerializedName("TimbanganRsp")
 	@Expose
 	private TimbangRsp TimbanganRsp;
+	@SerializedName("SetTimbangRsp")
+	@Expose
+	private List<DataTimbangan> SetTimbangRsp = null;
 
 	public CoreResponse getCoreResponse()
 	{
@@ -37,5 +43,15 @@ public class TimbangPojo
 	public void setTimbanganRsp(TimbangRsp timbanganRsp)
 	{
 		TimbanganRsp = timbanganRsp;
+	}
+
+	public List<DataTimbangan> getSetTimbangRsp()
+	{
+		return SetTimbangRsp;
+	}
+
+	public void setSetTimbangRsp(List<DataTimbangan> setTimbangRsp)
+	{
+		SetTimbangRsp=setTimbangRsp;
 	}
 }

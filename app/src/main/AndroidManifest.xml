@@ -147,6 +147,11 @@
 			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
+		<activity
+			android:name=".common.SetTimbangan"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
+		</activity>
 	</application>
 
 </manifest>

@@ -33,4 +33,6 @@ public class Preference
   public static final String PrefHistoryJual = "PrefHistoryJual";
 
   public static final String PrefInputNomorPelanggan = "PrefInputNomorPelanggan";
+  public static final String PrefUrlTimbang1 = "PrefUrlTimbang1";
+  public static final String PrefUrlTimbang2 = "PrefUrlTimbang2";
 }

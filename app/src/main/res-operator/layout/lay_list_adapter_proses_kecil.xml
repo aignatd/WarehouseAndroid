@@ -491,6 +491,7 @@
                                 android:background="@drawable/border_spinner"
                                 android:inputType="number"
                                 android:textAlignment="center"
+                                android:text="@string/defaultEditText"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
 
@@ -715,6 +716,7 @@
                                 android:background="@drawable/border_spinner"
                                 android:inputType="number"
                                 android:textAlignment="center"
+                                android:text="@string/defaultEditText"
                                 android:textColor="@color/GrayUserInputHint"
                                 android:textSize="@dimen/fontDetail" />
 
@@ -802,6 +804,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginLeft="8dp"
+                                    android:text="@string/defaultEditText"
                                     android:background="@android:color/transparent"
                                     android:textColor="@color/GrayUserInputHint"
                                     android:textSize="@dimen/fontDetail" />
@@ -938,6 +941,7 @@
                                 android:inputType="number"
                                 android:textAlignment="center"
                                 android:textColor="@color/GrayUserInputHint"
+                                android:text="@string/defaultEditText"
                                 android:textSize="@dimen/fontDetail" />
 
                             <TextView

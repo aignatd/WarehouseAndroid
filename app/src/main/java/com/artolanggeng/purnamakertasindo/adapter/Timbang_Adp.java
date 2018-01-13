@@ -305,7 +305,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 			autoTimbang.setWarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
 
 			AutoTimbangHolder autoTimbangHolder = new AutoTimbangHolder(autoTimbang);
-			DataLink dataLink = Fungsi.BindingTimbangan();
+			DataLink dataLink = Fungsi.BindingTimbangan(2);
 
 			final Call<TimbangPojo> ReceivePojo = dataLink.AutoTimbangService(autoTimbangHolder);
 

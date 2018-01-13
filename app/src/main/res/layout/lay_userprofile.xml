@@ -14,6 +14,42 @@
 			android:layout_height="50dp"
 			android:id="@+id/rlHeadPemasok">
 		<include layout="@layout/lay_headerutama"/>
+
+
+		<LinearLayout
+			android:id="@+id/llUpdateProfile"
+			android:layout_width="wrap_content"
+			android:layout_height="32dp"
+			android:layout_marginRight="8dp"
+			android:paddingLeft="2dp"
+			android:paddingRight="8dp"
+			android:gravity="center_vertical|center_horizontal"
+			android:clickable="true"
+			android:background="@drawable/rectstrokegraywhite"
+			android:animateLayoutChanges="true"
+			android:layout_centerVertical="true"
+			android:layout_alignParentEnd="false"
+			android:layout_alignParentRight="true">
+
+			<ImageView
+				android:id="@+id/activity_scanqr_img_flash"
+				android:layout_width="24dp"
+				android:layout_height="24dp"
+				android:layout_marginRight="4dp"
+				android:layout_gravity="center_vertical"
+				android:adjustViewBounds="true"
+				android:src="@drawable/ic_sign_plus"
+				android:scaleType="fitCenter"/>
+
+			<TextView
+				android:id="@+id/txt_flash"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_vertical"
+				android:text="@string/strUpdateProfile"
+				android:textColor="@android:color/black"
+				android:textSize="16dp"/>
+		</LinearLayout>
 	</RelativeLayout>
 
 	<ScrollView
@@ -117,18 +153,6 @@
 						android:layout_marginLeft="20dp"
 						android:layout_weight="2"/>
 			</RadioGroup>
-
-			<Button
-				style="@style/DefaultButton"
-				android:ems="10"
-				android:text="@string/strUpdateProfile"
-				android:id="@+id/btnUpdateProfile"
-				android:layout_centerHorizontal="true"
-				android:layout_below="@id/rgSeks"
-				android:layout_marginRight="17dip"
-				android:layout_marginLeft="17dip"
-				android:background="@drawable/rectroundorange"
-				android:layout_marginTop="35dp"/>
 		</RelativeLayout>
 	</ScrollView>
 

@@ -33,6 +33,8 @@
 	<string name="titlePenjualan">Penjualan</string>
 	<string name="titleHistory">History</string>
 	<string name="title_activity_test">Test</string>
+	<string name="titleSettingTimbang">Setting\nTimbangan</string>
+	<string name="titleHeaderTimbang">Setting Timbangan</string>
 
 	<string name="HintInputFullName">Nama Lengkap<font color='red'>*</font></string>
 	<string name="HintInputHP">Username / email<font color='red'>*</font></string>
@@ -65,6 +67,8 @@
 	<string name="HintJenisOS">Jenis OS</string>
 	<string name="HintJenisDevice">Jenis Device</string>
 	<string name="HintSearch">Search</string>
+	<string name="HintTimbanganKecil">Data Timbang Kecil</string>
+	<string name="HintTimbanganBesar">Data Timbang Besar</string>
 
 	<string name="msgHarapTunggu">Harap tunggu</string>
 	<string name="msgNamaLengkap">Masukan nama lengkap</string>
@@ -116,7 +120,6 @@
 	<string name="msgDataDevice">Simpan data device</string>
 	<string name="msgSimpanBarangJual">Simpan data penjualan</string>
 	<string name="msgProsesProfile">Proses data profile</string>
-
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>
 	<string name="msgOtorisasi">Otorisasi anda salah</string>
@@ -127,10 +130,10 @@
 	<string name="srtDashboard">Kertasindo</string>
 	<string name="StrMasuk">Masuk</string>
 	<string name="StrAtau">Atau</string>
-	<string name="StrTimbanganBesar">Timbangan Besar</string>
-	<string name="StrTimbanganKecil">Timbangan Kecil</string>
-	<string name="StrPelangganBaru">Pemasok Baru</string>
-	<string name="StrKeluar">Keluar Aplikasi</string>
+	<string name="StrTimbanganBesar">Timbangan\nBesar</string>
+	<string name="StrTimbanganKecil">Timbangan\nKecil</string>
+	<string name="StrPelangganBaru">Pemasok\nBaru</string>
+	<string name="StrKeluar">Tutup Aplikasi</string>
 	<string name="StrScanQR">Scan QR</string>
 	<string name="StrBuatAkun">Belum ada akun ? <u>Buat akun</u></string>
 	<string name="StrDataAkun">Data akun</string>
@@ -179,13 +182,14 @@
 	<string name="strRegistrasiDevice">Daftar Device</string>
 	<string name="strDaftarDevice">Daftar</string>
 	<string name="strUpdateProfile">Update</string>
+	<string name="strTandaTambah">+</string>
 
 	<string name="strJualBarang">Penjualan</string>
 	<string name="strProfile">Ubah Profile</string>
 
 	<string name="strKasirBayarFormKecil">Pembayaran, Proses Untuk Kasir</string>
 	<string name="ambilTimbangan">Refresh</string>
-	<string name="defaultEditText">1</string>
+	<string name="defaultEditText">0</string>
 
 	<string-array name="printer">
 		<item>1. Star Printer</item>

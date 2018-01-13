@@ -233,9 +233,41 @@
 						android:layout_width="@dimen/HeightButtonTimbangan"
 						android:layout_height="@dimen/HeightButtonTimbangan2"
 						android:weightSum="1"
-						android:id="@+id/rlKeluar"
+						android:id="@+id/rlSetTimbang"
 						android:gravity="center"
 						android:layout_marginRight="14dp">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/timbangwifi"
+							android:id="@+id/ivSetTimbang"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="86dp"
+							android:layout_height="64dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvSetTimbang"
+							android:text="@string/titleSettingTimbang"
+							android:gravity="center"
+							android:layout_below="@id/ivSetTimbang"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlKeluar"
+						android:gravity="center"
+						android:layout_marginLeft="14dp">
 
 						<ImageView
 							android:scaleType="fitXY"
@@ -255,39 +287,6 @@
 							android:text="@string/StrKeluar"
 							android:gravity="center"
 							android:layout_below="@id/ivKeluar"
-							android:textAlignment="center"
-							android:layout_marginTop="8dp"/>
-					</RelativeLayout>
-
-					<RelativeLayout
-						style="@style/ButtonTimbangan"
-						android:orientation="vertical"
-						android:layout_width="@dimen/HeightButtonTimbangan"
-						android:layout_height="@dimen/HeightButtonTimbangan2"
-						android:weightSum="1"
-						android:id="@+id/rlKosong"
-						android:gravity="center"
-						android:layout_marginLeft="14dp"
-						android:visibility="invisible">
-
-						<ImageView
-							android:scaleType="fitXY"
-							android:adjustViewBounds="true"
-							app:srcCompat="@drawable/password"
-							android:id="@+id/ivKosong"
-							android:layout_centerVertical="true"
-							android:layout_centerHorizontal="true"
-							android:layout_width="56dp"
-							android:layout_height="67dp"/>
-
-						<TextView
-							style="@style/TextButton"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:id="@+id/tvKosong"
-							android:text="@string/TitleMenuPassword"
-							android:gravity="center"
-							android:layout_below="@id/ivKosong"
 							android:textAlignment="center"
 							android:layout_marginTop="8dp"/>
 					</RelativeLayout>

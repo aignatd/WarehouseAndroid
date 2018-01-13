@@ -55,7 +55,7 @@ public class TimbangAdminOpr extends AppCompatActivity
   }
 
   @OnClick({R.id.rlTimbangBesar, R.id.rlTimbangKecil, R.id.rlPelangganBaru, R.id.rlPrinter, R.id.rlKeluar,
-            R.id.rlProfile, R.id.rlPassword, R.id.rlJualBarang})
+            R.id.rlProfile, R.id.rlPassword, R.id.rlJualBarang, R.id.rlSetTimbang})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -116,6 +116,11 @@ public class TimbangAdminOpr extends AppCompatActivity
       case R.id.rlProfile:
         globalTimbang = new GlobalTimbang(context, activity);
         globalTimbang.ProsesUpdateProfile();
+      break;
+      case R.id.rlSetTimbang:
+        Intent SetTimbangIntent = new Intent(TimbangAdminOpr.this, SetTimbangan.class);
+        startActivity(SetTimbangIntent);
+        finish();
       break;
     }
   }

@@ -20,6 +20,8 @@ import com.artolanggeng.purnamakertasindo.pojo.*;
 import com.artolanggeng.purnamakertasindo.sending.*;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 
+import java.util.Map;
+
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
@@ -28,6 +30,8 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 
 /**
  * Dibuat oleh : ignat
@@ -109,5 +113,8 @@ public interface  DataLink
 
   @POST(FixValue.RestfulUpdateProfile)
   Call<CustomerPojo> UpdateProfileService(@Body ProfileHolder profileHolder);
+
+  @GET(FixValue.RestfulDataTimbangan)
+  Call<TimbangPojo> DataTimbanganService(@Path("warehouse") String warehouse);
 }
 

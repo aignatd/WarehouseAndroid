@@ -111,7 +111,7 @@ public class UserProfile extends AppCompatActivity
     AmbilDataProfile();
   }
 
-  @OnClick({R.id.ivBackIcon, R.id.btnUpdateProfile})
+  @OnClick({R.id.ivBackIcon, R.id.llUpdateProfile})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -119,7 +119,7 @@ public class UserProfile extends AppCompatActivity
       case R.id.ivBackIcon:
         BackActivity();
       break;
-      case R.id.btnUpdateProfile:
+      case R.id.llUpdateProfile:
         lstInput.clear();
         lstMsg.clear();
         lstInput.add(etProfile);

@@ -298,7 +298,7 @@ public class Fungsi extends AppCompatActivity
 			return capitalize(manufacturer) + " " + model;
 	}
 
-	public static DataLink BindingTimbangan()
+	public static DataLink BindingTimbangan(Integer JenisTimbang)
 	{
 		OkHttpClient okClient = new OkHttpClient();
 

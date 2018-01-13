@@ -433,13 +433,17 @@ public class formKecil extends AppCompatActivity {
             public void onResponse(Call<ProsesPojo> call, Response<ProsesPojo> response) {
                 progressDialog.dismiss();
 
-                if (response.isSuccessful()) {
+                if (response.isSuccessful())
+                {
                     if (response.body().getCoreResponse().getKode() == FixValue.intError)
                         pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
-                    else {
-                        TampilanDetailRiwayat(response.body());
+                    else
+                    {
+                        if(response.body().getTimbanganRsp() != null)
+                            TampilanDetailRiwayat(response.body());
                     }
-                } else
+                }
+                else
                     pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
             }
 
@@ -484,28 +488,33 @@ public class formKecil extends AppCompatActivity {
         } else if (body.getTimbanganRsp().size() == 2) {
             llInputDetailBarang2.setVisibility(View.VISIBLE);
         }
-        etJenisBarang.setText(body.getTimbanganRsp().get(0).getProductcode());
-        etPotonganBarangKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getPotongan()));
-        etBeratTimbanganKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getTonasenetto()));
 
-        etJenisBarang2.setText(body.getTimbanganRsp().get(1).getProductcode());
-        etPotonganBarangKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getPotongan()));
-        etBeratTimbanganKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getTonasenetto()));
+        Integer intTemp = body.getTimbanganRsp().size() - 1;
 
+        if(intTemp == 2)
+        {
+            etJenisBarang3.setText(body.getTimbanganRsp().get(2).getProductcode());
+            etPotonganBarangKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getPotongan()));
+            etBeratTimbanganKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getTonasenetto()));
 
-        etJenisBarang3.setText(body.getTimbanganRsp().get(2).getProductcode());
-        etPotonganBarangKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getPotongan()));
-        etBeratTimbanganKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getTonasenetto()));
+            intTemp--;
+        }
 
-//        if (body.getTimbanganRsp().size() == 1) {
-//        }
-//        etJenisBarang2.setText(body.getTimbanganRsp().get(1).getProductcode());
-//        etJenisBarang3.setText(body.getTimbanganRsp().get(2).getProductcode());
-//
-//
-//        etPotonganBarangKecil2.setText(body.getTimbanganRsp().get(1).getTonasebruto());
-//        etPotonganBarangKecil3.setText(body.getTimbanganRsp().get(2).getTonasebruto());
+        if(intTemp == 1)
+        {
+            etJenisBarang2.setText(body.getTimbanganRsp().get(1).getProductcode());
+            etPotonganBarangKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getPotongan()));
+            etBeratTimbanganKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getTonasenetto()));
 
+            intTemp--;
+        }
+
+        if(intTemp == 0)
+        {
+            etJenisBarang.setText(body.getTimbanganRsp().get(0).getProductcode());
+            etPotonganBarangKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getPotongan()));
+            etBeratTimbanganKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getTonasenetto()));
+        }
     }
 
     private void TampilkanDataTimbangan() {
@@ -668,7 +677,7 @@ public class formKecil extends AppCompatActivity {
         autoTimbang.setWarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
 
         AutoTimbangHolder autoTimbangHolder = new AutoTimbangHolder(autoTimbang);
-        DataLink dataLink = Fungsi.BindingTimbangan();
+        DataLink dataLink = Fungsi.BindingTimbangan(1);
 
         final Call<TimbangPojo> ReceivePojo = dataLink.AutoTimbangService(autoTimbangHolder);
 

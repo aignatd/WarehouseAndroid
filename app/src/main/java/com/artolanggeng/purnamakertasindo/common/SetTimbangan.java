@@ -92,6 +92,7 @@ public class SetTimbangan extends AppCompatActivity
 	    case R.id.llSaveSetTimbang:
 		    Fungsi.storeToSharedPref(context, strURLTimbang1, Preference.PrefUrlTimbang1);
 		    Fungsi.storeToSharedPref(context, strURLTimbang2, Preference.PrefUrlTimbang2);
+        popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgSimpanTimbang));
 	    break;
     }
   }

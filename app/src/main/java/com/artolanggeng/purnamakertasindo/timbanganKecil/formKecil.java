@@ -676,8 +676,17 @@ public class formKecil extends AppCompatActivity {
         autoTimbang.setJenisTimbang(FixValue.TimbangKecil);
         autoTimbang.setWarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
 
+        String strAutoTimbang = Fungsi.getStringFromSharedPref(context, Preference.PrefUrlTimbang1);
+
+        if(strAutoTimbang.matches(""))
+        {
+            progressDialog.dismiss();
+            popupMessege.ShowMessege1(context, context.getResources().getString(R.string.strSettingTimbangan));
+            return;
+        }
+
         AutoTimbangHolder autoTimbangHolder = new AutoTimbangHolder(autoTimbang);
-        DataLink dataLink = Fungsi.BindingTimbangan(1);
+        DataLink dataLink = Fungsi.BindingTimbangan(strAutoTimbang);
 
         final Call<TimbangPojo> ReceivePojo = dataLink.AutoTimbangService(autoTimbangHolder);
 

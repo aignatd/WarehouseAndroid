@@ -298,7 +298,7 @@ public class Fungsi extends AppCompatActivity
 			return capitalize(manufacturer) + " " + model;
 	}
 
-	public static DataLink BindingTimbangan(Integer JenisTimbang)
+	public static DataLink BindingTimbangan(String urlTimbangan)
 	{
 		OkHttpClient okClient = new OkHttpClient();
 
@@ -306,7 +306,7 @@ public class Fungsi extends AppCompatActivity
 				readTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).
 				writeTimeout(FixValue.TimeoutConnection, TimeUnit.SECONDS).build();
 
-		Retrofit retBindingData = new Retrofit.Builder().baseUrl(FixValue.Hosttimbangan).
+		Retrofit retBindingData = new Retrofit.Builder().baseUrl(urlTimbangan).
 				addConverterFactory(GsonConverterFactory.create()).
 				client(okClient).build();
 

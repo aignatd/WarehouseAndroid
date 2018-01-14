@@ -304,8 +304,17 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 			autoTimbang.setJenisTimbang(2);
 			autoTimbang.setWarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
 
+			String strAutoTimbang = Fungsi.getStringFromSharedPref(context, Preference.PrefUrlTimbang2);
+
+			if(strAutoTimbang.matches(""))
+			{
+				progressDialog.dismiss();
+				popupMessege.ShowMessege1(context, context.getResources().getString(R.string.strSettingTimbangan));
+				return;
+			}
+
 			AutoTimbangHolder autoTimbangHolder = new AutoTimbangHolder(autoTimbang);
-			DataLink dataLink = Fungsi.BindingTimbangan(2);
+			DataLink dataLink = Fungsi.BindingTimbangan(strAutoTimbang);
 
 			final Call<TimbangPojo> ReceivePojo = dataLink.AutoTimbangService(autoTimbangHolder);
 

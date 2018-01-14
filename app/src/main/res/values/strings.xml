@@ -123,6 +123,7 @@
 	<string name="msgUploadPhoto">Upload myPhoto barang</string>
 	<string name="msgDataTimbang">Ambil data timbangan</string>
 	<string name="msgOtorisasi">Otorisasi anda salah</string>
+	<string name="msgSimpanTimbang">Simpan timbangan sukses</string>
 
 	<string name="strBtnSelesai">Selesai</string>
 	<string name="strBtnOK">OK</string>
@@ -186,6 +187,7 @@
 
 	<string name="strJualBarang">Penjualan</string>
 	<string name="strProfile">Ubah Profile</string>
+	<string name="strSettingTimbangan">Pilih jenis timbangan</string>
 
 	<string name="strKasirBayarFormKecil">Pembayaran, Proses Untuk Kasir</string>
 	<string name="ambilTimbangan">Refresh</string>

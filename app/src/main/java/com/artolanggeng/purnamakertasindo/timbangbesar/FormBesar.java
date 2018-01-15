@@ -291,6 +291,7 @@ public class FormBesar extends AppCompatActivity
 		IsiFormulir isiFormulir = new IsiFormulir();
 		isiFormulir.setJumlahtimbang(intTimbang);
 
+		
 		if(intTimbang == 1)
 		{
 			Long tsLong = System.currentTimeMillis() / 1000;

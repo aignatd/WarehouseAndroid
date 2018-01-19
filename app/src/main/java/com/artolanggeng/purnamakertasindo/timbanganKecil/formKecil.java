@@ -32,6 +32,7 @@ import com.artolanggeng.purnamakertasindo.data.IsiFormulir;
 import com.artolanggeng.purnamakertasindo.data.IsiPemasok;
 import com.artolanggeng.purnamakertasindo.data.IsiProduct;
 import com.artolanggeng.purnamakertasindo.model.PotongRsp;
+import com.artolanggeng.purnamakertasindo.model.PrinterRsp;
 import com.artolanggeng.purnamakertasindo.model.ProductRsp;
 import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
 import com.artolanggeng.purnamakertasindo.model.TimbanganRspKecil;
@@ -45,10 +46,12 @@ import com.artolanggeng.purnamakertasindo.sending.CustomerHolder;
 import com.artolanggeng.purnamakertasindo.sending.FormulirHolder;
 import com.artolanggeng.purnamakertasindo.sending.FormulirHolderKecil;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
+import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
+import com.artolanggeng.purnamakertasindo.warehouse.MainProses;
 import com.google.gson.Gson;
 
 import retrofit2.Call;
@@ -169,6 +172,7 @@ public class formKecil extends AppCompatActivity {
 
     private List<TimbangRsp> lstTimbang = null;
     private List<TimbanganRspKecil> lstTimbangHolder = null;
+    private SimpleDateFormat df, datePrint, timePrint;
 
     private TimbangRsp timbangRsp = new TimbangRsp();
 //    private TimbanganRspKecil timbangRspKecil = new TimbanganRspKecil();
@@ -182,7 +186,6 @@ public class formKecil extends AppCompatActivity {
     private MenuBuilder menuBuilder;
     private MenuPopupHelper menuHelper;
 
-    private SimpleDateFormat df;
     private Calendar calendar;
     private TimbanganKecil_Adp formadapterkecil;
 
@@ -197,6 +200,7 @@ public class formKecil extends AppCompatActivity {
     String gsonHistory;
     CustomerPojo customerPojo;
     String KodePemasok;
+    String Jual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -295,7 +299,9 @@ public class formKecil extends AppCompatActivity {
     }
 
     private void BackActivity() {
-        pesan.ShowMessege6(context, getResources().getString(R.string.msgBatalTimbang), activity);
+        if (intTimbang == 1) {
+            pesan.ShowMessege6(context, getResources().getString(R.string.msgBatalTimbang), activity);
+        }activity.finish();
     }
 
     @Override
@@ -393,9 +399,15 @@ public class formKecil extends AppCompatActivity {
                     if (response.body().getCoreResponse().getKode() == FixValue.intError)
                         pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
                     else {
-                        Intent LoginIntent = new Intent(formKecil.this, formTimbanganKecil.class);
-                        startActivity(LoginIntent);
-                        finish();
+                        final String Printer = Fungsi.getStringFromSharedPref(context, Preference.prefPortName);
+                        final PrinterRsp printerRsp = response.body().getPrinterRsp();
+                        if(Printer.isEmpty() || (Jual.matches("Jual")) || (printerRsp == null))
+                            LanjutProses();
+                        else
+                            ProsesPrint(Printer, printerRsp);
+//                        Intent LoginIntent = new Intent(formKecil.this, formTimbanganKecil.class);
+//                        startActivity(LoginIntent);
+//                        finish();
                     }
                 } else
                     pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
@@ -409,7 +421,8 @@ public class formKecil extends AppCompatActivity {
         });
     }
 
-    private void AmbilDataTimbangan( Integer intPekerjaanID) {
+    //ll
+    private void AmbilDataTimbangan(Integer intPekerjaanID) {
         progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
                 context.getResources().getString(R.string.msgAmbilTimbangan));
         progressDialog.setCancelable(false);
@@ -433,17 +446,14 @@ public class formKecil extends AppCompatActivity {
             public void onResponse(Call<ProsesPojo> call, Response<ProsesPojo> response) {
                 progressDialog.dismiss();
 
-                if (response.isSuccessful())
-                {
+                if (response.isSuccessful()) {
                     if (response.body().getCoreResponse().getKode() == FixValue.intError)
                         pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
-                    else
-                    {
-                        if(response.body().getTimbanganRsp() != null)
+                    else {
+                        if (response.body().getTimbanganRsp() != null)
                             TampilanDetailRiwayat(response.body());
                     }
-                }
-                else
+                } else
                     pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
             }
 
@@ -478,9 +488,6 @@ public class formKecil extends AppCompatActivity {
         ivCamera.setVisibility(View.GONE);
         ivPrinter.setVisibility(View.GONE);
         llProsesKasir.setVisibility(View.INVISIBLE);
-        String a = body.getTimbanganRsp().get(0).getProductcode();
-        int b = body.getTimbanganRsp().get(0).getTonasenetto();
-        int c = body.getTimbanganRsp().get(0).getPotongan();
 
         if (body.getTimbanganRsp().size() == 3) {
             llInputDetailBarang2.setVisibility(View.VISIBLE);
@@ -489,28 +496,27 @@ public class formKecil extends AppCompatActivity {
             llInputDetailBarang2.setVisibility(View.VISIBLE);
         }
 
-        Integer intTemp = body.getTimbanganRsp().size() - 1;
+        Integer intTemp = body.getTimbanganRsp().size();
 
-        if(intTemp == 2)
-        {
+
+        if (intTemp == 3) {
+            etJenisBarang3.setEnabled(false);
             etJenisBarang3.setText(body.getTimbanganRsp().get(2).getProductcode());
             etPotonganBarangKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getPotongan()));
             etBeratTimbanganKecil3.setText(String.valueOf(body.getTimbanganRsp().get(2).getTonasenetto()));
 
             intTemp--;
         }
-
-        if(intTemp == 1)
-        {
+        if (intTemp == 2) {
+            etJenisBarang2.setEnabled(false);
             etJenisBarang2.setText(body.getTimbanganRsp().get(1).getProductcode());
             etPotonganBarangKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getPotongan()));
             etBeratTimbanganKecil2.setText(String.valueOf(body.getTimbanganRsp().get(1).getTonasenetto()));
 
             intTemp--;
         }
-
-        if(intTemp == 0)
-        {
+        if (intTemp == 1) {
+            etJenisBarang.setEnabled(false);
             etJenisBarang.setText(body.getTimbanganRsp().get(0).getProductcode());
             etPotonganBarangKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getPotongan()));
             etBeratTimbanganKecil.setText(String.valueOf(body.getTimbanganRsp().get(0).getTonasenetto()));
@@ -678,8 +684,7 @@ public class formKecil extends AppCompatActivity {
 
         String strAutoTimbang = Fungsi.getStringFromSharedPref(context, Preference.PrefUrlTimbang1);
 
-        if(strAutoTimbang.matches(""))
-        {
+        if (strAutoTimbang.matches("")) {
             progressDialog.dismiss();
             popupMessege.ShowMessege1(context, context.getResources().getString(R.string.strSettingTimbangan));
             return;
@@ -714,7 +719,62 @@ public class formKecil extends AppCompatActivity {
         });
     }
 
+    private void ProsesPrint(final String Printer, final PrinterRsp printerRsp)
+    {
+        final ArrayList<byte[]> list = new ArrayList<>();
+        list.clear();
 
+        list.add(new byte[] { 0x1b, 0x1d, 0x61, 0x01 }); // Center in paper
+        list.add(new byte[] { 0x1b, 0x1d, 0x74, (byte)0x80 }); // Code Page UTF-8
+
+        // Add BarCode data
+        byte[] barCodeData = printerRsp.getPemasokid().getBytes();
+        byte cellSize = (byte) (8);
+        list.add(new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x32, cellSize });
+        list.add(new byte[] { 0x1b, 0x1d, 0x79, 0x44, 0x31, 0x00, (byte) (barCodeData.length % 128), (byte) (barCodeData.length / 128) });
+        list.add(barCodeData);
+        list.add(new byte[] { 0x1b, 0x1d, 0x79, 0x50 });
+        list.add("\r\n".getBytes());
+
+        list.add(("#" + printerRsp.getPemasokid() + "\r\n").getBytes());
+        list.add(("Antrian : " + printerRsp.getPekerjaanid().toString()  + "\r\n").getBytes());
+
+        list.add(("Tanggal : " + datePrint.format(calendar.getTime()) + "\r\n").getBytes());
+        list.add(("Jam : " + timePrint.format(calendar.getTime())  + "\r\n").getBytes());
+
+        list.add("\r\n\r\n\r\n\r\n".getBytes());
+        list.add(new byte[] { 0x1b, 0x64, 0x02 }); // Feed to cutter position
+
+        progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
+                context.getResources().getString(R.string.msgAmbilProduct));
+        progressDialog.setCancelable(false);
+
+        new Thread(new Runnable()
+        {
+            public void run()
+            {
+                final int hasil = Fungsi.sendCommandStar(context, Printer, "", list);
+
+                progressDialog.dismiss();
+
+                runOnUiThread(new Runnable()
+                {
+                    @Override
+                    public void run()
+                    {
+                        Log.d(TAG, "run: " + hasil);
+                        LanjutProses();
+                    }
+                });
+            }
+        }).start();
+    }
+    private void LanjutProses()
+    {
+        Intent LoginIntent = new Intent(formKecil.this, formTimbanganKecil.class);
+        startActivity(LoginIntent);
+        finish();
+    }
     private void goToCamera() {
         Intent camereIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         startActivityForResult(camereIntent, CAMERA_REQUEST);

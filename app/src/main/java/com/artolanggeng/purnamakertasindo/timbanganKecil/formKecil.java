@@ -162,8 +162,8 @@ public class formKecil extends AppCompatActivity {
 
     @BindView(R.id.ivCamera)
     ImageView ivCamera;
-    @BindView(R.id.ivPrinter)
-    ImageView ivPrinter;
+//    @BindView(R.id.ivPrinter)
+//    ImageView ivPrinter;
 
     private PopupMessege pesan = new PopupMessege();
     private String TAG = "[Formulir]";
@@ -486,7 +486,7 @@ public class formKecil extends AppCompatActivity {
         rlBtnAmbil2.setVisibility(View.GONE);
         rlBtnAmbil3.setVisibility(View.GONE);
         ivCamera.setVisibility(View.GONE);
-        ivPrinter.setVisibility(View.GONE);
+//        ivPrinter.setVisibility(View.GONE);
         llProsesKasir.setVisibility(View.INVISIBLE);
 
         if (body.getTimbanganRsp().size() == 3) {

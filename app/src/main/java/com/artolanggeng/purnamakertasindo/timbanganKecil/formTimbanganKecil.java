@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
@@ -29,6 +30,9 @@ public class formTimbanganKecil extends AppCompatActivity {
     private ViewPager viewPager;
     private Context context = this;
     private PopupMessege popupMessege = new PopupMessege();
+    private Integer intTimbang;
+    private PopupMessege pesan = new PopupMessege();
+    ImageView ivBackFormulirKecilMain;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -37,11 +41,11 @@ public class formTimbanganKecil extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText("Timbang Kecil");
-        toolbar.setNavigationIcon(R.drawable.ic_arrow_back); // your drawable
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+        ivBackFormulirKecilMain = (ImageView)findViewById(R.id.ivBackFormulirKecilMain);
+        ivBackFormulirKecilMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onBackPressed(); // Implemented by activity
+            BackActivity();
             }
         });
         setSupportActionBar(toolbar);
@@ -70,7 +74,11 @@ public class formTimbanganKecil extends AppCompatActivity {
         tabThree.setCompoundDrawablesWithIntrinsicBounds(R.drawable.riwayat, 0, 0, 0);
         tabLayout.getTabAt(1).setCustomView(tabThree);
     }
-
+    private void BackActivity() {
+        RoleChecker roleChecker = new RoleChecker(formTimbanganKecil.this, context);
+        if(roleChecker.RoleTimbangan() == 0)
+            popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
+    }
     private void createViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new fragmentPelanggan(), "Pelanggan");

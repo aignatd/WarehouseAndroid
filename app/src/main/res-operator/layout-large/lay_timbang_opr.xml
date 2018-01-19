@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		xmlns:app="http://schemas.android.com/apk/res-auto"
+		xmlns:tools="http://schemas.android.com/tools"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		tools:context="com.artolanggeng.purnamakertasindo.common.TimbangSuper"
+		style="@style/DefaultActivity">
+
+	<RelativeLayout
+			android:id="@+id/rlAll"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true"
+			android:layout_marginTop="35dp"
+			android:layout_marginBottom="25dp">
+
+		<ImageView
+				android:id="@+id/ivTitleLogin"
+				android:background="@drawable/warehouselogo"
+				android:scaleType="fitCenter"
+				android:layout_height="50dp"
+				android:layout_width="200dp"
+				android:layout_alignParentTop="true"
+				android:layout_centerHorizontal="true"/>
+
+		<TextView
+				style="@style/Header"
+				android:id="@+id/tvWarehouse"
+				android:layout_centerHorizontal="true"
+				android:layout_below="@id/ivTitleLogin"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="Warehouse"
+				android:textSize="18sp"
+				android:textStyle="normal|bold"/>
+
+		<TextView
+				style="@style/Header"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:id="@+id/tvPilihTimbangan"
+				android:text="@string/strHeaderTimbangan"
+				android:layout_centerHorizontal="true"
+				android:layout_below="@id/tvWarehouse"
+				android:layout_marginTop="20dp"
+				android:textStyle="normal|bold"/>
+
+		<ScrollView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/tvPilihTimbangan"
+			android:layout_marginTop="40dp"
+			android:layout_alignParentLeft="true"
+			android:layout_alignParentStart="true">
+
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:gravity="center"
+				android:layout_below="@+id/rlAll">
+
+				<LinearLayout
+					android:id="@+id/llOperator"
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:layout_alignParentLeft="true"
+					android:layout_alignParentStart="true">
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlTimbangBesar"
+						android:gravity="center">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/timbanganbesar"
+							android:id="@+id/ivTimbangBesar"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="56dp"
+							android:layout_height="56dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvTimbangBesar"
+							android:text="@string/StrTimbanganBesar"
+							android:gravity="center"
+							android:layout_below="@id/ivTimbangBesar"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlTimbangKecil"
+						android:gravity="center"
+						android:layout_marginLeft="16dp"
+						android:layout_marginRight="16dp">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/timbangankecil"
+							android:id="@+id/ivTimbangKecil"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="56dp"
+							android:layout_height="67dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvTimbangKecil"
+							android:text="@string/StrTimbanganKecil"
+							android:gravity="center"
+							android:layout_below="@id/ivTimbangKecil"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlPassword"
+						android:gravity="center">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/password"
+							android:id="@+id/ivPassword"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="56dp"
+							android:layout_height="56dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvPassword"
+							android:text="@string/TitleMenuPassword"
+							android:gravity="center"
+							android:layout_below="@id/ivPassword"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/llAdmin"
+					android:orientation="horizontal"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:gravity="center"
+					android:layout_marginTop="15dp"
+					android:layout_alignParentLeft="true"
+					android:layout_alignParentStart="true">
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlProfile"
+						android:gravity="center">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/profile"
+							android:id="@+id/ivProfile"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="56dp"
+							android:layout_height="66dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvProfile"
+							android:text="@string/strProfile"
+							android:gravity="center"
+							android:layout_below="@id/ivProfile"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlJualBarang"
+						android:gravity="center"
+						android:layout_marginRight="16dp"
+						android:layout_marginLeft="16dp">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/jualbarang"
+							android:id="@+id/ivJualBarang"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="56dp"
+							android:layout_height="66dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvJualBarang"
+							android:text="@string/strJualBarang"
+							android:gravity="center"
+							android:layout_below="@id/ivJualBarang"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlKeluar"
+						android:gravity="center">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/ic_logout_black"
+							android:id="@+id/ivKeluar"
+							android:layout_width="56dp"
+							android:layout_height="60dp"
+							android:layout_alignParentTop="true"
+							android:layout_centerHorizontal="true"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvKeluar"
+							android:text="@string/StrKeluar"
+							android:gravity="center"
+							android:layout_below="@id/ivKeluar"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+				</LinearLayout>
+			</LinearLayout>
+		</ScrollView>
+	</RelativeLayout>
+
+</RelativeLayout>

@@ -409,7 +409,7 @@ public class formKecil extends AppCompatActivity {
         });
     }
 
-    private void AmbilDataTimbangan(Integer intPekerjaanID) {
+    private void AmbilDataTimbangan( Integer intPekerjaanID) {
         progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
                 context.getResources().getString(R.string.msgAmbilTimbangan));
         progressDialog.setCancelable(false);
@@ -650,11 +650,11 @@ public class formKecil extends AppCompatActivity {
                 ambilDataBeratTimbangan(etBeratTimbanganKecil);
                 break;
             case R.id.btnAmbil2:
-                ambilDataBeratTimbangan(etBeratTimbanganKecil);
+                ambilDataBeratTimbangan(etBeratTimbanganKecil2);
 
                 break;
             case R.id.btnAmbil3:
-                ambilDataBeratTimbangan(etBeratTimbanganKecil);
+                ambilDataBeratTimbangan(etBeratTimbanganKecil3);
                 break;
         }
     }

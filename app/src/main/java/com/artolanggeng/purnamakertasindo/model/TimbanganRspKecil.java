@@ -30,6 +30,9 @@ public class TimbanganRspKecil {
     @SerializedName("jenispotongid")
     @Expose
     private Integer jenispotongid;
+    @SerializedName("codeproduct")
+    @Expose
+    private Integer codeproduct;
 
     public Integer getNourut() {
         return nourut;
@@ -85,5 +88,15 @@ public class TimbanganRspKecil {
 
     public void setJenispotongid(Integer jenispotongid) {
         this.jenispotongid = jenispotongid;
+    }
+
+    public Integer getCodeproduct()
+    {
+        return codeproduct;
+    }
+
+    public void setCodeproduct(Integer codeproduct)
+    {
+        this.codeproduct=codeproduct;
     }
 }

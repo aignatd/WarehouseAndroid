@@ -353,6 +353,7 @@ public class formKecil extends AppCompatActivity {
             timbangRspKecil.setTanggal(Fungsi.curentTime());
             timbangRspKecil.setJenispotongid(1);
             timbangRspKecil.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang.getSelectedItemPosition()).getProductcode().trim());
+            timbangRspKecil.setCodeproduct(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang.getSelectedItemPosition()).getMproductpk());
             lstTimbangHolder.add(timbangRspKecil);
         }
 
@@ -364,6 +365,7 @@ public class formKecil extends AppCompatActivity {
             timbangRspKecil.setTanggal(Fungsi.curentTime());
             timbangRspKecil.setJenispotongid(1);
             timbangRspKecil.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang2.getSelectedItemPosition()).getProductcode().trim());
+            timbangRspKecil.setCodeproduct(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang2.getSelectedItemPosition()).getMproductpk());
             timbangRspKecil.setPotongan(Integer.valueOf(etPotonganBarangKecil2.getText().toString()));
             lstTimbangHolder.add(timbangRspKecil);
 
@@ -377,6 +379,7 @@ public class formKecil extends AppCompatActivity {
             timbangRspKecil.setTanggal(Fungsi.curentTime());
             timbangRspKecil.setJenispotongid(1);
             timbangRspKecil.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang3.getSelectedItemPosition()).getProductcode().trim());
+            timbangRspKecil.setCodeproduct(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang3.getSelectedItemPosition()).getMproductpk());
             timbangRspKecil.setPotongan(Integer.valueOf(etPotonganBarangKecil3.getText().toString()));
             lstTimbangHolder.add(timbangRspKecil);
 

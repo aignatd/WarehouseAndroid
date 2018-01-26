@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.EditText;
@@ -18,12 +19,14 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.adapter.Timbang_Adp;
+import com.artolanggeng.purnamakertasindo.data.AutoTimbang;
 import com.artolanggeng.purnamakertasindo.data.IsiFormulir;
 import com.artolanggeng.purnamakertasindo.data.IsiPotongan;
 import com.artolanggeng.purnamakertasindo.data.IsiProduct;
 import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
 import com.artolanggeng.purnamakertasindo.pojo.TimbangPojo;
+import com.artolanggeng.purnamakertasindo.sending.AutoTimbangHolder;
 import com.artolanggeng.purnamakertasindo.sending.FormulirHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
@@ -81,7 +84,11 @@ public class UpdateProses extends Dialog
 
 		LinearLayoutManager layoutManager = new LinearLayoutManager(ParentAct, LinearLayoutManager.VERTICAL, false);
 		rvPotongan.setLayoutManager(layoutManager);
-		AmbilDataTimbangan();
+
+		if(FormAsal == 3)
+			DataTimbangOtomatis();
+		else
+			AmbilDataTimbangan();
 	}
 
 	@OnClick({R.id.btnInputPotong, R.id.btnBatalPotong, R.id.btnRefreshPotong})
@@ -123,7 +130,11 @@ public class UpdateProses extends Dialog
 			break;
 			case R.id.btnRefreshPotong:
 				Fungsi.storeToSharedPref(context, 0, Preference.prefUpdateProses);
-				AmbilDataTimbangan();
+
+				if(FormAsal == 3)
+					DataTimbangOtomatis();
+				else
+					AmbilDataTimbangan();
 			break;
 		}
 	}
@@ -364,6 +375,53 @@ public class UpdateProses extends Dialog
 				}
 			});
 		}
+	}
+
+	private void DataTimbangOtomatis()
+	{
+		if(Fungsi.isNetworkAvailable(context) == FixValue.TYPE_NONE)
+			return;
+
+		AutoTimbang autoTimbang = new AutoTimbang();
+		autoTimbang.setJenisTimbang(2);
+		autoTimbang.setWarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
+
+		String strAutoTimbang = Fungsi.getStringFromSharedPref(context, Preference.PrefUrlTimbang2);
+
+		if(strAutoTimbang.matches(""))
+			return;
+
+		AutoTimbangHolder autoTimbangHolder = new AutoTimbangHolder(autoTimbang);
+		DataLink dataLink = Fungsi.BindingTimbangan(strAutoTimbang);
+
+		final Call<TimbangPojo> ReceivePojo = dataLink.AutoTimbangService(autoTimbangHolder);
+
+		ReceivePojo.enqueue(new Callback<TimbangPojo>()
+		{
+			@Override
+			public void onResponse(Call<TimbangPojo> call, Response<TimbangPojo> response)
+			{
+				if(response.isSuccessful())
+				{
+					if(response.body().getCoreResponse().getKode() == FixValue.intError)
+						Fungsi.storeToSharedPref(context, "0", Preference.PrefDataTimbang);
+					else
+						Fungsi.storeToSharedPref(context, response.body().getTimbanganRsp().getTimbangan(), Preference.PrefDataTimbang);
+				}
+				else
+					Fungsi.storeToSharedPref(context, "0", Preference.PrefDataTimbang);
+
+				AmbilDataTimbangan();
+			}
+
+			@Override
+			public void onFailure(Call<TimbangPojo> call, Throwable t)
+			{
+				Log.d(TAG, "onResponse: 2");
+				Fungsi.storeToSharedPref(context, "0", Preference.PrefDataTimbang);
+				AmbilDataTimbangan();
+			}
+		});
 	}
 }
 

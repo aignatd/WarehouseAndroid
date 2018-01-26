@@ -92,6 +92,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 				holder.rlKodeBarang.setVisibility(View.GONE);
 				holder.llNilaiPotongan.setVisibility(View.GONE);
 
+				holder.etBeratBruto.setText(context.getString(R.string.titleBeratBruto, Fungsi.getStringFromSharedPref(context, Preference.PrefDataTimbang)));
 				holder.etBeratBruto.setFocusable(false);
 				holder.etBeratBruto.setEnabled(false);
 				holder.etBeratBruto.setCursorVisible(false);
@@ -169,7 +170,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 					holder.etNilaiPotongan.setBackgroundColor(Color.TRANSPARENT);
 
 					if(FormAsal == 3)
-						holder.etBeratBruto.setText(context.getString(R.string.titleBeratNetto, lstTimbang.get(position).getTonasebruto().toString()));
+						holder.etBeratBruto.setText(context.getString(R.string.titleBeratBruto, lstTimbang.get(position).getTonasebruto().toString()));
 					else
 					if(FormAsal == 5)
 					{
@@ -178,6 +179,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 					}
 
 					holder.llBeratNetto.setVisibility(View.VISIBLE);
+					holder.etBeratNetto.setText(context.getString(R.string.titleBeratNetto, Fungsi.getStringFromSharedPref(context, Preference.PrefDataTimbang)));
 					holder.etBeratNetto.setFocusable(false);
 					holder.etBeratNetto.setEnabled(false);
 					holder.etBeratNetto.setCursorVisible(false);
@@ -331,7 +333,6 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 							popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
 						else
 						{
-							Log.d(TAG, "onResponse -> " + Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
 							if(viewID == R.id.ivBeratBruto)
 							{
 								lstTimbang.get(intTag).setTonasebruto(Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));

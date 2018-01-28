@@ -200,7 +200,6 @@ public class formKecil extends AppCompatActivity {
     String gsonHistory;
     CustomerPojo customerPojo;
     String KodePemasok;
-    String Jual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -215,11 +214,14 @@ public class formKecil extends AppCompatActivity {
         intTimbang = extras.getInt("Timbang") + 1;
         KodePemasok = extras.getString("KodePemasok");
 
-
         tvKodePemasok.setText(KodePemasok);
         spNoPolisi.setVisibility(View.VISIBLE);
         tvNoPolisi.setVisibility(View.GONE);
         tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(intTimbang - 1)));
+
+        datePrint = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
+        timePrint = new SimpleDateFormat("HH:mm:ss", Locale.US);
+
         AmbilInfoPemasok(KodePemasok);
     }
 
@@ -404,10 +406,11 @@ public class formKecil extends AppCompatActivity {
                     else {
                         final String Printer = Fungsi.getStringFromSharedPref(context, Preference.prefPortName);
                         final PrinterRsp printerRsp = response.body().getPrinterRsp();
-                        if(Printer.isEmpty() || (Jual.matches("Jual")) || (printerRsp == null))
+                        if(Printer.isEmpty() || (printerRsp == null))
                             LanjutProses();
                         else
                             ProsesPrint(Printer, printerRsp);
+
 //                        Intent LoginIntent = new Intent(formKecil.this, formTimbanganKecil.class);
 //                        startActivity(LoginIntent);
 //                        finish();
@@ -707,7 +710,6 @@ public class formKecil extends AppCompatActivity {
                     if (response.body().getCoreResponse().getKode() == FixValue.intError)
                         popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
                     else {
-                        Log.d(TAG, "onResponse -> " + Integer.valueOf(response.body().getTimbanganRsp().getTimbangan()));
                         editTextLay.setText(response.body().getTimbanganRsp().getTimbangan());
                     }
                 } else
@@ -745,7 +747,7 @@ public class formKecil extends AppCompatActivity {
         list.add(("Tanggal : " + datePrint.format(calendar.getTime()) + "\r\n").getBytes());
         list.add(("Jam : " + timePrint.format(calendar.getTime())  + "\r\n").getBytes());
 
-        list.add("\r\n\r\n\r\n\r\n".getBytes());
+        list.add("\r\n\r\n".getBytes());
         list.add(new byte[] { 0x1b, 0x64, 0x02 }); // Feed to cutter position
 
         progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),

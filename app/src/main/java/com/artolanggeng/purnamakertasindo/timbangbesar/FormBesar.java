@@ -675,7 +675,7 @@ public class FormBesar extends AppCompatActivity
 		list.add(("Tanggal : " + datePrint.format(calendar.getTime()) + "\r\n").getBytes());
 		list.add(("Jam : " + timePrint.format(calendar.getTime())  + "\r\n").getBytes());
 
-		list.add("\r\n\r\n\r\n\r\n".getBytes());
+		list.add("\r\n\r\n".getBytes());
 		list.add(new byte[] { 0x1b, 0x64, 0x02 }); // Feed to cutter position
 
 		progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),

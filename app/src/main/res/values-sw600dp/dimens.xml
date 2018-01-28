@@ -5,11 +5,11 @@
 
 	<dimen name="HeightLogoSplash">80dp</dimen>
 	<dimen name="WidthLogoSplash">300dp</dimen>
-	<dimen name="UserInputTextSize">28sp</dimen>
+	<dimen name="UserInputTextSize">20sp</dimen>
 
 	<dimen name="DefaultFooterTextSize">16sp</dimen>
 	<dimen name="TitleBar">26dp</dimen>
 
-	<dimen name="HeightButtonTimbangan">140dp</dimen>
-	<dimen name="HeightButtonTimbangan2">156dp</dimen>
+	<dimen name="HeightButtonTimbangan">156dp</dimen>
+	<dimen name="HeightButtonTimbangan2">172dp</dimen>
 </resources>

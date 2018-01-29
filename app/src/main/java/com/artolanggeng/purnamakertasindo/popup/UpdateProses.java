@@ -271,6 +271,7 @@ public class UpdateProses extends Dialog
 				}
 
 				timbangRsp.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spKodeBarang.getSelectedItemPosition()).getProductcode().trim());
+				timbangRsp.setUnitpriceid(IsiProduct.getInstance().getmProductRsps().get(spKodeBarang.getSelectedItemPosition()).getUnitpriceid());
 				formulirHolder = new FormulirHolder(null, timbangRsp);
 			}
 			else

@@ -49,6 +49,9 @@ public class TimbangRsp
 	@SerializedName("Timbangan")
 	@Expose
 	private String Timbangan;
+	@SerializedName("unitpriceid")
+	@Expose
+	private Integer unitpriceid;
 
 	public Integer getId()
 	{
@@ -178,5 +181,15 @@ public class TimbangRsp
 	public void setTimbangan(String timbangan)
 	{
 		Timbangan = timbangan;
+	}
+
+	public Integer getUnitpriceid()
+	{
+		return unitpriceid;
+	}
+
+	public void setUnitpriceid(Integer unitpriceid)
+	{
+		this.unitpriceid=unitpriceid;
 	}
 }

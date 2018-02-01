@@ -33,6 +33,9 @@ public class TimbanganRspKecil {
     @SerializedName("codeproduct")
     @Expose
     private Integer codeproduct;
+    @SerializedName("unitpriceid")
+    @Expose
+    private Integer unitpriceid;
 
     public Integer getNourut() {
         return nourut;
@@ -98,5 +101,15 @@ public class TimbanganRspKecil {
     public void setCodeproduct(Integer codeproduct)
     {
         this.codeproduct=codeproduct;
+    }
+
+    public Integer getUnitpriceid()
+    {
+        return unitpriceid;
+    }
+
+    public void setUnitpriceid(Integer unitpriceid)
+    {
+        this.unitpriceid=unitpriceid;
     }
 }

@@ -85,7 +85,7 @@ public class UpdateProses extends Dialog
 		LinearLayoutManager layoutManager = new LinearLayoutManager(ParentAct, LinearLayoutManager.VERTICAL, false);
 		rvPotongan.setLayoutManager(layoutManager);
 
-		if(FormAsal == 3)
+		if((FormAsal == 3) || (FormAsal == 5))
 			DataTimbangOtomatis();
 		else
 			AmbilDataTimbangan();
@@ -178,7 +178,7 @@ public class UpdateProses extends Dialog
 						rvPotongan.invalidate();
 						rvPotongan.setHasFixedSize(true);
 						timbangRsps = response.body().getTimbanganRsp();
-						timbangadapter = new Timbang_Adp(ParentAct, context, timbangRsps, IsiProduct.getInstance().getmProductRsps(), FormAsal, IsiPotongan.getInstance().getmPotongRsp());
+						timbangadapter = new Timbang_Adp(ParentAct, context, timbangRsps, FormAsal, IsiPotongan.getInstance().getmPotongRsp());
 						rvPotongan.setAdapter(timbangadapter);
 					}
 				}
@@ -262,16 +262,18 @@ public class UpdateProses extends Dialog
 					Spinner spJenisPotong = vi.findViewById(R.id.spJenisPotong);
 					timbangRsp.setPotongan(Integer.valueOf(etProses.getText().toString()));
 					timbangRsp.setJenispotongid(IsiPotongan.getInstance().getmPotongRsp().get(spJenisPotong.getSelectedItemPosition()).getId());
+					timbangRsp.setUnitpriceid(IsiProduct.getInstance().getmProductRsps().get(spKodeBarang.getSelectedItemPosition()).getUnitpriceid());
+					timbangRsp.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spKodeBarang.getSelectedItemPosition()).getProductcode().trim());
 				}
 				else
 				if(FormAsal == 6)
 				{
 					timbangRsp.setPotongan(0);
 					timbangRsp.setJenispotongid(1);
+					timbangRsp.setUnitpriceid(IsiProduct.getInstance().getmJualanRsps().get(spKodeBarang.getSelectedItemPosition()).getMproductpk());
+					timbangRsp.setProductcode(IsiProduct.getInstance().getmJualanRsps().get(spKodeBarang.getSelectedItemPosition()).getProductcode().trim());
 				}
 
-				timbangRsp.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spKodeBarang.getSelectedItemPosition()).getProductcode().trim());
-				timbangRsp.setUnitpriceid(IsiProduct.getInstance().getmProductRsps().get(spKodeBarang.getSelectedItemPosition()).getUnitpriceid());
 				formulirHolder = new FormulirHolder(null, timbangRsp);
 			}
 			else
@@ -306,7 +308,9 @@ public class UpdateProses extends Dialog
 			else
 			if(FormAsal == 5)
 			{
-				timbangRsp.setTonasebruto(Integer.valueOf(etProses.getText().toString()));
+				String strBerat = etProses.getText().toString().substring(12);
+				strBerat = strBerat.substring(0, strBerat.length() - 3);
+				timbangRsp.setTonasebruto(Integer.valueOf(strBerat.trim()));
 
 				IsiFormulir isiFormulir = new IsiFormulir();
 				isiFormulir.setId(intPekerjaanID);
@@ -418,7 +422,6 @@ public class UpdateProses extends Dialog
 			@Override
 			public void onFailure(Call<TimbangPojo> call, Throwable t)
 			{
-				Log.d(TAG, "onResponse: 2");
 				Fungsi.storeToSharedPref(context, "0", Preference.PrefDataTimbang);
 				AmbilDataTimbangan();
 			}

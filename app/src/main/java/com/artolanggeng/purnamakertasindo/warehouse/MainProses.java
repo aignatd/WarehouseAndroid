@@ -93,7 +93,6 @@ public class MainProses extends AppCompatActivity
 				globalTimbang = new GlobalTimbang(context, activity);
 				globalTimbang.ProsesPageSelected(position, btnbawah1, btnbawah2, btnbawah3);
 
-				Log.d(TAG, "onPageSelected: " + position);
 				FragMainLife fragmentToShow = (FragMainLife) swMainProses.instantiateItem(vpMainProses, position);
 				fragmentToShow.onResumeFragMainLife();
 			}

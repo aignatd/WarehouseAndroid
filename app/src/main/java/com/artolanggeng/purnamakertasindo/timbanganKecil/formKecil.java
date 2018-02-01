@@ -217,7 +217,7 @@ public class formKecil extends AppCompatActivity {
         tvKodePemasok.setText(KodePemasok);
         spNoPolisi.setVisibility(View.VISIBLE);
         tvNoPolisi.setVisibility(View.GONE);
-        tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(intTimbang - 1)));
+        tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(intTimbang)));
 
         datePrint = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
         timePrint = new SimpleDateFormat("HH:mm:ss", Locale.US);
@@ -356,6 +356,7 @@ public class formKecil extends AppCompatActivity {
             timbangRspKecil.setJenispotongid(1);
             timbangRspKecil.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang.getSelectedItemPosition()).getProductcode().trim());
             timbangRspKecil.setCodeproduct(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang.getSelectedItemPosition()).getMproductpk());
+            timbangRspKecil.setUnitpriceid(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang.getSelectedItemPosition()).getUnitpriceid());
             lstTimbangHolder.add(timbangRspKecil);
         }
 
@@ -369,8 +370,8 @@ public class formKecil extends AppCompatActivity {
             timbangRspKecil.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang2.getSelectedItemPosition()).getProductcode().trim());
             timbangRspKecil.setCodeproduct(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang2.getSelectedItemPosition()).getMproductpk());
             timbangRspKecil.setPotongan(Integer.valueOf(etPotonganBarangKecil2.getText().toString()));
+            timbangRspKecil.setUnitpriceid(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang2.getSelectedItemPosition()).getUnitpriceid());
             lstTimbangHolder.add(timbangRspKecil);
-
         }
 
         if (llInputDetailBarang3.getVisibility() == View.VISIBLE) {
@@ -383,6 +384,7 @@ public class formKecil extends AppCompatActivity {
             timbangRspKecil.setProductcode(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang3.getSelectedItemPosition()).getProductcode().trim());
             timbangRspKecil.setCodeproduct(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang3.getSelectedItemPosition()).getMproductpk());
             timbangRspKecil.setPotongan(Integer.valueOf(etPotonganBarangKecil3.getText().toString()));
+            timbangRspKecil.setUnitpriceid(IsiProduct.getInstance().getmProductRsps().get(spJenisBarang3.getSelectedItemPosition()).getUnitpriceid());
             lstTimbangHolder.add(timbangRspKecil);
 
         }
@@ -636,6 +638,7 @@ public class formKecil extends AppCompatActivity {
                 ivAddDetail.setVisibility(View.GONE);
                 rlBtnAmbil.setVisibility(View.GONE);
                 sizeLayout = sizeLayout + 1;
+                tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(sizeLayout)));
                 break;
             case R.id.ivAddDetail2:
                 llInputDetailBarang3.setVisibility(View.VISIBLE);
@@ -643,12 +646,14 @@ public class formKecil extends AppCompatActivity {
                 ivAddDetail2.setVisibility(View.GONE);
                 rlBtnAmbil2.setVisibility(View.GONE);
                 sizeLayout = sizeLayout + 1;
+                tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(sizeLayout)));
                 break;
             case R.id.ivDeleteDetail2:
                 llInputDetailBarang2.setVisibility(View.GONE);
                 ivAddDetail.setVisibility(View.VISIBLE);
                 sizeLayout = sizeLayout - 1;
                 rlBtnAmbil.setVisibility(View.VISIBLE);
+                tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(sizeLayout)));
                 break;
             case R.id.ivDeleteDetail3:
                 llInputDetailBarang3.setVisibility(View.GONE);
@@ -656,7 +661,7 @@ public class formKecil extends AppCompatActivity {
                 ivAddDetail2.setVisibility(View.VISIBLE);
                 sizeLayout = sizeLayout - 1;
                 rlBtnAmbil2.setVisibility(View.VISIBLE);
-
+                tvStatusProses.setText(context.getString(R.string.strHeaderListProgress, String.valueOf(sizeLayout)));
                 break;
             case R.id.btnAmbil:
                 ambilDataBeratTimbangan(etBeratTimbanganKecil);

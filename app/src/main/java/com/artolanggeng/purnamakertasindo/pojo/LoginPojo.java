@@ -31,6 +31,9 @@ public class LoginPojo
 	@SerializedName("PrinterRsp")
 	@Expose
 	private PrinterRsp printerRsp;
+	@SerializedName("JualanRsp")
+	@Expose
+	private List<ProductRsp> jualanrsp = null;
 
   public CoreResponse getCoreResponse() {
     return coreResponse;
@@ -86,5 +89,15 @@ public class LoginPojo
 	public void setPrinterRsp(PrinterRsp printerRsp)
 	{
 		this.printerRsp = printerRsp;
+	}
+
+	public List<ProductRsp> getJualanrsp()
+	{
+		return jualanrsp;
+	}
+
+	public void setJualanrsp(List<ProductRsp> jualanrsp)
+	{
+		this.jualanrsp=jualanrsp;
 	}
 }

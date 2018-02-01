@@ -27,6 +27,7 @@ import com.artolanggeng.purnamakertasindo.adapter.Timbang_Adp;
 import com.artolanggeng.purnamakertasindo.data.*;
 import com.artolanggeng.purnamakertasindo.model.PrinterRsp;
 import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
+import com.artolanggeng.purnamakertasindo.penjualan.MainJual;
 import com.artolanggeng.purnamakertasindo.pojo.CustomerPojo;
 import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
@@ -127,7 +128,7 @@ public class FormBesar extends AppCompatActivity
 		History = extras.getString("History");
 		Jual = extras.getString("Jual");
 
-		if(History.matches("History"))
+		if((History.matches("History")) || ((History.matches("HistoryJual"))))
 		{
 			tvHeader.setText(getResources().getString(R.string.titleHistory));
 			ivMenuFormulir.setVisibility(View.GONE);
@@ -236,7 +237,11 @@ public class FormBesar extends AppCompatActivity
 						}
 
 						lstTimbang = response.body().getTimbangrsp();
-						AmbilDataTimbangOtomatis();
+
+						if((History.matches("History")) || ((History.matches("HistoryJual"))))
+							TampilkanDataTimbangan();
+						else
+							AmbilDataTimbangOtomatis();
 					}
 				} else
 				{
@@ -259,7 +264,7 @@ public class FormBesar extends AppCompatActivity
 
 	private void BackActivity()
 	{
-		if(History.matches("History"))
+		if((History.matches("History")) || ((History.matches("HistoryJual"))))
 			finish();
 		else
 			pesan.ShowMessege6(context, getResources().getString(R.string.msgBatalTimbang), activity);
@@ -412,7 +417,11 @@ public class FormBesar extends AppCompatActivity
 					else
 					{
 						lstTimbang = response.body().getTimbanganRsp();
-						AmbilDataTimbangOtomatis();
+
+						if((History.matches("History")) || ((History.matches("HistoryJual"))))
+							TampilkanDataTimbangan();
+						else
+							AmbilDataTimbangOtomatis();
 					}
 				}
 				else
@@ -447,19 +456,26 @@ public class FormBesar extends AppCompatActivity
 
 		Integer intFormAsal = 1;
 
-		if(History.matches("History"))
+		if((History.matches("History")) || ((History.matches("HistoryJual"))))
 		{
 			tvHeader.setText(getResources().getString(R.string.titleHistory));
 			llSubmit.setVisibility(View.GONE);
-			intFormAsal = 4;
+
+			if(History.matches("History"))
+				intFormAsal = 4;
+			else
+				intFormAsal = 8;
 		}
 		else
 		{
+			if(Jual.matches("Jual"))
+				intFormAsal = 7;
+
 			lstTimbang.add(timbangRsp);
 			llSubmit.setVisibility(View.VISIBLE);
 		}
 
-		formadapter = new Timbang_Adp(activity, context, lstTimbang, IsiProduct.getInstance().getmProductRsps(), intFormAsal, null);
+		formadapter = new Timbang_Adp(activity, context, lstTimbang, intFormAsal, null);
 		rvListProses.setAdapter(formadapter);
 	}
 
@@ -647,8 +663,14 @@ public class FormBesar extends AppCompatActivity
 
 	private void LanjutProses()
 	{
-		Intent LoginIntent = new Intent(FormBesar.this, MainProses.class);
-		startActivity(LoginIntent);
+		Intent FormBesarIntent;
+
+		if(Jual.matches("Jual"))
+			FormBesarIntent = new Intent(FormBesar.this, MainJual.class);
+		else
+			FormBesarIntent = new Intent(FormBesar.this, MainProses.class);
+
+		startActivity(FormBesarIntent);
 		finish();
 	}
 
@@ -743,7 +765,6 @@ public class FormBesar extends AppCompatActivity
 			@Override
 			public void onFailure(Call<TimbangPojo> call, Throwable t)
 			{
-				Log.d(TAG, "onResponse: 2");
 				Fungsi.storeToSharedPref(context, "0", Preference.PrefDataTimbang);
 				TampilkanDataTimbangan();
 			}

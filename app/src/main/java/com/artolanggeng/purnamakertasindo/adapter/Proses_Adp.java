@@ -102,6 +102,9 @@ public class Proses_Adp extends BaseAdapter
 		holder.llSubmit.setVisibility(View.VISIBLE);
 		holder.tvStatusProses.setTag(position);
 
+		if(customerRsps.get(position).getJenistimbang() == 3)
+			holder.ivPrintTimbang.setVisibility(View.GONE);
+
 		if((customerRsps.get(position).getPermintaan() == 1) && ((customerRsps.get(position).getPekerjaan() == 1) ||
 			 (customerRsps.get(position).getPekerjaan() == 2)))
 		{
@@ -206,6 +209,8 @@ public class Proses_Adp extends BaseAdapter
 		Button btnGaris2;
 		@BindView(R.id.btnGaris3)
 		Button btnGaris3;
+		@BindView(R.id.ivPrintTimbang)
+		ImageView ivPrintTimbang;
 		@BindView(R.id.rlheadatasproses)
 		RelativeLayout rlheadatasproses;
 

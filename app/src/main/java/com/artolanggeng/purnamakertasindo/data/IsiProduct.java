@@ -12,6 +12,7 @@ import java.util.List;
 public class IsiProduct
 {
 	private List<ProductRsp> mProductRsps;
+	private List<ProductRsp> mJualanRsps;
 
 	public List<ProductRsp> getmProductRsps()
 	{
@@ -21,6 +22,16 @@ public class IsiProduct
 	public void setmProductRsps(List<ProductRsp> mProductRsps)
 	{
 		this.mProductRsps = mProductRsps;
+	}
+
+	public List<ProductRsp> getmJualanRsps()
+	{
+		return mJualanRsps;
+	}
+
+	public void setmJualanRsps(List<ProductRsp> mJualanRsps)
+	{
+		this.mJualanRsps=mJualanRsps;
 	}
 
 	private static IsiProduct IsiProductInstance = new IsiProduct();

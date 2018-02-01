@@ -64,8 +64,8 @@ public class History_Adp extends RecyclerView.Adapter<History_Adp.ViewHolder>
 		holder.tvDetailHistory1.setText(String.valueOf(position + 1) + ". No. Tiket : " + String.valueOf(customerRsps.get(position).getId()) +
 			", jumlah timbang : " + String.valueOf(customerRsps.get(position).getJumlahtimbang()));
 
-		holder.tvDetailHistory3.setText("No. Polisi : " + String.valueOf(customerRsps.get(position).getNopolisi()) +
-			", Status : " + String.valueOf(customerRsps.get(position).getStatus()));
+		holder.tvDetailHistory3.setText("No. Polisi : " + customerRsps.get(position).getNopolisi() +
+			", Status : " + customerRsps.get(position).getStatus());
 
 		holder.rlDetailHistory.setTag(position);
 	}
@@ -147,7 +147,12 @@ public class History_Adp extends RecyclerView.Adapter<History_Adp.ViewHolder>
 						Intent HistoryIntent = new Intent(activity, FormBesar.class);
 						HistoryIntent.putExtra("KodePemasok", pemasokid);
 						HistoryIntent.putExtra("Timbang", customerRsps.get(intTag).getJumlahtimbang());
-						HistoryIntent.putExtra("History", "History");
+
+						if(customerRsps.get(intTag).getStatus().matches("Jual"))
+							HistoryIntent.putExtra("History", "HistoryJual");
+						else
+							HistoryIntent.putExtra("History", "History");
+
 						HistoryIntent.putExtra("Jual", "");
 						context.startActivity(HistoryIntent);
 					}

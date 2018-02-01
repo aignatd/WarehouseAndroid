@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -129,6 +130,7 @@ public class Login extends AppCompatActivity
 
               IsiProduct.initIsiProduct();
               IsiProduct.getInstance().setmProductRsps(response.body().getProductrsp());
+              IsiProduct.getInstance().setmJualanRsps(response.body().getJualanrsp());
 
               IsiPotongan.initIsiPotongan();
               IsiPotongan.getInstance().setmPotongRsp(response.body().getPotongRsp());

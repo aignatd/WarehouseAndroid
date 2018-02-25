@@ -3,7 +3,9 @@ package com.artolanggeng.purnamakertasindo.common;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.*;
@@ -52,6 +54,8 @@ public class Pemasok extends AppCompatActivity
   EditText etPanggilan;
   @BindView(R.id.etNoID)
   EditText etNoID;
+  @BindView(R.id.etNoPolisi)
+  EditText etNoPolisi;
   @BindView(R.id.rgSeks)
   RadioGroup rgSeks;
   @BindView(R.id.rgJenisID)
@@ -126,13 +130,9 @@ public class Pemasok extends AppCompatActivity
         lstInput.clear();
         lstMsg.clear();
         lstInput.add(etPemasok);
-        lstInput.add(etAlamatBaru);
-        lstInput.add(etNoHPPemasok);
         lstInput.add(etPanggilan);
 
         lstMsg.add(getResources().getString(R.string.msgPemasok));
-        lstMsg.add(getResources().getString(R.string.msgAlamatBaru));
-        lstMsg.add(getResources().getString(R.string.msgNoHPPemasok));
         lstMsg.add(getResources().getString(R.string.msgPanggilan));
 
         if(Fungsi.CekInput(lstInput, lstMsg, context))
@@ -197,6 +197,7 @@ public class Pemasok extends AppCompatActivity
     customer.setAlamat(etAlamatBaru.getText().toString().trim());
     customer.setTelpon(etNoHPPemasok.getText().toString().trim());
     customer.setEmail(etEmailPemasok.getText().toString().trim());
+    customer.setNopolisi(etNoPolisi.getText().toString().trim());
     customer.setTgllahir(etTglPemasok.getText().toString().trim());
     customer.setPanggilan(etPanggilan.getText().toString().trim());
     customer.setKodewarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
@@ -244,9 +245,23 @@ public class Pemasok extends AppCompatActivity
             popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
           else
           {
-            RoleChecker roleChecker = new RoleChecker(Pemasok.this, context);
-            if(roleChecker.RoleTimbangan() == 0)
-              popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
+            AlertDialog.Builder builder = new AlertDialog.Builder(context);
+            builder
+              .setTitle(R.string.titleMessege)
+              .setMessage(response.body().getCoreResponse().getPesan())
+              .setIcon(android.R.drawable.ic_dialog_alert)
+              .setCancelable(false)
+              .setPositiveButton(R.string.strBtnOK, new DialogInterface.OnClickListener()
+              {
+                public void onClick(DialogInterface dialog, int which)
+                {
+                  RoleChecker roleChecker = new RoleChecker(Pemasok.this, context);
+                  if(roleChecker.RoleTimbangan() == 0)
+                    popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgOtorisasi));
+                }
+              });
+            AlertDialog alert = builder.create();
+            alert.show();
           }
         }
         else

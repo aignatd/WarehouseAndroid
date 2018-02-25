@@ -43,8 +43,8 @@
 	<string name="HintPassLama">Password Lama<font color='red'>*</font></string>
 	<string name="HintPassBaru">Password Baru<font color='red'>*</font></string>
 	<string name="HintPemasok">Nama lengkap<font color='red'>*</font></string>
-	<string name="HintAlamatPemasok">Alamat tinggal<font color='red'>*</font></string>
-	<string name="HintNoHPPemasok">Nomor handphone<font color='red'>*</font></string>
+	<string name="HintAlamatPemasok">Alamat tinggal</string>
+	<string name="HintNoHPPemasok">Nomor handphone</string>
 	<string name="HintNamaPerusahaan">Nama perusahaan</string>
 	<string name="HintAlamatEmail">Alamat email</string>
 	<string name="HintTmpProfile">Tempat lahir</string>

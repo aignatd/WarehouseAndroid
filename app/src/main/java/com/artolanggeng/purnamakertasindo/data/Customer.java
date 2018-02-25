@@ -20,6 +20,7 @@ public class Customer
   private String tgllahir;
   private String jeniskelamin;
   private String kodewarehouse;
+  private String nopolisi;
   private int Jenis;
   private String Token;
 
@@ -171,5 +172,15 @@ public class Customer
   public void setJenis(int jenis)
   {
     Jenis = jenis;
+  }
+
+  public String getNopolisi()
+  {
+    return nopolisi;
+  }
+
+  public void setNopolisi(String nopolisi)
+  {
+    this.nopolisi=nopolisi;
   }
 }

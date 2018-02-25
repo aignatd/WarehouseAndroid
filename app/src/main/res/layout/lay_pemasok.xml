@@ -92,10 +92,20 @@
 					android:inputType="textEmailAddress"/>
 
 			<EditText
+				style="@style/UserInputUsername"
+				android:drawableLeft="@drawable/pelanggan"
+				android:id="@+id/etNoPolisi"
+				android:hint="@string/HintTambaharmada"
+				android:layout_below="@id/etEmailPemasok"
+				android:maxLength="25"
+				android:layout_marginTop="15dp"
+				android:inputType="textEmailAddress"/>
+
+			<EditText
 					style="@style/UserInputUsername"
 					android:id="@+id/etTglPemasok"
 					android:hint="@string/HintTglPemasok"
-					android:layout_below="@id/etEmailPemasok"
+					android:layout_below="@id/etNoPolisi"
 					android:maxLength="25"
 					android:drawableLeft="@drawable/calendericon"
 					android:layout_marginTop="15dp"/>

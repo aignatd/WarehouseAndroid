@@ -33,6 +33,7 @@ public class FixValue
 	public static final String RestfulAmbilProfile = "users/ambilprofile";
 	public static final String RestfulUpdateProfile = "users/updateprofile";
 	public static final String RestfulDataTimbangan = "formulirs/datatimbang/{warehouse}";
+	public static final String RestfulArmada = "customers/armada";
 
 	// Server Online
 	public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";
@@ -40,7 +41,7 @@ public class FixValue
 	//public static final String Hostname = "http://111.94.20.226:41014/api/v1/";
 
 	// Server Offline
-	//public static final String Hostname = "http://192.168.212.18:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.212.53:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.43.124:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.137.1:41014/api/v1/";
 

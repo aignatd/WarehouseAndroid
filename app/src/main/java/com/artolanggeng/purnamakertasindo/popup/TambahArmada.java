@@ -29,7 +29,7 @@ public class TambahArmada extends Dialog
 
 	@BindView(R.id.etTambaharmada)
 	EditText etTambaharmada;
-	private String TAG = "[Password]";
+	private String TAG = "[TambahArmada]";
 	private ProgressDialog progressDialog;
 	private PopupMessege popupMessege = new PopupMessege();
 	private List<EditText> lstInput = new ArrayList<>();
@@ -59,10 +59,21 @@ public class TambahArmada extends Dialog
 		switch(view.getId())
 		{
 			case R.id.btnBatalArmada:
+				Fungsi.storeToSharedPref(context, "Batal", Preference.PrefListArmada);
 				cancel();
 			break;
 			case R.id.btnTambahArmada:
-				Fungsi.storeToSharedPref(context, etTambaharmada.getText().toString(), Preference.PrefListArmada);
+				lstInput.clear();
+				lstMsg.clear();
+				lstInput.add(etTambaharmada);
+
+				lstMsg.add(ParentAct.getResources().getString(R.string.msgNoPolisi));
+
+				if(Fungsi.CekInput(lstInput, lstMsg, context))
+				{
+					Fungsi.storeToSharedPref(context, etTambaharmada.getText().toString(), Preference.PrefListArmada);
+				}
+
 				dismiss();
 			break;
 		}

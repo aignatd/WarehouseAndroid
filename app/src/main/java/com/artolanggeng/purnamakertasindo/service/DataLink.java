@@ -18,6 +18,7 @@ package com.artolanggeng.purnamakertasindo.service;
 
 import com.artolanggeng.purnamakertasindo.pojo.*;
 import com.artolanggeng.purnamakertasindo.sending.*;
+import com.artolanggeng.purnamakertasindo.setting.Profile;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 
 import java.util.Map;
@@ -116,5 +117,8 @@ public interface  DataLink
 
   @GET(FixValue.RestfulDataTimbangan)
   Call<TimbangPojo> DataTimbanganService(@Path("warehouse") String warehouse);
+
+  @POST(FixValue.RestfulArmada)
+  Call<ProfilePojo> ArmadaService(@Body CustomerHolder customerHolder);
 }
 

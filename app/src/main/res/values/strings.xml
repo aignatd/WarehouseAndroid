@@ -89,6 +89,7 @@
 	<string name="msgAlamatBaru">Masukan alamat tinggal</string>
 	<string name="msgNoHPPemasok">Masukan nomor handphone</string>
 	<string name="msgPanggilan">Masukan nama panggilan</string>
+	<string name="msgNoPolisi">Masukan nomor polisi</string>
 	<string name="msgInputID">Masukan nomor ID terpilih</string>
 	<string name="msgDataPemasok">Proses data pemasok</string>
 	<string name="msgBatalTimbang">Input akan dibatalkan ?</string>
@@ -124,6 +125,7 @@
 	<string name="msgDataTimbang">Ambil data timbangan</string>
 	<string name="msgOtorisasi">Otorisasi anda salah</string>
 	<string name="msgSimpanTimbang">Simpan timbangan sukses</string>
+	<string name="msgSimpanArmada">Simpan data armada</string>
 
 	<string name="strBtnSelesai">Selesai</string>
 	<string name="strBtnOK">OK</string>

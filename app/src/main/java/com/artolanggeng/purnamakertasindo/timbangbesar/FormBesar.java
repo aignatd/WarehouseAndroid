@@ -30,6 +30,7 @@ import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
 import com.artolanggeng.purnamakertasindo.penjualan.MainJual;
 import com.artolanggeng.purnamakertasindo.pojo.CustomerPojo;
 import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
+import com.artolanggeng.purnamakertasindo.pojo.ProfilePojo;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
 import com.artolanggeng.purnamakertasindo.pojo.TimbangPojo;
 import com.artolanggeng.purnamakertasindo.popup.TambahArmada;
@@ -489,6 +490,8 @@ public class FormBesar extends AppCompatActivity
 
 	private void TambahArmada()
 	{
+		Fungsi.storeToSharedPref(context, "", Preference.PrefListArmada);
+
 		TambahArmada tambahArmada = new TambahArmada(FormBesar.this);
 		tambahArmada.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 		tambahArmada.show();
@@ -497,13 +500,68 @@ public class FormBesar extends AppCompatActivity
 			@Override
 			public void onDismiss(DialogInterface dialogInterface)
 			{
-				String[] items = new String[1];
-				items[0] = Fungsi.getStringFromSharedPref(context, Preference.PrefListArmada);
-				ArrayList<String> lst = new ArrayList<>(Arrays.asList(items));
-				dataAdapter.addAll(lst);
-				dataAdapter.notifyDataSetChanged();
-				spNoPolisi.setAdapter(dataAdapter);
-				spNoPolisi.setSelection(dataAdapter.getCount() - 1);
+				String strTemp = Fungsi.getStringFromSharedPref(context, Preference.PrefListArmada);
+
+				if(strTemp.matches(""))
+					pesan.ShowMessege1(context, getResources().getString(R.string.msgNoPolisi));
+				else
+				{
+					if(!strTemp.matches("Batal"))
+					{
+						String[] items = new String[1];
+						items[0] = strTemp;
+						ArrayList<String> lst = new ArrayList<>(Arrays.asList(items));
+						dataAdapter.addAll(lst);
+						dataAdapter.notifyDataSetChanged();
+						spNoPolisi.setAdapter(dataAdapter);
+						spNoPolisi.setSelection(dataAdapter.getCount() - 1);
+						SimpanDataArmada(strTemp);
+					}
+				}
+			}
+		});
+	}
+
+	private void SimpanDataArmada(String strArmada)
+	{
+		progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
+			context.getResources().getString(R.string.msgSimpanArmada));
+		progressDialog.setCancelable(false);
+
+		if(Fungsi.isNetworkAvailable(context) == FixValue.TYPE_NONE)
+		{
+			progressDialog.dismiss();
+			pesan.ShowMessege1(context, context.getResources().getString(R.string.msgKoneksiError));
+			return;
+		}
+
+		Customer customer = new Customer();
+		customer.setNopolisi(strArmada);
+		customer.setPemasokID(tvKodePemasok.getText().toString().trim());
+
+		CustomerHolder customerHolder = new CustomerHolder(customer);
+		DataLink dataLink = Fungsi.BindingData();
+
+		final Call<ProfilePojo> ReceivePojo = dataLink.ArmadaService(customerHolder);
+
+		ReceivePojo.enqueue(new Callback<ProfilePojo>()
+		{
+			@Override
+			public void onResponse(Call<ProfilePojo> call, Response<ProfilePojo> response)
+			{
+				progressDialog.dismiss();
+
+				if(response.isSuccessful())
+					pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
+				else
+					pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
+			}
+
+			@Override
+			public void onFailure(Call<ProfilePojo> call, Throwable t)
+			{
+				progressDialog.dismiss();
+				pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));
 			}
 		});
 	}

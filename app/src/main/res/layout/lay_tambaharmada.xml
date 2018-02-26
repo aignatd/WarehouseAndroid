@@ -37,7 +37,7 @@
 		android:layout_below="@id/etTambaharmada"
 		android:orientation="horizontal"
 		android:weightSum="8"
-		android:layout_marginTop="25dip"
+		android:layout_marginTop="5dip"
 		android:layout_marginLeft="35dip"
 		android:layout_marginRight="35dip"
 		android:layout_marginBottom="12dip">

@@ -1,5 +1,6 @@
 package com.artolanggeng.purnamakertasindo.data;
 
+import com.artolanggeng.purnamakertasindo.model.JualanRsp;
 import com.artolanggeng.purnamakertasindo.model.ProductRsp;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.List;
 public class IsiProduct
 {
 	private List<ProductRsp> mProductRsps;
-	private List<ProductRsp> mJualanRsps;
+	private List<JualanRsp> mJualanRsps;
 
 	public List<ProductRsp> getmProductRsps()
 	{
@@ -24,12 +25,12 @@ public class IsiProduct
 		this.mProductRsps = mProductRsps;
 	}
 
-	public List<ProductRsp> getmJualanRsps()
+	public List<JualanRsp> getmJualanRsps()
 	{
 		return mJualanRsps;
 	}
 
-	public void setmJualanRsps(List<ProductRsp> mJualanRsps)
+	public void setmJualanRsps(List<JualanRsp> mJualanRsps)
 	{
 		this.mJualanRsps=mJualanRsps;
 	}

@@ -49,30 +49,37 @@
 		
 		<activity
 			android:name=".setting.Armada"
+			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
 			android:name=".setting.Driver"
+			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
 			android:name=".setting.Profile"
+			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
 			android:name=".common.Login"
+			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
 			android:name=".common.Utama"
+			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
 			android:name=".common.BuatAkun"
+			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
 		<activity
 			android:name=".common.Splash"
+			android:allowBackup="true"
 			android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>

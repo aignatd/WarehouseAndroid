@@ -16,6 +16,7 @@ import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.data.AutoTimbang;
 import com.artolanggeng.purnamakertasindo.data.IsiProduct;
+import com.artolanggeng.purnamakertasindo.model.JualanRsp;
 import com.artolanggeng.purnamakertasindo.model.PotongRsp;
 import com.artolanggeng.purnamakertasindo.model.ProductRsp;
 import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
@@ -51,7 +52,7 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 	private ArrayAdapter<String> dataAdapter;
 	private List<TimbangRsp> lstTimbang;
 	private List<ProductRsp> productRsps;
-	private List<ProductRsp> jualanRsps;
+	private List<JualanRsp> jualanRsps;
 	private List<PotongRsp> potongRsps;
 	private Integer FormAsal;
 
@@ -169,7 +170,14 @@ public class Timbang_Adp extends RecyclerView.Adapter<Timbang_Adp.ViewHolder>
 
 						for(int i = 0; i < productRsps.size(); i++)
 						{
-							items[i] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + " / " + productRsps.get(i).getProductname().trim();
+							String strProductName;
+
+							if(productRsps.get(i).getProductname() == null)
+								strProductName = "";
+							else
+								strProductName = " / " + productRsps.get(i).getProductname().trim();
+
+							items[i] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + strProductName;
 						}
 
 						holder.etNilaiPotongan.requestFocus();

@@ -54,6 +54,15 @@
 					android:layout_margin="5dp"
 					android:layout_toLeftOf="@id/ivPhotoTimbang"
 					android:id="@+id/ivPrintTimbang"/>
+
+				<ImageView
+					android:layout_width="24dp"
+					android:layout_height="24dp"
+					android:src="@drawable/eraser"
+					android:layout_margin="5dp"
+					android:layout_toLeftOf="@id/ivPrintTimbang"
+					android:id="@+id/ivEditTimbang"
+					android:visibility="gone"/>
 			</RelativeLayout>
 
 			<LinearLayout

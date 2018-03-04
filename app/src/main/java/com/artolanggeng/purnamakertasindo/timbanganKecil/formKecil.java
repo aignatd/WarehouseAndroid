@@ -547,8 +547,16 @@ public class formKecil extends AppCompatActivity {
 
         productRsps = IsiProduct.getInstance().getmProductRsps();
         String[] items = new String[productRsps.size()];
-        for (int i = 0; i < productRsps.size(); i++) {
-            items[i] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + " / " + productRsps.get(i).getProductname().trim();
+        for (int i = 0; i < productRsps.size(); i++)
+        {
+            String strProductName;
+
+            if(productRsps.get(i).getProductname() == null)
+                strProductName = "";
+            else
+                strProductName = " / " + productRsps.get(i).getProductname().trim();
+
+            items[i] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + strProductName;
         }
 
         ArrayList<String> lst = new ArrayList<>(Arrays.asList(items));

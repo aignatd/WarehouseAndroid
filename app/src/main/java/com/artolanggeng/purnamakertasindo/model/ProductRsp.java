@@ -19,12 +19,12 @@ public class ProductRsp
 	@SerializedName("productname")
 	@Expose
 	private String productname;
-	@SerializedName("harga")
-	@Expose
-	private Integer harga;
 	@SerializedName("unitpriceid")
 	@Expose
 	private Integer unitpriceid;
+	@SerializedName("price")
+	@Expose
+	private Integer price;
 
 	public String getProductcode()
 	{
@@ -56,16 +56,6 @@ public class ProductRsp
 		this.productname = productname;
 	}
 
-	public Integer getHarga()
-	{
-		return harga;
-	}
-
-	public void setHarga(Integer harga)
-	{
-		this.harga = harga;
-	}
-
 	public Integer getUnitpriceid()
 	{
 		return unitpriceid;
@@ -74,5 +64,15 @@ public class ProductRsp
 	public void setUnitpriceid(Integer unitpriceid)
 	{
 		this.unitpriceid=unitpriceid;
+	}
+
+	public Integer getPrice()
+	{
+		return price;
+	}
+
+	public void setPrice(Integer price)
+	{
+		this.price=price;
 	}
 }

@@ -9,6 +9,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.widget.Button;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.data.User;
+import com.artolanggeng.purnamakertasindo.koreksi.MainKoreksi;
 import com.artolanggeng.purnamakertasindo.penjualan.MainJual;
 import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
 import com.artolanggeng.purnamakertasindo.popup.GantiPassword;
@@ -131,32 +132,46 @@ public class GlobalTimbang
 		if(position == 0)
 		{
 			btnbawah1.setBackgroundResource(R.color.appleGreen);
-			btnbawah2.setBackgroundResource(R.color.whiteThree);
+
+			if(btnbawah2 != null)
+				btnbawah2.setBackgroundResource(R.color.whiteThree);
+
 			btnbawah3.setBackgroundResource(R.color.whiteThree);
 		}
 		else
 		if(position == 1)
 		{
 			btnbawah1.setBackgroundResource(R.color.whiteThree);
-			btnbawah2.setBackgroundResource(R.color.appleGreen);
-			btnbawah3.setBackgroundResource(R.color.whiteThree);
+
+			if(btnbawah2 != null)
+				btnbawah2.setBackgroundResource(R.color.appleGreen);
+
+			if(btnbawah2 == null)
+				btnbawah3.setBackgroundResource(R.color.appleGreen);
+			else
+				btnbawah3.setBackgroundResource(R.color.whiteThree);
 		}
 		else
 		if(position == 2)
 		{
 			btnbawah1.setBackgroundResource(R.color.whiteThree);
-			btnbawah2.setBackgroundResource(R.color.whiteThree);
+
+			if(btnbawah2 != null)
+				btnbawah2.setBackgroundResource(R.color.whiteThree);
+
 			btnbawah3.setBackgroundResource(R.color.appleGreen);
 		}
 	}
 
-	public void ProsesPemasokManual(Integer intTimbang, String strHistory, String strJual, final Class<?> clsTimbang)
+	public void ProsesPemasokManual(Integer intTimbang, String strHistory, String strJual,
+	                                final Class<?> clsTimbang, String strKoreksi)
 	{
 		Intent PemasokManualIntent = new Intent(activity, clsTimbang);
 		PemasokManualIntent.putExtra("KodePemasok", Fungsi.getStringFromSharedPref(context, Preference.PrefScanQR));
 		PemasokManualIntent.putExtra("Timbang", intTimbang);
 		PemasokManualIntent.putExtra("History", strHistory);
 		PemasokManualIntent.putExtra("Jual", strJual);
+		PemasokManualIntent.putExtra("Koreksi", strKoreksi);
 		activity.startActivity(PemasokManualIntent);
 	}
 
@@ -164,6 +179,13 @@ public class GlobalTimbang
 	{
 		Intent UpdateProfileIntent = new Intent(activity, UserProfile.class);
 		context.startActivity(UpdateProfileIntent);
+		activity.finish();
+	}
+
+	public void ProsesKoreksi()
+	{
+		Intent KoreksiIntent = new Intent(activity, MainKoreksi.class);
+		context.startActivity(KoreksiIntent);
 		activity.finish();
 	}
 }

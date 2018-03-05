@@ -158,6 +158,11 @@
 			android:allowBackup="true"
 			android:screenOrientation="portrait">
 		</activity>
+		<activity
+			android:name=".koreksi.MainKoreksi"
+			android:allowBackup="true"
+			android:screenOrientation="portrait">
+		</activity>
 	</application>
 
 </manifest>

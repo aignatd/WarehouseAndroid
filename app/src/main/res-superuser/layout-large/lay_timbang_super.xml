@@ -396,7 +396,40 @@
 						android:layout_width="@dimen/HeightButtonTimbangan"
 						android:layout_height="@dimen/HeightButtonTimbangan2"
 						android:weightSum="1"
+						android:id="@+id/rlKoreksi"
+						android:gravity="center">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/eraser"
+							android:id="@+id/ivKoreksi"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="56dp"
+							android:layout_height="67dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvKoreksi"
+							android:text="@string/StrKoreksi"
+							android:gravity="center"
+							android:layout_below="@id/ivKoreksi"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+
+					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
 						android:id="@+id/rlKeluar"
+						android:layout_marginRight="16dp"
+						android:layout_marginLeft="16dp"
 						android:gravity="center">
 
 						<ImageView
@@ -417,40 +450,6 @@
 							android:text="@string/StrKeluar"
 							android:gravity="center"
 							android:layout_below="@id/ivKeluar"
-							android:textAlignment="center"
-							android:layout_marginTop="8dp"/>
-					</RelativeLayout>
-
-					<RelativeLayout
-						style="@style/ButtonTimbangan"
-						android:orientation="vertical"
-						android:layout_width="@dimen/HeightButtonTimbangan"
-						android:layout_height="@dimen/HeightButtonTimbangan2"
-						android:weightSum="1"
-						android:id="@+id/rlKosong1"
-						android:gravity="center"
-						android:layout_marginRight="16dp"
-						android:layout_marginLeft="16dp"
-						android:visibility="invisible">
-
-						<ImageView
-							android:scaleType="fitXY"
-							android:adjustViewBounds="true"
-							app:srcCompat="@drawable/jualbarang"
-							android:id="@+id/ivKosong1"
-							android:layout_centerVertical="true"
-							android:layout_centerHorizontal="true"
-							android:layout_width="56dp"
-							android:layout_height="56dp"/>
-
-						<TextView
-							style="@style/TextButton"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:id="@+id/tvKosong1"
-							android:text="@string/strJualBarang"
-							android:gravity="center"
-							android:layout_below="@id/ivKosong1"
 							android:textAlignment="center"
 							android:layout_marginTop="8dp"/>
 					</RelativeLayout>

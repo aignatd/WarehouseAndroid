@@ -124,7 +124,7 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
         if (kodeTimbangan.equals("1"))
           ScanQRIntent = new Intent(ScanQR.this, formKecil.class);
         else
-        if (kodeTimbangan.equals("2") || kodeTimbangan.equals("3"))
+        if (kodeTimbangan.equals("2") || kodeTimbangan.equals("3") || kodeTimbangan.equals("4"))
         {
 	        ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
 
@@ -133,6 +133,12 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
 	        else
 	        if(kodeTimbangan.equals("3"))
 		        ScanQRIntent.putExtra("Jual", "Jual");
+          else
+          if(kodeTimbangan.equals("4"))
+          {
+            ScanQRIntent.putExtra("Jual", "");
+            ScanQRIntent.putExtra("Koreksi", "Koreksi");
+          }
         }
 
 	      ScanQRIntent.putExtra("KodePemasok", barcodeText);

@@ -31,6 +31,7 @@
 	<string name="titleIPAddressPrinter">Pilih IP Address</string>
 	<string name="titleTimbangBesar">Timbang Besar</string>
 	<string name="titlePenjualan">Penjualan</string>
+	<string name="titleKoreksi">Koreksi</string>
 	<string name="titleHistory">History</string>
 	<string name="title_activity_test">Test</string>
 	<string name="titleSettingTimbang">Setting\nTimbangan</string>
@@ -138,6 +139,7 @@
 	<string name="StrPelangganBaru">Pemasok\nBaru</string>
 	<string name="StrKeluar">Tutup Aplikasi</string>
 	<string name="StrScanQR">Scan QR</string>
+	<string name="StrKoreksi">Koreksi</string>
 	<string name="StrBuatAkun">Belum ada akun ? <u>Buat akun</u></string>
 	<string name="StrDataAkun">Data akun</string>
 	<string name="srtPilihKirim">Kirim</string>

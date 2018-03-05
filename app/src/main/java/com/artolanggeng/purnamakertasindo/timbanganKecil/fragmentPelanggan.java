@@ -65,7 +65,7 @@ public class fragmentPelanggan extends Fragment {
                         if(Fungsi.getIntFromSharedPref(getContext(), Preference.PrefInputNomorPelanggan) == 1)
                         {
                             GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
-                            globalTimbang.ProsesPemasokManual(0, "", "", formKecil.class);
+                            globalTimbang.ProsesPemasokManual(0, "", "", formKecil.class, "");
                         }
                     }
                 });

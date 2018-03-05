@@ -65,7 +65,7 @@ public class TimbangSuper extends AppCompatActivity
 
   @OnClick({R.id.rlTimbangBesar, R.id.rlTimbangKecil, R.id.rlPelangganBaru, R.id.rlPrinter,
 	          R.id.rlKeluar, R.id.rlDaftarDevice, R.id.rlProfile, R.id.rlPassword, R.id.rlJualBarang,
-	          R.id.rlSetTimbang})
+	          R.id.rlSetTimbang, R.id.rlKoreksi})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -135,6 +135,10 @@ public class TimbangSuper extends AppCompatActivity
 		    startActivity(SetTimbangIntent);
 		    finish();
 	    break;
+	    case R.id.rlKoreksi:
+		    globalTimbang = new GlobalTimbang(context, activity);
+		    globalTimbang.ProsesKoreksi();
+		  break;
     }
   }
 

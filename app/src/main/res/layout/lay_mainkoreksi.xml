@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+	<RelativeLayout
+		android:layout_width="match_parent"
+		android:layout_height="50dp"
+		android:id="@+id/rlHeadProses"
+		android:layout_alignParentTop="true"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true">
+		<include layout="@layout/lay_headerutama"/>
+	</RelativeLayout>
+
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_height="?attr/actionBarSize"
+		android:layout_below="@id/rlHeadProses"
+		android:gravity="center_horizontal"
+		android:background="@android:color/white"
+		android:id="@+id/llWarehouse"
+		android:weightSum="8">
+
+		<RelativeLayout
+			android:layout_weight="4"
+			android:layout_width="0dp"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:id="@+id/llPelanggan"
+				android:gravity="center_horizontal"
+				android:layout_above="@+id/btnbawah1">
+
+				<ImageView
+					android:id="@+id/ivPelanggan"
+					android:layout_width="32dp"
+					android:layout_height="28dp"
+					android:background="@drawable/deliverytruck"
+					android:layout_gravity="center_vertical"/>
+
+				<TextView
+					android:id="@+id/tvPelanggan"
+					style="@style/DefaultTabText"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/TitleArrived"
+					android:layout_marginLeft="15dp"/>
+			</LinearLayout>
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="2dp"
+				android:layout_alignParentTop="false"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_alignParentBottom="true"
+				android:id="@+id/btnbawah1"
+				android:background="@color/appleGreen"/>
+		</RelativeLayout>
+
+		<RelativeLayout
+			android:layout_weight="4"
+			android:layout_width="0dp"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:id="@+id/llRiwayat"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:gravity="center_horizontal"
+				android:layout_above="@+id/btnbawah3">
+
+				<ImageView
+					android:id="@+id/ivRiwayat"
+					android:layout_width="28dp"
+					android:layout_height="32dp"
+					android:background="@drawable/riwayat"
+					android:layout_gravity="center_vertical"/>
+
+				<TextView
+					style="@style/DefaultTabText"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:text="@string/TitleHistory"
+					android:layout_marginLeft="15dp"
+					android:id="@+id/tvRiwayat"/>
+			</LinearLayout>
+
+			<Button
+				android:layout_width="match_parent"
+				android:layout_height="2dp"
+				android:layout_alignParentTop="false"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentStart="true"
+				android:layout_alignParentBottom="true"
+				android:id="@+id/btnbawah3"
+				android:background="@color/whiteThree"/>
+		</RelativeLayout>
+
+	</LinearLayout>
+
+	<android.support.v4.view.ViewPager
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:id="@+id/vpKoreksi"
+		android:layout_alignParentLeft="true"
+		android:layout_alignParentStart="true"
+		android:layout_below="@+id/llWarehouse"
+		android:background="@color/ViewPagerBackground"/>
+</RelativeLayout>

@@ -1,4 +1,4 @@
-package com.artolanggeng.purnamakertasindo.penjualan;
+package com.artolanggeng.purnamakertasindo.koreksi;
 
 
 import android.content.DialogInterface;
@@ -10,9 +10,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import butterknife.Unbinder;
+
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.common.ScanQR;
@@ -20,14 +18,18 @@ import com.artolanggeng.purnamakertasindo.popup.InputPemasok;
 import com.artolanggeng.purnamakertasindo.service.FragJualLife;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+import butterknife.Unbinder;
+
 /**
  * A simple {@link Fragment} subclass.
  */
-public class fragQRJual extends Fragment implements FragJualLife
+public class fragQRKoreksi extends Fragment implements FragJualLife
 {
     Unbinder unbinder;
 
-    public fragQRJual()
+    public fragQRKoreksi()
     {
         // Required empty public constructor
     }
@@ -58,7 +60,7 @@ public class fragQRJual extends Fragment implements FragJualLife
             case R.id.ivScanQR:
             case R.id.btnScanQR:
                 Intent ProgresIntent = new Intent(getActivity(), ScanQR.class);
-                ProgresIntent.putExtra("KodeTimbangan", "3");
+                ProgresIntent.putExtra("KodeTimbangan", "4");
                 startActivity(ProgresIntent);
             break;
             case R.id.tvInputPelanggan:
@@ -71,7 +73,7 @@ public class fragQRJual extends Fragment implements FragJualLife
                     public void onDismiss(DialogInterface dialogInterface)
                     {
                         GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
-                        globalTimbang.ProsesPemasokManual(0, "", "Jual", FormBesar.class, "");
+                        globalTimbang.ProsesPemasokManual(0, "", "", FormBesar.class, "Koreksi");
                     }
                 });
             break;

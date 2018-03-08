@@ -18,11 +18,13 @@
 	<string name="titleMessege">Informasi</string>
 	<string name="titleSemua">Semua</string>
 	<string name="titleFormulir">Formulir Pelanggan</string>
+	<string name="titleFormulirKoreksi">Formulir Koreksi</string>
 	<string name="titlePilihBerat">Tonase</string>
 	<string name="titleTimbang">Timbang</string>
 	<string name="titleQuality">Quality</string>
 	<string name="titleBeratBruto">Berat Bruto %s Kg</string>
 	<string name="titleKodeBarang">Kode Barang %s</string>
+	<string name="titleTglBarang">Tgl. %s</string>
 	<string name="titleBeratNetto">Berat Netto %s Kg</string>
 	<string name="titlePotongan">Besar Potongan %s</string>
 	<string name="titleTambahArmada">Tambah Armada</string>
@@ -58,6 +60,7 @@
 	<string name="HintTonaseBarang">Tonase barang</string>
 	<string name="HintInputPemasok">Kode pemasok</string>
 	<string name="HintInputPotongan">Jumlah Potongan</string>
+	<string name="HintKoreksiPemasok">Nomor Antrian</string>
 	<string name="HintBeratBruto">Berat Bruto</string>
 	<string name="HintKodeBarang">Kode Barang</string>
 	<string name="HintBeratNetto">Berat Netto</string>
@@ -94,6 +97,7 @@
 	<string name="msgInputID">Masukan nomor ID terpilih</string>
 	<string name="msgDataPemasok">Proses data pemasok</string>
 	<string name="msgBatalTimbang">Input akan dibatalkan ?</string>
+	<string name="msgBatalKoreksi">Koreksi akan dibatalkan ?</string>
 	<string name="msgIsiTonase">Masukan tonase barang</string>
 	<string name="msgKoneksiError">Tidak ada koneksi</string>
 	<string name="msgProsesQC">Data sudah benar ?</string>
@@ -103,6 +107,7 @@
 	<string name="msgUpdateDataQC">Update data QC</string>
 	<string name="msgTanyaDataQC">Data QC sudah benar ?</string>
 	<string name="msgKodePemasok">Masukan kode pemasok</string>
+	<string name="msgAntrianPemasok">Masukan nomor antrian</string>
 	<string name="msgPembayaran">Proses data pembayaran</string>
 	<string name="msgProsesBayar">Proses pembayaran ?</string>
 	<string name="msgTimbangBaru">Lakukan timbang baru ?</string>
@@ -127,6 +132,7 @@
 	<string name="msgOtorisasi">Otorisasi anda salah</string>
 	<string name="msgSimpanTimbang">Simpan timbangan sukses</string>
 	<string name="msgSimpanArmada">Simpan data armada</string>
+	<string name="msgTimbangKosong">Data timbangan tidak ada</string>
 
 	<string name="strBtnSelesai">Selesai</string>
 	<string name="strBtnOK">OK</string>
@@ -161,6 +167,7 @@
 	<string name="strHeaderTimbangan">Selamat datang %s,\npilih opsi timbangan atau opsi lainnya</string>
 	<string name="strAppVersion">Versi nomor</string>
 	<string name="strHeaderListProgress">Siap Timbang (<font color='red'>%s</font>)</string>
+	<string name="strHeaderListKoreksi">Jumlah Timbang (<font color='red'>%s</font>)</string>
 	<string name="strSubHeaderListProgress">Nama Perusahaan</string>
 	<string name="strNoPolisi">No. Polisi</string>
 	<string name="strJenisBarang">Jenis Barang</string>

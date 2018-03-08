@@ -71,7 +71,7 @@ public class fragQRJual extends Fragment implements FragJualLife
                     public void onDismiss(DialogInterface dialogInterface)
                     {
                         GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
-                        globalTimbang.ProsesPemasokManual(0, "", "Jual", FormBesar.class, "");
+                        globalTimbang.ProsesPemasokManual(0, "", "Jual", FormBesar.class);
                     }
                 });
             break;

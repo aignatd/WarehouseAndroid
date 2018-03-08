@@ -164,14 +164,14 @@ public class GlobalTimbang
 	}
 
 	public void ProsesPemasokManual(Integer intTimbang, String strHistory, String strJual,
-	                                final Class<?> clsTimbang, String strKoreksi)
+	                                final Class<?> clsTimbang)
 	{
 		Intent PemasokManualIntent = new Intent(activity, clsTimbang);
 		PemasokManualIntent.putExtra("KodePemasok", Fungsi.getStringFromSharedPref(context, Preference.PrefScanQR));
 		PemasokManualIntent.putExtra("Timbang", intTimbang);
 		PemasokManualIntent.putExtra("History", strHistory);
 		PemasokManualIntent.putExtra("Jual", strJual);
-		PemasokManualIntent.putExtra("Koreksi", strKoreksi);
+		PemasokManualIntent.putExtra("PekerjaanID", Fungsi.getStringFromSharedPref(context, Preference.PrefAntrianPemasok));
 		activity.startActivity(PemasokManualIntent);
 	}
 

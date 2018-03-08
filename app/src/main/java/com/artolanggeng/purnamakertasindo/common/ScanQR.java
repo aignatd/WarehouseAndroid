@@ -8,6 +8,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
@@ -16,6 +17,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.koreksi.FormKoreksi;
 import com.artolanggeng.purnamakertasindo.timbanganKecil.formKecil;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.CameraManager;
@@ -120,11 +122,12 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
         }
 
 	      Intent ScanQRIntent = null;
+        String[] splitBarcode = barcodeText.split("#");
 
         if (kodeTimbangan.equals("1"))
           ScanQRIntent = new Intent(ScanQR.this, formKecil.class);
         else
-        if (kodeTimbangan.equals("2") || kodeTimbangan.equals("3") || kodeTimbangan.equals("4"))
+        if (kodeTimbangan.equals("2") || kodeTimbangan.equals("3"))
         {
 	        ScanQRIntent = new Intent(ScanQR.this, FormBesar.class);
 
@@ -133,16 +136,17 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
 	        else
 	        if(kodeTimbangan.equals("3"))
 		        ScanQRIntent.putExtra("Jual", "Jual");
-          else
-          if(kodeTimbangan.equals("4"))
-          {
-            ScanQRIntent.putExtra("Jual", "");
-            ScanQRIntent.putExtra("Koreksi", "Koreksi");
-          }
+        }
+        else
+        if (kodeTimbangan.equals("4"))
+        {
+          ScanQRIntent = new Intent(ScanQR.this, FormKoreksi.class);
+          ScanQRIntent.putExtra("Jual", "");
+          ScanQRIntent.putExtra("PekerjaanID", splitBarcode[1]);
         }
 
-	      ScanQRIntent.putExtra("KodePemasok", barcodeText);
-	      ScanQRIntent.putExtra("Timbang", 0);
+	      ScanQRIntent.putExtra("KodePemasok", splitBarcode[0]);
+        ScanQRIntent.putExtra("Timbang", 0);
         ScanQRIntent.putExtra("History", "");
 	      startActivity(ScanQRIntent);
 	      finish();

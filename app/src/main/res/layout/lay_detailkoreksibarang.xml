@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+							xmlns:app="http://schemas.android.com/apk/res-auto"
+							android:orientation="vertical"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							style="@style/ThemeTransparent"
+							android:background="@android:color/transparent">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="@drawable/rectroundgrayblack4">
+
+		<ImageView
+			android:id="@+id/ivNoTimbang"
+			android:layout_width="96dp"
+			android:layout_height="wrap_content"
+			android:scaleType="fitCenter"
+			android:background="@drawable/timbang1"
+			android:layout_gravity="center_vertical"
+			android:layout_marginLeft="5dp"/>
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight="5dp"
+			android:layout_centerVertical="true"
+			android:layout_gravity="center_vertical"
+			android:id="@+id/llDataTimbangBesar">
+
+			<LinearLayout
+				android:id="@+id/llBeratBruto"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true">
+
+				<TextView
+					android:hint="@string/HintBeratBruto"
+					android:id="@+id/tvBeratBruto"
+					style="@style/DetailTimbangan"
+					android:background="@color/tw__transparent"
+					android:paddingTop="3dp"
+					android:paddingBottom="3dp"
+					android:textColor="@android:color/holo_orange_dark"
+					android:layout_gravity="center_vertical"
+					android:text="Berat Bruto 0 Kg"/>
+			</LinearLayout>
+
+			<TextView
+				android:id="@+id/tvTglTimbang"
+				android:text=""
+				style="@style/DetailTimbangan"
+				android:paddingTop="3dp"
+				android:paddingBottom="3dp"
+				android:background="@color/tw__transparent"/>
+
+			<TextView
+				android:id="@+id/tvKodeBarang"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="2dp"
+				android:paddingTop="3dp"
+				android:paddingBottom="3dp"
+				android:visibility="visible"/>
+
+			<LinearLayout
+				android:id="@+id/llNilaiPotongan"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true">
+
+				<TextView
+					android:id="@+id/tvNilaiPotongan"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="2dp"
+					android:paddingTop="3dp"
+					android:paddingBottom="3dp"
+					android:visibility="visible"
+					android:text="@string/HintPotongan"/>
+
+				<TextView
+					android:id="@+id/tvJenisPotong"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="2dp"
+					android:layout_marginRight="2dp"
+					android:paddingTop="3dp"
+					android:paddingBottom="3dp"
+					android:visibility="visible"
+					android:text="@string/HintPotongan"/>
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:id="@+id/llBeratNetto"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true">
+
+				<TextView
+					android:hint="@string/HintBeratNetto"
+					android:textColorHint="@android:color/holo_blue_dark"
+					android:id="@+id/tvBeratNetto"
+					style="@style/DetailTimbangan"
+					android:background="@color/tw__transparent"
+					android:textColor="@android:color/holo_blue_dark"
+					android:paddingTop="3dp"
+					android:paddingBottom="3dp"
+					android:layout_gravity="center_vertical"
+					android:text="Berat Netto 0 Kg"/>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="3dp"
+		style="@style/ThemeTransparent"
+		android:background="@android:color/transparent">
+	</LinearLayout>
+</LinearLayout>

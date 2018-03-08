@@ -120,5 +120,8 @@ public interface  DataLink
 
   @POST(FixValue.RestfulArmada)
   Call<ProfilePojo> ArmadaService(@Body CustomerHolder customerHolder);
+
+  @POST(FixValue.RestfulRequestKoreksi)
+  Call<CustomerPojo> RequestKoreksiService(@Body CustomerHolder customerHolder);
 }
 

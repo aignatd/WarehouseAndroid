@@ -40,4 +40,5 @@ public class Preference
   public static final String PrefUrlTimbang2 = "PrefUrlTimbang2";
 
   public static final String PrefDataTimbang = "PrefDataTimbang";
+  public static final String PrefAntrianPemasok = "PrefAntrianPemasok";
 }

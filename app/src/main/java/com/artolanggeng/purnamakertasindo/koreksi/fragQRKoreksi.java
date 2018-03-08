@@ -15,8 +15,11 @@ import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.common.ScanQR;
 import com.artolanggeng.purnamakertasindo.popup.InputPemasok;
+import com.artolanggeng.purnamakertasindo.popup.KoreksiPemasok;
 import com.artolanggeng.purnamakertasindo.service.FragJualLife;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
+import com.artolanggeng.purnamakertasindo.utils.Fungsi;
+import com.artolanggeng.purnamakertasindo.utils.Preference;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -64,16 +67,20 @@ public class fragQRKoreksi extends Fragment implements FragJualLife
                 startActivity(ProgresIntent);
             break;
             case R.id.tvInputPelanggan:
-                InputPemasok inputPemasok = new InputPemasok(getActivity());
-                inputPemasok.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                inputPemasok.show();
-                inputPemasok.setOnDismissListener(new DialogInterface.OnDismissListener()
+                Fungsi.storeToSharedPref(getContext(), 0, Preference.PrefInputNomorPelanggan);
+                KoreksiPemasok koreksiPemasok = new KoreksiPemasok(getActivity());
+                koreksiPemasok.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                koreksiPemasok.show();
+                koreksiPemasok.setOnDismissListener(new DialogInterface.OnDismissListener()
                 {
                     @Override
                     public void onDismiss(DialogInterface dialogInterface)
                     {
-                        GlobalTimbang globalTimbang = new GlobalTimbang(getContext(), getActivity());
-                        globalTimbang.ProsesPemasokManual(0, "", "", FormBesar.class, "Koreksi");
+                        if(Fungsi.getIntFromSharedPref(getContext(), Preference.PrefInputNomorPelanggan) == 1)
+                        {
+                            GlobalTimbang globalTimbang=new GlobalTimbang(getContext(), getActivity());
+                            globalTimbang.ProsesPemasokManual(0, "", "", FormKoreksi.class);
+                        }
                     }
                 });
             break;

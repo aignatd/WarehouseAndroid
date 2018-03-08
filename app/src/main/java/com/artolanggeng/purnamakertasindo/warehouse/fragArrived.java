@@ -76,7 +76,7 @@ public class fragArrived extends Fragment implements FragMainLife
                         if(Fungsi.getIntFromSharedPref(getContext(), Preference.PrefInputNomorPelanggan) == 1)
                         {
                             GlobalTimbang globalTimbang=new GlobalTimbang(getContext(), getActivity());
-                            globalTimbang.ProsesPemasokManual(0, "", "", FormBesar.class, "");
+                            globalTimbang.ProsesPemasokManual(0, "", "", FormBesar.class);
                         }
                     }
                 });

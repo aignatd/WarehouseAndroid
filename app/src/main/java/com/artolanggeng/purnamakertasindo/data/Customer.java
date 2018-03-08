@@ -23,6 +23,7 @@ public class Customer
   private String nopolisi;
   private int Jenis;
   private String Token;
+  private String PekerjaanID;
 
   public String getPemasokID()
   {
@@ -182,5 +183,15 @@ public class Customer
   public void setNopolisi(String nopolisi)
   {
     this.nopolisi=nopolisi;
+  }
+
+  public String getPekerjaanID()
+  {
+    return PekerjaanID;
+  }
+
+  public void setPekerjaanID(String pekerjaanID)
+  {
+    PekerjaanID=pekerjaanID;
   }
 }

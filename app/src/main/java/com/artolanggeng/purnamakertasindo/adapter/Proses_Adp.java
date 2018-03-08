@@ -452,7 +452,10 @@ public class Proses_Adp extends BaseAdapter
 		list.add(new byte[] { 0x1b, 0x1d, 0x74, (byte)0x80 }); // Code Page UTF-8
 
 		// Add BarCode data
-		byte[] barCodeData = Pemasokid.getBytes();
+		String dtPrint = datePrint.format(calendar.getTime());
+		String tmPrint = timePrint.format(calendar.getTime());
+
+		byte[] barCodeData = (Pemasokid + "#" + getPekerjaanid.toString() + "#" + dtPrint + "#" + tmPrint).getBytes();
 		byte cellSize = (byte) (8);
 		list.add(new byte[] { 0x1b, 0x1d, 0x79, 0x53, 0x32, cellSize });
 		list.add(new byte[] { 0x1b, 0x1d, 0x79, 0x44, 0x31, 0x00, (byte) (barCodeData.length % 128), (byte) (barCodeData.length / 128) });
@@ -464,8 +467,8 @@ public class Proses_Adp extends BaseAdapter
 		list.add(("Antrian : " + getPekerjaanid  + "\r\n").getBytes());
 
 		calendar = Calendar.getInstance();
-		list.add(("Tanggal : " + datePrint.format(calendar.getTime()) + "\r\n").getBytes());
-		list.add(("Jam : " + timePrint.format(calendar.getTime())  + "\r\n").getBytes());
+		list.add(("Tanggal : " + dtPrint + "\r\n").getBytes());
+		list.add(("Jam : " + tmPrint + "\r\n").getBytes());
 
 		list.add("\r\n\r\n\r\n\r\n".getBytes());
 		list.add(new byte[] { 0x1b, 0x64, 0x02 }); // Feed to cutter position

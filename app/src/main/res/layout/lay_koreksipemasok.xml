@@ -13,27 +13,41 @@
 		android:layout_centerHorizontal="true"
 		android:layout_height="22dp"
 		android:layout_width="175dp"
-		android:layout_marginTop="12dp"/>
+		android:layout_marginTop="15dp"
+		android:layout_marginBottom="25dp"/>
 
 	<EditText
-		style="@style/UserInputPassword"
 		android:id="@+id/etInputPemasok"
-		android:layout_marginTop="25dp"
-		android:ems="10"
-		android:maxLength="25"
+		style="@style/UserInputPassword"
+		android:layout_below="@id/ivTitleLogin"
+		android:layout_marginBottom="10dp"
+		android:layout_marginEnd="35dp"
 		android:layout_marginLeft="10dip"
 		android:layout_marginRight="10dip"
-		android:layout_below="@id/ivTitleLogin"
-		android:hint="@string/HintInputPemasok"
 		android:layout_marginStart="35dp"
+		android:ems="10"
+		android:hint="@string/HintInputPemasok"
+		android:inputType="text"
+		android:maxLength="25" />
+
+	<EditText
+		android:id="@+id/etAntrianPemasok"
+		style="@style/UserInputPassword"
+		android:layout_below="@id/etInputPemasok"
 		android:layout_marginEnd="35dp"
-		android:inputType="text"/>
+		android:layout_marginLeft="10dip"
+		android:layout_marginRight="10dip"
+		android:layout_marginStart="35dp"
+		android:ems="10"
+		android:hint="@string/HintKoreksiPemasok"
+		android:inputType="number"
+		android:maxLength="25" />
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/llRTRWKpos"
-		android:layout_below="@id/etInputPemasok"
+		android:layout_below="@id/etAntrianPemasok"
 		android:orientation="horizontal"
 		android:weightSum="8"
 		android:layout_marginTop="20dip"

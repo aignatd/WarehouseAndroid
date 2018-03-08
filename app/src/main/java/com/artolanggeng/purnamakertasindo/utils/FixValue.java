@@ -34,6 +34,7 @@ public class FixValue
 	public static final String RestfulUpdateProfile = "users/updateprofile";
 	public static final String RestfulDataTimbangan = "formulirs/datatimbang/{warehouse}";
 	public static final String RestfulArmada = "customers/armada";
+	public static final String RestfulRequestKoreksi = "customers/requestkoreksi";
 
 	// Server Online
 	public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";
@@ -44,6 +45,7 @@ public class FixValue
 	//public static final String Hostname = "http://192.168.212.53:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.43.124:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.137.1:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.1.103:41014/api/v1/";
 
 	// Server Timbangan
 	public static final String Hosttimbangan = "http://192.168.1.13:42024/api/v1/";

@@ -1,5 +1,9 @@
 package com.artolanggeng.purnamakertasindo.data;
 
+import com.artolanggeng.purnamakertasindo.model.RoleResponse;
+
+import java.util.List;
+
 /**
  * Dibuat oleh : ignat
  * Tanggal : 24-Jul-17
@@ -13,6 +17,7 @@ public class Proses
   private String TglRequest;
 	private Integer userid;
 	private Integer jenistimbang;
+	private List<RoleResponse> roleuser;
 
   public Integer getPermintaan()
   {
@@ -72,5 +77,15 @@ public class Proses
 	public void setJenistimbang(Integer jenistimbang)
 	{
 		this.jenistimbang = jenistimbang;
+	}
+
+	public List<RoleResponse> getRoleuser()
+	{
+		return roleuser;
+	}
+
+	public void setRoleuser(List<RoleResponse> roleuser)
+	{
+		this.roleuser=roleuser;
 	}
 }

@@ -48,6 +48,8 @@ public class Pemasok extends AppCompatActivity
   EditText etNoHPPemasok;
   @BindView(R.id.cbPerusahaan)
   CheckBox cbPerusahaan;
+  @BindView(R.id.cbKendaraan)
+  CheckBox cbKendaraan;
   @BindView(R.id.etPerusahaan)
   EditText etPerusahaan;
   @BindView(R.id.etPanggilan)
@@ -70,6 +72,8 @@ public class Pemasok extends AppCompatActivity
 
   private PopupMessege popupMessege = new PopupMessege();
   static ProgressDialog progressDialog;
+
+  Integer intVehicle = 0;
 
   @Override
   protected void onCreate(Bundle savedInstanceState)
@@ -118,7 +122,7 @@ public class Pemasok extends AppCompatActivity
     });
   }
 
-  @OnClick({R.id.ivBackIcon, R.id.bntKirimPemasok, R.id.cbPerusahaan})
+  @OnClick({R.id.ivBackIcon, R.id.bntKirimPemasok, R.id.cbPerusahaan, R.id.cbKendaraan})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -163,6 +167,12 @@ public class Pemasok extends AppCompatActivity
           etPerusahaan.setCursorVisible(false);
         }
       break;
+      case R.id.cbKendaraan:
+        if(cbKendaraan.isChecked())
+          intVehicle = 1;
+        else
+          intVehicle = 0;
+      break;
     }
   }
 
@@ -201,6 +211,7 @@ public class Pemasok extends AppCompatActivity
     customer.setTgllahir(etTglPemasok.getText().toString().trim());
     customer.setPanggilan(etPanggilan.getText().toString().trim());
     customer.setKodewarehouse(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
+    customer.setKendaraan(intVehicle);
 
     if(cbPerusahaan.isChecked())
     {

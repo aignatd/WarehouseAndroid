@@ -101,11 +101,29 @@
 				android:layout_marginTop="15dp"
 				android:inputType="textEmailAddress"/>
 
+			<LinearLayout
+				android:id="@+id/llKendaraan"
+				android:background="@android:color/white"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_below="@id/etNoPolisi"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="15dp">
+
+				<CheckBox
+					android:id="@+id/cbKendaraan"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:hint="@string/HintKendaraanInternal"
+					android:textSize="@dimen/UserInputTextSize"
+					android:layout_marginLeft="6dp"/>
+			</LinearLayout>
+
 			<EditText
 					style="@style/UserInputUsername"
 					android:id="@+id/etTglPemasok"
 					android:hint="@string/HintTglPemasok"
-					android:layout_below="@id/etNoPolisi"
+					android:layout_below="@id/llKendaraan"
 					android:maxLength="25"
 					android:drawableLeft="@drawable/calendericon"
 					android:layout_marginTop="15dp"/>

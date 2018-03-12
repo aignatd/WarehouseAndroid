@@ -24,6 +24,7 @@ public class Customer
   private int Jenis;
   private String Token;
   private String PekerjaanID;
+  private Integer Kendaraan;
 
   public String getPemasokID()
   {
@@ -193,5 +194,15 @@ public class Customer
   public void setPekerjaanID(String pekerjaanID)
   {
     PekerjaanID=pekerjaanID;
+  }
+
+  public Integer getKendaraan()
+  {
+    return Kendaraan;
+  }
+
+  public void setKendaraan(Integer kendaraan)
+  {
+    Kendaraan=kendaraan;
   }
 }

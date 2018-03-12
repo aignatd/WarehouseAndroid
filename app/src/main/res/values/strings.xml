@@ -73,6 +73,7 @@
 	<string name="HintSearch">Search</string>
 	<string name="HintTimbanganKecil">Data Timbang Kecil</string>
 	<string name="HintTimbanganBesar">Data Timbang Besar</string>
+	<string name="HintKendaraanInternal">Kendaraan Internal</string>
 
 	<string name="msgHarapTunggu">Harap tunggu</string>
 	<string name="msgNamaLengkap">Masukan nama lengkap</string>

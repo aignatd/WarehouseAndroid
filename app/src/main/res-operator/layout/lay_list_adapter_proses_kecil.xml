@@ -160,7 +160,7 @@
 
                     <LinearLayout
                         style="@style/HeaderListProgress"
-                        android:layout_weight="1.05"
+                        android:layout_weight="0.75"
                         android:orientation="vertical">
 
                         <TextView
@@ -171,9 +171,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="3dp"
-                            android:background="@drawable/border_spinner"
-
-                            >
+                            android:background="@drawable/border_spinner">
 
                             <TextView
                                 android:id="@+id/tvNoPolisi"
@@ -230,7 +228,7 @@
                         style="@style/HeaderListProgress"
                         android:layout_marginLeft="15dp"
                         android:layout_marginStart="15dp"
-                        android:layout_weight="0.95"
+                        android:layout_weight="1.25"
                         android:orientation="vertical">
 
                         <TextView

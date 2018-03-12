@@ -16,6 +16,9 @@ public class RoleResponse
 	@SerializedName("description")
 	@Expose
 	private String description;
+	@SerializedName("name")
+	@Expose
+	private String name;
 
 	public Integer getId()
 	{
@@ -35,5 +38,15 @@ public class RoleResponse
 	public void setDescription(String description)
 	{
 		this.description = description;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name=name;
 	}
 }

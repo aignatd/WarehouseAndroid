@@ -18,6 +18,7 @@ public class IsiFormulir
 	private String tglbuat;
 	private Integer userid;
 	private Integer jenistimbang;
+	private String status;
 
 	public Integer getId()
 	{
@@ -127,5 +128,15 @@ public class IsiFormulir
 	public void setJenistimbang(Integer jenistimbang)
 	{
 		this.jenistimbang = jenistimbang;
+	}
+
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status=status;
 	}
 }

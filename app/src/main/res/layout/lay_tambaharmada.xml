@@ -27,17 +27,36 @@
 		android:hint="@string/HintTambaharmada"
 		android:layout_marginStart="35dp"
 		android:layout_marginEnd="35dp"
-		android:inputType="text"
-		/>
+		android:inputType="text"/>
+
+	<LinearLayout
+		android:id="@+id/llKendaraan"
+		android:background="@android:color/white"
+		android:orientation="horizontal"
+		android:layout_width="match_parent"
+		android:layout_below="@id/etTambaharmada"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="10dp"
+		android:layout_marginLeft="35dip"
+		android:layout_marginRight="35dip">
+
+		<CheckBox
+			android:id="@+id/cbKendaraan"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:hint="@string/HintKendaraanInternal"
+			android:textSize="@dimen/UserInputTextSize"
+			android:layout_marginLeft="6dp"/>
+	</LinearLayout>
 
 	<LinearLayout
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/llRTRWKpos"
-		android:layout_below="@id/etTambaharmada"
+		android:layout_below="@id/llKendaraan"
 		android:orientation="horizontal"
 		android:weightSum="8"
-		android:layout_marginTop="5dip"
+		android:layout_marginTop="15dip"
 		android:layout_marginLeft="35dip"
 		android:layout_marginRight="35dip"
 		android:layout_marginBottom="12dip">
@@ -49,7 +68,6 @@
 			android:id="@+id/btnTambahArmada"
 			android:layout_centerHorizontal="true"
 			android:layout_marginRight="7dip"
-			android:layout_marginTop="12dip"
 			android:layout_weight="4"/>
 
 		<Button
@@ -59,7 +77,6 @@
 			android:id="@+id/btnBatalArmada"
 			android:layout_centerHorizontal="true"
 			android:layout_marginLeft="7dip"
-			android:layout_marginTop="12dip"
 			android:layout_weight="4"/>
 	</LinearLayout>
 </RelativeLayout>

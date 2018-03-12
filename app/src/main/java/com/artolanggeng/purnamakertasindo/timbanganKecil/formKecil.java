@@ -264,7 +264,8 @@ public class formKecil extends AppCompatActivity {
                             String[] items = new String[response.body().getVehiclersp().size()];
 
                             for (int i = 0; i < response.body().getVehiclersp().size(); i++) {
-                                items[i] = (i + 1) + ". " + response.body().getVehiclersp().get(i).getNopolisi();
+                                items[i] = (i + 1) + ". " + response.body().getVehiclersp().get(i).getNopolisi() +
+                                " / " + response.body().getVehiclersp().get(i).getStatus();
                             }
 
 //                            rvListProses.setVisibility(View.VISIBLE);
@@ -336,10 +337,12 @@ public class formKecil extends AppCompatActivity {
 
 //        if (intTimbang == 1) {
         Long tsLong = System.currentTimeMillis() / 1000;
-        String[] parts = spNoPolisi.getSelectedItem().toString().split("\\.");
+        String[] temps = spNoPolisi.getSelectedItem().toString().split("\\.");
+        String[] parts = temps[1].split(" / ");
 
         isiFormulir.setPemasokid(tvKodePemasok.getText().toString());
-        isiFormulir.setNopolisi(parts[1].trim());
+        isiFormulir.setNopolisi(parts[0].trim());
+        isiFormulir.setStatus(parts[1].trim());
         isiFormulir.setTgldevice(tsLong.toString());
         isiFormulir.setBisnisunitkode(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
         isiFormulir.setUserid(Fungsi.getIntFromSharedPref(context, Preference.prefUserID));

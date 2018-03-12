@@ -7,6 +7,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,9 +27,11 @@ import java.util.List;
  */
 public class TambahArmada extends Dialog
 {
-
 	@BindView(R.id.etTambaharmada)
 	EditText etTambaharmada;
+	@BindView(R.id.cbKendaraan)
+	CheckBox cbKendaraan;
+
 	private String TAG = "[TambahArmada]";
 	private ProgressDialog progressDialog;
 	private PopupMessege popupMessege = new PopupMessege();
@@ -37,6 +40,7 @@ public class TambahArmada extends Dialog
 	private Context context = getContext();
 
 	public Activity ParentAct;
+	Integer intVehicle = 0;
 
 	public TambahArmada(Activity parentAct)
 	{
@@ -53,11 +57,17 @@ public class TambahArmada extends Dialog
 		ButterKnife.bind(this);
 	}
 
-	@OnClick({R.id.btnTambahArmada, R.id.btnBatalArmada})
+	@OnClick({R.id.btnTambahArmada, R.id.btnBatalArmada, R.id.cbKendaraan})
 	public void onViewClicked(View view)
 	{
 		switch(view.getId())
 		{
+			case R.id.cbKendaraan:
+				if(cbKendaraan.isChecked())
+					intVehicle = 1;
+				else
+					intVehicle = 0;
+			break;
 			case R.id.btnBatalArmada:
 				Fungsi.storeToSharedPref(context, "Batal", Preference.PrefListArmada);
 				cancel();
@@ -72,6 +82,7 @@ public class TambahArmada extends Dialog
 				if(Fungsi.CekInput(lstInput, lstMsg, context))
 				{
 					Fungsi.storeToSharedPref(context, etTambaharmada.getText().toString(), Preference.PrefListArmada);
+					Fungsi.storeToSharedPref(context, intVehicle, Preference.prefKendaraan);
 				}
 
 				dismiss();

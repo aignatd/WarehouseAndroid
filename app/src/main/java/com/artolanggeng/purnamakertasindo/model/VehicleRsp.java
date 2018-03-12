@@ -16,6 +16,9 @@ public class VehicleRsp
 	@SerializedName("nopolisi")
 	@Expose
 	private String nopolisi;
+	@SerializedName("status")
+	@Expose
+	private String status;
 
 	public Integer getId()
 	{
@@ -35,6 +38,16 @@ public class VehicleRsp
 	public void setNopolisi(String nopolisi)
 	{
 		this.nopolisi = nopolisi;
+	}
+
+	public String getStatus()
+	{
+		return status;
+	}
+
+	public void setStatus(String status)
+	{
+		this.status=status;
 	}
 
 	private static VehicleRsp VehicleRspInstance = new VehicleRsp();

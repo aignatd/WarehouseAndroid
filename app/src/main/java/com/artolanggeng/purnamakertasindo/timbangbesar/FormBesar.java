@@ -226,7 +226,8 @@ public class FormBesar extends AppCompatActivity
 
 							for(int i = 0; i < response.body().getVehiclersp().size(); i++)
 							{
-								items[i] = (i + 1) + ". " + response.body().getVehiclersp().get(i).getNopolisi();
+								items[i] = (i + 1) + ". " + response.body().getVehiclersp().get(i).getNopolisi() +
+									" / " + response.body().getVehiclersp().get(i).getStatus();
 							}
 
 							rvListProses.setVisibility(View.VISIBLE);
@@ -302,10 +303,12 @@ public class FormBesar extends AppCompatActivity
 		if(intTimbang == 1)
 		{
 			Long tsLong = System.currentTimeMillis() / 1000;
-			String[] parts = spNoPolisi.getSelectedItem().toString().split("\\.");
+			String[] temps = spNoPolisi.getSelectedItem().toString().split("\\.");
+			String[] parts = temps[1].split(" / ");
 
 			isiFormulir.setPemasokid(tvKodePemasok.getText().toString());
-			isiFormulir.setNopolisi(parts[1].trim());
+			isiFormulir.setNopolisi(parts[0].trim());
+			isiFormulir.setStatus(parts[1].trim());
 			isiFormulir.setTgldevice(tsLong.toString());
 			isiFormulir.setBisnisunitkode(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
 			isiFormulir.setUserid(Fungsi.getIntFromSharedPref(context, Preference.prefUserID));
@@ -537,6 +540,7 @@ public class FormBesar extends AppCompatActivity
 		Customer customer = new Customer();
 		customer.setNopolisi(strArmada);
 		customer.setPemasokID(tvKodePemasok.getText().toString().trim());
+		customer.setKendaraan(Fungsi.getIntFromSharedPref(context, Preference.prefKendaraan));
 
 		CustomerHolder customerHolder = new CustomerHolder(customer);
 		DataLink dataLink = Fungsi.BindingData();

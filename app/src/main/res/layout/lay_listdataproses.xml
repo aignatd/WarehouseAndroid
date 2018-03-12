@@ -182,7 +182,7 @@
 					<LinearLayout
 						android:orientation="vertical"
 						style="@style/HeaderListProgress"
-						android:layout_weight="1.05">
+						android:layout_weight="0.75">
 
 						<TextView
 							android:text="@string/strNoPolisi"
@@ -216,7 +216,7 @@
 					<LinearLayout
 						android:orientation="vertical"
 						style="@style/HeaderListProgress"
-						android:layout_weight="0.95"
+						android:layout_weight="1.25"
 						android:layout_marginLeft="15dp"
 						android:layout_marginStart="15dp">
 

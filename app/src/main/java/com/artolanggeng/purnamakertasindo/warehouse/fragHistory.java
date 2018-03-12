@@ -16,6 +16,7 @@ import butterknife.Unbinder;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.adapter.History_Adp;
 import com.artolanggeng.purnamakertasindo.data.Proses;
+import com.artolanggeng.purnamakertasindo.data.Role;
 import com.artolanggeng.purnamakertasindo.data.User;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
 import com.artolanggeng.purnamakertasindo.sending.HistoryHolder;
@@ -25,6 +26,11 @@ import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -88,8 +94,13 @@ public class fragHistory extends Fragment implements FragMainLife
 		User user = new User();
 		user.setUserID(Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID));
 
+		Calendar calendar = Calendar.getInstance();
+		SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
 		Proses proses = new Proses();
 		proses.setJenistimbang(2);
+		proses.setTglRequest(dt.format(calendar.getTime()));
+		proses.setRoleuser(Role.getInstance().getRoleResponse());
 
 		HistoryHolder historyHolder = new HistoryHolder(user, proses);
 		DataLink dataLink = Fungsi.BindingData();

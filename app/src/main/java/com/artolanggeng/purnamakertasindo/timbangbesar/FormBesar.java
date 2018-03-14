@@ -502,7 +502,8 @@ public class FormBesar extends AppCompatActivity
 			@Override
 			public void onDismiss(DialogInterface dialogInterface)
 			{
-				String strTemp = Fungsi.getStringFromSharedPref(context, Preference.PrefListArmada);
+				String strTemp = (spNoPolisi.getCount() + 1) + ". " + Fungsi.getStringFromSharedPref(context, Preference.PrefListArmada);
+				Integer intTemp = Fungsi.getIntFromSharedPref(context, Preference.prefKendaraan);
 
 				if(strTemp.matches(""))
 					pesan.ShowMessege1(context, getResources().getString(R.string.msgNoPolisi));
@@ -511,7 +512,12 @@ public class FormBesar extends AppCompatActivity
 					if(!strTemp.matches("Batal"))
 					{
 						String[] items = new String[1];
-						items[0] = strTemp;
+
+						if(intTemp == 1)
+							items[0] = strTemp + " / Internal";
+						else
+							items[0] = strTemp + " / Eksternal";
+
 						ArrayList<String> lst = new ArrayList<>(Arrays.asList(items));
 						dataAdapter.addAll(lst);
 						dataAdapter.notifyDataSetChanged();

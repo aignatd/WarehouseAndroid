@@ -19,6 +19,7 @@ public class IsiFormulir
 	private Integer userid;
 	private Integer jenistimbang;
 	private String status;
+	private Integer timbanganid;
 
 	public Integer getId()
 	{
@@ -138,5 +139,15 @@ public class IsiFormulir
 	public void setStatus(String status)
 	{
 		this.status=status;
+	}
+
+	public Integer getTimbanganid()
+	{
+		return timbanganid;
+	}
+
+	public void setTimbanganid(Integer timbanganid)
+	{
+		this.timbanganid=timbanganid;
 	}
 }

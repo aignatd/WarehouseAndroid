@@ -112,6 +112,7 @@ public class FormBesar extends AppCompatActivity
 
 	String History;
 	String Jual;
+	Integer Pemasok;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -128,6 +129,7 @@ public class FormBesar extends AppCompatActivity
 		intTimbang = extras.getInt("Timbang") + 1;
 		History = extras.getString("History");
 		Jual = extras.getString("Jual");
+		Pemasok = extras.getInt("Pemasok");
 
 		if((History.matches("History")) || ((History.matches("HistoryJual"))))
 		{
@@ -269,6 +271,9 @@ public class FormBesar extends AppCompatActivity
 		if((History.matches("History")) || ((History.matches("HistoryJual"))))
 			finish();
 		else
+		if(Pemasok == 1)
+			pesan.ShowMessege2(context, getResources().getString(R.string.msgBatalTimbang), activity, MainProses.class);
+		else
 			pesan.ShowMessege6(context, getResources().getString(R.string.msgBatalTimbang), activity);
 	}
 
@@ -291,7 +296,7 @@ public class FormBesar extends AppCompatActivity
 			return;
 		}
 
-		formadapter. getItemId(formadapter.getItemCount()-1);
+		formadapter.getItemId(formadapter.getItemCount()-1);
 
 		DataLink dataLink = Fungsi.BindingData();
 		FormulirHolder formulirHolder;
@@ -312,6 +317,7 @@ public class FormBesar extends AppCompatActivity
 			isiFormulir.setTgldevice(tsLong.toString());
 			isiFormulir.setBisnisunitkode(Fungsi.getStringFromSharedPref(context, Preference.prefKodeWarehouse));
 			isiFormulir.setUserid(Fungsi.getIntFromSharedPref(context, Preference.prefUserID));
+			isiFormulir.setTimbanganid(Fungsi.getIntFromSharedPref(context, Preference.PrefTimbangBesar));
 
 			if(Jual.matches("Jual"))
 				isiFormulir.setJenistimbang(FixValue.TimbangJual);

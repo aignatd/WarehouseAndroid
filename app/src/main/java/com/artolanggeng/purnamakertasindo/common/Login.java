@@ -53,7 +53,7 @@ public class Login extends AppCompatActivity
     ButterKnife.bind(this);
   }
 
-  @OnClick({R.id.btnLogin, R.id.tvDaftarLogin})
+  @OnClick({R.id.btnLogin, R.id.tvDaftarLogin, R.id.tvDaftarDevice})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -65,6 +65,10 @@ public class Login extends AppCompatActivity
         Intent BuatAkunIntent = new Intent(Login.this, BuatAkun.class);
         startActivity(BuatAkunIntent);
         finish();
+      break;
+      case R.id.tvDaftarDevice:
+        GlobalTimbang globalTimbang = new GlobalTimbang(context, this);
+        globalTimbang.ProsesDaftarDevice();
       break;
     }
   }

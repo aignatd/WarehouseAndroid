@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.data.AutoTimbang;
+import com.artolanggeng.purnamakertasindo.data.IsiPotongan;
 import com.artolanggeng.purnamakertasindo.data.IsiProduct;
 import com.artolanggeng.purnamakertasindo.model.JualanRsp;
 import com.artolanggeng.purnamakertasindo.model.PotongRsp;
@@ -55,6 +56,9 @@ public class Koreksi_Adp extends RecyclerView.Adapter<Koreksi_Adp.ViewHolder>
 
 	private List<TimbangRsp> lstTimbang;
 	private Integer JenisTimbang;
+	private List<ProductRsp> productRsps;
+	private List<PotongRsp> potongRsps;
+	private ArrayAdapter<String> dataAdapter;
 
 	public Koreksi_Adp(Activity activity, Context context, List<TimbangRsp> lstTimbang, Integer JenisTimbang)
 	{
@@ -62,6 +66,8 @@ public class Koreksi_Adp extends RecyclerView.Adapter<Koreksi_Adp.ViewHolder>
 		this.context = context;
 		this.lstTimbang = lstTimbang;
 		this.JenisTimbang = JenisTimbang;
+		this.productRsps = IsiProduct.getInstance().getmProductRsps();
+		this.potongRsps =IsiPotongan.getInstance().getmPotongRsp();
 	}
 
 	@Override
@@ -99,6 +105,40 @@ public class Koreksi_Adp extends RecyclerView.Adapter<Koreksi_Adp.ViewHolder>
 		holder.tvKodeBarang.setText(context.getString(R.string.titleKodeBarang, lstTimbang.get(position).getProductcode()));
 		holder.tvNilaiPotongan.setText(context.getString(R.string.titlePotongan, String.valueOf(lstTimbang.get(position).getPotongan())));
 //		holder.tvJenisPotong.setText(lstTimbang.get(position).getJenispotongid());
+
+		String[] items;
+		ArrayList<String> lst;
+
+		items = new String[potongRsps.size()];
+
+		for(int i = 0; i < potongRsps.size(); i++)
+		{
+			items[i] = potongRsps.get(i).getDisplay().trim() + "      ";
+		}
+
+		lst = new ArrayList<>(Arrays.asList(items));
+		dataAdapter = new ArrayAdapter<>(activity, R.layout.spselected, lst);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		holder.spPotongKoreksi.setAdapter(dataAdapter);
+
+		items = new String[productRsps.size()];
+
+		for(int i = 0; i < productRsps.size(); i++)
+		{
+			String strProductName;
+
+			if(productRsps.get(i).getProductname() == null)
+				strProductName = "";
+			else
+				strProductName = " / " + productRsps.get(i).getProductname().trim();
+
+			items[i] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + strProductName;
+		}
+
+		lst = new ArrayList<>(Arrays.asList(items));
+		dataAdapter = new ArrayAdapter<>(activity, R.layout.spselected, lst);
+		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		holder.spKodeBarangKoreksi.setAdapter(dataAdapter);
 	}
 
 	@Override
@@ -123,6 +163,10 @@ public class Koreksi_Adp extends RecyclerView.Adapter<Koreksi_Adp.ViewHolder>
 		TextView tvJenisPotong;
 		@BindView(R.id.tvNilaiPotongan)
 		TextView tvNilaiPotongan;
+		@BindView(R.id.spPotongKoreksi)
+		Spinner spPotongKoreksi;
+		@BindView(R.id.spKodeBarangKoreksi)
+		Spinner spKodeBarangKoreksi;
 
 		public ViewHolder(View itemView)
 		{

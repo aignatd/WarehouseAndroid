@@ -35,6 +35,7 @@ public class FixValue
 	public static final String RestfulDataTimbangan = "formulirs/datatimbang/{warehouse}";
 	public static final String RestfulArmada = "customers/armada";
 	public static final String RestfulRequestKoreksi = "customers/requestkoreksi";
+	public static final String RestfulSimpanKoreksi = "customers/simpankoreksi";
 
 	// Server Online
 	public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";

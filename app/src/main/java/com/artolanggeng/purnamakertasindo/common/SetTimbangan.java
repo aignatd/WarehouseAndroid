@@ -60,6 +60,9 @@ public class SetTimbangan extends AppCompatActivity
 	private String strURLTimbang1;
   private String strURLTimbang2;
 
+  private Integer intDataTimbangKecil;
+  private Integer intDataTimbangBesar;
+
   @Override
   protected void onCreate(Bundle savedInstanceState)
   {
@@ -83,15 +86,19 @@ public class SetTimbangan extends AppCompatActivity
       break;
       case R.id.btnDataTimbangKecil:
         tvDataTimbangKecil.setText(spDataTimbang.getSelectedItem().toString());
+        intDataTimbangKecil = lsDataTimbangans.get(spDataTimbang.getSelectedItemPosition()).getId();
         strURLTimbang1 = lsDataTimbangans.get(spDataTimbang.getSelectedItemPosition()).getUrl();
       break;
       case R.id.btnDataTimbangBesar:
         tvDataTimbangBesar.setText(spDataTimbang.getSelectedItem().toString());
+        intDataTimbangBesar = lsDataTimbangans.get(spDataTimbang.getSelectedItemPosition()).getId();
         strURLTimbang2 = lsDataTimbangans.get(spDataTimbang.getSelectedItemPosition()).getUrl();
       break;
 	    case R.id.llSaveSetTimbang:
 		    Fungsi.storeToSharedPref(context, strURLTimbang1, Preference.PrefUrlTimbang1);
 		    Fungsi.storeToSharedPref(context, strURLTimbang2, Preference.PrefUrlTimbang2);
+        Fungsi.storeToSharedPref(context, intDataTimbangKecil, Preference.PrefTimbangKecil);
+        Fungsi.storeToSharedPref(context, intDataTimbangBesar, Preference.PrefTimbangBesar);
         popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgSimpanTimbang));
 	    break;
     }

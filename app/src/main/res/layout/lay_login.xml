@@ -78,6 +78,18 @@
 					android:layout_marginTop="5dp"
 					android:id="@+id/tvDaftarLogin"
 					android:textStyle="normal|bold|italic"/>
+
+			<TextView
+				style="@style/DefaultFooter"
+				android:text="@string/strFootDevice"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textAlignment="center"
+				android:layout_below="@id/tvDaftarLogin"
+				android:layout_marginTop="5dp"
+				android:id="@+id/tvDaftarDevice"
+				android:textStyle="normal|bold|italic"
+				android:textColor="@android:color/holo_red_light"/>
 		</RelativeLayout>
 
 	</RelativeLayout>

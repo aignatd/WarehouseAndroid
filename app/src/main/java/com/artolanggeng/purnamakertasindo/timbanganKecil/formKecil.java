@@ -200,6 +200,7 @@ public class formKecil extends AppCompatActivity {
     String gsonHistory;
     CustomerPojo customerPojo;
     String KodePemasok;
+    Integer Pemasok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,6 +214,7 @@ public class formKecil extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         intTimbang = extras.getInt("Timbang") + 1;
         KodePemasok = extras.getString("KodePemasok");
+        Pemasok = extras.getInt("Pemasok");
 
         tvKodePemasok.setText(KodePemasok);
         spNoPolisi.setVisibility(View.VISIBLE);
@@ -301,10 +303,12 @@ public class formKecil extends AppCompatActivity {
         });
     }
 
-    private void BackActivity() {
-        if (intTimbang == 1) {
+    private void BackActivity()
+    {
+        if(Pemasok == 1)
+            pesan.ShowMessege2(context, getResources().getString(R.string.msgBatalTimbang), activity, formTimbanganKecil.class);
+        else
             pesan.ShowMessege6(context, getResources().getString(R.string.msgBatalTimbang), activity);
-        }activity.finish();
     }
 
     @Override
@@ -333,7 +337,7 @@ public class formKecil extends AppCompatActivity {
         isiFormulir.setPermintaan(-1);
         isiFormulir.setPekerjaan(-1);
         isiFormulir.setJumlahtimbang(intTimbang);
-        Log.d(TAG, "UploadFormulir: " + intTimbang);
+        isiFormulir.setTimbanganid(Fungsi.getIntFromSharedPref(context, Preference.PrefTimbangKecil));
 
 //        if (intTimbang == 1) {
         Long tsLong = System.currentTimeMillis() / 1000;
@@ -353,7 +357,7 @@ public class formKecil extends AppCompatActivity {
             TimbanganRspKecil timbangRspKecil = new TimbanganRspKecil();
             timbangRspKecil.setNourut(1);
             timbangRspKecil.setTonasebruto(Integer.valueOf(etBeratTimbanganKecil.getText().toString()));
-            timbangRspKecil.setTonasenetto(Integer.valueOf(etBeratTimbanganKecil.getText().toString()));
+            timbangRspKecil.setTonasenetto(0);
             timbangRspKecil.setPotongan(Integer.valueOf(etPotonganBarangKecil.getText().toString()));
             timbangRspKecil.setTanggal(Fungsi.curentTime());
             timbangRspKecil.setJenispotongid(1);

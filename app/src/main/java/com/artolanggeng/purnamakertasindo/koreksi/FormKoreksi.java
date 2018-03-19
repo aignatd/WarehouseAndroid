@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.artolanggeng.purnamakertasindo.R;
@@ -31,7 +32,9 @@ import com.artolanggeng.purnamakertasindo.data.AutoTimbang;
 import com.artolanggeng.purnamakertasindo.data.Customer;
 import com.artolanggeng.purnamakertasindo.data.IsiFormulir;
 import com.artolanggeng.purnamakertasindo.data.IsiPemasok;
+import com.artolanggeng.purnamakertasindo.data.IsiPotongan;
 import com.artolanggeng.purnamakertasindo.data.IsiProduct;
+import com.artolanggeng.purnamakertasindo.data.Koreksi;
 import com.artolanggeng.purnamakertasindo.data.Timbang;
 import com.artolanggeng.purnamakertasindo.model.PrinterRsp;
 import com.artolanggeng.purnamakertasindo.model.TimbangRsp;
@@ -45,6 +48,7 @@ import com.artolanggeng.purnamakertasindo.popup.TambahArmada;
 import com.artolanggeng.purnamakertasindo.sending.AutoTimbangHolder;
 import com.artolanggeng.purnamakertasindo.sending.CustomerHolder;
 import com.artolanggeng.purnamakertasindo.sending.FormulirHolder;
+import com.artolanggeng.purnamakertasindo.sending.ProsesHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
 import com.artolanggeng.purnamakertasindo.service.Pembayaran;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
@@ -85,8 +89,6 @@ public class FormKoreksi extends AppCompatActivity
 	RecyclerView rvListProses;
 	@BindView(R.id.tvStatusProses)
 	TextView tvStatusProses;
-	@BindView(R.id.tvUpdateKoreksi)
-	TextView tvUpdateKoreksi;
 	@BindView(R.id.tvHeader)
 	TextView tvHeader;
 
@@ -225,7 +227,7 @@ public class FormKoreksi extends AppCompatActivity
 		rvListProses.setAdapter(formadapter);
 	}
 
-	@OnClick({R.id.ivBackFormulir, R.id.tvUpdateKoreksi})
+	@OnClick({R.id.ivBackFormulir, R.id.llUbahTimbang, R.id.ivUbahTimbang, R.id.tvUbahTimbang})
 	public void onViewClicked(View view)
 	{
 		switch(view.getId())
@@ -233,16 +235,41 @@ public class FormKoreksi extends AppCompatActivity
 			case R.id.ivBackFormulir:
 				BackActivity();
 			break;
-			case R.id.tvUpdateKoreksi:
-				BackActivity();
+			case R.id.llUbahTimbang:
+			case R.id.ivUbahTimbang:
+			case R.id.tvUbahTimbang:
+				AlertDialog.Builder builder = new AlertDialog.Builder(context);
+				builder
+					.setTitle(R.string.titleMessege)
+					.setMessage(getResources().getString(R.string.msgProsesQC))
+					.setIcon(android.R.drawable.ic_dialog_alert)
+					.setCancelable(false)
+					.setPositiveButton(R.string.strBtnOK, new DialogInterface.OnClickListener()
+					{
+						public void onClick(DialogInterface dialog, int which)
+						{
+							ProsesRubahTimbangan();
+						}
+					})
+					.setNegativeButton(R.string.strBtnBatal, new DialogInterface.OnClickListener()
+						{
+							public void onClick(DialogInterface dialog, int id)
+							{
+								dialog.cancel();
+							}
+						}
+					);
+
+				AlertDialog alert = builder.create();
+				alert.show();
 			break;
 		}
 	}
 
-	private void AmbilDataProduct(String strBisnisUnitKode)
+	private void ProsesRubahTimbangan()
 	{
 		progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
-			context.getResources().getString(R.string.msgAmbilProduct));
+										 context.getResources().getString(R.string.msgRubahTimbangan));
 		progressDialog.setCancelable(false);
 
 		if(Fungsi.isNetworkAvailable(context) == FixValue.TYPE_NONE)
@@ -252,37 +279,54 @@ public class FormKoreksi extends AppCompatActivity
 			return;
 		}
 
-		IsiFormulir isiFormulir = new IsiFormulir();
-		isiFormulir.setBisnisunitkode(strBisnisUnitKode);
+		List<Koreksi> lstKoreksi = new ArrayList<>();
+		lstKoreksi.clear();
 
-		FormulirHolder formulirHolder = new FormulirHolder(isiFormulir, null);
+		for(int i=0; i<formadapter.getItemCount(); i++)
+		{
+			View v = rvListProses.getLayoutManager().findViewByPosition(i);
+			Spinner spKoreksi = v.findViewById(R.id.spKodeBarangKoreksi);
+			EditText et = v.findViewById(R.id.etPotongKoreksi);
+			Spinner spJenis = v.findViewById(R.id.spPotongKoreksi);
+
+			Koreksi koreksi = new Koreksi();
+			koreksi.setId(lstTimbang.get(i).getId());
+			koreksi.setCodeproductkoreksi(IsiProduct.getInstance().getmProductRsps().
+				get(spKoreksi.getSelectedItemPosition()).getUnitpriceid());
+			koreksi.setJenispotongidkoreksi(IsiPotongan.getInstance().getmPotongRsp().get(spJenis.getSelectedItemPosition()).getId());
+
+			if(et.getText().toString().trim().matches(""))
+				koreksi.setPotongankoreksi(0);
+			else
+				koreksi.setPotongankoreksi(Integer.valueOf(et.getText().toString()));
+
+			koreksi.setStatuskoreksi(1);
+			koreksi.setProductcodekoreksi(IsiProduct.getInstance().getmProductRsps().
+				get(spKoreksi.getSelectedItemPosition()).getProductcode());
+
+			lstKoreksi.add(koreksi);
+		}
+
+		ProsesHolder prosesHolder = new ProsesHolder(null, lstKoreksi);
 		DataLink dataLink = Fungsi.BindingData();
 
-		final Call<LoginPojo> ReceivePojo = dataLink.DataProductService(formulirHolder);
+		final Call<ProsesPojo> ReceivePojo = dataLink.SimpanKoreksiService(prosesHolder);
 
-		ReceivePojo.enqueue(new Callback<LoginPojo>()
+		ReceivePojo.enqueue(new Callback<ProsesPojo>()
 		{
 			@Override
-			public void onResponse(Call<LoginPojo> call, Response<LoginPojo> response)
+			public void onResponse(Call<ProsesPojo> call, Response<ProsesPojo> response)
 			{
 				progressDialog.dismiss();
 
 				if(response.isSuccessful())
-				{
-					if(response.body().getCoreResponse().getKode() == FixValue.intError)
-						pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
-					else
-					{
-						IsiProduct.initIsiProduct();
-						IsiProduct.getInstance().setmProductRsps(response.body().getProductrsp());
-					}
-				}
+					pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
 				else
 					pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
 			}
 
 			@Override
-			public void onFailure(Call<LoginPojo> call, Throwable t)
+			public void onFailure(Call<ProsesPojo> call, Throwable t)
 			{
 				progressDialog.dismiss();
 				pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));

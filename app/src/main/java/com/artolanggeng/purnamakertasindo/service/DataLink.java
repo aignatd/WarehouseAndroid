@@ -123,5 +123,8 @@ public interface  DataLink
 
   @POST(FixValue.RestfulRequestKoreksi)
   Call<CustomerPojo> RequestKoreksiService(@Body CustomerHolder customerHolder);
+
+  @POST(FixValue.RestfulSimpanKoreksi)
+  Call<ProsesPojo> SimpanKoreksiService(@Body ProsesHolder prosesHolder);
 }
 

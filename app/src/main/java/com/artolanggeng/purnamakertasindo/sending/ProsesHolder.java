@@ -1,6 +1,11 @@
 package com.artolanggeng.purnamakertasindo.sending;
 
+import com.artolanggeng.purnamakertasindo.data.Koreksi;
 import com.artolanggeng.purnamakertasindo.data.Proses;
+import com.artolanggeng.purnamakertasindo.data.Timbang;
+import com.artolanggeng.purnamakertasindo.model.TimbanganRspKecil;
+
+import java.util.List;
 
 /**
  * Dibuat oleh : ignat
@@ -10,9 +15,11 @@ import com.artolanggeng.purnamakertasindo.data.Proses;
 public class ProsesHolder
 {
   private Proses DataProses;
+  private List<Koreksi> DataKoreksi;
 
-  public ProsesHolder(Proses dataProses)
+  public ProsesHolder(Proses dataProses, List<Koreksi> dataKoreksi)
   {
-    DataProses = dataProses;
+    DataProses=dataProses;
+    DataKoreksi=dataKoreksi;
   }
 }

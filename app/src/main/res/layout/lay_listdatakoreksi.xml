@@ -209,18 +209,6 @@
 				android:layout_height="wrap_content"
 				android:padding="5dp"
 				android:background="@color/duckEggBlue99"/>
-
-			<TextView
-				android:layout_width="match_parent"
-				android:layout_height="35dp"
-				android:text="@string/strUpdateProfile"
-				android:textColor="@android:color/white"
-				android:layout_gravity="center"
-				android:id="@+id/tvUpdateKoreksi"
-				android:layout_below="@id/rvListProses"
-				android:gravity="center"
-				android:background="@drawable/down_right_one_rounded_ocean"/>
-
 		</RelativeLayout>
 	</android.support.v7.widget.CardView>
 </RelativeLayout>

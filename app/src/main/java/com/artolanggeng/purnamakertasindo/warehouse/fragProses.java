@@ -123,7 +123,7 @@ public class fragProses extends Fragment implements FragMainLife
 		proses.setUserid(Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID));
 		proses.setBisnisUnit(Fungsi.getStringFromSharedPref(getContext(), Preference.prefKodeWarehouse));
 
-		ProsesHolder prosesHolder = new ProsesHolder(proses);
+		ProsesHolder prosesHolder = new ProsesHolder(proses, null);
 		DataLink dataLink = Fungsi.BindingData();
 
 		final Call<ProsesPojo> ReceivePojo = dataLink.DataProsesService(prosesHolder);

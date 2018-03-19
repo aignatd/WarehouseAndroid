@@ -39,6 +39,8 @@ public class Preference
   public static final String PrefInputNomorPelanggan = "PrefInputNomorPelanggan";
   public static final String PrefUrlTimbang1 = "PrefUrlTimbang1";
   public static final String PrefUrlTimbang2 = "PrefUrlTimbang2";
+  public static final String PrefTimbangKecil = "PrefTimbangKecil";
+  public static final String PrefTimbangBesar = "PrefTimbangBesar";
 
   public static final String PrefDataTimbang = "PrefDataTimbang";
   public static final String PrefAntrianPemasok = "PrefAntrianPemasok";

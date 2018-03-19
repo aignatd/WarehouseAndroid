@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,6 +15,7 @@ import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.data.Device;
 import com.artolanggeng.purnamakertasindo.data.User;
+import com.artolanggeng.purnamakertasindo.model.PrinterRsp;
 import com.artolanggeng.purnamakertasindo.pojo.WarehousePojo;
 import com.artolanggeng.purnamakertasindo.sending.PasswordHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
@@ -136,9 +138,7 @@ public class BuatAkun extends AppCompatActivity
 			    progressDialog.dismiss();
 
 			    if(response.isSuccessful())
-			    {
-					  popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
-			    }
+					    popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
 			    else
 				    popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
 		    }

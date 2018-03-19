@@ -121,6 +121,106 @@
 
 	<LinearLayout
 		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="@android:color/holo_blue_dark">
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginLeft="5dp"
+			android:layout_marginRight="5dp"
+			android:layout_centerVertical="true"
+			android:layout_gravity="center_vertical"
+			android:id="@+id/llKoreksiTimbangBesar">
+
+			<TextView
+				android:id="@+id/tvKoreksi"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginRight="5dp"
+				android:visibility="visible"
+				android:text="@string/titleKoreksi"
+				android:textColor="@android:color/holo_orange_dark"
+				android:layout_marginTop="3dp"/>
+
+			<RelativeLayout
+				android:id="@+id/rlKodeBarang"
+				android:layout_width="wrap_content"
+				android:layout_height="25dp"
+				android:background="@drawable/rectstrokegray"
+				android:layout_marginLeft="55dp"
+				android:layout_marginBottom="7dp"
+				android:layout_centerVertical="true">
+
+				<Spinner
+					android:layout_width="match_parent"
+					android:id="@+id/spKodeBarangKoreksi"
+					style="@style/DefaultSpinner"
+					android:dropDownWidth="fill_parent"
+					android:spinnerMode="dropdown"
+					android:layout_centerVertical="true"
+					android:textColor="@android:color/black"/>
+			</RelativeLayout>
+
+			<LinearLayout
+				android:id="@+id/llPotonganAll"
+				android:orientation="horizontal"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+				android:layout_marginLeft="55dp"
+				android:layout_marginBottom="7dp">
+
+				<TextView
+					android:id="@+id/tvPotongan"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="2dp"
+					android:padding="3dp"
+					android:visibility="visible"
+					android:text="@string/HintPotongan"
+					android:textColor="@android:color/black"/>
+
+				<EditText
+					android:id="@+id/etPotongKoreksi"
+					style="@style/BeratTimbangan"
+					android:layout_width="38dp"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_vertical"
+					android:background="@drawable/rectstrokegraywhite"
+					android:inputType="number"
+					android:paddingBottom="3dp"
+					android:paddingLeft="5dp"
+					android:paddingRight="5dp"
+					android:paddingTop="3dp"
+					android:textColor="@android:color/holo_red_light"
+					android:textColorHint="@android:color/holo_red_light"
+					android:text="0"/>
+
+				<RelativeLayout
+					android:id="@+id/rlPotongan"
+					android:layout_width="54dp"
+					android:layout_height="match_parent"
+					android:layout_marginLeft="8dp"
+					android:layout_centerVertical="true"
+					android:background="@drawable/rectstrokegray">
+
+					<Spinner
+						android:id="@+id/spPotongKoreksi"
+						style="@style/DefaultSpinner"
+						android:dropDownWidth="fill_parent"
+						android:layout_centerVertical="true"
+						android:spinnerMode="dropdown"
+						android:textColor="@android:color/black"/>
+				</RelativeLayout>
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+
+	<LinearLayout
+		android:layout_width="match_parent"
 		android:layout_height="3dp"
 		style="@style/ThemeTransparent"
 		android:background="@android:color/transparent">

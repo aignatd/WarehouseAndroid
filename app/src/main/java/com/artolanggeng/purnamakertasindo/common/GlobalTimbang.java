@@ -12,6 +12,8 @@ import com.artolanggeng.purnamakertasindo.data.User;
 import com.artolanggeng.purnamakertasindo.koreksi.MainKoreksi;
 import com.artolanggeng.purnamakertasindo.penjualan.MainJual;
 import com.artolanggeng.purnamakertasindo.pojo.LoginPojo;
+import com.artolanggeng.purnamakertasindo.pojo.WarehousePojo;
+import com.artolanggeng.purnamakertasindo.popup.DaftarDevice;
 import com.artolanggeng.purnamakertasindo.popup.GantiPassword;
 import com.artolanggeng.purnamakertasindo.sending.LogoutHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
@@ -172,6 +174,7 @@ public class GlobalTimbang
 		PemasokManualIntent.putExtra("History", strHistory);
 		PemasokManualIntent.putExtra("Jual", strJual);
 		PemasokManualIntent.putExtra("PekerjaanID", Fungsi.getStringFromSharedPref(context, Preference.PrefAntrianPemasok));
+		PemasokManualIntent.putExtra("Pemasok", 0);
 		activity.startActivity(PemasokManualIntent);
 	}
 
@@ -187,5 +190,52 @@ public class GlobalTimbang
 		Intent KoreksiIntent = new Intent(activity, MainKoreksi.class);
 		context.startActivity(KoreksiIntent);
 		activity.finish();
+	}
+
+	public void ProsesDaftarDevice()
+	{
+		progressDialog = ProgressDialog.show(context, context.getResources().getString(R.string.msgHarapTunggu),
+			context.getResources().getString(R.string.msgDataWarehouse));
+		progressDialog.setCancelable(false);
+
+		if(Fungsi.isNetworkAvailable(context) == FixValue.TYPE_NONE)
+		{
+			progressDialog.dismiss();
+			popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgKoneksiError));
+			return;
+		}
+
+		DataLink dataLink = Fungsi.BindingData();
+		final Call<WarehousePojo> ReceivePojo = dataLink.DataWarehouseService();
+
+		ReceivePojo.enqueue(new Callback<WarehousePojo>()
+		{
+			@Override
+			public void onResponse(Call<WarehousePojo> call, Response<WarehousePojo> response)
+			{
+				progressDialog.dismiss();
+
+				if(response.isSuccessful())
+				{
+					if(response.body().getCoreResponse().getKode() == FixValue.intError)
+						popupMessege.ShowMessege1(context, response.body().getCoreResponse().getPesan());
+					else
+					{
+						DaftarDevice daftarDevice = new DaftarDevice(activity, response.body().getWarehouseRsps());
+						daftarDevice.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+						daftarDevice.show();
+					}
+				}
+				else
+					popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
+			}
+
+			@Override
+			public void onFailure(Call<WarehousePojo> call, Throwable t)
+			{
+				progressDialog.dismiss();
+				popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));
+			}
+		});
 	}
 }

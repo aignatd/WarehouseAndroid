@@ -15,6 +15,7 @@ import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.common.GlobalTimbang;
 import com.artolanggeng.purnamakertasindo.common.ScanQR;
 import com.artolanggeng.purnamakertasindo.popup.InputPemasok;
+import com.artolanggeng.purnamakertasindo.service.FragKecilLife;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
@@ -27,7 +28,8 @@ import butterknife.Unbinder;
  * Created by Heru Permana on 10/25/2017.
  */
 
-public class fragmentPelanggan extends Fragment {
+public class fragmentPelanggan extends Fragment implements FragKecilLife
+{
     Unbinder unbinder;
 
     @Override
@@ -71,5 +73,11 @@ public class fragmentPelanggan extends Fragment {
                 });
                 break;
         }
+    }
+
+    @Override
+    public void onResumeFragKecilLife()
+    {
+
     }
 }

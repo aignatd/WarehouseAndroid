@@ -92,7 +92,7 @@
 					android:layout_marginRight="2dp"
 					android:paddingTop="3dp"
 					android:paddingBottom="3dp"
-					android:visibility="visible"
+					android:visibility="gone"
 					android:text="@string/HintPotongan"/>
 
 			</LinearLayout>
@@ -196,8 +196,7 @@
 					android:paddingRight="5dp"
 					android:paddingTop="3dp"
 					android:textColor="@android:color/holo_red_light"
-					android:textColorHint="@android:color/holo_red_light"
-					android:text="0"/>
+					android:textColorHint="@android:color/holo_red_light" />
 
 				<RelativeLayout
 					android:id="@+id/rlPotongan"

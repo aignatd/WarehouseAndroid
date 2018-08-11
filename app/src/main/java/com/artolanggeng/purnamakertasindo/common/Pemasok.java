@@ -323,6 +323,9 @@ public class Pemasok extends AppCompatActivity
     list.add(new byte[] { 0x1b, 0x1d, 0x79, 0x50 });
     list.add("\r\n".getBytes());
 
+    list.add(("#" + pemasokid.trim() + "\r\n").getBytes());
+    list.add(("Nama : " + etPanggilan.getText().toString() + "\r\n").getBytes());
+
     list.add("\r\n\r\n".getBytes());
     list.add(new byte[] { 0x1b, 0x64, 0x02 }); // Feed to cutter position
 

@@ -17,6 +17,7 @@ import com.artolanggeng.purnamakertasindo.popup.DaftarDevice;
 import com.artolanggeng.purnamakertasindo.popup.GantiPassword;
 import com.artolanggeng.purnamakertasindo.sending.LogoutHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
+import com.artolanggeng.purnamakertasindo.timbanganKecil.formTimbangKecil;
 import com.artolanggeng.purnamakertasindo.timbanganKecil.formTimbanganKecil;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
@@ -124,7 +125,7 @@ public class GlobalTimbang
 
 	public void ProsesTimbangKecil()
 	{
-		Intent TimbangKecilIntent = new Intent(activity, formTimbanganKecil.class);
+		Intent TimbangKecilIntent = new Intent(activity, formTimbangKecil.class);
 		context.startActivity(TimbangKecilIntent);
 		activity.finish();
 	}
@@ -162,6 +163,25 @@ public class GlobalTimbang
 				btnbawah2.setBackgroundResource(R.color.whiteThree);
 
 			btnbawah3.setBackgroundResource(R.color.appleGreen);
+		}
+	}
+
+	public void PageKecilSelected(Integer position, Button btnkecil1, Button btnkecil2)
+	{
+		if(position == 0)
+		{
+			btnkecil1.setBackgroundResource(R.color.appleGreen);
+
+			if(btnkecil2 != null)
+				btnkecil2.setBackgroundResource(R.color.whiteThree);
+		}
+		else
+		if(position == 1)
+		{
+			btnkecil1.setBackgroundResource(R.color.whiteThree);
+
+			if(btnkecil2 != null)
+				btnkecil2.setBackgroundResource(R.color.appleGreen);
 		}
 	}
 

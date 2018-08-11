@@ -16,15 +16,22 @@ import butterknife.Unbinder;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.adapter.History_Adapter_Kecil;
 import com.artolanggeng.purnamakertasindo.data.Proses;
+import com.artolanggeng.purnamakertasindo.data.Role;
 import com.artolanggeng.purnamakertasindo.data.User;
 import com.artolanggeng.purnamakertasindo.pojo.ProsesPojo;
 import com.artolanggeng.purnamakertasindo.sending.HistoryHolder;
 import com.artolanggeng.purnamakertasindo.service.DataLink;
+import com.artolanggeng.purnamakertasindo.service.FragKecilLife;
 import com.artolanggeng.purnamakertasindo.service.FragMainLife;
 import com.artolanggeng.purnamakertasindo.utils.FixValue;
 import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
 import com.artolanggeng.purnamakertasindo.utils.Preference;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,7 +40,8 @@ import retrofit2.Response;
  * Created by Heru Permana on 10/25/2017.
  */
 
-public class fragmentRiwayat extends Fragment implements FragMainLife {
+public class fragmentRiwayat extends Fragment implements FragKecilLife
+{
     @BindView(R.id.rvFragHistory)
     RecyclerView rvFragHistory;
     Unbinder unbinder;
@@ -46,13 +54,8 @@ public class fragmentRiwayat extends Fragment implements FragMainLife {
         unbinder = ButterKnife.bind(this, root);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         rvFragHistory.setLayoutManager(layoutManager);
-        recieveContent();
+
         return root;
-    }
-
-    @Override
-    public void onResumeFragMainLife() {
-
     }
 
     private void recieveContent() {
@@ -63,12 +66,17 @@ public class fragmentRiwayat extends Fragment implements FragMainLife {
 
         User user = new User();
         user.setUserID(Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID));
-        int i = Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID);
+//        int i = Fungsi.getIntFromSharedPref(getContext(), Preference.prefUserID);
 
 //        user.setUserID(3);
 
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd", Locale.US);
+
         Proses proses = new Proses();
         proses.setJenistimbang(1);
+        proses.setTglRequest(dt.format(calendar.getTime()));
+        proses.setRoleuser(Role.getInstance().getRoleResponse());
 
         HistoryHolder historyHolder = new HistoryHolder(user, proses);
         DataLink dataLink = Fungsi.BindingData();
@@ -98,5 +106,11 @@ public class fragmentRiwayat extends Fragment implements FragMainLife {
                 popupMessege.ShowMessege1(getContext(), getContext().getResources().getString(R.string.msgServerFailure));
             }
         });
+    }
+
+    @Override
+    public void onResumeFragKecilLife()
+    {
+        recieveContent();
     }
 }

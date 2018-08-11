@@ -18,7 +18,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.koreksi.FormKoreksi;
+import com.artolanggeng.purnamakertasindo.penjualan.MainJual;
 import com.artolanggeng.purnamakertasindo.timbanganKecil.formKecil;
+import com.artolanggeng.purnamakertasindo.timbanganKecil.formTimbangKecil;
+import com.artolanggeng.purnamakertasindo.timbanganKecil.formTimbanganKecil;
 import com.artolanggeng.purnamakertasindo.timbangbesar.FormBesar;
 import com.artolanggeng.purnamakertasindo.utils.CameraManager;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
@@ -294,7 +297,17 @@ public class ScanQR extends AppCompatActivity implements SurfaceHolder.Callback
 
   private void BackActivity()
   {
-    Intent MainProsesIntent = new Intent(ScanQR.this, MainProses.class);
+    Intent MainProsesIntent = null;
+
+    if(kodeTimbangan.matches("1"))
+      MainProsesIntent = new Intent(ScanQR.this, formTimbangKecil.class);
+    else
+    if(kodeTimbangan.matches("2"))
+      MainProsesIntent = new Intent(ScanQR.this, MainProses.class);
+    else
+    if(kodeTimbangan.matches("3"))
+      MainProsesIntent = new Intent(ScanQR.this, MainJual.class);
+
     startActivity(MainProsesIntent);
     finish();
   }

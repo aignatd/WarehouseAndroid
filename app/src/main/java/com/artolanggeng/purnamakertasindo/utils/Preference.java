@@ -12,6 +12,8 @@ public class Preference
   public static final String PrefArrived = "PrefArrived";
   public static final String PrefProgress = "PrefProgress";
   public static final String PrefHistory = "PrefHistory";
+  public static final String PrefArrKecil = "PrefArrKecil";
+  public static final String PrefHisKecil = "PrefHisKecil";
 
   public static final String PrefAutoFocus = "PrefAutoFocus";
   public static final String PrefContFocus = "PrefContFocus";

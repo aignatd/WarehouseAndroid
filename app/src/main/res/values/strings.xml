@@ -75,6 +75,7 @@
 	<string name="HintKendaraanInternal">Kendaraan Internal</string>
 	<string name="HintTimbangBesar">Timbang Besar</string>
 	<string name="HintTimbangKecil">Timbang Kecil</string>
+	<string name="HintKoreksiTimbang">Pilih Jenis Barang</string>
 
 	<string name="msgHarapTunggu">Harap tunggu</string>
 	<string name="msgNamaLengkap">Masukan nama lengkap</string>

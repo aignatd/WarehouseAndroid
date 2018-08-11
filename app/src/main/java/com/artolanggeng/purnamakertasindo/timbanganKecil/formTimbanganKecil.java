@@ -15,7 +15,9 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.artolanggeng.purnamakertasindo.R;
+import com.artolanggeng.purnamakertasindo.utils.Fungsi;
 import com.artolanggeng.purnamakertasindo.utils.PopupMessege;
+import com.artolanggeng.purnamakertasindo.utils.Preference;
 import com.artolanggeng.purnamakertasindo.utils.RoleChecker;
 
 import java.util.ArrayList;
@@ -82,7 +84,6 @@ public class formTimbanganKecil extends AppCompatActivity {
     private void createViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new fragmentPelanggan(), "Pelanggan");
-//        adapter.addFrag(new fragmentSemua(), "Semua");
         adapter.addFrag(new fragmentRiwayat(), "Riwayat");
         viewPager.setAdapter(adapter);
     }

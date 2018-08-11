@@ -38,15 +38,15 @@ public class FixValue
 	public static final String RestfulSimpanKoreksi = "customers/simpankoreksi";
 
 	// Server Online
-	public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";
-	//public static final String Hostname = "http://artolanggeng.dyndns-server.com:21012/api/v1/";
+	//public static final String Hostname = "http://www.purnamakertasindo.com:41014/api/v1/";
+	public static final String Hostname = "http://artolanggeng.ip-dynamic.com:41014/api/v1/";
 	//public static final String Hostname = "http://111.94.20.226:41014/api/v1/";
 
 	// Server Offline
-	//public static final String Hostname = "http://192.168.212.53:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.212.35:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.43.124:41014/api/v1/";
 	//public static final String Hostname = "http://192.168.137.1:41014/api/v1/";
-	//public static final String Hostname = "http://192.168.1.103:41014/api/v1/";
+	//public static final String Hostname = "http://192.168.0.103:41014/api/v1/";
 
 	// Server Timbangan
 	public static final String Hosttimbangan = "http://192.168.1.13:42024/api/v1/";

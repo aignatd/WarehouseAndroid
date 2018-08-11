@@ -306,7 +306,7 @@ public class formKecil extends AppCompatActivity {
     private void BackActivity()
     {
         if(Pemasok == 1)
-            pesan.ShowMessege2(context, getResources().getString(R.string.msgBatalTimbang), activity, formTimbanganKecil.class);
+            pesan.ShowMessege2(context, getResources().getString(R.string.msgBatalTimbang), activity, formTimbangKecil.class);
         else
             pesan.ShowMessege6(context, getResources().getString(R.string.msgBatalTimbang), activity);
     }
@@ -336,7 +336,6 @@ public class formKecil extends AppCompatActivity {
         IsiFormulir isiFormulir = new IsiFormulir();
         isiFormulir.setPermintaan(-1);
         isiFormulir.setPekerjaan(-1);
-        isiFormulir.setJumlahtimbang(intTimbang);
         isiFormulir.setTimbanganid(Fungsi.getIntFromSharedPref(context, Preference.PrefTimbangKecil));
 
 //        if (intTimbang == 1) {
@@ -395,6 +394,9 @@ public class formKecil extends AppCompatActivity {
             lstTimbangHolder.add(timbangRspKecil);
 
         }
+
+        isiFormulir.setJumlahtimbang(lstTimbangHolder.size());
+
         formulirHolder = new FormulirHolderKecil(isiFormulir, lstTimbangHolder);
         ReceivePojo = dataLink.FormulirKecilService(formulirHolder);
 //        } else {
@@ -765,6 +767,7 @@ public class formKecil extends AppCompatActivity {
         list.add("\r\n".getBytes());
 
         list.add(("#" + printerRsp.getPemasokid() + "\r\n").getBytes());
+        list.add(("Nama    : " + tvNamaPanggil.getText().toString() + "\r\n").getBytes());
         list.add(("Antrian : " + printerRsp.getPekerjaanid().toString()  + "\r\n").getBytes());
 
         list.add(("Tanggal : " + dtPrint + "\r\n").getBytes());
@@ -799,7 +802,7 @@ public class formKecil extends AppCompatActivity {
     }
     private void LanjutProses()
     {
-        Intent LoginIntent = new Intent(formKecil.this, formTimbanganKecil.class);
+        Intent LoginIntent = new Intent(formKecil.this, formTimbangKecil.class);
         startActivity(LoginIntent);
         finish();
     }

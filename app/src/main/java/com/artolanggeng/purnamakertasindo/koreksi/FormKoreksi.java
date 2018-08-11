@@ -85,8 +85,8 @@ public class FormKoreksi extends AppCompatActivity
 	TextView tvNoPolisi;
 	@BindView(R.id.tvKodePemasok)
 	TextView tvKodePemasok;
-	@BindView(R.id.rvListProses)
-	RecyclerView rvListProses;
+	@BindView(R.id.rvListKoreksi)
+	RecyclerView rvListKoreksi;
 	@BindView(R.id.tvStatusProses)
 	TextView tvStatusProses;
 	@BindView(R.id.tvHeader)
@@ -127,7 +127,7 @@ public class FormKoreksi extends AppCompatActivity
 
 		AmbilInfoPemasok(KodePemasok);
 		LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-		rvListProses.setLayoutManager(layoutManager);
+		rvListKoreksi.setLayoutManager(layoutManager);
 
 		datePrint = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 		timePrint = new SimpleDateFormat("HH:mm:ss", Locale.US);
@@ -166,7 +166,7 @@ public class FormKoreksi extends AppCompatActivity
 				{
 					if(response.body().getCoreResponse().getKode() == FixValue.intError)
 					{
-						rvListProses.setVisibility(View.GONE);
+						rvListKoreksi.setVisibility(View.GONE);
 						pesan.ShowMessege1(context, response.body().getCoreResponse().getPesan());
 					}
 					else
@@ -183,7 +183,7 @@ public class FormKoreksi extends AppCompatActivity
 					}
 				} else
 				{
-					rvListProses.setVisibility(View.GONE);
+					rvListKoreksi.setVisibility(View.GONE);
 					pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerData));
 				}
 			}
@@ -192,7 +192,7 @@ public class FormKoreksi extends AppCompatActivity
 			public void onFailure(Call<CustomerPojo> call, Throwable t)
 			{
 				progressDialog.dismiss();
-				rvListProses.setVisibility(View.GONE);
+				rvListKoreksi.setVisibility(View.GONE);
 				pesan.ShowMessege1(context, context.getResources().getString(R.string.msgServerFailure));
 			}
 		});
@@ -214,7 +214,7 @@ public class FormKoreksi extends AppCompatActivity
 
 	private void TampilkanDataTimbangan(Integer JenisTimbang)
 	{
-		rvListProses.setVisibility(View.VISIBLE);
+		rvListKoreksi.setVisibility(View.VISIBLE);
 
 		if(lstTimbang == null)
 		{
@@ -222,9 +222,9 @@ public class FormKoreksi extends AppCompatActivity
 			return;
 		}
 
-		rvListProses.invalidate();
+		rvListKoreksi.invalidate();
 		formadapter = new Koreksi_Adp(activity, context, lstTimbang, JenisTimbang);
-		rvListProses.setAdapter(formadapter);
+		rvListKoreksi.setAdapter(formadapter);
 	}
 
 	@OnClick({R.id.ivBackFormulir, R.id.llUbahTimbang, R.id.ivUbahTimbang, R.id.tvUbahTimbang})
@@ -284,27 +284,60 @@ public class FormKoreksi extends AppCompatActivity
 
 		for(int i=0; i<formadapter.getItemCount(); i++)
 		{
-			View v = rvListProses.getLayoutManager().findViewByPosition(i);
-			Spinner spKoreksi = v.findViewById(R.id.spKodeBarangKoreksi);
+			View v = rvListKoreksi.getLayoutManager().findViewByPosition(i);
+
 			EditText et = v.findViewById(R.id.etPotongKoreksi);
 			Spinner spJenis = v.findViewById(R.id.spPotongKoreksi);
+			Spinner spKoreksi = v.findViewById(R.id.spKodeBarangKoreksi);
+
+			TextView tv1 = v.findViewById(R.id.tvNilaiPotongan);
+			TextView tv2 = v.findViewById(R.id.tvKodeBarang);
+
+			String tvNilaiPotongan = tv1.getText().toString().trim().substring(14).trim();
+			String tvKodeBarang = tv2.getText().toString().trim().substring(11).trim();
+
+			String txtKodeBarang = spKoreksi.getSelectedItem().toString();
+
+			if(!txtKodeBarang.matches(context.getResources().getString(R.string.HintKoreksiTimbang)))
+				txtKodeBarang = IsiProduct.getInstance().getmProductRsps().
+					get(spKoreksi.getSelectedItemPosition()-1).getProductcode();
+
+			if(et.getText().toString().trim().matches("") &&
+				txtKodeBarang.matches(context.getResources().getString(R.string.HintKoreksiTimbang)))
+				continue;
+			else
+			if(tvNilaiPotongan.matches(et.getText().toString().trim()) &&
+				tvKodeBarang.matches(txtKodeBarang))
+				continue;
 
 			Koreksi koreksi = new Koreksi();
 			koreksi.setId(lstTimbang.get(i).getId());
-			koreksi.setCodeproductkoreksi(IsiProduct.getInstance().getmProductRsps().
-				get(spKoreksi.getSelectedItemPosition()).getUnitpriceid());
-			koreksi.setJenispotongidkoreksi(IsiPotongan.getInstance().getmPotongRsp().get(spJenis.getSelectedItemPosition()).getId());
 
-			if(et.getText().toString().trim().matches(""))
-				koreksi.setPotongankoreksi(0);
-			else
+			if((!txtKodeBarang.matches(context.getResources().getString(R.string.HintKoreksiTimbang))) &&
+				(!tvKodeBarang.matches(txtKodeBarang)))
+			{
+				koreksi.setCodeproductkoreksi(IsiProduct.getInstance().getmProductRsps().
+					get(spKoreksi.getSelectedItemPosition()-1).getUnitpriceid());
+
+				koreksi.setProductcodekoreksi(IsiProduct.getInstance().getmProductRsps().
+					get(spKoreksi.getSelectedItemPosition()-1).getProductcode());
+			}
+
+			if((!et.getText().toString().trim().matches("")) &&
+				(!tvNilaiPotongan.matches(et.getText().toString().trim())))
 				koreksi.setPotongankoreksi(Integer.valueOf(et.getText().toString()));
+			else
+				koreksi.setPotongankoreksi(Integer.valueOf(tvNilaiPotongan));
 
 			koreksi.setStatuskoreksi(1);
-			koreksi.setProductcodekoreksi(IsiProduct.getInstance().getmProductRsps().
-				get(spKoreksi.getSelectedItemPosition()).getProductcode());
-
+			koreksi.setJenispotongidkoreksi(IsiPotongan.getInstance().getmPotongRsp().get(spJenis.getSelectedItemPosition()).getId());
 			lstKoreksi.add(koreksi);
+		}
+
+		if(lstKoreksi.size() == 0)
+		{
+			progressDialog.dismiss();
+			return;
 		}
 
 		ProsesHolder prosesHolder = new ProsesHolder(null, lstKoreksi);

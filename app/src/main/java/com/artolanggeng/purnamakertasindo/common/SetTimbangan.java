@@ -40,10 +40,15 @@ public class SetTimbangan extends AppCompatActivity
   @BindView(R.id.ivMenu)
   ImageView ivMenu;
 
+  @BindView(R.id.tvOldTimbangKecil)
+  TextView tvOldTimbangKecil;
+  @BindView(R.id.tvOldTimbangBesar)
+  TextView tvOldTimbangBesar;
   @BindView(R.id.tvDataTimbangKecil)
   TextView tvDataTimbangKecil;
   @BindView(R.id.tvDataTimbangBesar)
   TextView tvDataTimbangBesar;
+
   @BindView(R.id.spDataTimbang)
   Spinner spDataTimbang;
 
@@ -74,6 +79,12 @@ public class SetTimbangan extends AppCompatActivity
     ivMenu.setVisibility(View.GONE);
 
     AmbilSemuaJenisTimbangan();
+
+    strURLTimbang1 = Fungsi.getStringFromSharedPref(context, Preference.PrefUrlTimbang1);
+    strURLTimbang2 = Fungsi.getStringFromSharedPref(context, Preference.PrefUrlTimbang2);
+
+    tvOldTimbangKecil.setText(strURLTimbang1);
+    tvOldTimbangBesar.setText(strURLTimbang2);
   }
 
   @OnClick({R.id.ivBackIcon, R.id.btnDataTimbangKecil, R.id.btnDataTimbangBesar, R.id.llSaveSetTimbang})
@@ -97,8 +108,15 @@ public class SetTimbangan extends AppCompatActivity
 	    case R.id.llSaveSetTimbang:
 		    Fungsi.storeToSharedPref(context, strURLTimbang1, Preference.PrefUrlTimbang1);
 		    Fungsi.storeToSharedPref(context, strURLTimbang2, Preference.PrefUrlTimbang2);
-        Fungsi.storeToSharedPref(context, intDataTimbangKecil, Preference.PrefTimbangKecil);
-        Fungsi.storeToSharedPref(context, intDataTimbangBesar, Preference.PrefTimbangBesar);
+        tvOldTimbangKecil.setText(strURLTimbang1);
+        tvOldTimbangBesar.setText(strURLTimbang2);
+
+		    if(intDataTimbangKecil != null)
+          Fungsi.storeToSharedPref(context, intDataTimbangKecil, Preference.PrefTimbangKecil);
+
+        if(intDataTimbangBesar != null)
+          Fungsi.storeToSharedPref(context, intDataTimbangBesar, Preference.PrefTimbangBesar);
+
         popupMessege.ShowMessege1(context, context.getResources().getString(R.string.msgSimpanTimbang));
 	    break;
     }

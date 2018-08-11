@@ -768,7 +768,8 @@ public class FormBesar extends AppCompatActivity
 		list.add("\r\n".getBytes());
 
 		list.add(("#" + printerRsp.getPemasokid() + "\r\n").getBytes());
-		list.add(("Antrian : " + printerRsp.getPekerjaanid().toString()  + "\r\n").getBytes());
+		list.add(("Nama    : " + tvNamaPanggil.getText().toString() + "\r\n").getBytes());
+		list.add(("Antrian : " + printerRsp.getPekerjaanid().toString() + "\r\n").getBytes());
 
 		list.add(("Tanggal : " + dtPrint + "\r\n").getBytes());
 		list.add(("Jam : " +  tmPrint + "\r\n").getBytes());

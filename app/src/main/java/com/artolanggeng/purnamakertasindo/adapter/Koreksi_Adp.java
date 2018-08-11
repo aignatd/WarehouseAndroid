@@ -121,7 +121,8 @@ public class Koreksi_Adp extends RecyclerView.Adapter<Koreksi_Adp.ViewHolder>
 		dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		holder.spPotongKoreksi.setAdapter(dataAdapter);
 
-		items = new String[productRsps.size()];
+		items = new String[productRsps.size()+1];
+		items[0] = context.getResources().getString(R.string.HintKoreksiTimbang);
 
 		for(int i = 0; i < productRsps.size(); i++)
 		{
@@ -132,7 +133,7 @@ public class Koreksi_Adp extends RecyclerView.Adapter<Koreksi_Adp.ViewHolder>
 			else
 				strProductName = " / " + productRsps.get(i).getProductname().trim();
 
-			items[i] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + strProductName;
+			items[i+1] = (i + 1) + ". " + productRsps.get(i).getProductcode().trim() + strProductName;
 		}
 
 		lst = new ArrayList<>(Arrays.asList(items));

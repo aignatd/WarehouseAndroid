@@ -297,7 +297,7 @@ public class Proses_Adp extends BaseAdapter
 						{
 							public void onClick(DialogInterface dialog, int which)
 							{
-								ProsesPrint(strPemasokID, intPekerjaanID);
+								ProsesPrint(strPemasokID, intPekerjaanID, tvNamaPanggil.getText().toString().trim());
 							}
 						})
 						.setNegativeButton(R.string.strBtnBatal, new DialogInterface.OnClickListener()
@@ -438,7 +438,7 @@ public class Proses_Adp extends BaseAdapter
 		});
 	}
 
-	private void ProsesPrint(final String Pemasokid, final Integer getPekerjaanid)
+	private void ProsesPrint(final String Pemasokid, final Integer getPekerjaanid, final String NamaPanggil)
 	{
 		SimpleDateFormat datePrint = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 		SimpleDateFormat timePrint = new SimpleDateFormat("HH:mm:ss", Locale.US);
@@ -464,6 +464,7 @@ public class Proses_Adp extends BaseAdapter
 		list.add("\r\n".getBytes());
 
 		list.add(("#" + Pemasokid + "\r\n").getBytes());
+		list.add(("Nama    : " + NamaPanggil + "\r\n").getBytes());
 		list.add(("Antrian : " + getPekerjaanid  + "\r\n").getBytes());
 
 		calendar = Calendar.getInstance();

@@ -86,11 +86,21 @@
 					android:textSize="20sp"/>
 			</RelativeLayout>
 
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/tvOldTimbangKecil"
+				android:gravity="center_vertical"
+				android:layout_below="@+id/rlDataTimbang"
+				android:hint="@string/HintTimbanganKecil"
+				android:layout_marginTop="20dp"
+				android:background="@android:color/white"/>
+
 			<RelativeLayout
 				android:id="@+id/rlDataTimbangKecil"
 				android:layout_width="match_parent"
-				android:layout_below="@+id/rlDataTimbang"
-        android:layout_marginTop="15dp"
+				android:layout_below="@+id/tvOldTimbangKecil"
+        android:layout_marginTop="10dp"
 				android:layout_height="wrap_content">
 
         <TextView
@@ -102,7 +112,7 @@
           android:drawableLeft="@drawable/user"
           android:layout_marginRight="10dp"
           android:gravity="center_vertical"
-          android:hint="@string/HintTimbanganKecil" />
+          android:hint="@string/HintTimbanganKecil"/>
 
         <Button
           android:id="@+id/btnDataTimbangKecil"
@@ -116,9 +126,19 @@
 
       </RelativeLayout>
 
+			<TextView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:id="@+id/tvOldTimbangBesar"
+				android:gravity="center_vertical"
+				android:layout_below="@+id/rlDataTimbangKecil"
+				android:hint="@string/HintTimbanganBesar"
+				android:layout_marginTop="15dp"
+				android:background="@android:color/white"/>
+
       <RelativeLayout
         android:id="@+id/rlDataTimbangBesar"
-        android:layout_below="@id/rlDataTimbangKecil"
+        android:layout_below="@id/tvOldTimbangBesar"
         android:layout_width="match_parent"
         android:layout_marginTop="10dp"
         android:layout_height="wrap_content">

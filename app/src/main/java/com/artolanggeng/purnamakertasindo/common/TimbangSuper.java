@@ -7,11 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import butterknife.ButterKnife;
 import butterknife.BindView;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
@@ -47,6 +49,7 @@ public class TimbangSuper extends AppCompatActivity
     super.onCreate(savedInstanceState);
 
 	  setContentView(R.layout.lay_timbang_super);
+	  ButterKnife.bind(this);
 
     tvPilihTimbangan.setText(getString(R.string.strHeaderTimbangan, Fungsi.getStringFromSharedPref(context, Preference.prefName)));
     tvWarehouse.setText(Fungsi.getStringFromSharedPref(context, Preference.prefWarehouse));
@@ -138,9 +141,8 @@ public class TimbangSuper extends AppCompatActivity
 		    globalTimbang.ProsesKoreksi();
 		  break;
 	    case R.id.rlBantuan:
-		    Intent SetBantuanIntent = new Intent(TimbangSuper.this, Bantuan.class);
-		    startActivity(SetBantuanIntent);
-		    finish();
+		    Intent browserX = new Intent(Intent.ACTION_VIEW, Uri.parse("http://artolanggeng.ip-dynamic.com:40080/warehouse"));
+		    startActivity(browserX);
 	    break;
     }
   }

@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -123,9 +124,8 @@ public class TimbangAdminOpr extends AppCompatActivity
         finish();
       break;
       case R.id.rlBantuan:
-        Intent SetBantuanIntent = new Intent(TimbangAdminOpr.this, Bantuan.class);
-        startActivity(SetBantuanIntent);
-        finish();
+        Intent browserX = new Intent(Intent.ACTION_VIEW, Uri.parse("http://artolanggeng.ip-dynamic.com:40080/warehouse"));
+        startActivity(browserX);
       break;
     }
   }

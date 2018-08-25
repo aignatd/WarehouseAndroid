@@ -459,11 +459,43 @@
 					android:orientation="horizontal">
 
 					<RelativeLayout
+						style="@style/ButtonTimbangan"
+						android:orientation="vertical"
+						android:layout_width="@dimen/HeightButtonTimbangan"
+						android:layout_height="@dimen/HeightButtonTimbangan2"
+						android:weightSum="1"
+						android:id="@+id/rlBantuan"
+						android:gravity="center"
+						android:layout_marginRight="14dp">
+
+						<ImageView
+							android:scaleType="fitXY"
+							android:adjustViewBounds="true"
+							app:srcCompat="@drawable/ic_live_help"
+							android:id="@+id/ivBantuan"
+							android:layout_centerVertical="true"
+							android:layout_centerHorizontal="true"
+							android:layout_width="67dp"
+							android:layout_height="67dp"/>
+
+						<TextView
+							style="@style/TextButton"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:id="@+id/tvBantuan"
+							android:text="@string/StrBantuan"
+							android:gravity="center"
+							android:layout_below="@id/ivBantuan"
+							android:textAlignment="center"
+							android:layout_marginTop="8dp"/>
+					</RelativeLayout>
+
+					<RelativeLayout
 						android:id="@+id/rlKeluar"
 						style="@style/ButtonTimbangan"
 						android:layout_width="@dimen/HeightButtonTimbangan"
 						android:layout_height="@dimen/HeightButtonTimbangan2"
-						android:layout_marginRight="14dp"
+						android:layout_marginLeft="14dp"
 						android:gravity="center"
 						android:orientation="vertical"
 						android:weightSum="1">
@@ -487,39 +519,6 @@
 							android:layout_marginTop="8dp"
 							android:gravity="center"
 							android:text="@string/StrKeluar"
-							android:textAlignment="center" />
-					</RelativeLayout>
-
-					<RelativeLayout
-						android:id="@+id/rlSetTimbang2"
-						style="@style/ButtonTimbangan"
-						android:layout_width="@dimen/HeightButtonTimbangan"
-						android:layout_height="@dimen/HeightButtonTimbangan2"
-						android:layout_marginLeft="14dp"
-						android:gravity="center"
-						android:orientation="vertical"
-						android:weightSum="1"
-						android:visibility="invisible">
-
-						<ImageView
-							android:id="@+id/ivSetTimbang2"
-							android:layout_width="86dp"
-							android:layout_height="64dp"
-							android:layout_centerHorizontal="true"
-							android:layout_centerVertical="true"
-							android:adjustViewBounds="true"
-							android:scaleType="fitXY"
-							app:srcCompat="@drawable/timbangwifi" />
-
-						<TextView
-							android:id="@+id/tvSetTimbang2"
-							style="@style/TextButton"
-							android:layout_width="match_parent"
-							android:layout_height="wrap_content"
-							android:layout_below="@id/ivSetTimbang2"
-							android:layout_marginTop="8dp"
-							android:gravity="center"
-							android:text="@string/titleSettingTimbang"
 							android:textAlignment="center" />
 					</RelativeLayout>
 				</LinearLayout>

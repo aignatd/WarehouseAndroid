@@ -147,6 +147,7 @@
 	<string name="StrTimbanganBesar">Timbangan\nBesar</string>
 	<string name="StrTimbanganKecil">Timbangan\nKecil</string>
 	<string name="StrPelangganBaru">Pemasok\nBaru</string>
+	<string name="StrBantuan">Bantuan</string>
 	<string name="StrKeluar">Tutup Aplikasi</string>
 	<string name="StrScanQR">Scan QR</string>
 	<string name="StrKoreksi">Koreksi</string>

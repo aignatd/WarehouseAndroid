@@ -53,7 +53,7 @@ public class TimbangAdmin extends AppCompatActivity
   }
 
   @OnClick({R.id.rlPelangganBaru, R.id.rlPrinter, R.id.rlKeluar, R.id.rlPassword, R.id.rlProfile,
-            R.id.rlSetTimbang})
+            R.id.rlSetTimbang, R.id.rlBantuan})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -106,6 +106,11 @@ public class TimbangAdmin extends AppCompatActivity
       case R.id.rlSetTimbang:
         Intent SetTimbangIntent = new Intent(TimbangAdmin.this, SetTimbangan.class);
         startActivity(SetTimbangIntent);
+        finish();
+      break;
+      case R.id.rlBantuan:
+        Intent SetBantuanIntent = new Intent(TimbangAdmin.this, Bantuan.class);
+        startActivity(SetBantuanIntent);
         finish();
       break;
     }

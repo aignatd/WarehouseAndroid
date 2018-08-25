@@ -56,7 +56,7 @@ public class TimbangOpr extends AppCompatActivity
   }
 
   @OnClick({R.id.rlTimbangBesar, R.id.rlTimbangKecil, R.id.rlKeluar, R.id.rlJualBarang, R.id.rlProfile,
-            R.id.rlPassword, R.id.rlKoreksi})
+            R.id.rlPassword, R.id.rlKoreksi, R.id.rlBantuan})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -116,6 +116,11 @@ public class TimbangOpr extends AppCompatActivity
       case R.id.rlKoreksi:
         globalTimbang = new GlobalTimbang(context, activity);
         globalTimbang.ProsesKoreksi();
+      break;
+      case R.id.rlBantuan:
+        Intent SetBantuanIntent = new Intent(TimbangOpr.this, Bantuan.class);
+        startActivity(SetBantuanIntent);
+        finish();
       break;
     }
   }

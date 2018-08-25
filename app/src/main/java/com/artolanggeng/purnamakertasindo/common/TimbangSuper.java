@@ -13,7 +13,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.artolanggeng.purnamakertasindo.R;
 import com.artolanggeng.purnamakertasindo.pojo.WarehousePojo;
@@ -48,7 +47,6 @@ public class TimbangSuper extends AppCompatActivity
     super.onCreate(savedInstanceState);
 
 	  setContentView(R.layout.lay_timbang_super);
-    ButterKnife.bind(this);
 
     tvPilihTimbangan.setText(getString(R.string.strHeaderTimbangan, Fungsi.getStringFromSharedPref(context, Preference.prefName)));
     tvWarehouse.setText(Fungsi.getStringFromSharedPref(context, Preference.prefWarehouse));
@@ -65,7 +63,7 @@ public class TimbangSuper extends AppCompatActivity
 
   @OnClick({R.id.rlTimbangBesar, R.id.rlTimbangKecil, R.id.rlPelangganBaru, R.id.rlPrinter,
 	          R.id.rlKeluar, R.id.rlDaftarDevice, R.id.rlProfile, R.id.rlPassword, R.id.rlJualBarang,
-	          R.id.rlSetTimbang, R.id.rlKoreksi})
+	          R.id.rlSetTimbang, R.id.rlKoreksi, R.id.rlBantuan})
   public void onViewClicked(View view)
   {
     switch(view.getId())
@@ -139,6 +137,11 @@ public class TimbangSuper extends AppCompatActivity
 		    globalTimbang = new GlobalTimbang(context, activity);
 		    globalTimbang.ProsesKoreksi();
 		  break;
+	    case R.id.rlBantuan:
+		    Intent SetBantuanIntent = new Intent(TimbangSuper.this, Bantuan.class);
+		    startActivity(SetBantuanIntent);
+		    finish();
+	    break;
     }
   }
 
